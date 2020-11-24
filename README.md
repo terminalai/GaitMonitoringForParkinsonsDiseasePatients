@@ -27,11 +27,14 @@ Data were collected from the healthy subjects as they walked in a roughly circul
 
 ### Data Description
 
-The Daphnet Freezing of Gait Dataset is a dataset devised to benchmark automatic methods to recognize gait freeze from wearable acceleration sensors placed on legs and hip.
+The Daphnet Freezing of Gait Dataset Freezing of Gait in users with Parkinson disease (hereafter Daphnet Freezing of Gait Dataset) is a dataset devised to benchmark automatic methods to recognize gait freeze from wearable acceleration sensors placed on legs and hip.
 
 The dataset was recorded in the lab with emphasis on generating many freeze events. Users performed there kinds of tasks: straight line walking, walking with numerous turns, and finally a more realistic activity of daily living (ADL) task, where users went into different rooms while fetching coffee, opening doors, etc.
 
 This dataset is the result of a collaboration between the Laboratory for Gait and Neurodynamics, Tel Aviv Sourasky Medical Center, Israel and the Wearable Computing Laboratory, ETH Zurich, Switzerland. Recordings were run at the Tel Aviv Sourasky Medical Center in 2008. The study was approved by the local Human Subjects Review Committee, and was performed in accordance with the ethical standards of the Declaration of Helsinki.
+
+This dataset was collected as part of the EU FP6 project Daphnet, grant number 018474-2.
+Additional effort to publish this dataset was supported in part by the EU FP7 project CuPiD, grant number 288516.
 
 ### Data Attributes
 1. Time of sample in millisecond
