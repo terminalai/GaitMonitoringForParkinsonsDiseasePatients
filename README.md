@@ -12,7 +12,7 @@ To make use of signal processing algorithms in extracting gait parameters from m
 ## Methodology
 Students will first need to review and understands how to extract gait parameters from motion sensors. There are different algorithms in the literature and they will need to investigate which is most suitable. They will then make use of a PD patient public dataset to test out their methods. If time permits, they will learn basic machine learning tools for classification.
 
-## [Dataset 1](https://www.physionet.org/content/gaitdb/1.0.0/)
+## [GaitDB Dataset](https://www.physionet.org/content/gaitdb/1.0.0/)
 
 ### Data Description
 
@@ -22,7 +22,7 @@ Subjects walked continuously on level ground around an obstacle-free path. The s
 
 Data were collected from the healthy subjects as they walked in a roughly circular path for 15 minutes, and from the subjects with Parkinson’s disease as they walked for 6 minutes up and down a long hallway.
 
-## [Dataset 2](https://archive.ics.uci.edu/ml/datasets/Daphnet+Freezing+of+Gait#:~:text=Data%20Set%20Information%3A,on%20generating%20many%20freeze%20events.)
+## [Daphnet Dataset](https://archive.ics.uci.edu/ml/datasets/Daphnet+Freezing+of+Gait#:~:text=Data%20Set%20Information%3A,on%20generating%20many%20freeze%20events.)
 (suggested by Prof Tay)
 
 ### Data Description
