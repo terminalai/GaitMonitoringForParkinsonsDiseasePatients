@@ -26,7 +26,6 @@ Data were collected from the healthy subjects as they walked in a roughly circul
 
 ## [Dataset 2](https://archive.ics.uci.edu/ml/datasets/Daphnet+Freezing+of+Gait#:~:text=Data%20Set%20Information%3A,on%20generating%20many%20freeze%20events.)
 (suggested by Prof Tay)
-[link](https://archive.ics.uci.edu/ml/datasets/Daphnet+Freezing+of+Gait#:~:text=Data%20Set%20Information%3A,on%20generating%20many%20freeze%20events.)
 
 ### Data Description
 
