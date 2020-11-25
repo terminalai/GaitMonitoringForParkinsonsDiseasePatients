@@ -20,6 +20,12 @@ d = NFFT/2
 freezeTH = 1.5
 powerTH = 2 ** 11.5
 
+def find(X, n=None, direction=None):
+    if direction != None and n != None:
+        if direction == "last": return np.where(X)[-n:]
+        else: return np.where(X)[:n]
+    return np.where(X)
+
 
 def numIntegration(x):
     """
@@ -67,15 +73,138 @@ def fi(data):
 
 def classify(data):
     lframes = []
-    for isensor in [1, 2]:
-        for iaxis in [1, 2, 3]:
-            # Moore's algorithm
-            sum, quot, time = fi(data[:, 1+isensor*3+iaxis])
-            # Extension of Baechlin to handle low-enery situations (e.g. standing)
-            quot[sum < powerTH] = 0
-            # Classification
-            lframe = (quot > freezeTH).astype(int).T
-            lframes.append(lframe)
-    return lframes
+    info = []
+    
+    for iaxis in range(2, 5):
+        # Moore's algorithm
+        sum, quot, time = fi(data[:, iaxis])
+        # Extension of Baechlin to handle low-enery situations (e.g. standing)
+        quot[sum < powerTH] = 0
+        # Classification
+        lframe = (quot > freezeTH).astype(int).T
+        lframes.append(lframe)
+
+        #######################################################################
+        # We do not want to compute performance on the "non experiment" part,
+        # e.g. when the sensors are attached on body or the user is not yet
+        # doing the task.
+        # Therefore we remove the non-experiment parts, which correspond
+        # to label '0'.
+        # After transformation, there are only frames corresponding to the
+        # experiment with label 0=no freeze, 1=freeze
+        #######################################################################
+
+        # Ground truth of the frames
+        gtframe = data[res.time,11]    # 0=no experiment, 1=no freeze, 2=freeze
+        # Identify the part of the data corresponding to the experiment
+        xp = find(gtframe != 0)
+
+        # Remove the non experiment part from the ground truth and classification 
+        gtframe2 = gtframe[xp]-1       # subtract 1 to have 0 or 1 as labels
+        lframe2 = lframe[xp]           # 0=no freeze, 1=freeze
+
+        tp, tn, fp, fn, totFreeze = countTxFx(gtframe2,lframe2,offDelay*SR/stepSize,onDelay*SR/stepSize);
+        info.append([tp, tn, fp, fn, totFreeze])
+        
+    return lframes, info
 
 
+"""
+Count the true pos, false pos, etc in frames
+
+gtframe: column vector of ground truth of frame
+lframe: column vector classification result of frame
+offDelay/onDelay: tolerance for latency in the algorithm. Specified in frames.
+
+The latency-tolerance can only be used with binary labels : 0=nothing, 1=event
+
+Returns: [TP TN FP FN Nev]
+Nev: number of events in the ground truth data
+"""
+
+def countTxFx(gtframe, lframe, offDelay, onDelay):
+    """
+    Count the true pos, false pos, etc in frames
+
+    gtframe: column vector of ground truth of frame
+    lframe: column vector classification result of frame
+    offDelay/onDelay: tolerance for latency in the algorithm. Specified in frames.
+
+    The latency-tolerance can only be used with binary labels : 0=nothing, 1=event
+
+    Returns: [TP TN FP FN Nev]
+    Nev: number of events in the ground truth data
+    """
+    
+    # Want here to create labels tolerating algorithm latency in the
+    # transitions from nothing->event and event->nothing. 
+    # For this we need gtframedelayoff and grframedelayon that are 
+    # variants of gtframe with delay.
+    # This is built using a help 'labels' array.
+    
+    # Convert the frame labels to the format: [fromsample tosample]
+    f = np.vstack((1, np.where(gtframe[1:]-gtframe[:-1]), np.size(gtframe, 1))) # add a discontinuity at the start and end
+    # convert
+    labels = np.array([])        # [fromframe toframe] where there is an event
+    for li in range(np.size(f, 1)-1):
+        if gtframe[f[li]+1] == 1: labels = np.vstack((labels, np[f[li]+1, f[li+1]]))
+    
+    # Labels for delay
+    gtframedelayoff = np.zeros(np.size(gtframe, 1), 1)
+    gtframedelayon = np.zeros(np.size(gtframe, 1), 1)
+    
+    s = np.arange(np.size(labels, 1)) + 1           # s: 1, 2, ..., frame number
+
+    for li in range(np.size(labels, 1)):
+        s_index = find(s>=labels[li,1], 1, 'first')       
+        e_index = find(s<=labels[li,2], 1, 'last')
+        # reference vectors with Off delay
+        e_indexOff = find(s<=labels[li,2]+offDelay, 1, 'last')
+        gtframedelayoff[s_index:e_indexOff] = 1
+
+        # reference vectors with On delay
+        s_indexOn = find(s>=(labels[li,1]+onDelay), 1, 'first')      
+        gtframedelayon[s_indexOn:e_index] = 1
+
+    res_vec = np.zeros(np.size(gtframe,1),6); # TP TPd TN TNd FP FN
+     
+    # mark all correct detected (TP) and not detected (TN) time-slots
+    i_TX = find(gtframe == lframe); # all correct time-slots
+
+    i_TP = find(lframe[i_TX] == 1); # correct detected 
+    res_vec[i_TX[i_TP], 1] = 1;
+
+    i_TN = find(lframe[i_TX] == 0); # correct not detected
+    res_vec[i_TX[i_TN], 3] = 1;
+ 
+
+    # mark all false detected (FP) and missed (FN) time-slots
+    i_FX = find(gtframe != lframe); # all wrong time-slots
+
+    i_FP = find(lframe[i_FX] == 1); # wrong detected
+    res_vec[i_FX[i_FP], 5] = 1;
+
+    i_FN = find(lframe[i_FX] == 0); # missed 
+    res_vec[i_FX[i_FN], 6] = 1;
+
+
+    # TPd : time-slots true due to the off delay
+    i_X = find(res_vec[:,5] == gtframedelayoff);
+    i_TPd = find(res_vec[i_X, 5] == 1);
+    res_vec[i_X[i_TPd], 2] = 1;
+    res_vec[i_X[i_TPd], 5] = 0;
+
+    # TNd : time-slots true due to the on delay
+    i_X = find(res_vec[:,6] != gtframedelayon);
+    i_TNd = find(res_vec[i_X,6] == 1);
+    res_vec[i_X[i_TNd], 4] = 1;
+    res_vec[i_X[i_TNd], 6] = 0;
+
+    
+    # sum up result 
+    TP = np.sum(res_vec[:,1]) + np.sum(res_vec[:,2]);
+    TN = np.sum(res_vec[:,3]) + np.sum(res_vec[:,4]);
+    FP = np.sum(res_vec[:,5]);
+    FN = np.sum(res_vec[:,6]);
+
+    return TP, TN, FP, FN, np.size(labels, 1)

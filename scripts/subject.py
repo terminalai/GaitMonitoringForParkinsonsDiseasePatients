@@ -34,10 +34,12 @@ class Subject:
         if len(inds) == 0:
             inds = list(range(len(self.results)))
         lframess = []
+        infos = []
         for i in inds:
-            lframes = classify(self.results[i])
+            lframes, info = classify(self.results[i])
             lframess.append(lframes)
-        return lframess
+            infos.append(info)
+        return lframess, infos
 
     def __str__(self):
         return self.name + " " + str(len(self.results))
