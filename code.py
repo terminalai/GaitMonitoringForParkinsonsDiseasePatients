@@ -17,6 +17,9 @@ f_nr_FBe = np.round(freezeBand[1] / f_res)
 
 d = NFFT/2
 
+freezeTH = 1.5
+powerTH = 2 ** 11.5
+
 
 def numIntegration(x):
     """
@@ -35,13 +38,13 @@ def fi(data):
     
     
     jPos = windowLength
-    i_max = len(data) // stepSize
+    i_max = len(data) // stepSize + 1
     
-    time = np.zeros(i_max - 1)
-    sumLocoFreeze = np.zeros(i_max - 1)
-    freezeIndex = np.zeros(i_max - 1)
+    time = np.zeros(i_max)
+    sumLocoFreeze = np.zeros(i_max)
+    freezeIndex = np.zeros(i_max)
     
-    for i in range(i_max - 1):
+    for i in range(i_max):
         jStart = i * stepSize
         jPos = jStart + windowLength
         
@@ -58,13 +61,28 @@ def fi(data):
         
         
         # --- calculate sumLocoFreeze and freezeIndex ---
-        areaLocoBand = numericalIntegration(Pyy[f_nr_LBs:f_nr_LBe])
-        areaFreezeBand = numericalIntegration(Pyy[f_nr_FBs:f_nr_FBe])
+        areaLocoBand = numIntegration(Pyy[f_nr_LBs:f_nr_LBe])
+        areaFreezeBand = numIntegration(Pyy[f_nr_FBs:f_nr_FBe])
         
         sumLocoFreeze[i] = areaFreezeBand + areaLocoBand
         freezeIndex[i] = areaFreezeBand / areaLocoBand
     
     return sumLocoFreeze, freezeIndex, time
+
+
+
+def classify(data):
+    lframes = []
+    for isensor in [1, 2]:
+        for iaxis in [1, 2, 3]:
+            # Moore's algorithm
+            sum, quot, time = fi(data[:,1+isensor*3+iaxis])
+            # Extension of Baechlin to handle low-enery situations (e.g. standing)
+            quot[sum < powerTH] = 0
+            # Classification
+            lframe = (quot > freezeTH).T
+            lframes.append(lframe)
+    return lframes
 
 
 
@@ -80,10 +98,10 @@ The latency-tolerance can only be used with binary labels : 0=nothing, 1=event
 
 Returns: [TP TN FP FN Nev]
 Nev: number of events in the ground truth data
-"""
+
 
 def countTxFx(gtframe, lframe, offDelay, onDelay):
-    """
+    
     Count the true pos, false pos, etc in frames
 
     gtframe: column vector of ground truth of frame
@@ -94,7 +112,7 @@ def countTxFx(gtframe, lframe, offDelay, onDelay):
 
     Returns: [TP TN FP FN Nev]
     Nev: number of events in the ground truth data
-    """
+    
     
     # Want here to create labels tolerating algorithm latency in the
     # transitions from nothing->event and event->nothing. 
@@ -113,10 +131,10 @@ def countTxFx(gtframe, lframe, offDelay, onDelay):
     gtframedelayoff = np.zeros(np.size(gtframe, 1), 1)
     gtframedelayon = np.zeros(np.size(gtframe, 1), 1)
     s = np.arange(np.size(labels, 1)) + 1
-    for li in range(np.size(labels, 1)):
-        s_index = 
+    #for li in range(np.size(labels, 1)):
+        #s_index = 
+"""
     
     
     
-    
-    
+__all__ = [fi, classify]
