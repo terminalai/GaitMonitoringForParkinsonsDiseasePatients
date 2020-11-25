@@ -42,7 +42,7 @@ def fi(data):
     jPos = windowLength
     i_max = len(data) // stepSize + 1
 
-    time = np.zeros(i_max)
+    time = np.zeros(i_max).astype(int)
     sumLocoFreeze = np.zeros(i_max)
     freezeIndex = np.zeros(i_max)
 
@@ -51,7 +51,7 @@ def fi(data):
         jPos = jStart + windowLength
 
         # Time (sample nr) of this window
-        time[i] = jPos
+        time[i] = jStart
 
         # get the signal in the window
         y = data[jStart:jPos].astype(float, casting="unsafe", copy=True)
@@ -78,7 +78,7 @@ def classify(data):
     for iaxis in range(2, 5):
         # Moore's algorithm
         sum, quot, time = fi(data[:, iaxis])
-        # Extension of Baechlin to handle low-enery situations (e.g. standing)
+        # Extension of Baechlin to handle low-energy situations (e.g. standing)
         quot[sum < powerTH] = 0
         # Classification
         lframe = (quot > freezeTH).astype(int).T
@@ -95,7 +95,7 @@ def classify(data):
         #######################################################################
 
         # Ground truth of the frames
-        gtframe = data[res.time,11]    # 0=no experiment, 1=no freeze, 2=freeze
+        gtframe = data[time, 4]    # 0=no experiment, 1=no freeze, 2=freeze
         # Identify the part of the data corresponding to the experiment
         xp = find(gtframe != 0)
 
@@ -105,7 +105,7 @@ def classify(data):
 
         tp, tn, fp, fn, totFreeze = countTxFx(gtframe2,lframe2,offDelay*SR/stepSize,onDelay*SR/stepSize);
         info.append([tp, tn, fp, fn, totFreeze])
-        
+    
     return lframes, info
 
 
@@ -143,7 +143,7 @@ def countTxFx(gtframe, lframe, offDelay, onDelay):
     # This is built using a help 'labels' array.
     
     # Convert the frame labels to the format: [fromsample tosample]
-    f = np.vstack((1, np.where(gtframe[1:]-gtframe[:-1]), np.size(gtframe, 1))) # add a discontinuity at the start and end
+    f = np.hstack((0, np.where(gtframe[1:]-gtframe[:-1]), np.size(gtframe, 0)))[np.newaxis].T # add a discontinuity at the start and end
     # convert
     labels = np.array([])        # [fromframe toframe] where there is an event
     for li in range(np.size(f, 1)-1):
