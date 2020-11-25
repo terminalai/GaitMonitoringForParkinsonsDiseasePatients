@@ -1,14 +1,16 @@
 from code import classify
 
+
 class Subject:
     def __init__(self, name, *arrs):
         self.name = name
         self.ind = int(name)
         self.results = []
-        add(*arrs)
+        self.add(*arrs)
 
     def add(self, *arrs):
-        for df in arrs: self.results.append(df.copy())
+        for df in arrs:
+            self.results.append(df.copy().to_numpy())
         return self
 
     @staticmethod
@@ -20,21 +22,28 @@ class Subject:
         names_covered = []
         for i in range(len(arr)):
             name = name_lst[i][1:3]
-            if names_covered.contains(name): subjects[-1].add(sort[i])
-            else: subjects.append(Subject(name, sort[i]))
+            if name in names_covered:
+                subjects[-1].add(sort[i])
+            else:
+                subjects.append(Subject(name, sort[i]))
+                names_covered.append(name)
 
         return subjects
-            
 
     def analyze(self, *inds):
-        if len(inds) == 0: inds = list(range(len(self.results)))
+        if len(inds) == 0:
+            inds = list(range(len(self.results)))
         lframess = []
         for i in inds:
-            lframes = classify(self.results[i])
+            lframes = classify(self.results[i].to_numpy())
             lframess.append(lframes)
-        return tuple(lframess)
+        return lframess
 
     def __str__(self):
-        return name + " " + str(len(self.results))
-                    
+        return self.name + " " + str(len(self.results))
+
+    def __repr__(self):
+        return self.name + " " + str(len(self.results))
+
+
 __all__ = [Subject]
