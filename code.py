@@ -1,6 +1,6 @@
 import np
 
-SR = 64            # Sample rate in hetrz
+SR = 64            # Sample rate in hertz
 stepSize = 32      # Step size in samples
 offDelay = 2       # Evaluation delay in seconds: tolerates delay after detecting
 onDelay = 2        # Evaluation delay in seconds: tolerates delay before detecting
