@@ -1,4 +1,4 @@
-from .octaveCode import classify
+from .octaveCode import classify, inform
 
 
 class Subject:
@@ -34,12 +34,19 @@ class Subject:
         if len(inds) == 0:
             inds = list(range(len(self.results)))
         lframess = []
+        for i in inds:
+            lframes = classify(self.results[i])
+            lframess.append(lframes)
+        return lframess
+
+    def info(self, *inds):
+        if len(inds) == 0:
+            inds = list(range(len(self.results)))
         infos = []
         for i in inds:
-            lframes, info = classify(self.results[i])
-            lframess.append(lframes)
+            info = inform(self.results[i])
             infos.append(info)
-        return lframess, infos
+        return infos
 
     def __str__(self):
         return self.name + " " + str(len(self.results))
