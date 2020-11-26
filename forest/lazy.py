@@ -39,6 +39,7 @@ sh = LazyImport("import sh", "PACKAGE: sh — a unique subprocess wrapper that m
 inspect = LazyImport("import inspect", "LIBRARY: inspect — Inspect live objects, derived from 'import inspect', part of The Python Standard Library")
 stat = LazyImport("import stat", "LIBRARY: stat — Interpreting os.stat(), os.fstat() and os.lstat() results, derived from 'import stat', part of The Python Standard Library")
 subprocess = LazyImport("import subprocess", "LIBRARY: subprocess — Subprocess management, derived from 'import subprocess', part of The Python Standard Library")
+warnings = LazyImport("import warnings", "LIBRARY: warnings — Warning control, derived from 'import warnings', part of The Python Standard Library")
 
 
 ### Basics
