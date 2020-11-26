@@ -1,0 +1,236 @@
+ID	Study	Group	Subjnum	Gender	Age	Height	Weight	HoehnYahr	UPDRS	UPDRSM	TUAG	Speed_01	Speed_02	Speed_03	Speed_04	Speed_05	Speed_06	Speed_07	Speed_10						
+GaPt03	Ga	1	3	2	82	1.45	50	3.0	20	10	36.34	NaN	NaN	NaN	NaN	NaN	NaN	NaN	0.778						
+GaPt04	Ga	1	4	1	68	1.71	NaN	2.5	25	8	11.00	0.642	NaN	NaN	NaN	NaN	NaN	NaN	0.818						
+GaPt05	Ga	1	5	2	82	1.53	51	2.5	24	5	14.50	0.908	NaN	NaN	NaN	NaN	NaN	NaN	0.614						
+GaPt06	Ga	1	6	1	72	1.70	82	2.0	16	13	10.47	0.848	NaN	NaN	NaN	NaN	NaN	NaN	0.937						
+GaPt07	Ga	1	7	2	53	1.67	54	3.0	44	22	18.34	0.677	0.957	NaN	NaN	NaN	NaN	NaN	0.579						
+GaPt08	Ga	1	8	2	68	1.63	57	2.0	15	8	10.11	1.046	1.132	NaN	NaN	NaN	NaN	NaN	0.228						
+GaPt09	Ga	1	9	1	69	1.60	68	3.0	34	17	12.70	0.894	0.94	NaN	NaN	NaN	NaN	NaN	1.253						
+GaPt12	Ga	1	12	2	59	1.63	67	2.0	25	7	8.37	1.261	1.306	NaN	NaN	NaN	NaN	NaN	1.133						
+GaPt13	Ga	1	13	1	70	1.68	53	2.0	38	21	15.51	0.726	0.725	NaN	NaN	NaN	NaN	NaN	0.798						
+GaPt14	Ga	1	14	1	56	1.95	105	2.0	29	19	NaN	1.369	1.477	NaN	NaN	NaN	NaN	NaN	0.973						
+GaPt15	Ga	1	15	1	81	NaN	80	2.0	33	20	10.32	0.948	1.064	NaN	NaN	NaN	NaN	NaN	0.899						
+GaPt16	Ga	1	16	1	79	1.70	72	2.0	18	10	8.74	1.048	1.069	NaN	NaN	NaN	NaN	NaN	1.129						
+GaPt17	Ga	1	17	1	71	1.82	85	3.0	44	27	14.81	0.731	0.82	NaN	NaN	NaN	NaN	NaN	0.713						
+GaPt18	Ga	1	18	2	76	1.52	74	2.0	29	20	12.72	0.889	0.934	NaN	NaN	NaN	NaN	NaN	1.101						
+GaPt19	Ga	1	19	2	76	NaN	55	2.0	30	22	13.20	1.124	1.045	NaN	NaN	NaN	NaN	NaN	0.87						
+GaPt20	Ga	1	20	1	81	1.65	75	2.0	63	36	13.71	0.722	0.939	NaN	NaN	NaN	NaN	NaN	NaN
+GaPt21	Ga	1	21	1	80	NaN	63	3.0	46	27	14.06	1.166	1.118	NaN	NaN	NaN	NaN	NaN	NaN
+GaPt22	Ga	1	22	1	78	1.78	65	2.0	49	29	NaN	0.802	0.872	NaN	NaN	NaN	NaN	NaN	NaN
+GaPt23	Ga	1	23	2	71	1.60	NaN	3.0	51	25	25.01	0.360	0.344	NaN	NaN	NaN	NaN	NaN	NaN
+GaPt24	Ga	1	24	1	68	1.72	73	2.5	42	15	11.42	1.255	1.389	NaN	NaN	NaN	NaN	NaN	NaN
+GaPt25	Ga	1	25	1	81	1.76	90	2.5	31	18	15.22	1.128	1.137	NaN	NaN	NaN	NaN	NaN	NaN
+GaPt26	Ga	1	26	2	78	1.52	60	2.5	24	5	7.27	1.244	1.334	NaN	NaN	NaN	NaN	NaN	NaN
+GaPt27	Ga	1	27	1	72	1.80	95	2.0	21	10	7.88	1.423	1.335	NaN	NaN	NaN	NaN	NaN	NaN
+GaPt28	Ga	1	28	1	61	1.79	101	2.5	54	29	13.02	0.987	1.068	NaN	NaN	NaN	NaN	NaN	NaN
+GaPt29	Ga	1	29	1	68	1.63	80	2.0	27	16	10.16	1.092	1.19	NaN	NaN	NaN	NaN	NaN	NaN
+GaPt30	Ga	1	30	1	69	1.78	93	2.0	20	12	9.91	1.064	1.147	NaN	NaN	NaN	NaN	NaN	NaN
+GaPt31	Ga	1	31	1	67	1.76	90	2.5	27	13	12.60	0.876	0.983	NaN	NaN	NaN	NaN	NaN	NaN
+GaPt32	Ga	1	32	1	63	1.69	75	2.0	33	24	11.22	1.242	1.195	NaN	NaN	NaN	NaN	NaN	NaN
+GaPt33	Ga	1	33	1	63	1.86	80	2.5	42	31	11.97	0.825	0.892	NaN	NaN	NaN	NaN	NaN	NaN
+JuPt01	Ju	1	1	1	77	183	85	2	15	11	15.50	1.013	1.049	1.063	1.094	1.065	1.180	1.156	NaN
+JuPt02	Ju	1	2	2	72	160	68	2.5	32	21	12.47	0.906	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+JuPt03	Ju	1	3	2	74	164	65	2.5	14	10	9.59	0.993	1.103	1.083	1.120	1.136	1.126	1.104	NaN
+JuPt04	Ju	1	4	1	70	173	80	2.5	34	19	13.75	0.807	0.807	0.853	0.867	0.871	0.908	0.817	NaN
+JuPt05	Ju	1	5	1	74	170	61	2	15	14	11.16	1.234	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+JuPt06	Ju	1	6	1	78	175	82	2.5	21	12	16.29	0.832	0.832	0.926	0.905	0.891	0.958	0.957	NaN
+JuPt07	Ju	1	7	2	51	160	65	3	24	14	9.65	1.185	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+JuPt08	Ju	1	8	2	54	159	70	2	26	16	8.50	1.246	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+JuPt09	Ju	1	9	1	61	170	82	2.5	27	10	10.81	1.146	1.146	1.151	1.214	1.239	1.258	1.266	NaN
+JuPt10	Ju	1	10	1	69	170	80	3	28	20	10.96	1.218	1.142	1.184	1.171	1.172	1.181	1.198	NaN
+JuPt11	Ju	1	11	1	74	175	80	2	24	16	12.81	0.785	0.785	0.820	0.889	0.887	0.896	0.979	NaN
+JuPt12	Ju	1	12	2	58	156	56	2.5	21	14	9.85	1.052	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+JuPt13	Ju	1	13	1	80	164	60	3	39	23	16.09	0.664	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+JuPt14	Ju	1	14	2	67	158	63	2	13	8	10.50	0.906	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+JuPt15	Ju	1	15	2	64	162	66	2.5	18	10	10.00	1.099	1.156	1.233	1.231	1.254	1.249	1.263	NaN
+JuPt16	Ju	1	16	2	64	150	63	2	19	16	12.22	0.755	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+JuPt17	Ju	1	17	1	64	178	75	2.5	24	18	10.03	1.112	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+JuPt18	Ju	1	18	1	82	160	65	3	33	16	25.25	0.413	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+JuPt19	Ju	1	19	2	68	160	60	2	17	13	10.00	1.183	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuPt20	Ju	1	20	1	64	168	80	2	33	24	11.22	1.212	1.251	1.327	1.246	1.241	1.284	1.288	NaN	
+JuPt21	Ju	1	21	1	84	173	75	2.5	23	18	15.31	0.616	0.648	0.702	0.707	0.690	0.729	0.692	NaN	
+JuPt22	Ju	1	22	1	69	170	70	2.5	38	18	8.81	1.178	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuPt23	Ju	1	23	1	68	160	69	2	19	16	7.53	1.247	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuPt24	Ju	1	24	1	68	163	75	2.5	40	23	10.66	0.918	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuPt25	Ju	1	25	1	45	174	68	2	23	14	10.63	1.087	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuPt26	Ju	1	26	2	66	167	84	2	18	11	12.47	0.940	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuPt27	Ju	1	27	2	58	170	65	2	16	13	12.67	1.135	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuPt28	Ju	1	28	2	57	175	65	2.5	43	25	11.43	1.118	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuPt29	Ju	1	29	2	69	160	61	2.5	25	15	10.49	1.044	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt02	Si	1	2	2	77	1.58	67	2.5	NaN	NaN	NaN	0.770	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt04	Si	1	4	1	73	1.70	70	2.0	27	19	14.26	1.147	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt05	Si	1	5	1	56	1.72	76	2.5	50	32	10.38	1.276	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt07	Si	1	7	2	54	1.66	65	2.0	NaN	NaN	10.99	1.088	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt08	Si	1	8	1	67	1.75	100	2.0	56	33	10.83	1.187	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt09	Si	1	9	1	63	1.74	80	2.0	21	12	7.94	1.352	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt10	Si	1	10	2	77	1.60	60	2.0	41	27	14.41	0.935	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt12	Si	1	12	2	64	1.67	55	2.0	44	34	10.28	0.988	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt13	Si	1	13	1	52	1.65	75	2.0	42	27	10.38	1.107	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt14	Si	1	14	1	60	1.65	65	2.5	46	32	8.13	1.218	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt15	Si	1	15	1	62	1.65	82	2.0	32	19	10.89	1.031	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt16	Si	1	16	1	50	1.73	69	2.0	41	26	9.09	1.139	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt17	Si	1	17	1	64	1.65	80	2.0	36	24	11.56	1.215	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt18	Si	1	18	1	57	1.60	88	2.0	48	30	14.39	1.117	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt19	Si	1	19	1	53	1.80	76	2.0	40	29	11.07	1.298	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt20	Si	1	20	1	59	1.76	77	2.0	26	18	13.16	1.032	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt21	Si	1	21	1	58	1.67	66	2.0	24	15	10.48	1.151	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt22	Si	1	22	1	71	1.68	67	2.0	31	19	11.99	1.021	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt23	Si	1	23	2	50	1.54	82	2.0	26	20	11.08	1.088	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt24	Si	1	24	2	36	1.64	52	2.0	24	17	9.53	1.192	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt25	Si	1	25	1	63	1.68	80	2.0	33	24	11.22	1.167	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt27	Si	1	27	1	50	1.72	75	2.0	46	26	11.32	1.259	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt28	Si	1	28	2	70	1.58	72	2.5	33	18	10.98	1.204	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt29	Si	1	29	2	72	1.73	85	2.5	70	44	15.51	0.856	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt30	Si	1	30	1	60	1.64	89	2.0	15	12	11.55	1.162	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt31	Si	1	31	2	56	1.60	74	2.0	39	24	9.97	0.903	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt32	Si	1	32	1	64	1.66	75	2.0	32	23	12.83	1.120	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt33	Si	1	33	1	67	1.76	74	2.0	28	15	10.57	1.080	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt34	Si	1	34	1	71	1.80	68	2.0	37	22	11.63	1.386	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt35	Si	1	35	1	57	1.74	95	2.0	42	29	8.77	1.280	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt36	Si	1	36	2	53	1.58	62	2.0	52	32	11.27	0.970	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt37	Si	1	37	2	66	1.70	62	2.5	27	21	7.56	1.010	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt38	Si	1	38	2	65	1.59	60	2.0	22	14	10.13	1.070	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt39	Si	1	39	2	69	1.68	53	2.0	33	20	13.97	0.880	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiPt40	Si	1	40	1	69	1.60	81	2.5	37	24	9.70	1.070	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+GaCo01	Ga	2	1	1	66	1.80	83	0.0	0	0	NaN	1.075	1.173	NaN	NaN	NaN	NaN	NaN	NaN	
+GaCo02	Ga	2	2	1	74	1.74	70	0.0	1	1	NaN	1.040	1.162	NaN	NaN	NaN	NaN	NaN	NaN	
+GaCo03	Ga	2	3	1	69	1.80	101	0.0	0	0	NaN	1.051	1.265	NaN	NaN	NaN	NaN	NaN	NaN	
+GaCo04	Ga	2	4	1	86	1.66	65	0.0	3	3	9.57	1.175	1.189	NaN	NaN	NaN	NaN	NaN	NaN	
+GaCo05	Ga	2	5	2	75	1.50	88	0.0	0	0	NaN	0.920	0.984	NaN	NaN	NaN	NaN	NaN	NaN	
+GaCo06	Ga	2	6	1	82	1.68	82	0.0	1	1	9.70	1.121	1.116	NaN	NaN	NaN	NaN	NaN	NaN	
+GaCo07	Ga	2	7	1	79	1.68	95	0.0	1	1	NaN	1.282	1.24	NaN	NaN	NaN	NaN	NaN	NaN	
+GaCo08	Ga	2	8	2	78	1.58	65	0.0	1	1	NaN	0.975	0.991	NaN	NaN	NaN	NaN	NaN	NaN	
+GaCo09	Ga	2	9	2	78	1.63	64	0.0	1	1	NaN	1.249	1.225	NaN	NaN	NaN	NaN	NaN	NaN	
+GaCo10	Ga	2	10	1	69	1.72	70	0.0	0	0	10.12	1.164	1.189	NaN	NaN	NaN	NaN	NaN	NaN	
+GaCo11	Ga	2	11	1	70	1.75	80	0.0	3	3	7.16	1.515	1.847	NaN	NaN	NaN	NaN	NaN	NaN	
+GaCo12	Ga	2	12	2	65	1.72	60	0.0	1	1	7.49	1.389	1.426	NaN	NaN	NaN	NaN	NaN	NaN	
+GaCo13	Ga	2	13	2	67	1.58	72	0.0	0	0	8.10	1.211	1.254	NaN	NaN	NaN	NaN	NaN	NaN	
+GaCo14	Ga	2	14	2	68	1.70	47	0.0	2	2	8.11	1.298	1.352	NaN	NaN	NaN	NaN	NaN	1.248	
+GaCo15	Ga	2	15	2	67	1.70	70	0.0	0	0	8.37	1.344	1.357	NaN	NaN	NaN	NaN	NaN	1.338	
+GaCo16	Ga	2	16	2	63	1.55	58	0.0	0	0	8.84	1.346	1.404	NaN	NaN	NaN	NaN	NaN	1.234	
+GaCo17	Ga	2	17	1	67	1.62	58	0.0	0	0	7.19	1.415	1.497	NaN	NaN	NaN	NaN	NaN	1.174	
+GaCo22	Ga	2	22	1	65	1.72	72	0.0	0	0	NaN	1.542	1.575	NaN	NaN	NaN	NaN	NaN	1.532	
+JuCo01	Ju	2	1	1	78	167	75	NaN	0	0	10.19	1.089	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo02	Ju	2	2	1	71	175	80	NaN	3	3	7.16	1.329	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo03	Ju	2	3	2	66	172	60	NaN	1	1	7.49	1.322	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo04	Ju	2	4	2	68	170	80	NaN	1	1	9.27	1.239	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo05	Ju	2	5	2	55	159	52	NaN	0	0	9.09	1.248	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo06	Ju	2	6	2	74	155	74	NaN	0	0	9.91	0.954	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo07	Ju	2	7	2	62	160	58	NaN	2	2	8.31	1.332	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo08	Ju	2	8	2	77	170	65	NaN	0	0	9.22	1.286	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+Juc010	Ju	2	10	2	62	167	78	NaN	0	0	8.82	1.375	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo09	Ju	2	9	1	65	182	83	NaN	0	0	7.07	1.051	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo11	Ju	2	11	1	72	171	70	NaN	0	0	10.60	1.203	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo12	Ju	2	12	2	72	160	61	NaN	0	0	8.94	1.143	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo13	Ju	2	13	1	61	177	72	NaN	0	0	9.97	1.170	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo14	Ju	2	14	1	55	180	90	NaN	0	0	NaN	1.420	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo15	Ju	2	15	2	53	150	56	NaN	0	0	NaN	1.164	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo16	Ju	2	16	1	66	172	83	NaN	0	0	7.13	1.484	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo17	Ju	2	17	2	65	170	60	NaN	0	0	7.06	1.540	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo18	Ju	2	18	2	64	163	59	NaN	0	0	9.85	1.231	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo19	Ju	2	19	2	59	168	59	NaN	0	0	8.91	1.253	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo20	Ju	2	20	2	67	160	67	NaN	0	0	13.40	1.031	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo21	Ju	2	21	1	60	185	88	NaN	0	0	10.45	1.130	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo22	Ju	2	22	2	62	162	75	NaN	0	0	11.98	1.144	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo23	Ju	2	23	1	68	182	87	NaN	0	0	12.02	1.170	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo24	Ju	2	24	1	64	170	72	NaN	0	0	8.84	1.391	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo25	Ju	2	25	1	53	172	85	NaN	0	0	8.44	1.265	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+JuCo26	Ju	2	26	1	60	167	70	NaN	0	0	8.28	1.349	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo01	Si	2	1	2	53	1.53	56	NaN	NaN	NaN	12.24	0.906	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo03	Si	2	3	2	65	1.72	60	NaN	NaN	NaN	7.49	1.371	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo04	Si	2	4	1	71	1.77	80	NaN	NaN	NaN	7.16	1.427	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo05	Si	2	5	2	55	1.56	90	NaN	NaN	NaN	10.01	1.070	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo06	Si	2	6	2	70	1.56	54	NaN	NaN	NaN	9.69	1.263	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo07	Si	2	7	2	57	1.59	55	NaN	NaN	NaN	9.99	1.348	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo08	Si	2	8	2	65	1.57	69	NaN	NaN	NaN	12.19	1.191	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo09	Si	2	9	1	56	1.72	75	NaN	NaN	NaN	9.47	1.310	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo10	Si	2	10	1	50	1.70	68	NaN	NaN	NaN	8.79	1.442	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo11	Si	2	11	2	60	1.60	80	NaN	NaN	NaN	8.97	1.465	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo12	Si	2	12	2	37	1.61	54	NaN	NaN	NaN	6.23	1.538	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo13	Si	2	13	1	61	1.73	69	NaN	NaN	NaN	9.97	1.299	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo14	Si	2	14	1	52	1.64	64	NaN	NaN	NaN	9.77	1.151	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo15	Si	2	15	2	54	1.69	73	NaN	NaN	NaN	7.68	1.469	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo16	Si	2	16	1	60	1.85	88	NaN	NaN	NaN	9.28	1.073	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo17	Si	2	17	2	64	1.65	NaN	NaN	NaN	NaN	10.44	1.202	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo18	Si	2	18	2	61	1.56	56	NaN	NaN	NaN	10.41	1.270	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo19	Si	2	19	1	51	1.67	80	NaN	NaN	NaN	10.04	1.086	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo20	Si	2	20	1	62	1.72	86	NaN	NaN	NaN	9.70	1.250	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo21	Si	2	21	1	56	1.78	98	NaN	NaN	NaN	7.63	1.458	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo22	Si	2	22	1	52	1.66	88	NaN	NaN	NaN	7.63	1.418	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo23	Si	2	23	1	53	1.70	76	NaN	NaN	NaN	8.94	1.160	NaN	NaN	NaN	NaN	NaN	NaN	NaN	
+SiCo24	Si	2	24	1	54	1.70	73	NaN	NaN	NaN	11.05	1.030	NaN	NaN	NaN	NaN	NaN	NaN	NaN										
+SiCo25	Si	2	25	1	57	1.76	80	NaN	NaN	NaN	9.16	1.130	NaN	NaN	NaN	NaN	NaN	NaN	NaN										
+SiCo26	Si	2	26	1	60	1.74	72	NaN	NaN	NaN	9.20	1.000	NaN	NaN	NaN	NaN	NaN	NaN	NaN										
+SiCo27	Si	2	27	1	67	1.90	95	NaN	NaN	NaN	12.52	1.120	NaN	NaN	NaN	NaN	NaN	NaN	NaN										
+SiCo28	Si	2	28	1	61	1.70	72	NaN	NaN	NaN	12.65	0.990	NaN	NaN	NaN	NaN	NaN	NaN	NaN										
+SiCo29	Si	2	29	1	53	1.70	87	NaN	NaN	NaN	11.41	1.290	NaN	NaN	NaN	NaN	NaN	NaN	NaN										
+SiCo30	Si	2	30	1	63	1.74	82	NaN	NaN	NaN	8.68	1.420	NaN	NaN	NaN	NaN	NaN	NaN	NaN										
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													

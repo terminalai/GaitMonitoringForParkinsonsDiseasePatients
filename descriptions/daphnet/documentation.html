@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=ISO-8859-1"
+      http-equiv="Content-Type">
+    <title>Daphnet Freezing of Gait Dataset</title>
+  </head>
+  <body>
+    <h1>Daphnet Freezing of Gait Dataset in users with Parkinson's
+      disease<br>
+    </h1>
+    <h2><img style=" width: 360px; height: 270px;" alt="Experimental
+        setup" src="img/annotation.jpg"><br>
+    </h2>
+    <h2>Overview<br>
+    </h2>
+    <p> The Daphnet Freezing of Gait Dataset in users with Parkinson's
+      disease (hereafter Daphnet Freezing of Gait Dataset) is a dataset
+      devised to benchmark automatic methods to recognize gait freeze
+      from wearable acceleration sensors placed on legs and hip.<br>
+    </p>
+    <p>This dataset is the result of a collaboration between the
+      Laboratory for Gait and Neurodynamics, Tel Aviv Sourasky Medical
+      Center, Israel and the Wearable Computing Laboratory, ETH Zurich,
+      Switzerland. <br>
+      Recordings were run at the Tel Aviv Sourasky Medical Center in
+      2008. <br>
+      The study was approved by the local Human Subjects Review
+      Committee, and was performed in accordance with the ethical
+      standards of the Declaration of Helsinki.<br>
+    </p>
+    <p> For more informations see [1] and additional references below.<br>
+    </p>
+    <h2>Recording scenario</h2>
+    <p><img style=" width: 360px; height: 269px;" alt="Scenario"
+        src="img/sketchOfPaths_landscape.png"><br>
+    </p>
+    <p>The dataset was recorded in the lab with emphasis on generating
+      many freeze events. Users performed there kinds of tasks: straight
+      line walking, walking with numerous turns, and finally a more
+      realistic activity of daily living (ADL) task, where users went
+      into different rooms while fetching coffee, opening doors, etc.<br>
+    </p>
+    <h2>Sensors</h2>
+    <p><img style=" width: 360px; height: 480px;" alt="Sensors"
+        src="img/device.jpg"><br>
+    </p>
+    <p>The dataset comprises 3 wearable wireless acceleration sensors
+      (see [10] for sensor details) recording 3D acceleration at 64 Hz.
+      The sensors are placed at the ankle (shank), on the thigh just
+      above the knee, and on the hip. <br>
+    </p>
+    <h2>Dataset</h2>
+    <p>The dataset contains the following files:<br>
+    </p>
+    <ul>
+      <li><span style="font-style: italic;">dataset/
+          S&lt;ss&gt;R&lt;rr&gt;.txt</span>: dataset of user &lt;ss&gt;
+        in recording run &lt;rr&gt;<br>
+      </li>
+    </ul>
+    For all practical purposes all runs of one subject should be
+    combined in the evaluations. Separate runs were the results of
+    recording technicalities and the need for users to make breaks.
+    Users 4 and 10 did not show any freeze.<br>
+    <br>
+    Each file comprises the data in a matrix format, with one line per
+    sample, and one column per channel. The channels are as follows:<br>
+    <ol>
+      <li>Time of sample in millisecond</li>
+      <li>Ankle (shank) acceleration - horizontal forward acceleration
+        [mg]</li>
+      <li>Ankle (shank) acceleration - vertical [mg]</li>
+      <li>Ankle (shank) acceleration - horizontal lateral [mg]</li>
+      <li>Upper leg (thigh) acceleration - horizontal forward
+        acceleration [mg]</li>
+      <li>Upper leg (thigh) acceleration - vertical [mg]</li>
+      <li>Upper leg (thigh) acceleration - horizontal lateral [mg]</li>
+      <li>Trunk acceleration - horizontal forward acceleration [mg]</li>
+      <li>Trunk acceleration - vertical [mg]</li>
+      <li>Trunk acceleration - horizontal lateral [mg]</li>
+      <li>Annotations (see Annotations section)<br>
+      </li>
+    </ol>
+    <h2>Annotations<br>
+    </h2>
+    The meaning of the annotations are as follows:<br>
+    <ul>
+      <li>0: not part of the experiment. For instance the sensors are
+        installed on the user or the user is performing activities
+        unrelated to the experimental protocol, such as debriefing<br>
+      </li>
+      <li>1: experiment, no freeze (can be any of stand, walk, turn)</li>
+      <li>2: freeze</li>
+    </ul>
+    <h2>Scripts</h2>
+    <p>The following Matlab scripts allow to visualize and process the
+      data:<br>
+    </p>
+    <ul>
+      <li><span style="font-style: italic;">scripts/do_plot</span>:
+        loads and display the sensor readings. For instance, from the
+        scripts directory: do_plot('../dataset/S01R01.txt');</li>
+      <li><span style="font-style: italic;">scripts/do_test</span>:&nbsp;
+
+
+        can be used to run the freeze detection algorithm described in
+        [1]. Note that this is a streamlined version of the scripts used
+        in that publication. In particular, the parameters of the
+        algorithm (TH.freeze=threshold freeze and TH.power threshold
+        power) must be selected or optimized according to the subject,
+        and sensor placement/orientation. </li>
+    </ul>
+    <h2>Remarks</h2>
+    This dataset was used for publications listed in the References
+    section. This is a reduced version of the dataset comprising only
+    the information used in the published analyses with rewritten,
+    streamlined evaluation scripts. Default algorithm parameters are
+    provided.<br>
+    <br>
+    Annotations were done a posteriori by video analysis. However, due
+    to the manual process and at times hard to defined boundaries of
+    freezes, there may be up to a couple of 100 ms of jitter between the
+    onset of annotations and the effective occurrence of an event. <br>
+    <br>
+    <h2>License</h2>
+    Use of this dataset in publications must be acknowledged by
+    referencing the following publication [1]. We also appreciate if you
+    inform us (droggen@gmail.com) of any publication using this dataset
+    for cross-referencing purposes.<br>
+    <br>
+    Reference [1] describes the dataset in details. It explain the data
+    acquisition protocol, the kind of sensor used and their placement,
+    and the nature of the data acquired. It also provides baseline
+    results for the automated detection of freezing of gait, against
+    which newer methods can be benchmarked. In particular it describes
+    detection sensitivity/specificity for 3 sensor placements and 4
+    kinds of derived sensor signals, it analyzes detection latency, and
+    provides first insight into user specific v.s. user independent
+    performance.<br>
+    <h2>References<br>
+    </h2>
+    <span style="font-weight: bold;">Preferred citation:</span><br
+      style="font-weight: bold;">
+    [1] Marc B&auml;chlin, Meir Plotnik, Daniel Roggen, Inbal Maidan,
+    Jeffrey M. Hausdorff, Nir Giladi, and Gerhard Tr&ouml;ster, <span
+      style="font-style: italic;">Wearable Assistant for Parkinson's
+      Disease Patients With the Freezing of Gait Symptom</span>. IEEE
+    Transactions on Information Technology in Biomedicine, 14(2), March
+    2010, pages 436-446<br>
+    <br>
+    <span style="font-weight: bold;">Other first party publications
+      based on this dataset:</span><br>
+    [2] Marc B&auml;chlin, Meir Plotnik, Daniel Roggen, Nir Giladi,
+    Jeffrey M Hausdorff and Gerhard Tr&ouml;ster, <span
+      style="font-style: italic;">A Wearable System to Assist Walking of
+      Parkinson's Disease Patients.</span>Methods of Information in
+    Medicine, 49:1(88-95), 2010<br>
+    [3] Meir Plotnik, Marc B&auml;chlin, Inbal Maidan, Daniel Roggen,
+    Gerhard Tr&ouml;ster, Nir Giladi and Jeffrey M Hausdorff, <span
+      style="font-style: italic;">Automated biofeedback assistance for
+      freezing of gait in patients with Parkinson's disease</span>.
+    Proceedings of the International Society for Posture and Gait
+    Research (ISPGR), Bologna, Italy, 2009<br>
+    [4] Meir Plotnik, Marc B&auml;chlin, Daniel Roggen, Noit Inbar,
+    Inbal Maidan, Talia Herman, Marina Brozgol, Eliya Shaviv, Gerhard
+    Tr&ouml;ster and Jeffrey M Hausdorff, <span style="font-style:
+      italic;">Automated treatment of freezing of gait in Parkinson's
+      disease using a wearable device that automatically detects
+      freezing</span>. Annual meeting of the Israeli Neurological
+    Society, Israel, pages 63, 2009<br>
+    [5] Marc B&auml;chlin, Daniel Roggen, Meir Plotnik, Jeffrey M
+    Hausdorff, Nir Giladi and Gerhard Tr&ouml;ster, <span
+      style="font-style: italic;">Online Detection of Freezing of Gait
+      in Parkinson's Disease Patients: A Performance Characterization</span>.
+    Proceedings of the 4th International Conference on Body Area
+    Networks, 2009<br>
+    [6] Marc B&auml;chlin, Meir Plotnik, Daniel Roggen, Noit Inbar, Nir
+    Giladi, Jeffrey M Hausdorff and Gerhard Tr&ouml;ster. <span
+      style="font-style: italic;">Parkinson patients' perspective on
+      context aware wearable technology for auditive assistance</span>.
+    Proceedings of the 3rd International Conference on Pervasive
+    Computing Technologies for Healthcare, 2009<br>
+    [7] Marc B&auml;chlin, Daniel Roggen, Meir Plotnik, Noit Inbar,
+    Inbal Maidan, Talia Herman, Marina Brozgol, Eliya Shaviv, Nir
+    Giladi, Jeffrey M Hausdorff and Gerhard Tr&ouml;ster, <br>
+    <span style="font-style: italic;">Potentials of enhanced context
+      awareness in wearable assistants for Parkinson&#8217;s disease patients
+      with freezing of gait syndrome</span>. Proceedings of the 13th
+    International Symposium on Wearable Computers (ISWC), pages 123-130,
+    2009<br>
+    [8] Sinziana Mazilu, Michael Hardegger, Zack Zhu, Daniel Roggen, Gerhard Tr&ouml;ster, Meir Plotnik, Jeff Hausdorff,
+    <span style="font-style: italic;">Online Detection of Freezing of Gait with Smartphones and Machine Learning Techniques</span>. Proc 6th Int Conf on Pervasive Computing Technologies for Healthcare, 2012<br>
+    <br>
+    <span style="font-weight: bold;">Sensors:</span><br>
+    <strong style="font-weight: normal;">[10] Daniel Roggen, Marc
+      B&auml;chlin, Johannes Schumm, Thomas Holleczek, Clemens
+      Lombriser, Lars Widmer, Dennis Majoe, J&uuml;rg Gutknecht and
+      Gerhard Tr&ouml;ster, </strong><strong style="font-weight:
+      normal;"><span style="font-style: italic;">An educational and
+        research kit for activity and context recognition from on-body
+        sensors</span>. </strong><strong style="font-weight: normal;">International
+
+
+      Conference on Body Sensor Networks, 2010</strong><br>
+    <h2>Authors</h2>
+    <ul>
+      <li>Laboratory for Gait and Neurodynamics, Tel Aviv Sourasky
+        Medical Center, Israel: Meir Plotnik, Jeffrey M. Hausdorff, Nir
+        Giladi</li>
+      <li>Wearable Computing Laboratory, ETH Zurich, Switzerland: Marc
+        B&auml;chlin, Daniel Roggen, Gerhard Tr&ouml;ster</li>
+    </ul>
+    <h2>Acknowledgements</h2>
+    This dataset was collected as part of the EU FP6 project Daphnet,
+    grant number 018474-2.<br>
+    Additional effort to publish this dataset was supported in part by
+    the EU FP7 project CuPiD, grant number 288516.<br>
+    <br>
+    <br>
+  </body>
+</html>
