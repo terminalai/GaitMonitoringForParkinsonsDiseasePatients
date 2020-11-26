@@ -134,11 +134,11 @@ If we have too many features, the learned hypothesis may fit the **training** se
 Here are couple of options that may be addressed:
 
 - Reduce the number of features
-    - Manually select which features to keep
-    - Model selection algorithm
+- Manually select which features to keep
+- Model selection algorithm
 - Regularization
-    - Keep all the features, but reduce magnitude/values of model parameters (thetas).
-    - Works well when we have a lot of features, each of which contributes a bit to predicting _y_.
+- Keep all the features, but reduce magnitude/values of model parameters (thetas).
+- Works well when we have a lot of features, each of which contributes a bit to predicting _y_.
 
 Regularization works by adding regularization parameter to the **cost function**:
 
