@@ -70,17 +70,21 @@ def fi(data):
 
     return sumLocoFreeze, freezeIndex, time
 
+def moore(data, iaxis):
+    # Moore's algorithm
+    sum, quot, time = fi(data[:, iaxis])
+    # Extension of Baechlin to handle low-energy situations (e.g. standing)
+    quot[sum < powerTH] = 0
+    # Classification
+    lframe = (quot > freezeTH).astype(int).T
+    return lframe
+
 
 def classify(data):
     lframes = []
 
     for iaxis in range(2, 5):
-        # Moore's algorithm
-        sum, quot, time = fi(data[:, iaxis])
-        # Extension of Baechlin to handle low-energy situations (e.g. standing)
-        quot[sum < powerTH] = 0
-        # Classification
-        lframe = (quot > freezeTH).astype(int).T
+        lframe = moore(data, iaxis)
         lframes.append(lframe)
 
     return lframes
@@ -90,12 +94,7 @@ def inform(data):
     info = []
 
     for iaxis in range(2, 5):
-        # Moore's algorithm
-        sum, quot, time = fi(data[:, iaxis])
-        # Extension of Baechlin to handle low-energy situations (e.g. standing)
-        quot[sum < powerTH] = 0
-        # Classification
-        lframe = (quot > freezeTH).astype(int).T
+        lframe = moore(data, iaxis)
 
         #######################################################################
         # We do not want to compute performance on the "non experiment" part,
