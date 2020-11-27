@@ -76,7 +76,7 @@ def moore(data, iaxis):
     # Extension of Baechlin to handle low-energy situations (e.g. standing)
     quot[sum < powerTH] = 0
     # Classification
-    lframe = (quot > freezeTH).astype(int).T
+    lframe = (quot > freezeTH).astype(int)
     return lframe
 
 
@@ -94,6 +94,7 @@ def inform(data):
     info = []
 
     for iaxis in range(2, 5):
+        sum, quot, time = fi(data[:, iaxis])
         lframe = moore(data, iaxis)
 
         #######################################################################
@@ -109,7 +110,7 @@ def inform(data):
         # Ground truth of the frames
         gtframe = data[time, 4]    # 0=no experiment, 1=no freeze, 2=freeze
         # Identify the part of the data corresponding to the experiment
-        xp = find(gtframe != 0)
+        xp = np.where(gtframe != 0)
 
         # Remove the non experiment part from the ground truth and classification
         gtframe2 = gtframe[xp]-1       # subtract 1 to have 0 or 1 as labels
@@ -158,15 +159,17 @@ def countTxFx(gtframe, lframe, offDelay, onDelay):
     # This is built using a help 'labels' array.
 
     # Convert the frame labels to the format: [fromsample tosample]
-    f = np.hstack((0, np.where(gtframe[1:]-gtframe[:-1]), np.size(gtframe, 0)))[np.newaxis].T # add a discontinuity at the start and end
+    print(np.where(gtframe[1:]-gtframe[:-1])[0])
+    print(gtframe)
+    f = np.hstack((np.array([0]), np.where(gtframe[1:]-gtframe[:-1])[0], np.array(np.size(gtframe, 0)-1)))[np.newaxis].T # add a discontinuity at the start and end
     # convert
     labels = np.array([])        # [fromframe toframe] where there is an event
     for li in range(np.size(f, 1)-1):
         if gtframe[f[li]+1] == 1: labels = np.vstack((labels, np[f[li]+1, f[li+1]]))
 
     # Labels for delay
-    gtframedelayoff = np.zeros(np.size(gtframe, 1), 1)
-    gtframedelayon = np.zeros(np.size(gtframe, 1), 1)
+    gtframedelayoff = np.zeros(np.size(gtframe, 0), 1)
+    gtframedelayon = np.zeros(np.size(gtframe, 0), 1)
 
     s = np.arange(np.size(labels, 1)) + 1           # s: 1, 2, ..., frame number
 
