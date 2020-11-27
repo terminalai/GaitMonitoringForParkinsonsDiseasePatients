@@ -53,8 +53,11 @@ Additional effort to publish this dataset was supported in part by the EU FP7 pr
 
 #### Annotations
 The meaning of the annotations are as follows:
+
 0: not part of the experiment. For instance the sensors are installed on the user or the user is performing activities unrelated to the experimental protocol, such as debriefing
+
 1: experiment, no freeze (can be any of stand, walk, turn)
+
 2: freeze
 
 ### LICENCE
