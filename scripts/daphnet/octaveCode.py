@@ -42,7 +42,7 @@ def fi(data):
     jPos = windowLength
     i_max = len(data) // stepSize + 1
 
-    time = np.zeros(i_max).astype(int)
+    time = np.zeros(i_max, dtype=int)
     sumLocoFreeze = np.zeros(i_max)
     freezeIndex = np.zeros(i_max)
 
@@ -59,6 +59,7 @@ def fi(data):
 
         # compute FFT (Fast Fourier Transform)
         Y = np.fft.fft(y, NFFT)
+        print("fft =", Y)
         Pyy = Y * np.conj(Y) / NFFT
 
         # --- calculate sumLocoFreeze and freezeIndex ---
@@ -159,23 +160,25 @@ def countTxFx(gtframe, lframe, offDelay, onDelay):
     # This is built using a help 'labels' array.
 
     # Convert the frame labels to the format: [fromsample tosample]
-    print(np.where(gtframe[1:]-gtframe[:-1])[0])
-    print(gtframe)
+    print(np.sum(gtframe == 1))
     f = np.hstack((np.array([0]), np.where(gtframe[1:]-gtframe[:-1])[0], np.array(np.size(gtframe, 0)-1)))[np.newaxis].T # add a discontinuity at the start and end
     # convert
-    labels = np.array([])        # [fromframe toframe] where there is an event
-    for li in range(np.size(f, 1)-1):
-        if gtframe[f[li]+1] == 1: labels = np.vstack((labels, np[f[li]+1, f[li+1]]))
+    labels = np.empty((0, 2), int)       # [fromframe toframe] where there is an event
+    for li in range(np.size(f, 0)-1):
+        if gtframe[f[li]+1] == 1:
+            print(np[f[li][0]+1, f[li+1][0]])
+            labels = np.append(labels, np[f[li][0]+1, f[li+1][0]], axis=0)
 
     # Labels for delay
-    gtframedelayoff = np.zeros(np.size(gtframe, 0), 1)
-    gtframedelayon = np.zeros(np.size(gtframe, 0), 1)
-
-    s = np.arange(np.size(labels, 1)) + 1           # s: 1, 2, ..., frame number
+    gtframedelayoff = np.zeros(len(gtframe))
+    gtframedelayon = np.zeros(len(gtframe))
+    print(labels)
+    print(labels.shape)
+    s = np.arange(np.size(labels, 0)) + 1           # s: 1, 2, ..., frame number
 
     for li in range(np.size(labels, 1)):
-        s_index = find(s>=labels[li,1], 1, 'first')
-        e_index = find(s<=labels[li,2], 1, 'last')
+        s_index = find(s>=labels[li,0], 1, 'first')
+        e_index = find(s<=labels[li,1], 1, 'last')
         # reference vectors with Off delay
         e_indexOff = find(s<=labels[li,2]+offDelay, 1, 'last')
         gtframedelayoff[s_index:e_indexOff] = 1
