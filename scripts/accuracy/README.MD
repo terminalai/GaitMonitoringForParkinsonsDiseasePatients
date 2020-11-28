@@ -66,7 +66,7 @@
 <img src="../../images/accuracy.svg" />
 
 ### F<sub>n</sub> Score
-- ability to correctly identify freezing
+- a measure of a test's accuracy
 <img src="../../images/fn.svg" />
 
 #### F<sub>1</sub> Score
