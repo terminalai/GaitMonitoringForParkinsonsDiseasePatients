@@ -41,7 +41,7 @@
 
 ### Sensitivity
 - ability to correctly identify freezing
-<img src="../../sensitivity.svg" />
+<img src="../../images/sensitivity.svg" />
 
 ### Specificity
 - ability to correctly identify not freezing
