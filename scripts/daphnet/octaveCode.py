@@ -59,7 +59,6 @@ def fi(data):
 
         # compute FFT (Fast Fourier Transform)
         Y = np.fft.fft(y, NFFT)
-        print("fft =", Y)
         Pyy = Y * np.conj(Y) / NFFT
 
         # --- calculate sumLocoFreeze and freezeIndex ---
