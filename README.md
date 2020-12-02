@@ -22,7 +22,19 @@ Subjects walked continuously on level ground around an obstacle-free path. The s
 
 Data were collected from the healthy subjects as they walked in a roughly circular path for 15 minutes, and from the subjects with Parkinson’s disease as they walked for 6 minutes up and down a long hallway.
 
-## [Daphnet Dataset](https://archive.ics.uci.edu/ml/datasets/Daphnet+Freezing+of+Gait#:~:text=Data%20Set%20Information%3A,on%20generating%20many%20freeze%20events.)
+### Method Used
+We calculated the variance of the data and were able to find a correlation between the variance and the diagnosis. 
+![variance](images/graphs/varianceOfStrideTime.png)
+Based on this result, we employed a rather simplistic classification algorithm using Logistic Regression to find a value that corresponded. 
+
+The result was not as accurate as would be reliable, but that was mainly due to some corner cases. Below are the results.
+
+| Precision | Recall | Specificity | Accuracy | F1 Score |
+| --- | --- | --- | --- | --- |
+| 0.80 | 0.80 | 0.90 | 0.867 | 0.80 |
+
+
+## [Daphnet Dataset](https://archive.ics.uci.edu/ml/datasets/Daphnet+Freezing+of+Gait)
 (suggested by Prof Tay)
 
 ### Data Description
