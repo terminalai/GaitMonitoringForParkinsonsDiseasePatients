@@ -166,7 +166,7 @@ def countTxFx(gtframe, lframe, offDelay, onDelay):
     for li in range(np.size(f, 0)-1):
         if gtframe[f[li]+1] == 1:
             print(np[f[li][0]+1, f[li+1][0]])
-            labels = np.append(labels, np[f[li][0]+1, f[li+1][0]], axis=0)
+            labels = np.append(labels, np[f[li][0]+1, f[li+1][0]], axis=1)
 
     # Labels for delay
     gtframedelayoff = np.zeros(len(gtframe))
