@@ -29,7 +29,7 @@ Based on this result, we employed a rather simplistic classification algorithm u
 
 The result was not as accurate as would be reliable, but that was mainly due to some corner cases. Below are the results.
 
-| Precision | Recall | Specificity | Accuracy | F1 Score |
+| Precision | Recall or Sensitivity | Specificity | Accuracy | F1 Score |
 | --- | --- | --- | --- | --- |
 | 0.80 | 0.80 | 0.90 | 0.867 | 0.80 |
 
