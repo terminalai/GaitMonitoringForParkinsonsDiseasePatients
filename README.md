@@ -3,6 +3,26 @@
 
 To monitor gait patterns to detect freezing of gait. Done as part of Singapore Science Mentorship Programme.
 
+## Table of Contents
+- [Gait Monitoring for Parkinson's Disease Patients](#gait-monitoring-for-parkinson-s-disease-patients)
+  * [Project Description](#project-description)
+  * [Final Product](#final-product)
+  * [Methodology](#methodology)
+  * [GaitDB Dataset](https://www.physionet.org/content/gaitdb/1.0.0/)
+    + [Data Description](#data-description)
+    + [Method Used](#method-used)
+  * [Daphnet Dataset](https://archive.ics.uci.edu/ml/datasets/Daphnet+Freezing+of+Gait)
+    + [Data Description](#data-description-1)
+    + [Data Attributes](#data-attributes)
+      - [Annotations](#annotations)
+    + [LICENCE](#licence)
+  * [VGRF Dataset](https://physionet.org/content/gaitpdb/1.0.0/)
+    + [Data Description](#data-description-2)
+    + [Data format](#data-format)
+    + [Data file names](#data-file-names)
+
+
+
 ## Project Description
 The objective of this project is to monitor the gait patterns for people with Parkinson Disease. We will analyse the gait for PD patients during freezing and non-freezing (normal) events. Various parameters (e.g. cadence, step lengths, stride lengths, etc) related to gait will be derived from motion sensors (accelerometers, gyroscopes, magnetometers) using public datasets of PD patients. We will then investigate which of these parameters is most suitable for classification for freezing of gait in PD patients.
 
