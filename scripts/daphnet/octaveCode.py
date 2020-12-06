@@ -1,7 +1,7 @@
 import np
 
 SR = 64            # Sample rate in hertz
-stepSize = 32      # Step size in samples
+stepSize = 1       # Step size in samples
 offDelay = 2       # Evaluation delay in seconds: tolerates delay after detecting
 onDelay = 2        # Evaluation delay in seconds: tolerates delay before detecting
 
@@ -83,7 +83,7 @@ def moore(data, iaxis):
 def classify(data):
     lframes = []
 
-    for iaxis in range(2, 5):
+    for iaxis in range(1, 5):
         lframe = moore(data, iaxis)
         lframes.append(lframe)
 
@@ -93,7 +93,7 @@ def classify(data):
 def inform(data):
     info = []
 
-    for iaxis in range(2, 5):
+    for iaxis in range(1, 5):
         sum, quot, time = fi(data[:, iaxis])
         lframe = moore(data, iaxis)
 
