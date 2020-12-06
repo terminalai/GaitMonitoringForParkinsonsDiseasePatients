@@ -6,8 +6,15 @@ To monitor gait patterns to detect freezing of gait. Done as part of Singapore S
 ## Table of Contents
 - [Gait Monitoring for Parkinson's Disease Patients](#gait-monitoring-for-parkinson-s-disease-patients)
   * [Project Description](#project-description)
-  * [Final Product](#final-product)
-  * [Methodology](#methodology)
+    + [Final Product](#final-product)
+    + [Methodology](#methodology)
+  * [Introduction](#introduction)
+    + [Parkinson’s Disease and Freezing of Gait](#parkinson-s-disease-and-freezing-of-gait)
+    + [Contribution](#contribution)
+  * [Related work](#related-work)
+    + [Utilisation of IMUs in analysis](#utilisation-of-imus-in-analysis)
+    + [Machine learning approaches to detecting PD](#machine-learning-approaches-to-detecting-pd)
+    + [Gait parameters to be analysed](#gait-parameters-to-be-analysed)
   * [GaitDB Dataset](https://www.physionet.org/content/gaitdb/1.0.0/)
     + [Data Description](#data-description)
     + [Method Used](#method-used)
@@ -26,11 +33,57 @@ To monitor gait patterns to detect freezing of gait. Done as part of Singapore S
 ## Project Description
 The objective of this project is to monitor the gait patterns for people with Parkinson Disease. We will analyse the gait for PD patients during freezing and non-freezing (normal) events. Various parameters (e.g. cadence, step lengths, stride lengths, etc) related to gait will be derived from motion sensors (accelerometers, gyroscopes, magnetometers) using public datasets of PD patients. We will then investigate which of these parameters is most suitable for classification for freezing of gait in PD patients.
 
-## Final Product
+### Final Product
 To make use of signal processing algorithms in extracting gait parameters from motion sensors and identifying most suitable parameters for classification of freezing of gait in PD patients.
 
-## Methodology
+### Methodology
 Students will first need to review and understands how to extract gait parameters from motion sensors. There are different algorithms in the literature and they will need to investigate which is most suitable. They will then make use of a PD patient public dataset to test out their methods. If time permits, they will learn basic machine learning tools for classification.
+
+## Introduction
+
+### Parkinson’s Disease and Freezing of Gait
+
+Parkinson’s Disease (PD) is a progressive nervous system disorder that affects the basal ganglia, resulting in the progressive loss of dopamine neurotransmitters and poorer connection between the central nervous system and muscles [1]. This leads to many gait abnormalities, mainly tremors, bradykinesia, rigidity and a loss of postural reflexes. Secondary motor symptoms that are evoked include stride length reduction, shuffling gait, step festination and freezing [2,3]. Freezing of Gait (FOG) is one of the most debilitating effects of PD and is defined as a brief, episodic absence or marked reduction of forward progression of the feet despite the intention to walk [3]. It has serious social and clinical consequences for patients as it leads to falls [4], interferes with daily activities and significantly impacts quality of life [5]. While FOG can happen anytime, it happens most often during turns, before gait initiation, in tight quarters such as doorways and in stressful situations [6]. It is triggered by visual stimulation.
+
+Currently, FOG characterization is done using two main methods. In the first method, FOG is quantified by gait tests such as the timed up and go (TUG) test and the Hoehn and Yahr (H&Y) scale. The TUG test measures in seconds how long a patient takes to stand up from their chair, walk 3m past a line, turn around, walk back and sit down [7]. On the other hand, the H&Y scale has 5 stages to indicate levels of disability [8]: 
+
+- Stage 1: Symptoms on one side of the body only. 
+- Stage 2: Symptoms on both sides of the body; no impairment of balance. 
+- Stage 3: Balance impairment; mild to moderate disease; physically independent. 
+- Stage 4: Severe disability, but still able to walk or stand unassisted. 
+- Stage 5: Wheelchair-bound or bedridden unless assisted.
+
+In the second method, individual questionnaires are used. The Freezing Of Gait Questionnaire (FOG-Q) is a notable one, comprising 6 questions and utilising a 5-point scale to rank symptom severity [9]. However, both methods are highly inefficient in measuring FOG as it is highly sensitive to environmental triggers, medication and the patient’s mental state. Therefore, there has been research into using wearable inertial measurement units (IMUs) to display exactly the gait types of PD patients. 
+
+### Contribution
+
+This study aims to compare all the ways of measuring FOG and determine the best parameter to utilise while creating an algorithm for data analysis. The comfort of the patient and the ease and accuracy in which the parameter can predict FOG will be taken into account in this study.
+
+## Related work
+
+### Utilisation of IMUs in analysis
+This section reports previous studies which have explored the application of motion sensors on PD patients to accurately predict FOG. Ferster et al. [3] placed 9-axis IMUs (comprising 3D accelerometers, 3D gyroscopes and 3D magnetometers) on both ankles of the subjects to extract gait features such as stride length and stride duration. Moreover, as FOG exhibits unique frequency ranges, they introduce and discuss frequency features such as dominant frequency, dominant frequency amplitude and the inverse of the dominant frequency slope of the acceleration data to quantify changes in gait quality. Ferster was able to show specific changes in the stride duration, stride length, dominant frequency and the inverse of the dominant frequency slope with up to four seconds prior to FoG on all subjects. Baechlin et al. [10] proposed placing accelerometers at three different parts of the body: the ankle, the thigh and the lower back to more accurately predict FOG. Alam et al. [11] analyzed the vertical ground reaction force using force insoles in patients’ shoes to display gait cycles. Pinto et al. [12] again utilised accelerometers and gyroscopes to determine stride time, this time placing the accelerometer at the shank. Many works have also tried utilising motion capture systems to annotate FOG events, synchronising sensor data and computer analysis to make way for machine learning algorithms. Kuhner et al. [13] performed this experiment, setting up 12 cameras as well as utilising an inertial measurement suit to create a ‘live’ system that reduces the latency of data processing.
+
+The above literature confirms the success of utilising accelerometers, gyroscopes and force insoles to effectively differentiate FOG from normal gait and has greatly helped in designing the proposed approach for this study.
+
+### Machine learning approaches to detecting PD
+Aich et al. [14] have done a comprehensive review of the four different types of machine learning algorithms - support vector machine (SVM), k-nearest neighbour (kNN), decision tree (DT) and Naïve Bayes (NB) in classifying patients with FOG or no FOG. They found that the SVM classifier with radial basis function provides the highest accuracy of 91.42% as well as the highest sensitivity and specificity of 90.89% and 91.21% respectively. 
+
+Eom et al. [] used thresholds to classify FOG and non-FOG states. The number of thresholds varied, increasing by two for every dimension added. The range between two thresholds was used to determine FOG states for 1D data while six thresholds were required for 3D data. Additionally, three FOG states (FOG: 1, non-FOG: 0) were “AND” operated to determine final FOG.
+
+### Gait parameters to be analysed
+The frequency-based features discussed by Baechlin et. al [10] are reliable, but they have one major drawback. The large amount of calculations required to perform the Fourier transform needed to analyse frequency-based data means that a digital signal processing chip is required, making it impossible to fit in a small, lightweight unobtrusive system. This would make it impractical for real life detection. For the patients with gait problems, a bulky and obtrusive system may worsen the gait disturbances. Additionally, most experiments utilised a relatively long window length (4 seconds [10], 6 seconds [], and 10 seconds []) for detection, leading to a long delay in FOG detection. Eom et al. [] suggested a simple and fast time-domain method for FOG detection that was comparable to the traditional frequency-domain method with a calculation load of 1,154 times less. This has practical clinical applications.
+
+Previous researchers also have reported the importance of five parameters for the detection of PD. Most notably, Hollman et al. [15] have proposed five major domains of gait based on factor analysis:
+
+1. Rhythm - step and stride time
+2. Phase - gait cycle
+3. Variability - step-to-step variability
+4. Pace - gait speed, stride and step length
+5. Base of support - step width.
+
+Others have confirmed the importance of determining the spatiotemporal parameters. Alcock et al. [16], Coste et al. [17] and Schlachetzki et al. [18] have all discussed the importance of stride length, stride time and gait velocity in distinguishing PD patients from healthy older adults. This narrowing down of gait parameters has helped in the focus of this study.
+
 
 ## [GaitDB Dataset](https://www.physionet.org/content/gaitdb/1.0.0/)
 
