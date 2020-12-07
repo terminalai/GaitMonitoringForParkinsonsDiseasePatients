@@ -1,3 +1,4 @@
+import scipy as sp
 import np
 
 SR = 64            # Sample rate in hertz
@@ -6,7 +7,7 @@ offDelay = 2       # Evaluation delay in seconds: tolerates delay after detectin
 onDelay = 2        # Evaluation delay in seconds: tolerates delay before detecting
 
 NFFT = windowLength = 256
-locoBand = np[0, 5, 3]
+locoBand = np[0.5, 3]
 freezeBand = np[3, 8]
 
 f_res = SR / NFFT
@@ -58,7 +59,7 @@ def fi(data):
         y -= np.mean(y)  # make signal zero-mean (mean normalization)
 
         # compute FFT (Fast Fourier Transform)
-        Y = np.fft.fft(y, NFFT)
+        Y = sp.fft.fft(y, NFFT)
         Pyy = Y * np.conj(Y) / NFFT
 
         # --- calculate sumLocoFreeze and freezeIndex ---
