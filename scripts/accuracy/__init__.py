@@ -64,6 +64,10 @@ def specificity(*args):
     
     return tn/(tn+fp)
 
+def fn(n, *args):
+    r = recall(*args)
+    p = precision(*args)
+    return (1+n**2)*(r)*(p)/(r+n**2*p)
 
 
 def f1(*args):
