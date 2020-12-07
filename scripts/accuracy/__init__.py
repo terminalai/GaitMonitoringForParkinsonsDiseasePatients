@@ -17,19 +17,56 @@ def TxFx(y, h, m):
 
     return tp, fp, tn, fn
 
-def precision(y, h, m):
-    tp, fp, tn, fn = TxFx(y, h, m)
+def precision(*args):
+    if len(args) == 3:
+        y, h, m = args
+        tp, fp, tn, fn = TxFx(y, h, m)
+        
+    elif len(args) == 2:
+        tp, fp = args
+    
+    elif len(args) == 4:
+        tp, fp, tn, fn = args
+    
+    else: return
+    
     return tp/(tp+fp)
 
-def recall(y, h, m):
-    tp, fp, tn, fn = TxFx(y, h, m)
+
+def recall(*args):
+    if len(args) == 3:
+        y, h, m = args
+        tp, fp, tn, fn = TxFx(y, h, m)
+        
+    elif len(args) == 2:
+        tp, fn = args
+    
+    elif len(args) == 4:
+        tp, fp, tn, fn = args
+    
+    else: return
+    
     return tp/(tp+fn)
 
-def specificity(y, h, m):
-    tp, fp, tn, fn = TxFx(y, h, m)
+
+def specificity(*args):
+    if len(args) == 3:
+        y, h, m = args
+        tp, fp, tn, fn = TxFx(y, h, m)
+        
+    elif len(args) == 2:
+        tn, fp = args
+    
+    elif len(args) == 4:
+        tp, fp, tn, fn = args
+    
+    else: return
+    
     return tn/(tn+fp)
 
-def f1(y, h, m):
-    recall = recall(y, h, m)
-    precision = precision(y, h, m)
-    return 2*(recall)*(precision)/(recall+precision)
+
+
+def f1(*args):
+    r = recall(*args)
+    p = precision(*args)
+    return 2*(r)*(p)/(r+p)
