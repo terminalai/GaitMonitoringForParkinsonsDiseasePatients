@@ -41,10 +41,9 @@ def fi(data):
     """
 
     jPos = windowLength
-    i_max = len(data) // stepSize + 1
+    i_max = len(data) // stepSize
 
     time = np.zeros(i_max, dtype=int)
-    sumLocoFreeze = np.zeros(i_max)
     freezeIndex = np.zeros(i_max)
 
     for i in range(i_max):
@@ -65,27 +64,26 @@ def fi(data):
         # --- calculate sumLocoFreeze and freezeIndex ---
         areaLocoBand = numIntegration(Pyy[f_nr_LBs:f_nr_LBe])
         areaFreezeBand = numIntegration(Pyy[f_nr_FBs:f_nr_FBe])
+        
+        # Extension of Baechlin to handle low-energy situations (e.g. standing)
+        freezeIndex[i] = areaFreezeBand / areaLocoBand if areaFreezeBand + areaLocoBand >= powerTH else 0
 
-        sumLocoFreeze[i] = areaFreezeBand + areaLocoBand
-        freezeIndex[i] = areaFreezeBand / areaLocoBand
-
-    return sumLocoFreeze, freezeIndex, time
+    return freezeIndex, time
 
 def moore(data, iaxis):
     # Moore's algorithm
-    sum, quot, time = fi(data[:, iaxis])
-    # Extension of Baechlin to handle low-energy situations (e.g. standing)
-    quot[sum < powerTH] = 0
+    quot, time = fi(data[:, iaxis])
+    
     # Classification
     lframe = (quot > freezeTH).astype(int)
-    return lframe
+    return lframe, time
 
 
 def classify(data):
     lframes = []
 
     for iaxis in range(1, 5):
-        lframe = moore(data, iaxis)
+        lframe, time = moore(data, iaxis)
         lframes.append(lframe)
 
     return lframes
@@ -95,8 +93,7 @@ def inform(data):
     info = []
 
     for iaxis in range(1, 5):
-        sum, quot, time = fi(data[:, iaxis])
-        lframe = moore(data, iaxis)
+        lframe, time = moore(data, iaxis)
 
         #######################################################################
         # We do not want to compute performance on the "non experiment" part,
