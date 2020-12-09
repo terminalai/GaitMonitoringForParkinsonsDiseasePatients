@@ -70,6 +70,15 @@ def fi(data):
 
     return freezeIndex, time
 
+def freezeIndex(data):
+    FIs = []
+
+    for iaxis in range(1, 5):
+        freeze, time = fi(data[:, iaxis])
+        FIs.append(freeze)
+    
+    return FIs
+
 def moore(data, iaxis):
     # Moore's algorithm
     quot, time = fi(data[:, iaxis])
