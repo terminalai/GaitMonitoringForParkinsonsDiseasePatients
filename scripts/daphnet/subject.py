@@ -1,4 +1,4 @@
-from .octaveCode import classify, inform, freezeIndex
+from .octaveCode import classify, inform, fIndex
 
 
 class Subject:
@@ -36,9 +36,9 @@ class Subject:
             
         freezeIndices = []
         for i in inds:
-            FIs = freezeIndex(self.results[i])
+            FIs = fIndex(self.results[i])
             freezeIndices.append(FIs)
-        return freezeIndex
+        return freezeIndices
 
     def predict(self, *inds):
         if len(inds) == 0:
