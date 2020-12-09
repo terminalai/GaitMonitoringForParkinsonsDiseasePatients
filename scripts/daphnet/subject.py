@@ -1,4 +1,4 @@
-from .octaveCode import classify, inform
+from .octaveCode import classify, inform, freezeIndex
 
 
 class Subject:
@@ -29,8 +29,18 @@ class Subject:
                 names_covered.append(name)
 
         return subjects
-
+    
     def analyze(self, *inds):
+        if len(inds) == 0:
+            inds = list(range(len(self.results)))
+            
+        freezeIndices = []
+        for i in inds:
+            FIs = freezeIndex(self.results[i])
+            freezeIndices.append(FIs)
+        return freezeIndex
+
+    def predict(self, *inds):
         if len(inds) == 0:
             inds = list(range(len(self.results)))
         lframess = []
