@@ -35,7 +35,7 @@ def numIntegration(x):
     return (np.sum(x[1:])/SR+np.sum(x[:-1])/SR)/2
 
 
-def fi(data):
+def fi(data): # Moore's Algorithm
     """
     Compute the freezing index
     """
@@ -70,7 +70,7 @@ def fi(data):
 
     return freezeIndex, time
 
-def freezeIndex(data):
+def fIndex(data):
     FIs = []
 
     for iaxis in range(1, 5):
