@@ -257,13 +257,21 @@ The sampling rate was 100 Hz.
 
 ## References
 [1] Braak H, Ghebremedhin E, Rüb U, Bratzke H, Del Tredici K. Stages in the development of Parkinson's disease-related pathology. Cell Tissue Res. 2004 Oct;318(1):121-34. doi: 10.1007/s00441-004-0956-9. Epub 2004 Aug 24. PMID: 15338272.
+
 [2] Jankovic J. Parkinson’s disease: clinical features and diagnosis. Journal of Neurology, Neurosurgery & Psychiatry 2008;79:368-376.
+
 [3] Ferster, M. L., Mazilu, S., & Tröster, G. (2015). Gait Parameters Change Prior to Freezing in Parkinson's Disease: A Data-Driven Study with Wearable Inertial Units. Proceedings of the 10th EAI International Conference on Body Area Networks. doi:10.4108/eai.28-9-2015.2261411
+
 [3] Nutt JG, Bloem BR, Giladi N, et al. Freezing of gait: moving forward on a mysterious clinical phenomenon. Lancet Neurol. 2011;10:734–44.
+
 [4] B. R. Bloem, J. M. Hausdorff, J. E. Visser, N. Giladi. Falls and freezing of gait in parkinson's disease: A review of two interconnected, episodic phenomena. Movement Disorders, vol. 19, no. 8, pp. 871–884, 2008.
+
 [5] Moore O, Peretz C, Giladi N. Freezing of gait affects quality of life of peoples with Parkinson's disease beyond its relationships with mobility and gait. Mov Disord. 2007 Nov 15;22(15):2192-5. doi: 10.1002/mds.21659. PMID: 17712856.
+
 [6] Giladi, N., & Hausdorff, J. M. (2006). The role of mental function in the pathogenesis of freezing of gait in Parkinson's disease. Journal of the Neurological Sciences, 248(1-2), 173-176. doi:10.1016/j.jns.2006.05.015
+
 [7] Podsiadlo D, Richardson S. The timed “Up & Go”: a test of basic functional mobility for frail elderly persons. J Am Geriatr Soc. 1991;39(2):142–148.
+
 [8] M. M. Hoehn and M. D. Yahr. Parkinsonism: onset, progression and mortality. Neurology, vol. 17, no. 5, pp. 427–42, May 1967.
 
 [9] Rozenfeld, S., Miskovic, A., Nitsch, K. P., & Ehrlich-Jones, L. (2017). Measurement Characteristics and Clinical Utility of the Freezing of Gait Questionnaire in Individuals With Parkinson Disease. Archives of Physical Medicine and Rehabilitation, 98(10), 2106-2107. doi:10.1016/j.apmr.2017.04.027
