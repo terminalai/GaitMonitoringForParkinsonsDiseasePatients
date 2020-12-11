@@ -120,6 +120,8 @@ The result was not as accurate as would be reliable, but that was mainly due to 
 | --- | --- | --- | --- | --- |
 | 0.80 | 0.80 | 0.90 | 0.867 | 0.80 |
 
+### [Analysis](https://nbviewer.jupyter.org/github/ThePyProgrammer/GaitMonitoringForParkinsonsDiseasePatients/blob/main/GaitDB%20Analysis.ipynb)
+
 
 ## [Daphnet Dataset](https://archive.ics.uci.edu/ml/datasets/Daphnet+Freezing+of+Gait)
 (suggested by Prof Tay)
@@ -164,6 +166,8 @@ Marc Bächlin, Meir Plotnik, Daniel Roggen, Inbal Maidan, Jeffrey M. Hausdorff, 
 This paper describes the dataset in details. It explain the data acquisition protocol, the kind of sensor used and their placement, and the nature of the data acquired. It also provides baseline results for the automated detection of freezing of gait, against which newer methods can be benchmarked. In particular it describes detection sensitivity/specificity for 3 sensor placements and 4 kinds of derived sensor signals, it analyzes detection latency, and provides first insight into user specific v.s. user independent performance.
 
 We also appreciate if you inform us (daniel.roggen@ieee.org) of any publication using this dataset for cross-referencing purposes.
+
+### [Analysis](https://nbviewer.jupyter.org/github/ThePyProgrammer/GaitMonitoringForParkinsonsDiseasePatients/blob/main/Daphnet%20Analysis.ipynb)
 
 ## [VGRF Dataset](https://physionet.org/content/gaitpdb/1.0.0/)
 ### Data Description
@@ -244,6 +248,8 @@ where the subject was engaged in serial-7 subtraction while walking.
 - A walk number of 01 refers to a usual, normal walk. 
 
 The sampling rate was 100 Hz.
+
+### [Analysis](https://nbviewer.jupyter.org/github/ThePyProgrammer/GaitMonitoringForParkinsonsDiseasePatients/blob/main/VGRF%20Analysis.ipynb)
 
 
 ## References
