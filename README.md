@@ -18,11 +18,13 @@ To monitor gait patterns to detect freezing of gait. Done as part of Singapore S
   * [GaitDB Dataset](https://www.physionet.org/content/gaitdb/1.0.0/)
     + [Data Description](#data-description)
     + [Method Used](#method-used)
+    + [Analysis](#https://nbviewer.jupyter.org/github/ThePyProgrammer/GaitMonitoringForParkinsonsDiseasePatients/blob/main/GaitDB%20Analysis.ipynb)
   * [Daphnet Dataset](https://archive.ics.uci.edu/ml/datasets/Daphnet+Freezing+of+Gait)
     + [Data Description](#data-description-1)
     + [Data Attributes](#data-attributes)
       - [Annotations](#annotations)
     + [LICENCE](#licence)
+    + [Analysis](#https://nbviewer.jupyter.org/github/ThePyProgrammer/GaitMonitoringForParkinsonsDiseasePatients/blob/main/Daphnet%20Analysis.ipynb)
     + [Set-Up and Imports](https://nbviewer.jupyter.org/github/ThePyProgrammer/GaitMonitoringForParkinsonsDiseasePatients/blob/main/Daphnet%20Analysis.ipynb#Set-Up-and-Imports)
     + [Get Data](https://nbviewer.jupyter.org/github/ThePyProgrammer/GaitMonitoringForParkinsonsDiseasePatients/blob/main/Daphnet%20Analysis.ipynb#Get-Data)
     + [Plots](https://nbviewer.jupyter.org/github/ThePyProgrammer/GaitMonitoringForParkinsonsDiseasePatients/blob/main/Daphnet%20Analysis.ipynb#Plots)
@@ -33,6 +35,7 @@ To monitor gait patterns to detect freezing of gait. Done as part of Singapore S
     + [Data Description](#data-description-2)
     + [Data format](#data-format)
     + [Data file names](#data-file-names)
+    + [Analysis](#https://nbviewer.jupyter.org/github/ThePyProgrammer/GaitMonitoringForParkinsonsDiseasePatients/blob/main/VGRF%20Analysis.ipynb)
   * [References](#references)
 
 
