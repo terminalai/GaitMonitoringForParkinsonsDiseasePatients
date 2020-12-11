@@ -297,5 +297,7 @@ The sampling rate was 100 Hz.
 [] Schlachetzki, J. C., Barth, J., Marxreiter, F., Gossler, J., Kohl, Z., Reinfelder, S., . . . Klucken, J. (2017). Wearable sensors objectively measure gait parameters in Parkinson’s disease. Plos One, 12(10). doi:10.1371/journal.pone.0183989
 
 [] Moore, S. T., Macdougall, H. G., &amp; Ondo, W. G. (2008). Ambulatory monitoring of freezing of gait in Parkinson's disease. Journal of Neuroscience Methods, 167(2), 340-348. doi:10.1016/j.jneumeth.2007.08.023
+
 [] Morris, T. R., Cho, C., Dilda, V., Shine, J. M., Naismith, S. L., Lewis, S. J., & Moore, S. T. (2012). A comparison of clinical and objective measures of freezing of gait in Parkinson's disease. Parkinsonism & Related Disorders, 18(5), 572-577. doi:10.1016/j.parkreldis.2012.03.001
+
 [] Goldberger, A., Amaral, L., Glass, L., Hausdorff, J., Ivanov, P. C., Mark, R., ... & Stanley, H. E. (2000). PhysioBank, PhysioToolkit, and PhysioNet: Components of a new research resource for complex physiologic signals. Circulation [Online]. 101 (23), pp. e215–e220.
