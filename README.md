@@ -1,5 +1,7 @@
-# Gait Monitoring for Parkinson's Disease Patients
-**Mentor**: Arthur Tay
+# Gait Monitoring and Analysis for Parkinson's Disease Patients
+Nallapuraju Ananya, Ye Chen Rui and Prannaya Gupta
+**Research Mentor**: Professor Arthur Tay
+**School Mentor**: Mr Lim Yeow Heng
 
 To monitor gait patterns to detect freezing of gait. Done as part of Singapore Science Mentorship Programme.
 
