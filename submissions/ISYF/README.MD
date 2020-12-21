@@ -55,4 +55,4 @@ connection.
 
 
 ## Submission
-We have submitted a [poster](Gait%20Monitoring%20and%20Analysis%20for%20Parkinson's%20Disease%20Patients.pdf) and a pitch video.
+We have submitted a [poster](poster/Gait%20Monitoring%20and%20Analysis%20for%20Parkinson's%20Disease%20Patients.pdf) and a pitch video.
