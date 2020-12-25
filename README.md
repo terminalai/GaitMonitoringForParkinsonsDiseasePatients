@@ -86,7 +86,26 @@ This study aims to compare all the ways of measuring FOG and determine the best 
 ## Literature Review
 
 ### _Utilisation of IMUs in analysis_
-This section reports previous studies which have explored the application of motion sensors on PD patients to accurately predict FOG. Ferster et al.<sup>[3]</sup> placed 9-axis IMUs (comprising 3D accelerometers, 3D gyroscopes and 3D magnetometers) on both ankles of the subjects to extract gait features such as stride length and stride duration. Moreover, as FOG exhibits unique frequency ranges, they introduce and discuss frequency features such as dominant frequency, dominant frequency amplitude and the inverse of the dominant frequency slope of the acceleration data to quantify changes in gait quality. Ferster was able to show specific changes in the stride duration, stride length, dominant frequency and the inverse of the dominant frequency slope with up to four seconds prior to FoG on all subjects. Baechlin et al.<sup>[10]</sup> proposed placing accelerometers at three different parts of the body: the ankle, the thigh and the lower back to more accurately predict FOG. Alam et al.<sup>[11]</sup> analyzed the vertical ground reaction force using force insoles in patients’ shoes to display gait cycles. Pinto et al.<sup>[12]</sup> again utilised accelerometers and gyroscopes to determine stride time, this time placing the accelerometer at the shank. 
+This section reports previous studies which have explored the application of motion sensors on PD patients to accurately predict FOG. Ferster et al.<sup>[3]</sup> placed 9-axis IMUs (comprising 3D accelerometers, 3D gyroscopes and 3D magnetometers) on both ankles of the subjects to extract gait features such as stride length and stride duration. Moreover, as FOG exhibits unique frequency ranges, they introduce and discuss frequency features such as dominant frequency, dominant frequency amplitude and the inverse of the dominant frequency slope of the acceleration data to quantify changes in gait quality. Ferster was able to show specific changes in the stride duration, stride length, dominant frequency and the inverse of the dominant frequency slope with up to four seconds prior to FoG on all subjects. 
+
+Baechlin et al.<sup>[10]</sup> proposed placing accelerometers at three different parts of the body: the shank, thigh and lower back, where the wearable computer is attached to.
+
+<p align="center">
+  <img src="./descriptions/daphnet/diagram.PNG" alt="baechlin" width="640"><br/>
+  <b>Figure 1: The Baechlin et al. 3D Accelerometer Wearable System</b>
+</p>
+
+Alam et al.<sup>[11]</sup> analyzed the vertical ground reaction force using force insoles in patients’ shoes to display gait cycles. Pinto et al.<sup>[12]</sup> again utilised accelerometers and gyroscopes to determine stride time, this time placing the accelerometer at the shank. 
+
+Based on our research, we were able to consolidate a list of the main IMUs that we were to consider as follows:
+
+| IMU | Purpose | Measured Parameter |
+| --- | --- | --- |
+| Accelerometer | Measuring acceleration | Stride Length, Stride Duration |
+| Gyroscope | Measuring angular velocity | Step Festination, Gait Asymmetry |
+| Flexible Goniometer | Measuring body joint angles | Flat Foot Strike |
+| Force- sensitive Insole | Measuring the tension and compression forces that act on the sensor | Gait Cycle (not accurate for PD patients who suffer from flat footedness) |
+
 
 Many works have also tried utilising motion capture systems to annotate FOG events, synchronising sensor data and computer analysis to make way for machine learning algorithms. Kuhner et al.<sup>[13]</sup> performed this experiment, setting up 12 cameras as well as utilising an inertial measurement suit to create a ‘live’ system that reduces the latency of data processing.
 
@@ -96,9 +115,13 @@ The above literature confirms the success of utilising accelerometers, gyroscope
 Aich et al.<sup>[14]</sup> have done a comprehensive review of the following four different types of machine learning algorithms in classifying patients with FOG or no FOG: 
 
 - Support Vector Machine (SVM)
+  * Considered the most accurate by Aich et al<sup>[14]</sup>.
 - k-Nearest Neighbour (kNN)
 - Decision Tree (DT)
-- Naïve Bayes (NB) 
+- Naïve Bayes (NB)
+- Threshold/ Logistic Regression
+- Time Series Analysis
+
 
 They found that the SVM classifier with radial basis function provides the highest accuracy of 91.42% as well as the highest sensitivity and specificity of 90.89% and 91.21% respectively. 
 
@@ -117,13 +140,27 @@ Previous researchers also have reported the importance of five parameters for th
 
 Others have confirmed the importance of determining the spatiotemporal parameters. Alcock et al.<sup>[19]</sup>, Coste et al.<sup>[20]</sup> and Schlachetzki et al.<sup>[21]</sup> have all discussed the importance of stride length, stride time and gait velocity in distinguishing PD patients from healthy older adults.
 
+Overall, the following is a summary of gait parameters found in our research.
+
+| Gait abnormalities | Definition |
+| --- | --- | --- |
+| Step Festination | Shortening of steps |
+| Decrease in Stride Duration | Decrease in the time difference between two consecutive detected acceleration peaks of the same leg |
+| Postural Instability | Loss of balance |
+| Increase in step-to-step time variability | Difference in time taken between each stride |
+| Stride Length Reduction | Reduction in distance between each stride/step |
+| Decreased Cadence | Decrease in number of steps taken per unit time |
+| Gait Asymmetry | Difference in gait between the two legs of patient |
+
+
 Hence, in this study, the focus will be on gait velocity, stride time and gait cycle. They will be compared by analysing acceleration data and vertical ground reaction force (VGRF) data from three sources.
 
-## Analysis of public PD Patients' Datasets
+## Methodology
 
 ### _DAPHNet Dataset_
-In our main investigation, we employed the DAPHNet Dataset, which is the result of a study done by Baechlin et al.<sup>[10]</sup>, carried out by the Laboratory for Gait and Neurodynamics, Department of Neurology, Tel Aviv Sourasky Medical Center (TASMC). In this experiment, 10 PD patients with varying H&Y scales were made to do various walking tasks, including walking back and forth in a straight line, doing several 180 degrees turns, random walking including a series of initiated stops and 360 degree turns and walking simulating daily activities. Daily activities refer to entering and leaving rooms, getting something to drink and returning to the starting room with the cup of water.  Data was recorded using three 3D acceleration sensors attached to the shank, thigh and the lower back of each subject. The sensors recorded at 64Hz and transmitted the acceleration data via a Bluetooth link to a wearable computing system that was located at the lower back of the subjects. Patient data is summarised in a table below.
+In our main investigation, we employed the DAPHNet Dataset, which is the result of a study done by Baechlin et al.<sup>[10]</sup>, carried out by the Laboratory for Gait and Neurodynamics, Department of Neurology, Tel Aviv Sourasky Medical Center (TASMC). In this experiment, 17 samples were derived frrom 10 PD patients with varying H&Y scales who were made to do various walking tasks, including walking back and forth in a straight line, doing several 180 degrees turns, random walking including a series of initiated stops and 360 degree turns and walking simulating daily activities. Daily activities refer to entering and leaving rooms, getting something to drink and returning to the starting room with the cup of water. 
 
+Data was recorded using three 3D acceleration sensors attached to the shank, thigh and the lower back of each subject. The sensors recorded at 64Hz and transmitted the acceleration data via a Bluetooth link to a wearable computing system that was located at the lower back of the subjects. Patient data is summarised in a table below.
 
 <p align="center">
   <img src="./descriptions/daphnet/demographics.PNG" alt="demographics" width="640"><br/>
@@ -132,19 +169,29 @@ In our main investigation, we employed the DAPHNet Dataset, which is the result 
 
 However, there are limitations to the dataset. Patient 08 and Patient 01 both suffered from walking difficulties due to disease severity and foot drop respectively. Hence, the system was unable to distinguish between walking periods and very short freezing events.
 
-### _Algorithm used for Data Analysis_
-This study uses a threshold-based algorithm to analyse datasets. Moore et al.<sup>[23]</sup> defined the freeze index (FI) as the power ratio of freeze band (0.5–3.0 Hz) to locomotor band (3–8 Hz) derived from the frequency spectrum and identified FOG episodes at the time periods when FI exceeds a certain threshold. The code uses an updated form of Moore’s algorithm, where it calculates the Freeze Index from data from a specific axis (horizontal forward, horizontal lateral and vertical) by performing windowing with a length of 256 data points and steps up 32 data points. After performing a mean normalisation, the code finds the Fast Fourier Transform of the data and uses that to compute the Freeze Index and supposed Power Spectral Density (PSD). After this, it accounts for a standing case where the PSD<sub>threshold</sub> = 2<sup>11.5</sup>, and in cases where it is below this threshold, the freeze index becomes zero. After this, the Freeze Index with a threshold of 1.5 is used such that a freeze index greater than the threshold is considered FOG. 
+### _Signal Processing_
+This study uses signal processing algorithms to compute a postulated freeze index. Moore et al.<sup>[23]</sup> defined the freeze index (FI) as the power ratio of freeze band (0.5–3.0 Hz) to locomotor band (3–8 Hz) derived from the frequency spectrum and identified FOG episodes at the time periods when FI exceeds a certain threshold. The code uses an updated form of Moore’s algorithm, where it calculates the Freeze Index from data from a specific axis (horizontal forward, horizontal lateral and vertical) from the sensors on the thigh by performing windowing of data with a length of 256 data points and steps up 32 data points. After performing a mean normalisation, the code finds the Fast Fourier Transform of the normalised window and uses that to compute the Freeze Index and supposed Power Spectral Density (PSD). After this, it accounts for a standing case where the PSD<sub>threshold</sub> = 2<sup>11.5</sup>, and in cases where it is below this threshold, the freeze index becomes zero. From this, we had the final postulated freeze index.
+
+In this experiment, we decided to define a final function `freeze(N)`, where `freeze(N) = Freeze Index postulated from N-axis acceleration`. For the investigation, we defined the axes as follows:
+
+| Axis | Axis with respect to the user |
+| --- | --- |
+| X | Horizontal Forward |
+| Y | Vertical |
+| Z | Horizontal Vertical |
 
 
+### _SVM Analysis_
+Unlike Baechlin et al.<sup>[10]</sup>, where the Freeze Index with a threshold of 1.5 is used such that a freeze index greater than the threshold is considered FOG, we decided to follow the results found by Aich et al<sup>[14]</sup>, and hence decided to test SVM models against the data we had derived. 
 
-## Materials and Methods
+Due to the large amount of data amassed from the signal processing algorithms, we decided to use the Google Colaboratory Tool<sup>[23]</sup>, in which we could utilise Graphics Processing Units (GPUs) of more powerful computers at Google. This allowed us to run the SVM much faster such that we could get the results for the investigation. We also used the ThunderSVM utility<sup>[24]</sup> developed by the Xtra Computing Group at the NUS School of Computing (SoC).
 
-In this investigation, we used the 
+For the investigation, we employed the Linear and Gaussian Kernels and tested these SVMs with either 2-axial freeze indices (i.e. taking freeze indices from 2 of the 3 axes defined) or 3-axial freeze indices (which took into account freeze(X), freeze(Y) and freeze(Z)).
 
+### _Arduino Program_
+Our Program was developed using Arduino's `.ino` programming language based off the C++ programming language. To get the best SVM model, we used a program called sklearn-porter<sup>[25]</sup> developed by Darius Morawies, which converted the trained SVM model to C code which was saved as a `model.h` file. This model was accessed by the Arduino Program, which also computed the freeze values.
 
-
-
-
+This study utilises an Arduino Nano 33 BLE board that is attached to an elastic strap. It contains a 9-axial IMU, comprising a 3D accelerometer, 3D gyroscope and 3D magnetometer. In our program, upon a certain freeze event predicted by the SVM, the built-in light-emitting diode (LED).
 
 ---
 
@@ -349,3 +396,9 @@ The sampling rate was 100 Hz.
 [21] [Morris, T. R., Cho, C., Dilda, V., Shine, J. M., Naismith, S. L., Lewis, S. J. G., & Moore, S. T. (2012). A comparison of clinical and objective measures of freezing of gait in Parkinson’s disease. <i>Parkinsonism & Related Disorders, 18</i>(5), 572–577. https://doi.org/10.1016/j.parkreldis.2012.03.001](https://www.prd-journal.com/article/S1353-8020(12)00077-6/fulltext)
 
 [22] [Goldberger, A. L., Amaral, L. A. N., Glass, L., Hausdorff, J. M., Ivanov, P. C., Mark, R. G., Mietus, J. E., Moody, G. B., Peng, C.-K., & Stanley, H. E. (2000). PhysioBank, PhysioToolkit, and PhysioNet. <i>Circulation, 101</i>(23), 1. https://doi.org/10.1161/01.cir.101.23.e215](https://www.ahajournals.org/doi/pdf/10.1161/01.CIR.101.23.e215)
+
+[23] [Bisong E. (2019) Google Colaboratory. In: Building Machine Learning and Deep Learning Models on Google Cloud Platform. <i>Apress, Berkeley, CA</i>. https://doi.org/10.1007/978-1-4842-4470-8_7](https://link.springer.com/chapter/10.1007%2F978-1-4842-4470-8_7)
+
+[24] [Wen, Z., Shi, J., Li, Q., He, B., & Chen, J. (2018). ThunderSVM: A Fast SVM Library on GPUs and CPUs, <i>Journal of Machine Learning Research, 19</i>, 797–801.](https://github.com/Xtra-Computing/thundersvm/blob/master/thundersvm-full.pdf)
+
+[25] [Morawiec, D. (n.d.). sklearn-porter - Transpile trained scikit-learn estimators to C, Java, JavaScript and others. https://github.com/nok/sklearn-porter](https://github.com/nok/sklearn-porter)
