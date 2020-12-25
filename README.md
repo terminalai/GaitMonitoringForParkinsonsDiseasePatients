@@ -126,7 +126,7 @@ In our main investigation, we employed the DAPHNet Dataset, which is the result 
 
 
 <p align="center">
-  <img src="./daphnet/demographics.PNG" alt="demographics">
+  <img src="./daphnet/demographics.PNG" alt="demographics" width="640"><br/>
   <b>Figure 1. Table showing gender, age, disease duration and H&Y scale of PD patients in DAPHNet dataset</b>
 </p>
 
