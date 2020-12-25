@@ -1,5 +1,9 @@
 # Gait Monitoring and Analysis for Parkinson's Disease Patients
-Nallapuraju Ananya, Ye Chen Rui and Prannaya Gupta
+By: Nallapuraju Ananya, Ye Chen Rui and Prannaya Gupta
+
+<p align="center">
+  <img src="./logos/Gait%20Monitoring%20and%20Analysis%20for%20Parkinson's%20Patients%20Logo.png" width="438" height="439" alt="Gait Monitoring and Analysis for Parkinson's Disease Patients">
+</p>
 
 
 **Research Mentor**: Professor Arthur Tay
@@ -92,12 +96,12 @@ Aich et al.<sup>[14]</sup> have done a comprehensive review of the following fou
 
 in classifying patients with FOG or no FOG. They found that the SVM classifier with radial basis function provides the highest accuracy of 91.42% as well as the highest sensitivity and specificity of 90.89% and 91.21% respectively. 
 
-Eom et al. [] used thresholds to classify FOG and non-FOG states. The number of thresholds varied, increasing by two for every dimension added. The range between two thresholds was used to determine FOG states for 1D data while six thresholds were required for 3D data. Additionally, three FOG states (FOG: 1, non-FOG: 0) were “AND” operated to determine final FOG.
+Eom et al.<sup>[15]</sup> used thresholds to classify FOG and non-FOG states. The number of thresholds varied, increasing by two for every dimension added. The range between two thresholds was used to determine FOG states for 1D data while six thresholds were required for 3D data. Additionally, three FOG states (FOG: 1, non-FOG: 0) were “AND” operated to determine final FOG.
 
 ### Gait parameters to be analysed
-The frequency-based features discussed by Baechlin et. al<sup>[10]</sup> are reliable, but they have one major drawback. The large amount of calculations required to perform the Fourier transform needed to analyse frequency-based data means that a digital signal processing chip is required, making it impossible to fit in a small, lightweight unobtrusive system. This would make it impractical for real life detection. For the patients with gait problems, a bulky and obtrusive system may worsen the gait disturbances. Additionally, most experiments utilised a relatively long window length (4 seconds<sup>[10]</sup>, 6 seconds [], and 10 seconds []) for detection, leading to a long delay in FOG detection. Eom et al. [] suggested a simple and fast time-domain method for FOG detection that was comparable to the traditional frequency-domain method with a calculation load of 1,154 times less. This has practical clinical applications.
+The frequency-based features discussed by Baechlin et. al<sup>[10]</sup> are reliable, but they have one major drawback. The large amount of calculations required to perform the Fourier transform needed to analyse frequency-based data means that a digital signal processing chip is required, making it impossible to fit in a small, lightweight unobtrusive system. This would make it impractical for real life detection. For the patients with gait problems, a bulky and obtrusive system may worsen the gait disturbances. Additionally, most experiments utilised a relatively long window length (4 seconds<sup>[10]</sup>, 6 seconds<sup>[]</sup>, and 10 seconds<sup>[]</sup>) for detection, leading to a long delay in FOG detection. Eom et al.<sup>[15]</sup> suggested a simple and fast time-domain method for FOG detection that was comparable to the traditional frequency-domain method with a calculation load of 1,154 times less. This has practical clinical applications.
 
-Previous researchers also have reported the importance of five parameters for the detection of PD. Most notably, Hollman et al.<sup>[15]</sup> have proposed five major domains of gait based on factor analysis:
+Previous researchers also have reported the importance of five parameters for the detection of PD. Most notably, Hollman et al.<sup>[16]</sup> have proposed five major domains of gait based on factor analysis:
 
 1. Rhythm - step and stride time
 2. Phase - gait cycle
@@ -264,48 +268,48 @@ The sampling rate was 100 Hz.
 
 
 ## References
-[1] Braak H, Ghebremedhin E, Rüb U, Bratzke H, Del Tredici K. Stages in the development of Parkinson's disease-related pathology. Cell Tissue Res. 2004 Oct;318(1):121-34. doi: 10.1007/s00441-004-0956-9. Epub 2004 Aug 24. PMID: 15338272.
+[1] [Braak, H., Ghebremedhin, E., Rüb, U., Bratzke, H., & Del Tredici, K. (2004). Stages in the development of Parkinson’s disease-related pathology. <i>Cell and Tissue Research, 318</i>(1), 121–134. https://doi.org/10.1007/s00441-004-0956-9](https://link.springer.com/article/10.1007%2Fs00441-004-0956-9)
 
-[2] Jankovic J. Parkinson’s disease: clinical features and diagnosis. Journal of Neurology, Neurosurgery & Psychiatry 2008;79:368-376.
+[2] [Jankovic, J. (2008). Parkinson’s disease: clinical features and diagnosis. <i>Journal of Neurology, Neurosurgery & Psychiatry, 79</i>(4), 368–376. https://doi.org/10.1136/jnnp.2007.131045](https://jnnp.bmj.com/content/jnnp/79/4/368.full.pdf)
 
-[3] Ferster, M. L., Mazilu, S., & Tröster, G. (2015). Gait Parameters Change Prior to Freezing in Parkinson's Disease: A Data-Driven Study with Wearable Inertial Units. Proceedings of the 10th EAI International Conference on Body Area Networks. doi:10.4108/eai.28-9-2015.2261411
+[3] [Ferster, M. L., Mazilu, S., & Tröster, G. (2015). Gait Parameters Change Prior to Freezing in Parkinson's Disease: A Data-Driven Study with Wearable Inertial Units. <i>Proceedings of the 10th EAI International Conference on Body Area Networks.</i> https://doi.org/10.4108/eai.28-9-2015.2261411](https://eudl.eu/pdf/10.4108/eai.28-9-2015.2261411)
 
-[3] Nutt JG, Bloem BR, Giladi N, et al. Freezing of gait: moving forward on a mysterious clinical phenomenon. Lancet Neurol. 2011;10:734–44.
+[3] [Nutt, J. G., Bloem, B. R., Giladi, N., Hallett, M., Horak, F. B., & Nieuwboer, A. (2011). Freezing of gait: moving forward on a mysterious clinical phenomenon. <i>The Lancet Neurology, 10</i>(8), 734–744. https://doi.org/10.1016/s1474-4422(11)70143-0](https://www.thelancet.com/journals/laneur/article/PIIS1474-4422(11)70143-0/fulltext)
 
-[4] B. R. Bloem, J. M. Hausdorff, J. E. Visser, N. Giladi. Falls and freezing of gait in parkinson's disease: A review of two interconnected, episodic phenomena. Movement Disorders, vol. 19, no. 8, pp. 871–884, 2008.
+[4] [Bloem, B. R., Hausdorff, J. M., Visser, J. E., & Giladi, N. (2004). Falls and freezing of gait in Parkinson’s disease: A review of two interconnected, episodic phenomena. <i>Movement Disorders, 19</i>(8), 871–884. https://doi.org/10.1002/mds.20115](https://onlinelibrary.wiley.com/doi/abs/10.1002/mds.20115)
 
-[5] Moore O, Peretz C, Giladi N. Freezing of gait affects quality of life of peoples with Parkinson's disease beyond its relationships with mobility and gait. Mov Disord. 2007 Nov 15;22(15):2192-5. doi: 10.1002/mds.21659. PMID: 17712856.
+[5] [Moore, O., Peretz, C., & Giladi, N. (2007). Freezing of gait affects quality of life of peoples with Parkinson’s disease beyond its relationships with mobility and gait. <i>Movement Disorders, 22</i>(15), 2192–2195. https://doi.org/10.1002/mds.21659](https://onlinelibrary.wiley.com/doi/abs/10.1002/mds.21659)
 
-[6] Giladi, N., & Hausdorff, J. M. (2006). The role of mental function in the pathogenesis of freezing of gait in Parkinson's disease. Journal of the Neurological Sciences, 248(1-2), 173-176. doi:10.1016/j.jns.2006.05.015
+[6] [Giladi, N., & Hausdorff, J. M. (2006). The role of mental function in the pathogenesis of freezing of gait in Parkinson’s disease. <i>Journal of the Neurological Sciences, 248</i>(1–2), 173–176. https://doi.org/10.1016/j.jns.2006.05.015](https://www.jns-journal.com/article/S0022-510X(06)00207-3/fulltext)
 
-[7] Podsiadlo D, Richardson S. The timed “Up & Go”: a test of basic functional mobility for frail elderly persons. J Am Geriatr Soc. 1991;39(2):142–148.
+[7] [Podsiadlo, D., & Richardson, S. (1991). The Timed “Up & Go”: A Test of Basic Functional Mobility for Frail Elderly Persons. <i>Journal of the American Geriatrics Society, 39</i>(2), 142–148. https://doi.org/10.1111/j.1532-5415.1991.tb01616.x](https://agsjournals.onlinelibrary.wiley.com/doi/abs/10.1111/j.1532-5415.1991.tb01616.x)
 
-[8] M. M. Hoehn and M. D. Yahr. Parkinsonism: onset, progression and mortality. Neurology, vol. 17, no. 5, pp. 427–42, May 1967.
+[8] [Hoehn, M. M., & Yahr, M. D. (1967). Parkinsonism: onset, progression, and mortality. <i>Neurology, 17</i>(5), 427. https://doi.org/10.1212/wnl.17.5.427](https://n.neurology.org/content/neurology/17/5/427.full.pdf)
 
-[9] Rozenfeld, S., Miskovic, A., Nitsch, K. P., & Ehrlich-Jones, L. (2017). Measurement Characteristics and Clinical Utility of the Freezing of Gait Questionnaire in Individuals With Parkinson Disease. Archives of Physical Medicine and Rehabilitation, 98(10), 2106-2107. doi:10.1016/j.apmr.2017.04.027
+[9] [Rozenfeld, S., Miskovic, A., Nitsch, K. P., & Ehrlich-Jones, L. (2017). Measurement Characteristics and Clinical Utility of the Freezing of Gait Questionnaire in Individuals With Parkinson Disease. <i>Archives of Physical Medicine and Rehabilitation, 98</i>(10), 2106–2107. https://doi.org/10.1016/j.apmr.2017.04.027](https://www.archives-pmr.org/action/showPdf?pii=S0003-9993%2817%2930389-1)
 
-[10] Bachlin, M., Plotnik, M., Roggen, D., Maidan, I., Hausdorff, J., Giladi, N., & Troster, G. (2010). Wearable Assistant for Parkinson’s Disease Patients With the Freezing of Gait Symptom. IEEE Transactions on Information Technology in Biomedicine, 14(2), 436-446. doi:10.1109/titb.2009.2036165
+[10] [Bachlin, M., Plotnik, M., Roggen, D., Maidan, I., Hausdorff, J. M., Giladi, N., & Troster, G. (2010). Wearable Assistant for Parkinson’s Disease Patients With the Freezing of Gait Symptom. <i>IEEE Transactions on Information Technology in Biomedicine, 14</i>(2), 436–446. https://doi.org/10.1109/titb.2009.2036165](https://ieeexplore.ieee.org/document/5325884)
 
-[11] Alam, M. N., Garg, A., Munia, T. T., Fazel-Rezai, R., & Tavakolian, K. (2017). Vertical ground reaction force marker for Parkinson’s disease. Plos One, 12(5). doi:10.1371/journal.pone.0175951
+[11] [Alam, M. N., Garg, A., Munia, T. T. K., Fazel-Rezai, R., & Tavakolian, K. (2017). Vertical ground reaction force marker for Parkinson’s disease. <i>PLOS ONE, 12</i>(5), e0175951. https://doi.org/10.1371/journal.pone.0175951](https://storage.googleapis.com/plos-corpus-prod/10.1371/journal.pone.0175951/1/pone.0175951.pdf?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=wombat-sa%40plos-prod.iam.gserviceaccount.com%2F20201225%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20201225T065925Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=2884183c8904747d6bdcfc005d254110358b51e630d3848d4dddf2d707555f7172a2b228108ee0e7363b34152042beae9fb7c5429459324d4b8027252cb320eac10d931e8e5ffa38074c28d5890ad321296dd478b446a55cafe44bc87bd15b3227b41b56fa0460c2f41b5b65c3821662304099805082e0f1c6fd4900a40d25279c1887ed79a2d7de308e5be4f68a72c9cb0d4a5f344911d4e39bea17289ebe0577588a6b8a48567fadbce57196ae407f827b7273007bff8e188830f6ac279c81da2c10000e1b4c441cc43c22bb997b5a886b0b8f0f0f88db0e81f61ff65ed5c126bc556c0d18e9e5cf7b67a3c47a158ee9f41f62e7e0273c9edde8e4fbf55322)
 
-[12] Pinto, C., Schuch, C. P., Balbinot, G., Salazar, A. P., Hennig, E. M., Kleiner, A. F., & Pagnussat, A. S. (2019). Movement smoothness during a functional mobility task in subjects with Parkinson’s disease and freezing of gait – an analysis using inertial measurement units. Journal of NeuroEngineering and Rehabilitation, 16(1). doi:10.1186/s12984-019-0579-8
+[12] [Pinto, C., Schuch, C. P., Balbinot, G., Salazar, A. P., Hennig, E. M., Kleiner, A. F. R., & Pagnussat, A. S. (2019). Movement smoothness during a functional mobility task in subjects with Parkinson’s disease and freezing of gait – an analysis using inertial measurement units. <i>Journal of NeuroEngineering and Rehabilitation, 16</i>(1). https://doi.org/10.1186/s12984-019-0579-8](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6729092/pdf/12984_2019_Article_579.pdf)
 
-[13]  Kuhner, A., Schubert, T., Maurer, C., & Burgard, W. (2017). An online system for tracking the performance of Parkinson's patients. 2017 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS). doi:10.1109/iros.2017.8205977
+[13] [Kuhner, A., Schubert, T., Maurer, C., & Burgard, W. (2017). An online system for tracking the performance of Parkinson’s patients. <i>2017 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS).</i> https://doi.org/10.1109/iros.2017.8205977](https://ieeexplore.ieee.org/document/8205977)
 
-[14]  Aich, S., Pradhan, P., Park, J., Sethi, N., Vathsa, V., & Kim, H. (2018). A Validation Study of Freezing of Gait (FoG) Detection and Machine-Learning-Based FoG Prediction Using Estimated Gait Characteristics with a Wearable Accelerometer. Sensors, 18(10), 3287. doi:10.3390/s18103287
+[14] [Aich, S., Pradhan, P., Park, J., Sethi, N., Vathsa, V., & Kim, H.-C. (2018). A Validation Study of Freezing of Gait (FoG) Detection and Machine-Learning-Based FoG Prediction Using Estimated Gait Characteristics with a Wearable Accelerometer. <i>Sensors, 18</i>(10), 3287. https://doi.org/10.3390/s18103287](https://www.mdpi.com/1424-8220/18/10/3287/pdf)
 
-[15] Eom, G., Kwon, Y., Park, S. H., Kim, J., Ho, Y., Jeon, H., . . . Jeon, H. S. (2014). A practical method for the detection of freezing of gait in patients with Parkinson’s disease. Clinical Interventions in Aging, 1709. doi:10.2147/cia.s69773
+[15] [Eom, G.-M., Kwon, Y., Park, S. H., Kim, J.-W., Ho, Y., Jeon, H.-M., Bang, M.-J., Jung, G.-I., Lee, S.-M., Koh, S.-B., Lee, J.-W., & Jeon, H. S. (2014). A practical method for the detection of freezing of gait in patients with Parkinson’s disease. <i>Clinical Interventions in Aging</i>, 1709. https://doi.org/10.2147/cia.s69773](https://www.dovepress.com/front_end/cr_data/cache/pdf/download_1608880224_5fe59060bcbbf/CIA-69773-a-practical-method-for-the-detection-of-freezing-of-gait-in_100814.pdf)
 
-[] Hollman, J. H., Mcdade, E. M., & Petersen, R. C. (2011). Normative spatiotemporal gait parameters in older adults. Gait & Posture, 34(1), 111-118. doi:10.1016/j.gaitpost.2011.03.024
+[16] [Hollman, J. H., McDade, E. M., & Petersen, R. C. (2011). Normative spatiotemporal gait parameters in older adults. <i>Gait & Posture, 34</i>(1), 111–118. https://doi.org/10.1016/j.gaitpost.2011.03.024](https://www.sciencedirect.com/science/article/abs/pii/S0966636211001019?via%3Dihub)
 
-[] Coste, C. A., Sijobert, B., Pissard-Gibollet, R., Pasquier, M., Espiau, B., & Geny, C. (2014). Detection of Freezing of Gait in Parkinson Disease: Preliminary Results. Sensors, 14(4), 6819-6827. doi:10.3390/s140406819
+[17] [Azevedo Coste, C., Sijobert, B., Pissard-Gibollet, R., Pasquier, M., Espiau, B., & Geny, C. (2014). Detection of Freezing of Gait in Parkinson Disease: Preliminary Results. <i>Sensors, 14</i>(4), 6819–6827. https://doi.org/10.3390/s140406819](https://www.mdpi.com/1424-8220/14/4/6819/pdf)
 
-[] Alcock, L., Galna, B., Perkins, R., Lord, S., & Rochester, L. (2018). Step length determines minimum toe clearance in older adults and people with Parkinson’s disease. Journal of Biomechanics, 71, 30–36. https://doi.org/10.1016/j.jbiomech.2017.12.002
+[18] [Alcock, L., Galna, B., Perkins, R., Lord, S., & Rochester, L. (2018). Step length determines minimum toe clearance in older adults and people with Parkinson’s disease. <i>Journal of Biomechanics, 71</i>, 30–36. https://doi.org/10.1016/j.jbiomech.2017.12.002](https://reader.elsevier.com/reader/sd/pii/S0021929017307066?token=FC40F65219DDA04CC16145A2E8FD5C99B03D72A829DD5532E48A6BA5F694F49E175967594055D8B1527195DB67C832A9)
 
-[] Schlachetzki, J. C., Barth, J., Marxreiter, F., Gossler, J., Kohl, Z., Reinfelder, S., . . . Klucken, J. (2017). Wearable sensors objectively measure gait parameters in Parkinson’s disease. Plos One, 12(10). doi:10.1371/journal.pone.0183989
+[19] [Schlachetzki, J. C. M., Barth, J., Marxreiter, F., Gossler, J., Kohl, Z., Reinfelder, S., Gassner, H., Aminian, K., Eskofier, B. M., Winkler, J., & Klucken, J. (2017). Wearable sensors objectively measure gait parameters in Parkinson’s disease. <i>PLOS ONE, 12</i>(10), e0183989. https://doi.org/10.1371/journal.pone.0183989](https://storage.googleapis.com/plos-corpus-prod/10.1371/journal.pone.0183989/1/pone.0183989.pdf?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=wombat-sa%40plos-prod.iam.gserviceaccount.com%2F20201225%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20201225T083926Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=74e2db2a9d2da293fd7d946027ccef65c575ad5b2213bd234a9e683b4ea33f334d65c3476692842c44e1f426e82959b2f2a2759b8df7995233e25e718545ef7e1739abe7911b9ecd6ec5647a5cda2ebd30e9f6493a5733f643d2177980c58078e58cce7a9d5d48d588ae874fc70e5c22d5c952279497f73bc8f5587b574d7537a5fff8683f0ae78d630be742ddaa4a504bf3b871d11ed3265bf57515fab3b8363dee701cf5646100fc0707b4989316bc83690e3d9e7747cab196d8aa8ce74870f88b53cadf79d2155d640cc71bb977324d0ab8c9163265fdae2f6e60ff472efa30d3b45285364e83f6a8b635372d79e5a8fda9819be5ff18a20d2ff3c47b3fb1)
 
-[] Moore, S. T., Macdougall, H. G., &amp; Ondo, W. G. (2008). Ambulatory monitoring of freezing of gait in Parkinson's disease. Journal of Neuroscience Methods, 167(2), 340-348. doi:10.1016/j.jneumeth.2007.08.023
+[20] [Moore, S. T., MacDougall, H. G., & Ondo, W. G. (2008). Ambulatory monitoring of freezing of gait in Parkinson’s disease. <i>Journal of Neuroscience Methods, 167</i>(2), 340–348. https://doi.org/10.1016/j.jneumeth.2007.08.023](https://www.sciencedirect.com/science/article/abs/pii/S0165027007004281?via%3Dihub)
 
-[] Morris, T. R., Cho, C., Dilda, V., Shine, J. M., Naismith, S. L., Lewis, S. J., & Moore, S. T. (2012). A comparison of clinical and objective measures of freezing of gait in Parkinson's disease. Parkinsonism & Related Disorders, 18(5), 572-577. doi:10.1016/j.parkreldis.2012.03.001
+[21] [Morris, T. R., Cho, C., Dilda, V., Shine, J. M., Naismith, S. L., Lewis, S. J. G., & Moore, S. T. (2012). A comparison of clinical and objective measures of freezing of gait in Parkinson’s disease. <i>Parkinsonism & Related Disorders, 18</i>(5), 572–577. https://doi.org/10.1016/j.parkreldis.2012.03.001](https://www.prd-journal.com/article/S1353-8020(12)00077-6/fulltext)
 
-[] Goldberger, A., Amaral, L., Glass, L., Hausdorff, J., Ivanov, P. C., Mark, R., ... & Stanley, H. E. (2000). PhysioBank, PhysioToolkit, and PhysioNet: Components of a new research resource for complex physiologic signals. Circulation [Online]. 101 (23), pp. e215–e220.
+[22] [Goldberger, A. L., Amaral, L. A. N., Glass, L., Hausdorff, J. M., Ivanov, P. C., Mark, R. G., Mietus, J. E., Moody, G. B., Peng, C.-K., & Stanley, H. E. (2000). PhysioBank, PhysioToolkit, and PhysioNet. <i>Circulation, 101</i>(23), 1. https://doi.org/10.1161/01.cir.101.23.e215](https://www.ahajournals.org/doi/pdf/10.1161/01.CIR.101.23.e215)
