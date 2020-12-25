@@ -157,6 +157,8 @@ Hence, in this study, the focus will be on gait velocity, stride time and gait c
 
 ## Methodology
 
+Accelerometers have been chosen to be the main focus of the data analysis as they are very versatile. Research has shown that accelerometers can be used to determine stride time, gait cycle and gait velocity. Hence, they would be a good starting point.
+
 ### _DAPHNet Dataset_
 In our main investigation, we employed the DAPHNet Dataset, which is the result of a study done by Baechlin et al.<sup>[10]</sup>, carried out by the Laboratory for Gait and Neurodynamics, Department of Neurology, Tel Aviv Sourasky Medical Center (TASMC). In this experiment, 17 samples were derived frrom 10 PD patients with varying H&Y scales who were made to do various walking tasks, including walking back and forth in a straight line, doing several 180 degrees turns, random walking including a series of initiated stops and 360 degree turns and walking simulating daily activities. Daily activities refer to entering and leaving rooms, getting something to drink and returning to the starting room with the cup of water. 
 
@@ -191,7 +193,15 @@ For the investigation, we employed the Linear and Gaussian Kernels and tested th
 ### _Arduino Program_
 Our Program was developed using Arduino's `.ino` programming language based off the C++ programming language. To get the best SVM model, we used a program called sklearn-porter<sup>[25]</sup> developed by Darius Morawies, which converted the trained SVM model to C code which was saved as a `model.h` file. This model was accessed by the Arduino Program, which also computed the freeze values.
 
+<p align="center">
+  <img src="./arduino/arduinoPinout.png" height="220" alt="Arduino Pinout Diagram">
+</p>
+
 This study utilises an Arduino Nano 33 BLE board that is attached to an elastic strap. It contains a 9-axial IMU, comprising a 3D accelerometer, 3D gyroscope and 3D magnetometer. In our program, upon a certain freeze event predicted by the SVM, the built-in light-emitting diode (LED).
+
+<p align="center">
+  <img src="./arduino/built-in LED.PNG" height="220" alt="Arduino Pinout Diagram">
+</p>
 
 ---
 
