@@ -276,9 +276,9 @@ The sampling rate was 100 Hz.
 
 [3] [Nutt, J. G., Bloem, B. R., Giladi, N., Hallett, M., Horak, F. B., & Nieuwboer, A. (2011). Freezing of gait: moving forward on a mysterious clinical phenomenon. <i>The Lancet Neurology, 10</i>(8), 734–744. https://doi.org/10.1016/s1474-4422(11)70143-0](https://www.thelancet.com/journals/laneur/article/PIIS1474-4422(11)70143-0/fulltext)
 
-[4] B. R. Bloem, J. M. Hausdorff, J. E. Visser, N. Giladi. Falls and freezing of gait in parkinson's disease: A review of two interconnected, episodic phenomena. Movement Disorders, vol. 19, no. 8, pp. 871–884, 2008.
+[4] [Bloem, B. R., Hausdorff, J. M., Visser, J. E., & Giladi, N. (2004). Falls and freezing of gait in Parkinson’s disease: A review of two interconnected, episodic phenomena. <i>Movement Disorders, 19</i>(8), 871–884. https://doi.org/10.1002/mds.20115](https://onlinelibrary.wiley.com/doi/abs/10.1002/mds.20115)
 
-[5] Moore O, Peretz C, Giladi N. Freezing of gait affects quality of life of peoples with Parkinson's disease beyond its relationships with mobility and gait. Mov Disord. 2007 Nov 15;22(15):2192-5. doi: 10.1002/mds.21659. PMID: 17712856.
+[5] [Moore, O., Peretz, C., & Giladi, N. (2007). Freezing of gait affects quality of life of peoples with Parkinson’s disease beyond its relationships with mobility and gait. <i>Movement Disorders, 22</i>(15), 2192–2195. https://doi.org/10.1002/mds.21659](https://onlinelibrary.wiley.com/doi/abs/10.1002/mds.21659)
 
 [6] Giladi, N., & Hausdorff, J. M. (2006). The role of mental function in the pathogenesis of freezing of gait in Parkinson's disease. Journal of the Neurological Sciences, 248(1-2), 173-176. doi:10.1016/j.jns.2006.05.015
 
