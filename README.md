@@ -268,13 +268,13 @@ The sampling rate was 100 Hz.
 
 
 ## References
-[1] Braak H, Ghebremedhin E, Rüb U, Bratzke H, Del Tredici K. Stages in the development of Parkinson's disease-related pathology. Cell Tissue Res. 2004 Oct;318(1):121-34. doi: 10.1007/s00441-004-0956-9. Epub 2004 Aug 24. PMID: 15338272.
+[1] [Braak, H., Ghebremedhin, E., Rüb, U., Bratzke, H., & Del Tredici, K. (2004). Stages in the development of Parkinson’s disease-related pathology. <i>Cell and Tissue Research, 318</i>(1), 121–134. https://doi.org/10.1007/s00441-004-0956-9](https://link.springer.com/article/10.1007%2Fs00441-004-0956-9)
 
-[2] Jankovic J. Parkinson’s disease: clinical features and diagnosis. Journal of Neurology, Neurosurgery & Psychiatry 2008;79:368-376.
+[2] [Jankovic, J. (2008). Parkinson’s disease: clinical features and diagnosis. <i>Journal of Neurology, Neurosurgery & Psychiatry, 79</i>(4), 368–376. https://doi.org/10.1136/jnnp.2007.131045](https://jnnp.bmj.com/content/jnnp/79/4/368.full.pdf)
 
-[3] Ferster, M. L., Mazilu, S., & Tröster, G. (2015). Gait Parameters Change Prior to Freezing in Parkinson's Disease: A Data-Driven Study with Wearable Inertial Units. Proceedings of the 10th EAI International Conference on Body Area Networks. doi:10.4108/eai.28-9-2015.2261411
+[3] [Ferster, M. L., Mazilu, S., & Tröster, G. (2015). Gait Parameters Change Prior to Freezing in Parkinson's Disease: A Data-Driven Study with Wearable Inertial Units. <i>Proceedings of the 10th EAI International Conference on Body Area Networks.</i> https://doi.org/10.4108/eai.28-9-2015.2261411](https://eudl.eu/pdf/10.4108/eai.28-9-2015.2261411)
 
-[3] Nutt JG, Bloem BR, Giladi N, et al. Freezing of gait: moving forward on a mysterious clinical phenomenon. Lancet Neurol. 2011;10:734–44.
+[3] [Nutt, J. G., Bloem, B. R., Giladi, N., Hallett, M., Horak, F. B., & Nieuwboer, A. (2011). Freezing of gait: moving forward on a mysterious clinical phenomenon. <i>The Lancet Neurology, 10</i>(8), 734–744. https://doi.org/10.1016/s1474-4422(11)70143-0](https://www.thelancet.com/journals/laneur/article/PIIS1474-4422(11)70143-0/fulltext)
 
 [4] B. R. Bloem, J. M. Hausdorff, J. E. Visser, N. Giladi. Falls and freezing of gait in parkinson's disease: A review of two interconnected, episodic phenomena. Movement Disorders, vol. 19, no. 8, pp. 871–884, 2008.
 
