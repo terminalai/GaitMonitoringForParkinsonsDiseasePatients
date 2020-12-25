@@ -1,5 +1,9 @@
 # Gait Monitoring and Analysis for Parkinson's Disease Patients
-Nallapuraju Ananya, Ye Chen Rui and Prannaya Gupta
+By: Nallapuraju Ananya, Ye Chen Rui and Prannaya Gupta
+
+<p align="center">
+  <img src="./logos/Gait%20Monitoring%20and%20Analysis%20for%20Parkinson's%20Patients%20Logo.png" width="438" height="439" alt="Gait Monitoring and Analysis for Parkinson's Disease Patients">
+</p>
 
 
 **Research Mentor**: Professor Arthur Tay
