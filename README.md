@@ -59,11 +59,13 @@ To make use of signal processing algorithms in extracting gait parameters from m
 ### Methodology
 Students will first need to review and understands how to extract gait parameters from motion sensors. There are different algorithms in the literature and they will need to investigate which is most suitable. They will then make use of a PD patient public dataset to test out their methods. If time permits, they will learn basic machine learning tools for classification.
 
+## Abstract
+
+Parkinson’s disease (PD) is a neurodegenerative disorder that affects the dopamine producing neurons in the substantia nigra, an area of the brain, leading to shaking, stiffness and difficulty walking. Parkinson’s patients frequently exhibit the debilitating condition freezing of gait (FOG), which is when patients cannot move their feet forward despite the intention to walk. While the feet remain in place, the torso still has forward momentum, making falls very common. At the start, FOG can be triggered by stress, tight spaces or a sudden change in direction. As the disease progresses, this happens more frequently, a fact extremely detrimental to the patient’s health and mental well-being.
+
 ## Introduction
 
-### Parkinson’s Disease and Freezing of Gait
-
-Parkinson’s Disease (PD) is a progressive nervous system disorder that affects the basal ganglia, resulting in the progressive loss of dopamine neurotransmitters and poorer connection between the central nervous system and muscles<sup>[1]</sup>. This leads to many gait abnormalities, mainly tremors, bradykinesia, rigidity and a loss of postural reflexes. Secondary motor symptoms that are evoked include stride length reduction, shuffling gait, step festination and freezing<sup>[2,3]</sup>. Freezing of Gait (FOG) is one of the most debilitating effects of PD and is defined as a brief, episodic absence or marked reduction of forward progression of the feet despite the intention to walk<sup>[3]</sup>. It has serious social and clinical consequences for patients as it leads to falls<sup>[4]</sup>, interferes with daily activities and significantly impacts quality of life<sup>[5]</sup>. While FOG can happen anytime, it happens most often during turns, before gait initiation, in tight quarters such as doorways and in stressful situations<sup>[6]</sup>. It is triggered by visual stimulation.
+Parkinson’s Disease (PD) is a progressive nervous system disorder that affects the basal ganglia, resulting in the progressive loss of dopamine neurotransmitters and poorer connection between the central nervous system and muscles<sup>[1]</sup>. This leads to many gait abnormalities, mainly tremors, bradykinesia, rigidity, and a loss of postural reflexes. Secondary motor symptoms that are evoked include stride length reduction, shuffling gait, step festination and freezing<sup>[2,3]</sup>. Freezing of Gait (FOG) is one of the most debilitating effects of PD and is defined as a brief, episodic absence or marked reduction of forward progression of the feet despite the intention to walk<sup>[3]</sup>. It has serious social and clinical consequences for patients as it leads to falls<sup>[4]</sup>, interferes with daily activities and significantly impacts quality of life<sup>[5]</sup>. While FOG can happen anytime, it happens most often during turns, before gait initiation, in tight quarters such as doorways and in stressful situations<sup>[6]</sup>. It is triggered by visual stimulation.
 
 Currently, FOG characterization is done using two main methods. In the first method, FOG is quantified by gait tests such as the timed up and go (TUG) test and the Hoehn and Yahr (H&Y) scale. The TUG test measures in seconds how long a patient takes to stand up from their chair, walk 3m past a line, turn around, walk back and sit down<sup>[7]</sup>. On the other hand, the H&Y scale has 5 stages to indicate levels of disability<sup>[8]</sup>: 
 
@@ -73,35 +75,39 @@ Currently, FOG characterization is done using two main methods. In the first met
 - Stage 4: Severe disability, but still able to walk or stand unassisted. 
 - Stage 5: Wheelchair-bound or bedridden unless assisted.
 
-In the second method, individual questionnaires are used. The Freezing Of Gait Questionnaire (FOG-Q) is a notable one, comprising 6 questions and utilising a 5-point scale to rank symptom severity<sup>[9]</sup>. However, both methods are highly inefficient in measuring FOG as it is highly sensitive to environmental triggers, medication and the patient’s mental state. Therefore, there has been research into using wearable inertial measurement units (IMUs) to display exactly the gait types of PD patients. 
+In the second method, individual questionnaires are used. The Freezing Of Gait Questionnaire (FOG-Q) is a notable one, comprising 6 questions and utilising a 5-point scale to rank symptom severity<sup>[9]</sup>. 
 
-### Contribution
+However, both methods are highly inefficient in measuring FOG as it is highly sensitive to environmental triggers, medication and the patient’s mental state. Therefore, there has been research into using wearable inertial measurement units (IMUs) to display exactly the gait types of PD patients. 
 
-This study aims to compare all the ways of measuring FOG and determine the best parameter to utilise while creating an algorithm for data analysis. The comfort of the patient and the ease and accuracy in which the parameter can predict FOG will be taken into account in this study.
+## Aims and Objectives
 
-## Related work
+This study aims to compare all the ways of measuring FOG and determine the best parameter to utilise while creating an algorithm for data analysis. The comfort of the patient and the ease and accuracy in which the parameter can predict FOG will be taken into account in this study. Ultimately, a prototype that fulfils all these requirements will be made.
 
-### Utilisation of IMUs in analysis
-This section reports previous studies which have explored the application of motion sensors on PD patients to accurately predict FOG. Ferster et al.<sup>[3]</sup> placed 9-axis IMUs (comprising 3D accelerometers, 3D gyroscopes and 3D magnetometers) on both ankles of the subjects to extract gait features such as stride length and stride duration. Moreover, as FOG exhibits unique frequency ranges, they introduce and discuss frequency features such as dominant frequency, dominant frequency amplitude and the inverse of the dominant frequency slope of the acceleration data to quantify changes in gait quality. Ferster was able to show specific changes in the stride duration, stride length, dominant frequency and the inverse of the dominant frequency slope with up to four seconds prior to FoG on all subjects. Baechlin et al.<sup>[10]</sup> proposed placing accelerometers at three different parts of the body: the ankle, the thigh and the lower back to more accurately predict FOG. Alam et al.<sup>[11]</sup> analyzed the vertical ground reaction force using force insoles in patients’ shoes to display gait cycles. Pinto et al.<sup>[12]</sup> again utilised accelerometers and gyroscopes to determine stride time, this time placing the accelerometer at the shank. Many works have also tried utilising motion capture systems to annotate FOG events, synchronising sensor data and computer analysis to make way for machine learning algorithms. Kuhner et al.<sup>[13]</sup> performed this experiment, setting up 12 cameras as well as utilising an inertial measurement suit to create a ‘live’ system that reduces the latency of data processing.
+## Literature Review
+
+### _Utilisation of IMUs in analysis_
+This section reports previous studies which have explored the application of motion sensors on PD patients to accurately predict FOG. Ferster et al.<sup>[3]</sup> placed 9-axis IMUs (comprising 3D accelerometers, 3D gyroscopes and 3D magnetometers) on both ankles of the subjects to extract gait features such as stride length and stride duration. Moreover, as FOG exhibits unique frequency ranges, they introduce and discuss frequency features such as dominant frequency, dominant frequency amplitude and the inverse of the dominant frequency slope of the acceleration data to quantify changes in gait quality. Ferster was able to show specific changes in the stride duration, stride length, dominant frequency and the inverse of the dominant frequency slope with up to four seconds prior to FoG on all subjects. Baechlin et al.<sup>[10]</sup> proposed placing accelerometers at three different parts of the body: the ankle, the thigh and the lower back to more accurately predict FOG. Alam et al.<sup>[11]</sup> analyzed the vertical ground reaction force using force insoles in patients’ shoes to display gait cycles. Pinto et al.<sup>[12]</sup> again utilised accelerometers and gyroscopes to determine stride time, this time placing the accelerometer at the shank. 
+
+Many works have also tried utilising motion capture systems to annotate FOG events, synchronising sensor data and computer analysis to make way for machine learning algorithms. Kuhner et al.<sup>[13]</sup> performed this experiment, setting up 12 cameras as well as utilising an inertial measurement suit to create a ‘live’ system that reduces the latency of data processing.
 
 The above literature confirms the success of utilising accelerometers, gyroscopes and force insoles to effectively differentiate FOG from normal gait and has greatly helped in designing the proposed approach for this study.
 
-### Machine learning approaches to detecting PD
-Aich et al.<sup>[14]</sup> have done a comprehensive review of the following four different types of machine learning algorithms: 
+### _Machine learning approaches to detecting PD_
+Aich et al.<sup>[14]</sup> have done a comprehensive review of the following four different types of machine learning algorithms in classifying patients with FOG or no FOG: 
 
-- support vector machine (SVM)
-- k-nearest neighbour (kNN)
-- decision tree (DT)
+- Support Vector Machine (SVM)
+- k-Nearest Neighbour (kNN)
+- Decision Tree (DT)
 - Naïve Bayes (NB) 
 
-in classifying patients with FOG or no FOG. They found that the SVM classifier with radial basis function provides the highest accuracy of 91.42% as well as the highest sensitivity and specificity of 90.89% and 91.21% respectively. 
+They found that the SVM classifier with radial basis function provides the highest accuracy of 91.42% as well as the highest sensitivity and specificity of 90.89% and 91.21% respectively. 
 
 Eom et al.<sup>[15]</sup> used thresholds to classify FOG and non-FOG states. The number of thresholds varied, increasing by two for every dimension added. The range between two thresholds was used to determine FOG states for 1D data while six thresholds were required for 3D data. Additionally, three FOG states (FOG: 1, non-FOG: 0) were “AND” operated to determine final FOG.
 
-### Gait parameters to be analysed
-The frequency-based features discussed by Baechlin et. al<sup>[10]</sup> are reliable, but they have one major drawback. The large amount of calculations required to perform the Fourier transform needed to analyse frequency-based data means that a digital signal processing chip is required, making it impossible to fit in a small, lightweight unobtrusive system. This would make it impractical for real life detection. For the patients with gait problems, a bulky and obtrusive system may worsen the gait disturbances. Additionally, most experiments utilised a relatively long window length (4 seconds<sup>[10]</sup>, 6 seconds<sup>[]</sup>, and 10 seconds<sup>[]</sup>) for detection, leading to a long delay in FOG detection. Eom et al.<sup>[15]</sup> suggested a simple and fast time-domain method for FOG detection that was comparable to the traditional frequency-domain method with a calculation load of 1,154 times less. This has practical clinical applications.
+### _Gait parameters to be analysed_
+The frequency-based features discussed by Baechlin et. al<sup>[10]</sup> are reliable, but they have one major drawback. The large amount of calculations required to perform the Fast Fourier Transform (FFT) algorithm needed to analyse frequency-based data means that a digital signal processing chip is required, making it impossible to fit in a small, lightweight unobtrusive system. This would make it impractical for real life detection. For the patients with gait problems, a bulky and obtrusive system may worsen the gait disturbances. Additionally, most experiments utilised a relatively long window length (4 seconds<sup>[10]</sup>, 6 seconds<sup>[16]</sup>, and 10 seconds<sup>[17]</sup>) for detection, leading to a long delay in FOG detection. Eom et al.<sup>[15]</sup> suggested a simple and fast time-domain method for FOG detection that was comparable to the traditional frequency-domain method with a calculation load of 1,154 times less. This has practical clinical applications.
 
-Previous researchers also have reported the importance of five parameters for the detection of PD. Most notably, Hollman et al.<sup>[16]</sup> have proposed five major domains of gait based on factor analysis:
+Previous researchers also have reported the importance of five parameters for the detection of PD. Most notably, Hollman et al.<sup>[18]</sup> have proposed five major domains of gait based on factor analysis:
 
 1. Rhythm - step and stride time
 2. Phase - gait cycle
@@ -109,8 +115,38 @@ Previous researchers also have reported the importance of five parameters for th
 4. Pace - gait speed, stride and step length
 5. Base of support - step width.
 
-Others have confirmed the importance of determining the spatiotemporal parameters. Alcock et al.<sup>[16]</sup>, Coste et al.<sup>[17]</sup> and Schlachetzki et al.<sup>[18]</sup> have all discussed the importance of stride length, stride time and gait velocity in distinguishing PD patients from healthy older adults. This narrowing down of gait parameters has helped in the focus of this study.
+Others have confirmed the importance of determining the spatiotemporal parameters. Alcock et al.<sup>[19]</sup>, Coste et al.<sup>[20]</sup> and Schlachetzki et al.<sup>[21]</sup> have all discussed the importance of stride length, stride time and gait velocity in distinguishing PD patients from healthy older adults.
 
+Hence, in this study, the focus will be on gait velocity, stride time and gait cycle. They will be compared by analysing acceleration data and vertical ground reaction force (VGRF) data from three sources.
+
+## Analysis of public PD Patients' Datasets
+
+### _DAPHNet Dataset_
+In our main investigation, we employed the DAPHNet Dataset, which is the result of a study done by Baechlin et al.<sup>[10]</sup>, carried out by the Laboratory for Gait and Neurodynamics, Department of Neurology, Tel Aviv Sourasky Medical Center (TASMC). In this experiment, 10 PD patients with varying H&Y scales were made to do various walking tasks, including walking back and forth in a straight line, doing several 180 degrees turns, random walking including a series of initiated stops and 360 degree turns and walking simulating daily activities. Daily activities refer to entering and leaving rooms, getting something to drink and returning to the starting room with the cup of water.  Data was recorded using three 3D acceleration sensors attached to the shank, thigh and the lower back of each subject. The sensors recorded at 64Hz and transmitted the acceleration data via a Bluetooth link to a wearable computing system that was located at the lower back of the subjects. Patient data is summarised in a table below.
+
+
+<p align="center">
+  <img src="./daphnet/demographics.PNG" alt="demographics" width="640"><br/>
+  <b>Figure 1. Table showing gender, age, disease duration and H&Y scale of PD patients in DAPHNet dataset</b>
+</p>
+
+However, there are limitations to the dataset. Patient 08 and Patient 01 both suffered from walking difficulties due to disease severity and foot drop respectively. Hence, the system was unable to distinguish between walking periods and very short freezing events.
+
+### _Algorithm used for Data Analysis_
+This study uses a threshold-based algorithm to analyse datasets. Moore et al.<sup>[23]</sup> defined the freeze index (FI) as the power ratio of freeze band (0.5–3.0 Hz) to locomotor band (3–8 Hz) derived from the frequency spectrum and identified FOG episodes at the time periods when FI exceeds a certain threshold. The code uses an updated form of Moore’s algorithm, where it calculates the Freeze Index from data from a specific axis (horizontal forward, horizontal lateral and vertical) by performing windowing with a length of 256 data points and steps up 32 data points. After performing a mean normalisation, the code finds the Fast Fourier Transform of the data and uses that to compute the Freeze Index and supposed Power Spectral Density (PSD). After this, it accounts for a standing case where the PSD<sub>threshold</sub> = 2<sup>11.5</sup>, and in cases where it is below this threshold, the freeze index becomes zero. After this, the Freeze Index with a threshold of 1.5 is used such that a freeze index greater than the threshold is considered FOG. 
+
+
+
+## Materials and Methods
+
+In this investigation, we used the 
+
+
+
+
+
+
+---
 
 ## [GaitDB Dataset](https://www.physionet.org/content/gaitdb/1.0.0/)
 
