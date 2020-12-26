@@ -155,12 +155,12 @@ Overall, the following is a summary of gait parameters found in our research.
 
 Hence, in this study, the focus will be on gait velocity, stride time and gait cycle. They will be compared by analysing acceleration data and vertical ground reaction force (VGRF) data from three sources.
 
-## Methodology
+## Materials and Methods
 
 Accelerometers have been chosen to be the main focus of the data analysis as they are very versatile. Research has shown that accelerometers can be used to determine stride time, gait cycle and gait velocity. Hence, they would be a good starting point.
 
 ### _DAPHNet Dataset_
-In our main investigation, we employed the DAPHNet Dataset, which is the result of a study done by Baechlin et al.<sup>[10]</sup>, carried out by the Laboratory for Gait and Neurodynamics, Department of Neurology, Tel Aviv Sourasky Medical Center (TASMC). In this experiment, 17 samples were derived frrom 10 PD patients with varying H&Y scales who were made to do various walking tasks, including walking back and forth in a straight line, doing several 180 degrees turns, random walking including a series of initiated stops and 360 degree turns and walking simulating daily activities. Daily activities refer to entering and leaving rooms, getting something to drink and returning to the starting room with the cup of water. 
+In our main investigation, we employed the Daphnet Freezing of Gait Dataset in users with Parkinson's disease (hereafter known as the DAPHNet Dataset), which is the result of a study done by Baechlin et al.<sup>[10]</sup>, carried out by the Laboratory for Gait and Neurodynamics, Department of Neurology, Tel Aviv Sourasky Medical Center (TASMC). In this experiment, 17 samples were derived frrom 10 PD patients with varying H&Y scales who were made to do various walking tasks, including walking back and forth in a straight line, doing several 180 degrees turns, random walking including a series of initiated stops and 360 degree turns and walking simulating daily activities. Daily activities refer to entering and leaving rooms, getting something to drink and returning to the starting room with the cup of water. 
 
 Data was recorded using three 3D acceleration sensors attached to the shank, thigh and the lower back of each subject. The sensors recorded at 64Hz and transmitted the acceleration data via a Bluetooth link to a wearable computing system that was located at the lower back of the subjects. Patient data is summarised in a table below.
 
@@ -200,8 +200,23 @@ Our Program was developed using Arduino's `.ino` programming language based off 
 This study utilises an Arduino Nano 33 BLE board that is attached to an elastic strap. It contains a 9-axial IMU, comprising a 3D accelerometer, 3D gyroscope and 3D magnetometer. In our program, upon a certain freeze event predicted by the SVM, the built-in light-emitting diode (LED).
 
 <p align="center">
-  <img src="./arduino/built-in LED.PNG" height="220" alt="Arduino Pinout Diagram">
+  <img src="./arduino/built-in LED.PNG" height="220" alt="Arduino Pinout Diagram with Built-In LED Information">
 </p>
+
+
+## Results
+Dstaset stuff.
+
+
+
+We performed the signal processing algorithms and got the postulated function arrays for freeze(X), freeze(Y) and freeze(Z). We merged all 17 samples and took this as the main argument _X_ in the supervised machine learning structure. From here, we also took a provided freeze value for each point given by the dataset itself. This functioned as the _y_ argument. Below, all freeze indices are plotted against one another.
+
+<!--
+<p align="center">
+  <img src="./arduino/built-in LED.PNG" height="220" alt="Arduino Pinout Diagram with Built-In LED Information">
+</p>
+-->
+
 
 ---
 
