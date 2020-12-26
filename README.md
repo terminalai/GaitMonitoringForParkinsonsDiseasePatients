@@ -143,7 +143,7 @@ Others have confirmed the importance of determining the spatiotemporal parameter
 Overall, the following is a summary of gait parameters found in our research.
 
 | Gait abnormalities | Definition |
-| --- | --- | --- |
+| --- | --- |
 | Step Festination | Shortening of steps |
 | Decrease in Stride Duration | Decrease in the time difference between two consecutive detected acceleration peaks of the same leg |
 | Postural Instability | Loss of balance |
