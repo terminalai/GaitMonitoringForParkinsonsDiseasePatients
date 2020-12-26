@@ -105,6 +105,7 @@ Based on our research, we were able to consolidate a list of the main IMUs that 
 | Gyroscope | Measuring angular velocity | Step Festination, Gait Asymmetry |
 | Flexible Goniometer | Measuring body joint angles | Flat Foot Strike |
 | Force- sensitive Insole | Measuring the tension and compression forces that act on the sensor | Gait Cycle (not accurate for PD patients who suffer from flat footedness) |
+<p align="center"><b>Table 1: Table of IMUs found in our literature review</b></p>
 
 
 Many works have also tried utilising motion capture systems to annotate FOG events, synchronising sensor data and computer analysis to make way for machine learning algorithms. Kuhner et al.<sup>[13]</sup> performed this experiment, setting up 12 cameras as well as utilising an inertial measurement suit to create a ‘live’ system that reduces the latency of data processing.
@@ -151,6 +152,7 @@ Overall, the following is a summary of gait parameters found in our research.
 | Stride Length Reduction | Reduction in distance between each stride/step |
 | Decreased Cadence | Decrease in number of steps taken per unit time |
 | Gait Asymmetry | Difference in gait between the two legs of patient |
+<p align="center"><b>Table 2: Summary of Gait parameters found in our research</b></p>
 
 
 Hence, in this study, the focus will be on gait velocity, stride time and gait cycle. They will be compared by analysing acceleration data and vertical ground reaction force (VGRF) data from three sources.
@@ -166,7 +168,7 @@ Data was recorded using three 3D acceleration sensors attached to the shank, thi
 
 <p align="center">
   <img src="./descriptions/daphnet/demographics.PNG" alt="demographics" width="640"><br/>
-  <b>Figure 1. Table showing gender, age, disease duration and H&Y scale of PD patients in DAPHNet dataset</b>
+  <b>Table 3: Table showing gender, age, disease duration and H&Y scale of PD patients in DAPHNet dataset</b>
 </p>
 
 However, there are limitations to the dataset. Patient 08 and Patient 01 both suffered from walking difficulties due to disease severity and foot drop respectively. Hence, the system was unable to distinguish between walking periods and very short freezing events.
@@ -194,13 +196,15 @@ For the investigation, we employed the Linear and Gaussian Kernels and tested th
 Our Program was developed using Arduino's `.ino` programming language based off the C++ programming language. To get the best SVM model, we used a program called sklearn-porter<sup>[25]</sup> developed by Darius Morawies, which converted the trained SVM model to C code which was saved as a `model.h` file. This model was accessed by the Arduino Program, which also computed the freeze values.
 
 <p align="center">
-  <img src="./arduino/arduinoPinoutLandscape.png" width="220" alt="Arduino Pinout Diagram">
+  <img src="./arduino/arduinoPinoutLandscape.png" width="220" alt="Arduino Pinout Diagram"><br/>
+  <b>Figure 2: The Arduino Nano 33 BLE Pinout Diagram</b>
 </p>
 
 This study utilises an Arduino Nano 33 BLE board that is attached to an elastic strap. It contains a 9-axial IMU, comprising a 3D accelerometer, 3D gyroscope and 3D magnetometer. In our program, upon a certain freeze event predicted by the SVM, the built-in light-emitting diode (LED).
 
 <p align="center">
-  <img src="./arduino/built-in LED.PNG" height="220" alt="Arduino Pinout Diagram with Built-In LED Information">
+  <img src="./arduino/built-in LED.PNG" height="220" alt="Arduino Pinout Diagram with Built-In LED Information"><br/>
+  <b>Figure 3: Location of the built-in LED in the Arduino Nano 33 BLE Pinout Diagram</b>
 </p>
 
 
@@ -233,7 +237,7 @@ Data were collected from the healthy subjects as they walked in a roughly circul
 ### Method Used
 We calculated the variance of the data and were able to find a correlation between the variance and the diagnosis. 
 
-![variance](images/graphs/varianceOfStrideTime.png)
+![variance](plot/gaitdb/varianceOfStrideTime.png)
 
 Based on this result, we employed a rather simplistic classification algorithm using Logistic Regression to find a value that corresponded. 
 
