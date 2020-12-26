@@ -194,7 +194,7 @@ For the investigation, we employed the Linear and Gaussian Kernels and tested th
 Our Program was developed using Arduino's `.ino` programming language based off the C++ programming language. To get the best SVM model, we used a program called sklearn-porter<sup>[25]</sup> developed by Darius Morawies, which converted the trained SVM model to C code which was saved as a `model.h` file. This model was accessed by the Arduino Program, which also computed the freeze values.
 
 <p align="center">
-  <img src="./arduino/arduinoPinout.png" height="220" alt="Arduino Pinout Diagram">
+  <img src="./arduino/arduinoPinoutLandscape.png" width="220" alt="Arduino Pinout Diagram">
 </p>
 
 This study utilises an Arduino Nano 33 BLE board that is attached to an elastic strap. It contains a 9-axial IMU, comprising a 3D accelerometer, 3D gyroscope and 3D magnetometer. In our program, upon a certain freeze event predicted by the SVM, the built-in light-emitting diode (LED).
