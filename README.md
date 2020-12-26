@@ -237,7 +237,9 @@ Data were collected from the healthy subjects as they walked in a roughly circul
 ### Method Used
 We calculated the variance of the data and were able to find a correlation between the variance and the diagnosis. 
 
-![variance](plots/gaitdb/varianceOfStrideTime.png)
+<p align="center">
+  <img src="./plots/gaitdb/varianceOfStrideTime.png" alt="variance">
+</p>
 
 Based on this result, we employed a rather simplistic classification algorithm using Logistic Regression to find a value that corresponded. 
 
