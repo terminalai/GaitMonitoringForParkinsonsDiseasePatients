@@ -202,35 +202,3 @@ Specificity: 0.9999611869044616
 Precision: 0.8666666666666667
 Recall: 0.0023581340508510447
 F1: 0.004703470316881238
-
-
-
-
-sigmoid
-freezeXY
-
-              precision    recall  f1-score   support
-
-         0.0       0.89      0.70      0.78    309174
-         1.0       0.07      0.22      0.11     33077
-
-    accuracy                           0.65    342251
-   macro avg       0.48      0.46      0.45    342251
-weighted avg       0.81      0.65      0.72    342251
-
-
-
-tp:  7375 , fp:  93189 fn:  25702 tn:  215985
-Accuracy: 0.652620445228794
-
-Sensitivity: 0.2229645977567494
-Specificity: 0.698587203322401
-
-Precision: 0.07333638280100235
-Recall: 0.2229645977567494
-F1: 0.11037032048547976
-
-
-
-
-freezeXZ
