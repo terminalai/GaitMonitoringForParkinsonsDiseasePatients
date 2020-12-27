@@ -1,5 +1,5 @@
-rbf
-freezeXY
+# rbf
+## freezeXY
 
               precision    recall  f1-score   support
 
@@ -25,7 +25,7 @@ F1: 0.2750268208368101
 
 
 
-freezeXZ
+## freezeXZ
 
               precision    recall  f1-score   support
 
@@ -51,7 +51,7 @@ F1: 0.2864731549990514
 
 
 
-freezeYZ
+## freezeYZ
 
               precision    recall  f1-score   support
 
@@ -77,7 +77,7 @@ F1: 0.2622560916415882
 
 
 
-freeze
+## freeze
               precision    recall  f1-score   support
 
          0.0       0.93      0.99      0.96    309174
@@ -102,8 +102,8 @@ F1: 0.3824091778202677
 
 
 
-linear
-freezeXY
+# linear
+## freezeXY
 
               precision    recall  f1-score   support
 
@@ -129,7 +129,7 @@ F1: 0.0
 
 
 
-freezeXZ
+## freezeXZ
 
               precision    recall  f1-score   support
 
@@ -155,7 +155,7 @@ F1: 0.32873346709798945
 
 
 
-freezeYZ
+## freezeYZ
 
               precision    recall  f1-score   support
 
@@ -181,7 +181,7 @@ F1: 0.01105636341785843
 
 
 
-freeze
+## freeze
               precision    recall  f1-score   support
 
          0.0       0.90      1.00      0.95    309174
