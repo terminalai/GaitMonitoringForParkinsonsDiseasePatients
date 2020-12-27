@@ -155,7 +155,7 @@ Overall, the following is a summary of gait parameters found in our research.
 <p align="center"><b>Table 2: Summary of Gait parameters found in our research</b></p>
 
 
-Hence, in this study, the focus will be on gait velocity, stride time and gait cycle. They will be compared by analysing acceleration data and vertical ground reaction force (VGRF) data from three sources.
+Hence, in this study, the focus will be on gait velocity, stride time and gait cycle. 
 
 ## Materials and Methods
 
