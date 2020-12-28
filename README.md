@@ -31,6 +31,7 @@ To monitor gait patterns to detect freezing of gait. Done as part of Singapore S
   * [SVM Analysis](#svm-analysis)
   * [Arduino Program](#arduino-program)
 - [Results](#results)
+  * [Prototype](#prototype)
 - [Conclusions and Discussions](#conclusions-and-discussions)
 - [Acknowledgements](#acknowledgements)
 - [References](#references)
@@ -222,8 +223,18 @@ We merged all 17 samples and took this as the main argument _X_ in the supervise
   <b>Figure 5: Plot of Freeze Indices</b>
 </p>
 
+### Prototype
+
+
 
 ## Conclusions and Discussions
+An algorithm was developed to identify the most suitable parameter for the classification of FOG in PD patients. Multiple machine learning models were then compared based on acceleration data from accelerometers placed on the thigh. After analyzing, the most suitable parameters for classification are freeze(Y) and freeze(Z) based on the acceleration data in the public datasets and the best model is the Linear Kernel model in terms of sensitivity.
+
+Furthermore, a prototype has been created using an Arduino Nano 33 BLE board. It can be implemented to test the performance of the identified most suitable parameters. 
+
+There are a few improvements that could have been done to the project. Due to time limitations, only accelerometers were studied in this experiment, which could have limited the sensitivity of the device. Multiple sensors can be worked on to achieve maximum accuracy. Additionally, only postulated freeze index values have been analysed based on the public datasets. Parameters such as Stride Length and Stride Duration have not been worked on. In the future, such parameters can be taken into account when computing the general gait freeze moment. The sensitivity of the algorithm should also be improved. Since the prototype has already been built, the next phase is to test it in a laboratory with Parkinson’s Disease patients in order to determine its accuracy. 
+
+Furthermore, by connecting this system to earbuds and implementing biofeedback via audio, the system will also be able to mediate FOG. Another method involves connecting the system to an App such that notifications can be sent to the caregiver’s phone to alert them to a fall. This can be developed via Android App Development with Java/Kotlin or via frameworks like Kivy or Flutter for Python and Dart Programming respectively.
 
 
 
