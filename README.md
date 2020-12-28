@@ -99,14 +99,14 @@ Alam et al.<sup>[11]</sup> analyzed the vertical ground reaction force using for
 
 Based on our research, we were able to consolidate a list of the main IMUs that we were to consider as follows:
 
+<p align="center"><b>Table 1: Table of IMUs found in our literature review</b></p>
+
 | IMU | Purpose | Measured Parameter |
 | --- | --- | --- |
 | Accelerometer | Measuring acceleration | Stride Length, Stride Duration |
 | Gyroscope | Measuring angular velocity | Step Festination, Gait Asymmetry |
 | Flexible Goniometer | Measuring body joint angles | Flat Foot Strike |
 | Force- sensitive Insole | Measuring the tension and compression forces that act on the sensor | Gait Cycle (not accurate for PD patients who suffer from flat footedness) |
-<p align="center"><b>Table 1: Table of IMUs found in our literature review</b></p>
-
 
 Many works have also tried utilising motion capture systems to annotate FOG events, synchronising sensor data and computer analysis to make way for machine learning algorithms. Kuhner et al.<sup>[13]</sup> performed this experiment, setting up 12 cameras as well as utilising an inertial measurement suit to create a ‘live’ system that reduces the latency of data processing.
 
@@ -143,6 +143,9 @@ Others have confirmed the importance of determining the spatiotemporal parameter
 
 Overall, the following is a summary of gait parameters found in our research.
 
+
+<p align="center"><b>Table 2: Summary of Gait parameters found in our research</b></p>
+
 | Gait abnormalities | Definition |
 | --- | --- |
 | Step Festination | Shortening of steps |
@@ -152,7 +155,6 @@ Overall, the following is a summary of gait parameters found in our research.
 | Stride Length Reduction | Reduction in distance between each stride/step |
 | Decreased Cadence | Decrease in number of steps taken per unit time |
 | Gait Asymmetry | Difference in gait between the two legs of patient |
-<p align="center"><b>Table 2: Summary of Gait parameters found in our research</b></p>
 
 
 Hence, in this study, the focus will be on gait velocity, stride time and gait cycle. 
