@@ -173,6 +173,8 @@ Data was recorded using three 3D acceleration sensors attached to the shank, thi
 
 However, there are limitations to the dataset. Patient 08 and Patient 01 both suffered from walking difficulties due to disease severity and foot drop respectively. Hence, the system was unable to distinguish between walking periods and very short freezing events.
 
+In the study, we only used the 3D Acceleration data from the thigh of each subject. Below are some data samples, indicating the provided parts where freeze is said to have happened.
+
 ### _Signal Processing_
 This study uses signal processing algorithms to compute a postulated freeze index. Moore et al.<sup>[23]</sup> defined the freeze index (FI) as the power ratio of freeze band (0.5–3.0 Hz) to locomotor band (3–8 Hz) derived from the frequency spectrum and identified FOG episodes at the time periods when FI exceeds a certain threshold. The code uses an updated form of Moore’s algorithm, where it calculates the Freeze Index from data from a specific axis (horizontal forward, horizontal lateral and vertical) from the sensors on the thigh by performing windowing of data with a length of 256 data points and steps up 32 data points. After performing a mean normalisation, the code finds the Fast Fourier Transform of the normalised window and uses that to compute the Freeze Index and supposed Power Spectral Density (PSD). After this, it accounts for a standing case where the PSD<sub>threshold</sub> = 2<sup>11.5</sup>, and in cases where it is below this threshold, the freeze index becomes zero. From this, we had the final postulated freeze index.
 
@@ -224,17 +226,18 @@ We performed the signal processing algorithms and got the postulated function ar
 
 ---
 
-## [GaitDB Dataset](https://www.physionet.org/content/gaitdb/1.0.0/)
+## Analyses Details
 
-### Data Description
+### [GaitDB Dataset](https://www.physionet.org/content/gaitdb/1.0.0/)
 
+#### Data Description
 Walking stride interval time series included are from 15 subjects: 5 healthy young adults (23 - 29 years old), 5 healthy old adults (71 - 77 years old), and 5 older adults (60 - 77 years old) with Parkinson's disease. The file name indicates old (o), young (y) or Parkinson's disease (pd). For the old and young subjects, the age (in years) is also included in the filename.
 
 Subjects walked continuously on level ground around an obstacle-free path. The stride interval was measured using ultra-thin, force sensitive resistors placed inside the shoe. The analog force signal was sampled at 300 Hz with a 12 bit A/D converter, using an ambulatory, ankle-worn microcomputer that also recorded the data. Subsequently, the time between foot-strikes was automatically computed. The method for determining the stride interval is a modification of a previously validated method that has been shown to agree with force-platform measures, a “gold” standard.
 
 Data were collected from the healthy subjects as they walked in a roughly circular path for 15 minutes, and from the subjects with Parkinson’s disease as they walked for 6 minutes up and down a long hallway.
 
-### Method Used
+#### Method Used
 We calculated the variance of the data and were able to find a correlation between the variance and the diagnosis. 
 
 <p align="center">
@@ -249,14 +252,13 @@ The result was not as accurate as would be reliable, but that was mainly due to 
 | --- | --- | --- | --- | --- |
 | 0.80 | 0.80 | 0.90 | 0.867 | 0.80 |
 
-### [Analysis](https://nbviewer.jupyter.org/github/ThePyProgrammer/GaitMonitoringForParkinsonsDiseasePatients/blob/main/GaitDB%20Analysis.ipynb)
+#### [Analysis](https://nbviewer.jupyter.org/github/ThePyProgrammer/GaitMonitoringForParkinsonsDiseasePatients/blob/main/GaitDB%20Analysis.ipynb)
 
 
-## [Daphnet Dataset](https://archive.ics.uci.edu/ml/datasets/Daphnet+Freezing+of+Gait)
+### [Daphnet Dataset](https://archive.ics.uci.edu/ml/datasets/Daphnet+Freezing+of+Gait)
 (suggested by Prof Tay)
 
-### Data Description
-
+#### Data Description
 The Daphnet Freezing of Gait Dataset Freezing of Gait in users with Parkinson disease (hereafter Daphnet Freezing of Gait Dataset) is a dataset devised to benchmark automatic methods to recognize gait freeze from wearable acceleration sensors placed on legs and hip.
 
 The dataset was recorded in the lab with emphasis on generating many freeze events. Users performed there kinds of tasks: straight line walking, walking with numerous turns, and finally a more realistic activity of daily living (ADL) task, where users went into different rooms while fetching coffee, opening doors, etc.
@@ -266,7 +268,7 @@ This dataset is the result of a collaboration between the Laboratory for Gait an
 This dataset was collected as part of the EU FP6 project Daphnet, grant number 018474-2.
 Additional effort to publish this dataset was supported in part by the EU FP7 project CuPiD, grant number 288516.
 
-### Data Attributes
+#### Data Attributes
 1. Time of sample in millisecond
 2. Ankle (shank) acceleration - horizontal forward acceleration (mg)
 3. Ankle (shank) acceleration - vertical (mg)
@@ -279,15 +281,14 @@ Additional effort to publish this dataset was supported in part by the EU FP7 pr
 10. Trunk acceleration - horizontal lateral (mg)
 11. Annotations (see Annotations section)
 
-#### Annotations
+##### Annotations
 The meaning of the annotations are as follows:
 
 - **0** - not part of the experiment. For instance the sensors are installed on the user or the user is performing activities unrelated to the experimental protocol, such as debriefing
 - **1** - experiment, no freeze (can be any of stand, walk, turn)
 - **2** - freeze
 
-### LICENCE
-
+#### LICENCE
 Use of this dataset in publications must be acknowledged by referencing the following publication:
 
 Marc Bächlin, Meir Plotnik, Daniel Roggen, Inbal Maidan, Jeffrey M. Hausdorff, Nir Giladi, and Gerhard Tröster, Wearable Assistant for Parkinson's Disease Patients With the Freezing of Gait Symptom. IEEE Transactions on Information Technology in Biomedicine, 14(2), March 2010, pages 436-446
@@ -296,11 +297,11 @@ This paper describes the dataset in details. It explain the data acquisition pro
 
 We also appreciate if you inform us (daniel.roggen@ieee.org) of any publication using this dataset for cross-referencing purposes.
 
-### [Analysis](https://nbviewer.jupyter.org/github/ThePyProgrammer/GaitMonitoringForParkinsonsDiseasePatients/blob/main/Daphnet%20Analysis.ipynb)
+#### [Analysis](https://nbviewer.jupyter.org/github/ThePyProgrammer/GaitMonitoringForParkinsonsDiseasePatients/blob/main/Daphnet%20Analysis.ipynb)
 
-## [VGRF Dataset](https://physionet.org/content/gaitpdb/1.0.0/)
-### Data Description
+### [VGRF Dataset](https://physionet.org/content/gaitpdb/1.0.0/)
 
+#### Data Description
 Parkinson's disease (PD) is one of the most common movement disorders, affecting approximately 1 million Americans (estimates range between 4 and 6.5 million people worldwide) and about 1% of older adults. In the US alone, 60,000 new cases are diagnosed each year. PD is a chronic and progressive neurological disorder that results in tremor, rigidity, slowness, and postural instability. A disturbed gait is a common, debilitating symptom; patients with severe gait disturbances are prone to falls and may lose their functional independence.
 
 This database contains measures of gait from 93 patients with idiopathic PD (mean age: 66.3 years; 63% men), and 73 healthy controls (mean age: 66.3 years; 55% men). The database includes the vertical ground reaction force records of subjects as they walked at their usual, self-selected pace for approximately 2 minutes on level ground. Underneath each foot were 8 sensors ([Ultraflex Computer Dyno Graphy, Infotronic Inc.](http://www.infotronic.nl/#CDG)) that measure force (in Newtons) as a function of time. The output of each of these 16 sensors has been digitized and recorded at 100 samples per second, and the records also include two signals that reflect the sum of the 8 sensor outputs for each foot. For details about the format of the data, please see [this note](https://physionet.org/content/gaitpdb/1.0.0/format.txt).
@@ -311,8 +312,7 @@ This database also includes demographic information, measures of disease severit
 
 A subset of the database includes measures recorded as subjects performed a second task (serial 7 subtractions) while walking, as in the figure above, which shows excerpts of swing time series from a patient with PD (lower panels) and a control subject (upper panels), under usual walking conditions (at left) and when performing serial 7 subtractions (at right). Under usual walking conditions, variability is larger in the patient with PD (Coefficient of Variation = 2.7%), compared to the control subject (CV = 1.3%). Variability increases during dual tasking in the subject with PD (CV = 6.5%), but not in the control subject (CV = 1.2%). From Yogev et al. (reference [4] below).
 
-### Data format
-
+#### Data format
 Each line contains 19 columns:
 
 | Column | Description |
@@ -358,8 +358,7 @@ each other. Thus, this coordinate system enables a calculation of a
 proxy for the location of the center of pressure (COP) under each
 foot.
 
-
-### Data file names
+#### Data file names
 These follow a common convention, e.g., ```GaCo01_02.txt```  or  ```JuPt03_06.txt```, where
 
 - Ga, Ju or Si – indicate the study from which the data originated:
@@ -378,7 +377,7 @@ where the subject was engaged in serial-7 subtraction while walking.
 
 The sampling rate was 100 Hz.
 
-### [Analysis](https://nbviewer.jupyter.org/github/ThePyProgrammer/GaitMonitoringForParkinsonsDiseasePatients/blob/main/VGRF%20Analysis.ipynb)
+#### [Analysis](https://nbviewer.jupyter.org/github/ThePyProgrammer/GaitMonitoringForParkinsonsDiseasePatients/blob/main/VGRF%20Analysis.ipynb)
 
 
 ## References
