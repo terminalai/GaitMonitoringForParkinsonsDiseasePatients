@@ -69,7 +69,7 @@ However, both methods are highly inefficient in measuring FOG as it is highly se
 
 ## Aims and Objectives
 
-This study aims to compare all the ways of measuring FOG and determine the best parameter to utilise while creating an algorithm for data analysis. The comfort of the patient and the ease and accuracy in which the parameter can predict FOG will be taken into account in this study. Ultimately, a prototype that fulfils all these requirements will be made.
+This study aims to compare all the ways of classifying FOG in PD patients and determine the best parameter to utilise while creating an algorithm for data analysis. It also aims to compare multiple machine learning models based on acceleration data from accelerometers placed on the thigh. Public datasets of PD patients will be analysed to extract the motion pattern of PD patients. A Freeze Index value is postulated and used to predict FOG based on these parameters. The comfort of the patient and the ease and accuracy in which the parameter can predict FOG will be taken into account in this study. Ultimately, a prototype that fulfils all these requirements will be made.
 
 ## Literature Review
 
