@@ -315,16 +315,14 @@ Based on the results, it is believed that the Linear kernel with parameters free
 </p>
 
 ### _Prototype_
-In the end, a prototype has been developed to verify the effectiveness of parameters based on public dataset analysis.  It consists of an Arduino Nano 33 BLE board with a built-in 9-axial IMU consisting of a 3D accelerometer and 3D gyroscope attached to an elastic band. It is small, light, very comfortable and is meant to be wrapped around the thigh. As of now, it is not completely secured but upon walking, the Nano 33 BLE board did not fall off.
+In the end, a prototype has been developed to verify the effectiveness of parameters based on public dataset analysis.  It consists of an Arduino Nano 33 BLE board with a built-in 9-axial IMU consisting of a 3D accelerometer and 3D gyroscope attached to an elastic band.
 
-<!--<p align="center">
-  <img src="./plots/daphnet/decisionBoundary.png" alt="Decision Boundary"><br/>
-  <b>Figure 6: Decision Boundary of freeze(Y) and freeze(Z) SVM under Linear Kernel</b><br/>
-  <img src="./plots/daphnet/decisionBoundary.png" alt="Decision Boundary"><br/>
-  <b>Figure 6: Decision Boundary of freeze(Y) and freeze(Z) SVM under Linear Kernel</b>
-</p>-->
+<p align="center">
+  <img src="./arduino/prototype.png" alt="Prototype"><br/>
+  <b>Figure 7: Our Prototype</b>
+</p>
 
-
+It is small, light, very comfortable and is meant to be wrapped around the thigh. As of now, it is not completely secured but upon walking, the Nano 33 BLE board did not fall off.
 
 ## Conclusions and Discussions
 An algorithm was developed to identify the most suitable parameter for the classification of FOG in PD patients. Multiple machine learning models were then compared based on acceleration data from accelerometers placed on the thigh. After analyzing, the most suitable parameters for classification are freeze(Y) and freeze(Z) based on the acceleration data in the public datasets and the best model is the Linear Kernel model in terms of sensitivity.
