@@ -223,7 +223,98 @@ We merged all 17 samples and took this as the main argument _X_ in the supervise
   <b>Figure 5: Plot of Freeze Indices</b>
 </p>
 
-### Prototype
+We tested the SVMs using Linear and Gaussian Kernels against the following combinations as parameters:
+- freeze(X) and freeze(Y)
+- freeze(X) and freeze(Z)
+- freeze(Y) and freeze(Z)
+- freeze(X), freeze(Y) and freeze(Z)
+
+Performing an SVM analysis using the ThunderSVM tool, we got the following results.
+
+<p align="center"><b>Table 3: Table of Algorithm Evaluation Functions with regards to kernels and parameters</b></p>
+
+<table>
+  <tr>
+    <th>Kernel</th>
+    <th colspan="4">Linear Kernel</th>
+    <th colspan="4">Radial Basis Kernel</th>
+  </tr>
+  <tr>
+    <th>Parameters</td>
+    <td>freeze(X) and freeze(Y)</td>
+    <td>freeze(X) and freeze(Z)</td>
+    <td><b>freeze(Y) and freeze(Z)</b></td>
+    <td>All 3 Parameters</td>
+    <td>freeze(X) and freeze(Y)</td>
+    <td>freeze(X) and freeze(Z)</td>
+    <td>freeze(Y) and freeze(Z)</td>
+    <td>All 3 Parameters</td>
+  </tr>
+  <tr>
+    <th>Specificity</td>
+    <td>1.000</td>
+    <td>0.975</td>
+    <td><b>1.000</b></td>
+    <td>1.000</td>
+    <td>0.990</td>
+    <td>0.990</td>
+    <td>0.991</td>
+    <td>0.989</td>
+  </tr>
+  <tr>
+    <th>Sensitivity/ Recall</td>
+    <td>0.000</td>
+    <td>0.243</td>
+    <td><b>0.006</b></td>
+    <td>0.002</td>
+    <td>0.174</td>
+    <td>0.183</td>
+    <td>0.163</td>
+    <td>0.260</td>
+  </tr>
+  <tr>
+    <th>Precision</td>
+    <td>0.000</td>
+    <td>0.509</td>
+    <td><b>0.889</b></td>
+    <td>0.867</td>
+    <td>0.650</td>
+    <td>0.664</td>
+    <td>0.665</td>
+    <td>0.723</td>
+  </tr>
+  <tr>
+    <th>Accuracy</td>
+    <td>0.903</td>
+    <td>0.904</td>
+    <td><b>0.904</b></td>
+    <td>0.904</td>
+    <td>0.911</td>
+    <td>0.912</td>
+    <td>0.911</td>
+    <td>0.918</td>
+  </tr>
+  <tr>
+    <th>F<sub>1</sub></td>
+    <td>0.000</td>
+    <td>0.329</td>
+    <td><b>0.011</b></td>
+    <td>0.005</td>
+    <td>0.275</td>
+    <td>0.286</td>
+    <td>0.262</td>
+    <td>0.382</td>
+  </tr>
+</table>
+
+Based on the results, it is believed that the Linear kernel with parameters freeze(Y) and freeze(Z) is the best since it is highly accurate, specific and precise. After conducting an analysis, it is found that the weighted average value for precision and sensitivity/ recall as 0.90 and F1 score as 0.86. The decision boundary function is shown below.
+
+<p align="center">
+  <img src="./plots/daphnet/decisionBoundary.png" alt="Decision Boundary"><br/>
+  <b>Figure 6: Decision Boundary of freeze(Y) and freeze(Z) SVM under Linear Kernel</b>
+</p>
+
+### _Prototype_
 
 
 
