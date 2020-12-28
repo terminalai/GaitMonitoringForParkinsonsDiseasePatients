@@ -213,23 +213,27 @@ Our Program was developed using Arduino's `.ino` programming language based off 
 This study utilises an Arduino Nano 33 BLE board that is attached to an elastic strap. It contains a 9-axial IMU, comprising a 3D accelerometer, 3D gyroscope and 3D magnetometer. In our program, upon a certain freeze event predicted by the SVM, the built-in light-emitting diode (LED).
 
 <p align="center">
-  <img src="./arduino/built-inLEDLandscape.PNG" height="220" alt="Arduino Pinout Diagram with Built-In LED Information"><br/>
+  <img src="./arduino/built-inLEDLandscape.png" width="300" alt="Arduino Pinout Diagram with Built-In LED Information"><br/>
   <b>Figure 3.2: Location of the built-in LED in the Arduino Nano 33 BLE Pinout Diagram</b>
 </p>
 
 
 ## Results
-Dstaset stuff.
+We performed the signal processing algorithms and got the postulated function arrays for freeze(X), freeze(Y) and freeze(Z). Below are the freeze indices based on the acceleration data shown in Figures 2.1 and 2.2.
 
-
-
-We performed the signal processing algorithms and got the postulated function arrays for freeze(X), freeze(Y) and freeze(Z). We merged all 17 samples and took this as the main argument _X_ in the supervised machine learning structure. From here, we also took a provided freeze value for each point given by the dataset itself. This functioned as the _y_ argument. Below, all freeze indices are plotted against one another.
-
-<!--
 <p align="center">
-  <img src="./arduino/built-in LED.PNG" height="220" alt="Arduino Pinout Diagram with Built-In LED Information">
+  <img src="./plots/daphnet/S03R01Freeze.png" alt="Freeze Index Tabulations from S03R01.txt"><br/>
+  <b>Figure 4.1: Freeze Index Tabulations from S03R01.txt</b><br/><br/>
+  <img src="./plots/daphnet/S03R02Freeze.png" alt="Freeze Index Tabulations from S03R02.txt"><br/>
+  <b>Figure 4.2: Freeze Index Tabulations from S03R02.txt</b><br/>
 </p>
--->
+
+We merged all 17 samples and took this as the main argument _X_ in the supervised machine learning structure. From here, we also took a provided freeze value for each point given by the dataset itself. This functioned as the _y_ argument. Below, all freeze indices are plotted against one another.
+
+<p align="center">
+  <img src="./plots/daphnet/freezeIndices.png" alt="Plot of Freeze Indices"><br/>
+  <b>Figure 5: Plot of Freeze Indices</b>
+</p>
 
 
 ## Conclusions and Discussions
