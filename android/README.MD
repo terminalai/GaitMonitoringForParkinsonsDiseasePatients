@@ -8,3 +8,8 @@ A Gait Monitoring and Analysis app for Parkinson's Disease Patients.
 Users can access data (currently to be transferred from arduino) in graphs and ML is used by app.
 
 Python backend, Kotlin frontend.
+
+Status:
+```kotlin
+TODO("basically everything")
+```
