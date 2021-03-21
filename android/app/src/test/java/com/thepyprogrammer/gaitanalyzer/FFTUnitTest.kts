@@ -1,4 +1,4 @@
-package com.thepyprogrammer.gaitanalyzeralgos
+package com.thepyprogrammer.gaitanalyzer
 
 import com.thepyprogrammer.gaitanalyzer.model.signalProcessing.Complex
 import com.thepyprogrammer.gaitanalyzer.model.signalProcessing.FFT
