@@ -1,6 +1,5 @@
 package com.thepyprogrammer.gaitanalyzer.model.signalProcessing
 
-import com.thepyprogrammer.gaitanalyzer.model.signalProcessing.FFT
 import div
 import normalise
 import slice
