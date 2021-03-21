@@ -1,7 +1,7 @@
-import com.thepyprogrammer.gaitanalyzeralgos.Complex
+import com.thepyprogrammer.gaitanalyzer.model.signalProcessing.Complex
 
 /**
- * Functions for Double and com.thepyprogrammer.gaitanalyzeralgos.Complex Arrays
+ * Functions for Double and com.thepyprogrammer.gaitanalyzer.model.signalProcessing.Complex Arrays
  */
 
 /**
@@ -65,7 +65,7 @@ fun Array<Double>.normalise() = run {
 }
 
 /**
- * Convert Double Array to generic com.thepyprogrammer.gaitanalyzeralgos.Complex Array
+ * Convert Double Array to generic com.thepyprogrammer.gaitanalyzer.model.signalProcessing.Complex Array
  */
 fun Array<Double>.toComplex() = run {
     val newList = mutableListOf<Complex>()
