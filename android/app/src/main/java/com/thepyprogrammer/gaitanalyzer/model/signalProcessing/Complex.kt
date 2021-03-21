@@ -1,4 +1,4 @@
-package com.thepyprogrammer.gaitanalyzeralgos
+package com.thepyprogrammer.gaitanalyzer.model.signalProcessing
 
 import kotlin.math.*
 
@@ -46,7 +46,7 @@ data class Complex(val re: Double, val im: Double = 0.0, val isUnit:Boolean = fa
         }
     }
 
-    //val conj = com.thepyprogrammer.gaitanalyzeralgos.Complex(re, -im)
+    //val conj = com.thepyprogrammer.gaitanalyzer.model.signalProcessing.Complex(re, -im)
 
 
     override fun toString() = when {
