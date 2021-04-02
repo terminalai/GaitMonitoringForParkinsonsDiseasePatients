@@ -1,17 +1,34 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
+    <attr name="bubbleColor" format="reference" />
+    <attr name="switchThumbEnabled" format="color" />
+    <attr name="switchThumbDisabled" format="color" />
+    <attr name="switchTrackEnabled" format="color" />
+    <attr name="switchTrackDisabled" format="color" />
+
     <!-- Base application theme. -->
     <style name="Theme.GaitAnalyzer" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:windowBackground">@color/backgroundLight</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="actionBarPopupTheme">@style/Theme.GaitAnalyzer.PopupOverlay</item>
+        <item name="bubbleColor">@color/bubbleLight</item>
+        <item name="colorPrimaryDark">@color/backgroundLight</item>
+        <item name="selectableItemBackground">@drawable/ripple</item>
+        <item name="switchThumbEnabled">@color/switchThumbEnabledLight</item>
+        <item name="switchThumbDisabled">@color/switchThumbDisabledLight</item>
+        <item name="switchTrackEnabled">@color/switchTrackEnabledLight</item>
+        <item name="switchTrackDisabled">@color/switchTrackDisabledLight</item>
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/backgroundLight</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="android:divider">@color/separatorLight</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/black</item>
         <!-- Customize your theme here. -->
+        <!-- text -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:textColorTertiary">@color/text_tertiary</item>
     </style>
 
     <style name="Theme.GaitAnalyzer.NoActionBar">
@@ -21,5 +38,8 @@
 
     <style name="Theme.GaitAnalyzer.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.GaitAnalyzer.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.GaitAnalyzer.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:colorBackground">@color/backgroundLight</item>
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
 </resources>

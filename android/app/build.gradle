@@ -1,11 +1,15 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.gms.google-services'
+    id 'kotlin-kapt'
 }
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.thepyprogrammer.gaitanalyzer"
@@ -35,17 +39,69 @@ android {
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
     implementation 'androidx.core:core-ktx:1.3.2'
+
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
+
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.navigation:navigation-fragment:2.3.3'
-    implementation 'androidx.navigation:navigation-ui:2.3.3'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.3'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.3'
-    testImplementation 'junit:junit:4.+'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    // Jetpack
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.4'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.4'
+
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    // notice that the compiler version must be the same than our gradle version
+    kapt 'com.android.databinding:compiler:3.1.4'
+
+
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+    implementation 'com.infideap.drawerbehavior:drawer-behavior:1.0.4'
+
+    implementation 'androidx.preference:preference-ktx:1.1.1'
+    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha08"
+
+    implementation 'androidx.annotation:annotation:1.2.0'
+    implementation 'agency.tango.android:material-intro-screen:0.0.5'
+
+    implementation "com.karumi:dexter:5.0.0"
+    implementation 'com.github.yalantis:ucrop:2.2.6-native'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+
+    // Import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:26.8.0')
+
+    // Firestore
+    implementation 'com.google.firebase:firebase-firestore-ktx:22.1.2'
+    implementation 'com.firebaseui:firebase-ui-firestore:6.3.0'
+
+    // Other Firebase/Play services deps
+    implementation 'com.google.firebase:firebase-auth-ktx:20.0.3'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+
+    // FirebaseUI (for authentication)
+    implementation 'com.firebaseui:firebase-ui-auth:7.1.1'
+
+    // Firebase Storage
+    implementation 'com.google.firebase:firebase-storage-ktx'
+
+    // Contour
+    implementation "app.cash.contour:contour:1.1.0"
+
+    // Notification
+    implementation "io.karn:notify:1.3.11"
+
+    implementation 'com.github.imangazalievm:circlemenu:3.0.0'
+
+
+
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

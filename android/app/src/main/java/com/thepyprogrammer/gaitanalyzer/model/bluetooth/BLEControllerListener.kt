@@ -1,4 +1,4 @@
-package com.thepyprogrammer.greenpass.model.bluetooth
+package com.thepyprogrammer.gaitanalyzer.model.bluetooth
 
 interface BLEControllerListener {
     fun BLEControllerConnected()
