@@ -21,9 +21,6 @@ import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.model.view.modifications.afterTextChanged
 import com.thepyprogrammer.gaitanalyzer.ui.main.MainActivity
 import kotlinx.android.synthetic.main.fragment_register.*
-import kotlinx.android.synthetic.main.fragment_register.passwordInput
-import java.time.LocalDate
-import java.time.ZoneId
 import java.util.*
 
 
@@ -32,8 +29,8 @@ class RegisterFragment : Fragment() {
     private lateinit var viewModel: AuthViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_register, container, false)
 
@@ -45,11 +42,10 @@ class RegisterFragment : Fragment() {
         val nricLayout = root.findViewById<TextInputLayout>(R.id.nricInputLayout)
 
 
-
         /**View Model**/
         viewModel = activity?.let { ViewModelProvider(it).get(AuthViewModel::class.java) }!!
 
-        val nameObserver = Observer<String>{ newName ->
+        val nameObserver = Observer<String> { newName ->
             fullname.setText(newName)
         }
 
@@ -62,12 +58,12 @@ class RegisterFragment : Fragment() {
 
         nric.afterTextChanged {
 //            viewModel.NRIC.value = it
-            if(it.trim().isNotEmpty())
+            if (it.trim().isNotEmpty())
                 nricLayout.error = null
             else if (it.trim().length != 9)
                 nricLayout.error = "NRIC Length should be ${nricLayout.counterMaxLength}"
             else if (!Util.checkNRIC(it.trim().toUpperCase(Locale.ROOT)))
-            nricLayout.error = "NRIC format is inaccurate"
+                nricLayout.error = "NRIC format is inaccurate"
             else
                 nricLayout.error = null
         }
@@ -98,13 +94,25 @@ class RegisterFragment : Fragment() {
                         viewModel.userResult.value?.password == "" -> {
                             loading.visibility = View.GONE
                             val sb =
-                                view?.let { it1 -> Snackbar.make(it1, "NRIC Already Registered!", Snackbar.LENGTH_LONG) }
+                                view?.let { it1 ->
+                                    Snackbar.make(
+                                        it1,
+                                        "NRIC Already Registered!",
+                                        Snackbar.LENGTH_LONG
+                                    )
+                                }
                             sb?.show()
                         }
                         viewModel.userResult.value?.password.equals("3") -> {
                             loading.visibility = View.GONE
                             val sb =
-                                view?.let { it1 -> Snackbar.make(it1, "Password Length Too Short!", Snackbar.LENGTH_LONG) }
+                                view?.let { it1 ->
+                                    Snackbar.make(
+                                        it1,
+                                        "Password Length Too Short!",
+                                        Snackbar.LENGTH_LONG
+                                    )
+                                }
                             sb?.show()
                         }
                         else -> {
@@ -117,7 +125,7 @@ class RegisterFragment : Fragment() {
                     }
                 }
             }
-        viewModel.userResult.observe(viewLifecycleOwner,resultObserver)
+        viewModel.userResult.observe(viewLifecycleOwner, resultObserver)
 
         return root
     }

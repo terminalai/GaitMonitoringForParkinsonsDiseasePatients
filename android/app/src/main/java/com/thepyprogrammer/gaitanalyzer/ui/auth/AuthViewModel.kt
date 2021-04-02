@@ -3,17 +3,16 @@ package com.thepyprogrammer.gaitanalyzer.ui.auth
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.Timestamp
+import com.thepyprogrammer.gaitanalyzer.model.account.Result
 import com.thepyprogrammer.gaitanalyzer.model.account.base.User
 import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
-import com.thepyprogrammer.gaitanalyzer.model.account.Result
 
 class AuthViewModel : ViewModel() {
     var pName = MutableLiveData("")
     var password = MutableLiveData("")
     var userResult = MutableLiveData(User.empty())
 
-    fun register(){
+    fun register() {
         val name = pName.value!!.trim()
         val pw = password.value!!
         val type = userResult.value!!.type
@@ -27,12 +26,11 @@ class AuthViewModel : ViewModel() {
         FirebaseUtil.userCollection().document(name).get()
             .addOnSuccessListener {
                 val dataset = it?.data
-                if (dataset != null){
+                if (dataset != null) {
                     val user = User.empty()
                     userResult.value = user
                     Result.Error(Exception("It seems you don't exist."))
-                }
-                else {
+                } else {
                     if (pw.length >= 8) {
                         it?.data?.let { it1 ->
                             FirebaseUtil.userCollection()
@@ -60,33 +58,33 @@ class AuthViewModel : ViewModel() {
             }.addOnFailureListener {}
     }
 
-    fun login(){
+    fun login() {
         val name = pName.value!!.trim()
         val password = this.password.value!!
         var data: Map<String?, Any?>?
 
         FirebaseUtil.userCollection().document(name).get()
-                .addOnSuccessListener {
-                    data = it?.data
-                    when {
-                        data == null -> {
-                            val user = User.empty()
-                            userResult.value = user
-                            Result.Error(Exception("It seems you don't exist."))
-                        }
-                        (data!!["password"] as String) == password -> {
-                            val user = User(data!!["name"] as String, password, "caregiver")
-                            userResult.value = user
-                            Log.d("TAG", "Data is Correct!")
-                        }
-                        else -> {
-                            val user = User.empty()
-                            userResult.value = user
-                            Log.d("TAG", "Data is Wrong!")
-                            Result.Error(Exception("It seems you don't exist."))
-                        }
+            .addOnSuccessListener {
+                data = it?.data
+                when {
+                    data == null -> {
+                        val user = User.empty()
+                        userResult.value = user
+                        Result.Error(Exception("It seems you don't exist."))
                     }
-                }.addOnFailureListener {
+                    (data!!["password"] as String) == password -> {
+                        val user = User(data!!["name"] as String, password, "caregiver")
+                        userResult.value = user
+                        Log.d("TAG", "Data is Correct!")
+                    }
+                    else -> {
+                        val user = User.empty()
+                        userResult.value = user
+                        Log.d("TAG", "Data is Wrong!")
+                        Result.Error(Exception("It seems you don't exist."))
+                    }
                 }
+            }.addOnFailureListener {
+            }
     }
 }

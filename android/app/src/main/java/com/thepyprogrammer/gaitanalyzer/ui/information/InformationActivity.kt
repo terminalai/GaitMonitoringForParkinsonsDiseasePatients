@@ -1,6 +1,5 @@
 package com.thepyprogrammer.gaitanalyzer.ui.information
 
-import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -16,11 +15,12 @@ import com.thepyprogrammer.gaitanalyzer.ui.main.MainViewModel
 
 class InformationActivity : AppCompatActivity() {
     companion object CompanionObject {
-        private lateinit var activity_:MainActivity
+        private lateinit var activity_: MainActivity
         fun updateActivity(activity: MainActivity) {
             activity_ = activity
         }
     }
+
     private var viewModel: MainViewModel? = null
     private lateinit var binding: ActivityInfromationBinding
     private lateinit var textView: TextView
@@ -33,14 +33,14 @@ class InformationActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_infromation)
         viewModel = activity_.run {
             ViewModelProviders.of(this)[MainViewModel::class.java]
-        } ?: throw Exception("Invalid Activity")
+        }
         button = findViewById(R.id.button)
 
         textView = binding.textView
         binding.myViewModel = viewModel
         binding.lifecycleOwner = this
 
-        button.setOnClickListener{
+        button.setOnClickListener {
             finish()
         }
     }

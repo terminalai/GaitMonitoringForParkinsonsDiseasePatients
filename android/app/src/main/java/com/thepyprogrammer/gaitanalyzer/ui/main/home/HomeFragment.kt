@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.transition.TransitionInflater
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.model.view.DatePickerButton
-import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeViewModel
 import java.time.LocalDate
 
 class HomeFragment : Fragment() {

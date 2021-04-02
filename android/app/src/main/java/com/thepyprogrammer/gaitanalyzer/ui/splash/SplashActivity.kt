@@ -7,9 +7,7 @@ import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.Timestamp
 import com.thepyprogrammer.gaitanalyzer.R
-import com.thepyprogrammer.gaitanalyzer.model.Util
 import com.thepyprogrammer.gaitanalyzer.model.account.base.User
 import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.ui.auth.AuthActivity
@@ -28,9 +26,9 @@ class SplashActivity : AppCompatActivity() {
         backgroundImage.startAnimation(slideAnimation)
 
         val accountDetails = File(filesDir, "accountDetails.txt")
-        if(accountDetails.exists()) {
+        if (accountDetails.exists()) {
             val sc = Scanner(accountDetails)
-            if(sc.hasNext()) {
+            if (sc.hasNext()) {
                 val nric = sc.nextLine()
                 if (nric != "null") {
                     val name = sc.nextLine()

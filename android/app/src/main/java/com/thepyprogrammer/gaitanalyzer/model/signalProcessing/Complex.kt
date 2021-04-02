@@ -2,7 +2,7 @@ package com.thepyprogrammer.gaitanalyzer.model.signalProcessing
 
 import kotlin.math.*
 
-data class Complex(val re: Double, val im: Double = 0.0, val isUnit:Boolean = false) {
+data class Complex(val re: Double, val im: Double = 0.0, val isUnit: Boolean = false) {
     infix operator fun plus(x: Complex) = Complex(re + x.re, im + x.im)
     infix operator fun plus(x: Double) = Complex(re + x, im)
     infix operator fun plus(x: Int) = Complex(re + x, im)
@@ -31,7 +31,8 @@ data class Complex(val re: Double, val im: Double = 0.0, val isUnit:Boolean = fa
     var arg: Double
 
     init {
-        if(!isUnit) unit = if (mag != 0.0) Complex(re / mag, im / mag, true) else Complex(0.0, 0.0, true)
+        if (!isUnit) unit =
+            if (mag != 0.0) Complex(re / mag, im / mag, true) else Complex(0.0, 0.0, true)
         else unit = this
         alpha = abs(asin(unit.im))
         arg = when {

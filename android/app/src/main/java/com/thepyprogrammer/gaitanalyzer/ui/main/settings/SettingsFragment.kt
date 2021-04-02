@@ -29,10 +29,11 @@ class SettingsFragment : PreferenceFragmentCompat() {
         }
 
         val logout: Preference? = findPreference("logout")
-        logout?.onPreferenceClickListener = Preference.OnPreferenceClickListener { //code for what you want it to do
-            (activity as MainActivity).logout()
-            true
-        }
+        logout?.onPreferenceClickListener =
+            Preference.OnPreferenceClickListener { //code for what you want it to do
+                (activity as MainActivity).logout()
+                true
+            }
 
     }
 }

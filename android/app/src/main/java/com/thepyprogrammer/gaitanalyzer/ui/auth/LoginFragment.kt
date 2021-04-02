@@ -15,9 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.thepyprogrammer.gaitanalyzer.model.view.modifications.afterTextChanged
 import com.thepyprogrammer.gaitanalyzer.R
-import com.thepyprogrammer.gaitanalyzer.model.Util
 import com.thepyprogrammer.gaitanalyzer.model.account.base.User
 import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.ui.main.MainActivity
@@ -27,12 +25,11 @@ import java.util.*
 class LoginFragment : Fragment() {
 
     private lateinit var viewModel: AuthViewModel
-    lateinit var nric: TextInputEditText
+    lateinit var name: TextInputEditText
     private lateinit var password: TextInputEditText
     private lateinit var login: Button
     private lateinit var loading: ProgressBar
-    private lateinit var nricLayout: TextInputLayout
-
+    private lateinit var nameLayout: TextInputLayout
 
 
     override fun onCreateView(
@@ -42,19 +39,19 @@ class LoginFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_login, container, false)
 
 
-        nric = root.findViewById(R.id.nricInput)
+        name = root.findViewById(R.id.nameInput)
         password = root.findViewById(R.id.passwordInput)
         login = root.findViewById(R.id.login)
         //esc = root.findViewById(R.id.escape)
         loading = root.findViewById(R.id.loading)
-        nricLayout = root.findViewById(R.id.nricInputLayout)
+        nameLayout = root.findViewById(R.id.nameInputLayout)
 
 
         /**View Model**/
         viewModel = activity?.let { ViewModelProvider(it).get(AuthViewModel::class.java) }!!
 
-        val nameObserver = Observer<String>{ newNric ->
-            nric.setText(newNric)
+        val nameObserver = Observer<String> { newNric ->
+            name.setText(newNric)
         }
 
         val passwordObserver = Observer<String> { newPassword ->
@@ -63,25 +60,13 @@ class LoginFragment : Fragment() {
 
         viewModel.pName.observe(requireActivity(), nameObserver)
         viewModel.password.observe(requireActivity(), passwordObserver)
-
-        nric.afterTextChanged {
-//            viewModel.NRIC.value = it
-            if(it.trim().isNotEmpty())
-                nricLayout.error = null
-            else if (it.trim().length != 9)
-                nricLayout.error = "NRIC Length should be ${nricLayout.counterMaxLength}"
-            else if (!Util.checkNRIC(it.trim().toUpperCase(Locale.ROOT)))
-                nricLayout.error = "NRIC format is inaccurate"
-            else
-                nricLayout.error = null
-        }
 //
 //        password.afterTextChanged {
 //            viewModel.password.value = it
 //        }
 
         login.setOnClickListener {
-            viewModel.pName.value = nric.text.toString().trim().toUpperCase(Locale.ROOT)
+            viewModel.pName.value = name.text.toString().trim().toUpperCase(Locale.ROOT)
             viewModel.password.value = password.text.toString().trim()
             loading.visibility = View.VISIBLE
             viewModel.login()
@@ -119,26 +104,33 @@ class LoginFragment : Fragment() {
         /**View Model**/
         viewModel = activity?.let { ViewModelProvider(it).get(AuthViewModel::class.java) }!!
 
-        val nricObserver = Observer<String> { newNric ->
-            nric.setText(newNric)
+        val nameObserver = Observer<String> {
+            name.setText(it)
         }
-        val passwordObserver = Observer<String> { newPassword ->
-            password.setText(newPassword)
+        val passwordObserver = Observer<String> {
+            password.setText(it)
         }
 
-        viewModel.pName.observe(requireActivity(), nricObserver)
+        viewModel.pName.observe(requireActivity(), nameObserver)
         viewModel.password.observe(requireActivity(), passwordObserver)
 
         val resultObserver =
             Observer<User> {
-                when {
-                    viewModel.userResult.value?.password == "old" -> {}
-                    viewModel.userResult.value?.password == "" || viewModel.userResult.value?.password == "3" -> {
-                        nric.setText("")
+                when (viewModel.userResult.value?.password) {
+                    "old" -> {
+                    }
+                    "", "3" -> {
+                        name.setText("")
                         password.setText("")
                         loading.visibility = View.GONE
                         val sb =
-                            view?.let { it1 -> Snackbar.make(it1, "Invalid ID and Password", Snackbar.LENGTH_LONG) }
+                            view?.let { it1 ->
+                                Snackbar.make(
+                                    it1,
+                                    "Invalid ID and Password",
+                                    Snackbar.LENGTH_LONG
+                                )
+                            }
                         sb?.show()
                     }
                     else -> {
@@ -147,7 +139,8 @@ class LoginFragment : Fragment() {
                         Log.d("TAG", "Data is Correct second!")
                         loading.visibility = View.GONE
                         startActivityForResult(Intent(activity, MainActivity::class.java).also {
-                            it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            it.flags =
+                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         }, 0)
 
                         activity?.setResult(Activity.RESULT_OK)
@@ -157,7 +150,7 @@ class LoginFragment : Fragment() {
                     }
                 }
             }
-        viewModel.userResult.observe(viewLifecycleOwner,resultObserver)
+        viewModel.userResult.observe(viewLifecycleOwner, resultObserver)
     }
 
 }

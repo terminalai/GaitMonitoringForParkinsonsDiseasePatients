@@ -7,15 +7,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.Menu
-import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
-import com.thepyprogrammer.gaitanalyzer.ui.main.MainActivity
-import com.thepyprogrammer.gaitanalyzer.ui.main.MainViewModel
 import java.io.File
 import java.io.IOException
 import java.io.PrintWriter
@@ -57,28 +54,28 @@ class ImageDetailsActivity : AppCompatActivity() {
 
 
     override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<String?>,
-            grantResults: IntArray
+        requestCode: Int,
+        permissions: Array<String?>,
+        grantResults: IntArray
     ) {
         super
-                .onRequestPermissionsResult(
-                        requestCode,
-                        permissions,
-                        grantResults
-                )
+            .onRequestPermissionsResult(
+                requestCode,
+                permissions,
+                grantResults
+            )
         // Checking whether user granted the permission or not.
         if (grantResults.isNotEmpty()
-                && grantResults[0] == PackageManager.PERMISSION_GRANTED
+            && grantResults[0] == PackageManager.PERMISSION_GRANTED
         ) {
             return
         } else {
             Toast.makeText(
-                    this,
-                    "To select an icon, these permissions are required.",
-                    Toast.LENGTH_SHORT
+                this,
+                "To select an icon, these permissions are required.",
+                Toast.LENGTH_SHORT
             )
-                    .show()
+                .show()
         }
     }
 

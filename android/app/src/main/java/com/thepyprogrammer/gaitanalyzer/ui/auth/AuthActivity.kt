@@ -17,7 +17,7 @@ class AuthActivity : AppCompatActivity() {
         val tabLayout = findViewById<TabLayout>(R.id.tabs)
         viewPager.adapter = AuthAdapter(this)
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            when(position % 2) {
+            when (position % 2) {
                 0 -> tab.text = "Login"
                 else -> tab.text = "Register"
             }

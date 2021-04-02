@@ -1,4 +1,4 @@
-package com.thepyprogrammer.gaitanalyzer.model.functions
+package com.thepyprogrammer.gaitanalyzer.model.io
 
 import android.content.ContentResolver
 import android.content.Context

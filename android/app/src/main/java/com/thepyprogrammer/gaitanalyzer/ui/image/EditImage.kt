@@ -17,75 +17,77 @@ class EditImage(val context: Context, val activity: Activity) {
     // my button click function
     init {
         Dexter.withActivity(activity)
-                .withPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .withListener(object : MultiplePermissionsListener {
-                    override fun onPermissionsChecked(report: MultiplePermissionsReport) {
-                        if (report.areAllPermissionsGranted()) {
-                            showImagePickerOptions()
-                        } else {
-                            // TODO - handle permission denied case
-                            checkPermission(
-                                    Manifest.permission.CAMERA,
-                                    ImageUtil.CAMERA_PERMISSION_CODE
-                            )
-                            checkPermission(
-                                    Manifest.permission.READ_EXTERNAL_STORAGE,
-                                    ImageUtil.READ_EXTERNAL_STORAGE_PERMISSION_CODE
-                            )
-                            checkPermission(
-                                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                                    ImageUtil.WRITE_EXTERNAL_STORAGE_PERMISSION_CODE
-                            )
-                            checkPermission(
-                                    Manifest.permission.INTERNET,
-                                    ImageUtil.INTERNET_PERMISSION_CODE
-                            )
-                        }
+            .withPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .withListener(object : MultiplePermissionsListener {
+                override fun onPermissionsChecked(report: MultiplePermissionsReport) {
+                    if (report.areAllPermissionsGranted()) {
+                        showImagePickerOptions()
+                    } else {
+                        // TODO - handle permission denied case
+                        checkPermission(
+                            Manifest.permission.CAMERA,
+                            ImageUtil.CAMERA_PERMISSION_CODE
+                        )
+                        checkPermission(
+                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                            ImageUtil.READ_EXTERNAL_STORAGE_PERMISSION_CODE
+                        )
+                        checkPermission(
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            ImageUtil.WRITE_EXTERNAL_STORAGE_PERMISSION_CODE
+                        )
+                        checkPermission(
+                            Manifest.permission.INTERNET,
+                            ImageUtil.INTERNET_PERMISSION_CODE
+                        )
                     }
+                }
 
-                    override fun onPermissionRationaleShouldBeShown(
-                            permissions: List<PermissionRequest?>?,
-                            token: PermissionToken
-                    ) {
-                        token.continuePermissionRequest()
-                    }
-                }).check()
+                override fun onPermissionRationaleShouldBeShown(
+                    permissions: List<PermissionRequest?>?,
+                    token: PermissionToken
+                ) {
+                    token.continuePermissionRequest()
+                }
+            }).check()
     }
 
     fun checkPermission(permission: String, requestCode: Int) {
 
         // Checking if permission is not granted
         if (ContextCompat.checkSelfPermission(
-                        activity,
-                        permission
-                )
-                == PackageManager.PERMISSION_DENIED
+                activity,
+                permission
+            )
+            == PackageManager.PERMISSION_DENIED
         ) {
             ActivityCompat
-                    .requestPermissions(
-                            activity, arrayOf(permission),
-                            requestCode
-                    )
+                .requestPermissions(
+                    activity, arrayOf(permission),
+                    requestCode
+                )
         }
     }
 
     private fun showImagePickerOptions() {
-        ImagePickerActivity.showImagePickerOptions(context, object : ImagePickerActivity.PickerOptionListener {
-            override fun onTakeCameraSelected() {
-                launchCameraIntent()
-            }
+        ImagePickerActivity.showImagePickerOptions(
+            context,
+            object : ImagePickerActivity.PickerOptionListener {
+                override fun onTakeCameraSelected() {
+                    launchCameraIntent()
+                }
 
-            override fun onChooseGallerySelected() {
-                launchGalleryIntent()
-            }
-        })
+                override fun onChooseGallerySelected() {
+                    launchGalleryIntent()
+                }
+            })
     }
 
     private fun launchCameraIntent() {
         Intent(context, ImagePickerActivity::class.java).apply {
             putExtra(
-                    ImagePickerActivity.INTENT_IMAGE_PICKER_OPTION,
-                    ImagePickerActivity.REQUEST_IMAGE_CAPTURE
+                ImagePickerActivity.INTENT_IMAGE_PICKER_OPTION,
+                ImagePickerActivity.REQUEST_IMAGE_CAPTURE
             )
 
             // setting aspect ratio
@@ -104,8 +106,8 @@ class EditImage(val context: Context, val activity: Activity) {
     private fun launchGalleryIntent() {
         Intent(context, ImagePickerActivity::class.java).apply {
             putExtra(
-                    ImagePickerActivity.INTENT_IMAGE_PICKER_OPTION,
-                    ImagePickerActivity.REQUEST_GALLERY_IMAGE
+                ImagePickerActivity.INTENT_IMAGE_PICKER_OPTION,
+                ImagePickerActivity.REQUEST_GALLERY_IMAGE
             )
 
             // setting aspect ratio

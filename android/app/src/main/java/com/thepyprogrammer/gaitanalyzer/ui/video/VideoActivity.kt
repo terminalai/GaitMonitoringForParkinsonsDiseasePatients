@@ -8,11 +8,9 @@ import android.speech.tts.TextToSpeech
 import android.util.Rational
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.Navigation
-import androidx.transition.TransitionInflater
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.model.configurations.*
-import com.thepyprogrammer.gaitanalyzer.model.functions.getUriFromRaw
+import com.thepyprogrammer.gaitanalyzer.model.io.getUriFromRaw
 import com.thepyprogrammer.gaitanalyzer.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_video.*
 import java.util.*
@@ -23,7 +21,8 @@ class VideoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video)
         setSupportActionBar(toolbar)
-        desc.text = """The Olympic Games is a quadrennial international multi-sport event celebrated as a global sports festival by people all over the world. The Olympic Games are held in both the summer and winter, with the ultimate goal of cultivating people and world peace through sports. The Games of the XXIX Olympiad held in Beijing in 2008 saw athletes from 204 countries and regions participate. London hosted the 2012 Olympics, commemorating the 30th Olympic Games.
+        desc.text =
+            """The Olympic Games is a quadrennial international multi-sport event celebrated as a global sports festival by people all over the world. The Olympic Games are held in both the summer and winter, with the ultimate goal of cultivating people and world peace through sports. The Games of the XXIX Olympiad held in Beijing in 2008 saw athletes from 204 countries and regions participate. London hosted the 2012 Olympics, commemorating the 30th Olympic Games.
             
             This year, Japan will be hosting Olympics 2021 in Tokyo. The Tokyo 2020 Olympic Games will feature a record 33 competitions and 339 events held across 42 competition venues.    
         """.trimIndent()
@@ -46,18 +45,17 @@ class VideoActivity : AppCompatActivity() {
             TextToSpeech(this, null).getTTS(this, desc.text.toString())
         }
 
-        pip.setOnClickListener {enterPIP()}
+        pip.setOnClickListener { enterPIP() }
     }
 
     override fun onPictureInPictureModeChanged(isPictureinPictureMode: Boolean) {
         super.onPictureInPictureModeChanged(isPictureinPictureMode)
 
-        if(isPictureinPictureMode) {
+        if (isPictureinPictureMode) {
             toolbar.visibility = View.GONE
             buttonLayout.visibility = View.GONE
             scrollingView.visibility = View.GONE
-        }
-        else {
+        } else {
             toolbar.visibility = View.VISIBLE
             buttonLayout.visibility = View.VISIBLE
             scrollingView.visibility = View.VISIBLE
@@ -81,7 +79,7 @@ class VideoActivity : AppCompatActivity() {
 
     //This helps press the button
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
+        return when (item.itemId) {
             android.R.id.home -> {
                 startActivity(Intent(this@VideoActivity, MainActivity::class.java))
                 true
