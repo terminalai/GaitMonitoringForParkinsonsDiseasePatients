@@ -1,15 +1,14 @@
 package com.thepyprogrammer.gaitanalyzer.model.firebase
 
 import android.app.Activity
-import android.content.Context
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
-import com.thepyprogrammer.greenpass.model.account.VaccinatedUser
 import android.net.Uri
 import com.google.firebase.storage.StorageException
+import com.thepyprogrammer.gaitanalyzer.model.account.base.User
 import java.io.File
 import java.io.PrintWriter
 
@@ -17,7 +16,7 @@ object FirebaseUtil {
     private var FIRESTORE: FirebaseFirestore? = null
     private var STORAGE: FirebaseStorage? = null
 
-    var user: VaccinatedUser? = null;
+    var user: User? = null;
 
     // Connect to the Cloud Firestore
     val firestore: FirebaseFirestore
@@ -34,7 +33,7 @@ object FirebaseUtil {
 
     fun uploadImage(photoUri: Uri) {
         val storageRef = storage.reference
-        val imageRef = storageRef.child("images/${user?.nric}.jpg")
+        val imageRef = storageRef.child("images/${user?.name}.jpg")
 
         val uploadTask = imageRef.putFile(photoUri)
         // Register observers to listen for when the download is done or if it fails
@@ -50,7 +49,7 @@ object FirebaseUtil {
     fun retrieveImage(activity: Activity) {
         try {
             val storageRef = storage.reference
-            val imageRef = storageRef.child("images/${user?.nric}.jpg")
+            val imageRef = storageRef.child("images/${user?.name}.jpg")
 
             val localFile = File(activity.filesDir, "profile.jpg")
             if (!localFile.exists()) localFile.createNewFile()

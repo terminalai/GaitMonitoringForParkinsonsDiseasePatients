@@ -67,8 +67,6 @@ class ProfileFragment : Fragment() {
         // TODO: Use the ViewModel
 
         nameTextView = view?.findViewById(R.id.name)!!
-        NRICTextView = view?.findViewById(R.id.nric)!!
-        dateTextView = view?.findViewById(R.id.date)!!
 
 
 //        //testing code for viewmodel
@@ -84,19 +82,7 @@ class ProfileFragment : Fragment() {
             // Update the UI, in this case, a TextView.
             nameTextView.text = newName
         }
-        val NRICObserver = Observer<String> { newNRIC ->
-            // Update the UI, in this case, a TextView.
-            NRICTextView.text = newNRIC
-        }
-        val vacinatedDateObserver = Observer<Date> { newDate ->
-            // Update the UI, in this case, a TextView.
-            if(newDate != null) {
-                dateTextView.text = Util.format.format(newDate)
-            }
-        }
         viewModel.pName.observe(viewLifecycleOwner, nameObserver)
-        viewModel.NRIC.observe(viewLifecycleOwner, NRICObserver)
-        viewModel.date.observe(viewLifecycleOwner, vacinatedDateObserver)
     }
 
     private fun readData(): String {

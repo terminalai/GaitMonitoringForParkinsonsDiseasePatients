@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/cardViewFragment">
+
+    <fragment
+        android:id="@+id/cardViewFragment"
+        android:name="com.thepyprogrammer.navigation.ui.singlecard.CardViewFragment"
+        android:label="fragment_card_view"
+        tools:layout="@layout/fragment_card_view" >
+        <action
+            android:id="@+id/action_cardViewFragment_to_selectedFragment"
+            app:destination="@id/selectedFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectedFragment"
+        android:name="com.thepyprogrammer.navigation.ui.singlecard.SelectedFragment"
+        android:label="fragment_selected"
+        tools:layout="@layout/fragment_selected" >
+        <action
+            android:id="@+id/action_selectedFragment_to_cardViewFragment"
+            app:destination="@id/cardViewFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
+</navigation>

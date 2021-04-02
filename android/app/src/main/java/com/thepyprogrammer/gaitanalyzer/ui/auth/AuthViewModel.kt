@@ -4,58 +4,55 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.Timestamp
-import com.thepyprogrammer.greenpass.model.account.Result
-import com.thepyprogrammer.greenpass.model.account.VaccinatedUser
-import com.thepyprogrammer.greenpass.model.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.model.account.base.User
+import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.model.account.Result
 
-class AuthViewModel(): ViewModel() {
+class AuthViewModel : ViewModel() {
     var pName = MutableLiveData("")
-    var NRIC = MutableLiveData("")
-    var date = MutableLiveData(Timestamp.now())
     var password = MutableLiveData("")
-    var user_result = MutableLiveData(VaccinatedUser("", "", Timestamp(0, 0), "old"))
+    var userResult = MutableLiveData(User.empty())
 
     fun register(){
-        val fullName = pName.value!!.trim()
-        val nric = NRIC.value!!.trim()
-        val dateOfVaccine = date.value!!
+        val name = pName.value!!.trim()
         val pw = password.value!!
-        val data = hashMapOf(
-            "fullName" to fullName,
-            "nric" to nric,
-            "dateOfVaccine" to dateOfVaccine,
-            "password" to pw
+        val type = userResult.value!!.type
+        hashMapOf(
+            "name" to name,
+            "password" to pw,
+            "type" to type
         )
-        Log.d("TAG", "$fullName $nric $pw")
+        Log.d("TAG", "$name $type $pw")
 
-        FirebaseUtil.userCollection().document(nric).get()
+        FirebaseUtil.userCollection().document(name).get()
             .addOnSuccessListener {
-                val data_ = it?.data
-                if (data_ != null){
-                    val user = VaccinatedUser("", "", Timestamp.now(), "")
-                    user_result.value = user
+                val dataset = it?.data
+                if (dataset != null){
+                    val user = User.empty()
+                    userResult.value = user
                     Result.Error(Exception("It seems you don't exist."))
                 }
-                else{
-
+                else {
                     if (pw.length >= 8) {
-                        FirebaseUtil.userCollection()
-                                .document(nric)
-                                .set(data)
-                            .addOnSuccessListener {
-                                user_result.value = VaccinatedUser(nric, fullName, dateOfVaccine, pw)
-                                Log.d("TAG", "Data is Nice!")
-                            }
-                            .addOnFailureListener {
-                                Log.d("TAG", "Data is Not Nice!")
-                                val user = VaccinatedUser("", "", Timestamp.now(), "")
-                                user_result.value = user
-                            }
+                        it?.data?.let { it1 ->
+                            FirebaseUtil.userCollection()
+                                .document(name)
+                                .set(it1)
+                                .addOnSuccessListener {
+                                    userResult.value = User(name, pw, type)
+                                    Log.d("TAG", "Data is Nice!")
+                                }
+                                .addOnFailureListener {
+                                    Log.d("TAG", "Data is Not Nice!")
+                                    val user = User.empty()
+                                    userResult.value = user
+                                }
+                        }
 
                     } else {
                         Result.Error(Exception("Password is too small!"))
-                        val user = VaccinatedUser("", "", Timestamp.now(), "3")
-                        user_result.value = user
+                        val user = User.empty()
+                        userResult.value = user
                         Log.d("TAG", "Password Set to 3")
                     }
 
@@ -64,28 +61,27 @@ class AuthViewModel(): ViewModel() {
     }
 
     fun login(){
-        val nric = NRIC.value!!.trim()
+        val name = pName.value!!.trim()
         val password = this.password.value!!
         var data: Map<String?, Any?>?
 
-        FirebaseUtil.userCollection().document(nric).get()
+        FirebaseUtil.userCollection().document(name).get()
                 .addOnSuccessListener {
                     data = it?.data
                     when {
                         data == null -> {
-                            val user = VaccinatedUser("", "", Timestamp.now(), "")
-                            user_result.value = user
+                            val user = User.empty()
+                            userResult.value = user
                             Result.Error(Exception("It seems you don't exist."))
                         }
                         (data!!["password"] as String) == password -> {
-                            val fullName = data!!["fullName"] as String
-                            val user = VaccinatedUser(nric, fullName, data!!["dateOfVaccine"] as Timestamp, password)
-                            user_result.value = user
+                            val user = User(data!!["name"] as String, password, "caregiver")
+                            userResult.value = user
                             Log.d("TAG", "Data is Correct!")
                         }
                         else -> {
-                            val user = VaccinatedUser("", "", Timestamp.now(), "")
-                            user_result.value = user
+                            val user = User.empty()
+                            userResult.value = user
                             Log.d("TAG", "Data is Wrong!")
                             Result.Error(Exception("It seems you don't exist."))
                         }

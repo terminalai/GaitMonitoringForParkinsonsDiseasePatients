@@ -1,19 +1,11 @@
 package com.thepyprogrammer.gaitanalyzer.ui.auth
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.thepyprogrammer.greenpass.R
-import com.thepyprogrammer.greenpass.ui.main.MainViewModel
+import com.thepyprogrammer.gaitanalyzer.R
 
 class AuthActivity : AppCompatActivity() {
 

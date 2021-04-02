@@ -42,4 +42,39 @@
         <item name="android:colorBackground">@color/backgroundLight</item>
         <item name="android:textColor">@color/textPrimary</item>
     </style>
+
+
+    <style name="Theme.GaitAnalyzer.LoginRegister" parent="Theme.GaitAnalyzer">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/blue_700</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlHighlight">@android:color/white</item>
+        <item name="colorControlActivated">@android:color/white</item>
+        <item name="colorButtonNormal">@color/orange</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:editTextColor">@color/white</item>
+    </style>
+
+    <style name="Theme.GaitAnalyzer.Profile" parent="Theme.GaitAnalyzer">
+        <item name="android:windowBackground">@color/blue_800</item>
+        <item name="colorButtonNormal">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+    </style>
+
+    <style name="Theme.GaitAnalyzer.Dialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/black</item>
+    </style>
+
+    <style name="Theme.GaitAnalyzer.DarkActionBar.BackButton" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+    <style name="Theme.GaitAnalyzer.Splash" parent="Theme.GaitAnalyzer.NoActionBar">
+        <!-- <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <item name="fullscreenTextColor">@color/light_blue_A200</item> -->
+    </style>
+
+    <style name="Theme.GaitAnalyzer.Intro" parent="Theme.Intro" />
 </resources>

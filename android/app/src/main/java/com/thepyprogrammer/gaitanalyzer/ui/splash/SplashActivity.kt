@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.Timestamp
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.model.Util
-import com.thepyprogrammer.gaitanalyzer.model.account.VaccinatedUser
+import com.thepyprogrammer.gaitanalyzer.model.account.base.User
 import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.ui.auth.AuthActivity
 import com.thepyprogrammer.gaitanalyzer.ui.main.MainActivity
@@ -33,11 +33,11 @@ class SplashActivity : AppCompatActivity() {
             if(sc.hasNext()) {
                 val nric = sc.nextLine()
                 if (nric != "null") {
-                    val fullName = sc.nextLine()
-                    val dateOfVaccine = Timestamp(Util.format.parse(sc.nextLine()))
+                    val name = sc.nextLine()
                     val password = sc.nextLine()
-                    FirebaseUtil.user = VaccinatedUser(
-                        nric, fullName, dateOfVaccine, password
+                    val type = sc.nextLine()
+                    FirebaseUtil.user = User(
+                        name, password, type
                     )
                     Handler().postDelayed({
                         val main = Intent(applicationContext, MainActivity::class.java)

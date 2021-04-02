@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">GaitAnalyzer</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="title_activity_main">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -10,4 +12,98 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="emailHint">Email</string>
+    <string name="passwordHint">Password</string>
+    <string name="loginTitle">Login</string>
+    <string name="createPageButton">Create An Account</string>
+    <string name="forgotPasswordButton">Forgot Password</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_login_register">LoginRegisterActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_pass">Entry Pass</string>
+    <string name="menu_settings">Settings</string>
+    <string name="namePlaceholder">name</string>
+    <string name="imageDesc">Your Profile Picture!</string>
+    <string name="icPlaceholder">IC</string>
+    <string name="emailPlaceholder">email</string>
+    <string name="autogenText">This certifies that</string>
+    <string name="autogenText2">was vaccinated on</string>
+    <string name="dateOfVaccinationText">Date of Vaccination:</string>
+    <string name="datePlaceholder">date</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_intro">IntroActivity</string>
+    <string name="title_activity_profile_picture">Profile Picture</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="openDrawer" />
+    <string name="closeDrawer" />
+
+
+    <string name="profile_desc">Rowan Sebastian Atkinson CBE is an English actor,  comedian and screenwriter</string>
+    <string name="profile_title">Mr Bean</string>
+    <string name="posts">posts</string>
+    <string name="followers">followers</string>
+    <string name="following">following</string>
+    <string name="msg_error_unable_select_profile_pic">Unable to set profile image. Please try again!</string>
+    <string name="lbl_set_profile_photo">Set profile image</string>
+    <string name="lbl_take_camera_picture">Take a picture</string>
+    <string name="lbl_choose_from_gallery">Choose from gallery</string>
+    <string name="toast_image_intent_null">Image picker option is missing!</string>
+
+    <!-- font families -->
+    <string name="font_family_light">sans-serif-light</string>
+    <string name="font_family_medium">sans-serif-medium</string>
+    <string name="font_family_regular">sans-serif</string>
+    <string name="font_family_condensed">sans-serif-condensed</string>
+    <string name="font_family_black">sans-serif-black</string>
+    <string name="font_family_thin">sans-serif-thin</string>
+    <string name="dialog_permission_title">Grant Permissions</string>
+    <string name="dialog_permission_message">This app needs permission to use this feature. You can grant them in app settings.</string>
+    <string name="go_to_settings">GOTO SETTINGS</string>
+    <string name="title_activity_account">AccountActivity</string>
+    <string name="sign_in_button">Sign In</string>
+    <string name="action_edit">Edit</string>
+    <string name="title_activity_auth">AuthActivity</string>
+    <string name="title_activity_scanner">ScannerActivity</string>
+    <string name="action_login">Login</string>
+    <string name="action_full_name">Full Name</string>
+    <string name="action_nric">NRIC</string>
+    <string name="action_scanner">Scanner</string>
+    <string name="name_ic_placeholder">name@ic</string>
+    <string name="action_date">Select Date</string>
+    <string name="action_register">Register</string>
+    <string name="action_logout">Logout</string>
+    <string name="info">Information</string>
+    <string name="bigTextInfo">This is an app to facilitate the verification of vaccinated users. It supports both light and dark mode, though this functionality is in beta. Finally, shaking the phone will cause the verification page to pop up. </string>
 </resources>

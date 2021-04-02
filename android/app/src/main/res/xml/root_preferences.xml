@@ -1,0 +1,22 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="Account">
+        <Preference
+            app:title="Logout"
+            app:key="logout" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Theme">
+
+        <SwitchPreferenceCompat
+            app:key="theme"
+            app:defaultValue="false"
+            app:title="Dark Theme (Beta)" />
+
+    </PreferenceCategory>
+
+    <!--
+    -->
+
+</PreferenceScreen>

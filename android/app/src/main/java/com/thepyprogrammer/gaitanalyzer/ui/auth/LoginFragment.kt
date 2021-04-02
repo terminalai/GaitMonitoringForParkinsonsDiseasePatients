@@ -15,12 +15,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.Timestamp
-import com.thepyprogrammer.greenpass.R
-import com.thepyprogrammer.greenpass.model.Util
-import com.thepyprogrammer.greenpass.model.account.VaccinatedUser
-import com.thepyprogrammer.greenpass.model.firebase.FirebaseUtil
-import com.thepyprogrammer.greenpass.ui.main.MainActivity
+import com.thepyprogrammer.gaitanalyzer.model.view.modifications.afterTextChanged
+import com.thepyprogrammer.gaitanalyzer.R
+import com.thepyprogrammer.gaitanalyzer.model.Util
+import com.thepyprogrammer.gaitanalyzer.model.account.base.User
+import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.ui.main.MainActivity
 import java.util.*
 
 
@@ -53,7 +53,7 @@ class LoginFragment : Fragment() {
         /**View Model**/
         viewModel = activity?.let { ViewModelProvider(it).get(AuthViewModel::class.java) }!!
 
-        val nricObserver = Observer<String>{ newNric ->
+        val nameObserver = Observer<String>{ newNric ->
             nric.setText(newNric)
         }
 
@@ -61,7 +61,7 @@ class LoginFragment : Fragment() {
             password.setText(newPassword)
         }
 
-        viewModel.NRIC.observe(requireActivity(), nricObserver)
+        viewModel.pName.observe(requireActivity(), nameObserver)
         viewModel.password.observe(requireActivity(), passwordObserver)
 
         nric.afterTextChanged {
@@ -81,7 +81,7 @@ class LoginFragment : Fragment() {
 //        }
 
         login.setOnClickListener {
-            viewModel.NRIC.value = nric.text.toString().trim().toUpperCase(Locale.ROOT)
+            viewModel.pName.value = nric.text.toString().trim().toUpperCase(Locale.ROOT)
             viewModel.password.value = password.text.toString().trim()
             loading.visibility = View.VISIBLE
             viewModel.login()
@@ -126,14 +126,14 @@ class LoginFragment : Fragment() {
             password.setText(newPassword)
         }
 
-        viewModel.NRIC.observe(requireActivity(), nricObserver)
+        viewModel.pName.observe(requireActivity(), nricObserver)
         viewModel.password.observe(requireActivity(), passwordObserver)
 
         val resultObserver =
-            Observer<VaccinatedUser> {
+            Observer<User> {
                 when {
-                    viewModel.user_result.value?.password == "old" -> {}
-                    viewModel.user_result.value?.password == "" || viewModel.user_result.value?.password == "3" -> {
+                    viewModel.userResult.value?.password == "old" -> {}
+                    viewModel.userResult.value?.password == "" || viewModel.userResult.value?.password == "3" -> {
                         nric.setText("")
                         password.setText("")
                         loading.visibility = View.GONE
@@ -142,7 +142,7 @@ class LoginFragment : Fragment() {
                         sb?.show()
                     }
                     else -> {
-                        FirebaseUtil.user = viewModel.user_result.value
+                        FirebaseUtil.user = viewModel.userResult.value
 
                         Log.d("TAG", "Data is Correct second!")
                         loading.visibility = View.GONE
@@ -157,7 +157,7 @@ class LoginFragment : Fragment() {
                     }
                 }
             }
-        viewModel.user_result.observe(viewLifecycleOwner,resultObserver)
+        viewModel.userResult.observe(viewLifecycleOwner,resultObserver)
     }
 
 }
