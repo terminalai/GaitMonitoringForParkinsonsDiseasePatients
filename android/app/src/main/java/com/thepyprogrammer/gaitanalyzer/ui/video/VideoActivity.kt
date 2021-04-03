@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.model.configurations.*
 import com.thepyprogrammer.gaitanalyzer.model.io.getUriFromRaw
-import com.thepyprogrammer.gaitanalyzer.ui.main.MainActivity
+import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_video.*
 import java.util.*
 

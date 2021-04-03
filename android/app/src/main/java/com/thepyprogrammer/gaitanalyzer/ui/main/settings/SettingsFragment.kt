@@ -7,7 +7,7 @@ import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import androidx.transition.TransitionInflater
 import com.thepyprogrammer.gaitanalyzer.R
-import com.thepyprogrammer.gaitanalyzer.ui.main.MainActivity
+import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 
 class SettingsFragment : PreferenceFragmentCompat() {
 

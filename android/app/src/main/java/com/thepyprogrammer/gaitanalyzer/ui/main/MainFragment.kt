@@ -11,36 +11,42 @@ import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.ImageSpan
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
+import android.view.*
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.tabs.TabLayoutMediator
 import com.thepyprogrammer.gaitanalyzer.R
+import com.thepyprogrammer.gaitanalyzer.databinding.FragmentMainBinding
 import com.thepyprogrammer.gaitanalyzer.model.view.listener.OnShakeListener
 import com.thepyprogrammer.gaitanalyzer.model.view.listener.OnSwipeTouchListener
-import com.thepyprogrammer.gaitanalyzer.ui.auth.AuthActivity
+import com.thepyprogrammer.gaitanalyzer.ui.auth.AuthAdapter
+import com.thepyprogrammer.gaitanalyzer.ui.auth.AuthFragment
+import com.thepyprogrammer.gaitanalyzer.ui.information.InformationFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.profile.ProfileFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.settings.SettingsFragment
 import com.thepyprogrammer.gaitanalyzer.ui.video.VideoActivity
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_main.*
 import java.io.File
 import java.util.*
 
-
-class MainActivity : AppCompatActivity() {
+class MainFragment: Fragment() {
 
     private var imageView: CircleImageView? = null
     private var imageNavMenuView: CircleImageView? = null
@@ -58,6 +64,10 @@ class MainActivity : AppCompatActivity() {
     private var mSensorManager: SensorManager? = null
     private lateinit var shakeListener: OnShakeListener
 
+    private var _binding: FragmentMainBinding? = null
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
     override fun onStart() {
         super.onStart()
@@ -79,12 +89,17 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
 
-        imageInfoFile = File(filesDir, "profileImageURI.txt")
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
+
+        imageInfoFile = File((activity as AppCompatActivity).filesDir, "profileImageURI.txt")
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -94,23 +109,23 @@ class MainActivity : AppCompatActivity() {
             ), drawer_layout
         )
 
-        navController = findNavController(R.id.nav_host_fragment).apply {
-            setupActionBarWithNavController(this, appBarConfiguration)
+        navController = (activity as AppCompatActivity).findNavController(R.id.nav_host_fragment).apply {
+            setupActionBarWithNavController(activity as AppCompatActivity, this, appBarConfiguration)
             nav_view.setupWithNavController(this)
         }
 
         val actionBarDrawerToggle: ActionBarDrawerToggle = object : ActionBarDrawerToggle(
-            this,
-            drawer_layout,
+            requireActivity(),
+            binding.drawerLayout,
             toolbar,
             R.string.openDrawer,
             R.string.closeDrawer
         ) {}
 
-        drawer_layout.setDrawerListener(actionBarDrawerToggle)
+        binding.drawerLayout.setDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
 
-        drawer_layout.apply {
+        binding.drawerLayout.apply {
             setViewScale(GravityCompat.START, 0.9f) //set height scale for main view (0f to 1f)
             setViewElevation(
                 GravityCompat.START,
@@ -122,7 +137,7 @@ class MainActivity : AppCompatActivity() {
             setRadius(GravityCompat.START, 25F) //set end container's corner radius (dimension)
         }
 
-        fragmentContainer.setOnTouchListener(object : OnSwipeTouchListener(this@MainActivity) {
+        fragmentContainer.setOnTouchListener(object : OnSwipeTouchListener(activity) {
             override fun onSwipeRight() {
                 Log.v("detectSwipe", "Right Swipe Detected")
             }
@@ -141,7 +156,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        shakeListener = object : OnShakeListener(this) {
+        shakeListener = object : OnShakeListener(requireActivity()) {
             override fun onShakeLeft() {
                 navigateToPrevious()
             }
@@ -173,69 +188,60 @@ class MainActivity : AppCompatActivity() {
             nameView.text = newName
         }
 
-        viewModel.pName.observe(this, nameObserver)
+        viewModel.pName.observe(activity as AppCompatActivity, nameObserver)
 
 
+
+        return view
     }
 
-    override fun onCreateOptionsMenu(menu: Menu) =
-        run { // Inflate the menu; this adds items to the action bar if it is present.
-            menuInflater.inflate(R.menu.overflow_menu, menu)
-
-            menu.findItem(R.id.action_settings).apply {
-                title = SpannableStringBuilder("* Settings").also {
-                    it.setSpan( // replace "*" with icon
-                        ImageSpan(this@MainActivity, R.drawable.ic_settings),
-                        0,
-                        1,
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-                }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.overflow_menu, menu)
+        menu.findItem(R.id.action_settings).apply {
+            title = SpannableStringBuilder("* Settings").also {
+                it.setSpan( // replace "*" with icon
+                    ImageSpan(requireActivity(), R.drawable.ic_settings),
+                    0,
+                    1,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
             }
-
-            menu.findItem(R.id.information).apply {
-                title = SpannableStringBuilder("* Information").also {
-                    it.setSpan( // replace "*" with icon
-                        ImageSpan(this@MainActivity, R.drawable.ic_info),
-                        0,
-                        1,
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-                }
-            }
-
-            true
         }
 
+        menu.findItem(R.id.information).apply {
+            title = SpannableStringBuilder("* Information").also {
+                it.setSpan( // replace "*" with icon
+                    ImageSpan(requireActivity(), R.drawable.ic_info),
+                    0,
+                    1,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+            }
+        }
+
+        super.onCreateOptionsMenu(menu, inflater)
+    }
 
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId) {
             R.id.action_settings -> navigateToSettings()
 
-            R.id.action_logout -> {
-                logout()
-            }
+            R.id.action_logout -> logout()
 
-            R.id.information -> {
 
-                true
-            }
+            R.id.information -> navigateToInformation()
             R.id.action_video -> {
-                startActivity(Intent(this@MainActivity, VideoActivity::class.java))
+                startActivity(Intent(requireActivity(), VideoActivity::class.java))
                 true
             }
             else -> false
         }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
 
 
     private val currentFragment: Fragment
         get() = (
-                supportFragmentManager
+                requireActivity().supportFragmentManager
                     .findFragmentById(R.id.nav_host_fragment)?.childFragmentManager?.fragments?.get(
                         0
                     )
@@ -243,22 +249,29 @@ class MainActivity : AppCompatActivity() {
 
     private fun navigateToHome() =
         if ((currentFragment !is ProfileFragment)) {
-            val navController = findNavController(R.id.nav_host_fragment)
+            val navController = findNavController(binding.navHostFragment)
             navController.navigate(R.id.nav_home)
             true
         } else false
 
     private fun navigateToProfile() =
         if ((currentFragment !is ProfileFragment)) {
-            val navController = findNavController(R.id.nav_host_fragment)
+            val navController = findNavController(binding.navHostFragment)
             navController.navigate(R.id.nav_profile)
             true
         } else false
 
     private fun navigateToSettings() =
         if ((currentFragment !is SettingsFragment)) {
-            val navController = findNavController(R.id.nav_host_fragment)
+            val navController = findNavController(binding.navHostFragment)
             navController.navigate(R.id.nav_settings)
+            true
+        } else false
+
+    private fun navigateToInformation() =
+        if ((currentFragment !is InformationFragment)) {
+            val navController = findNavController(binding.navHostFragment)
+            navController.navigate(R.id.nav_information)
             true
         } else false
 
@@ -302,15 +315,7 @@ class MainActivity : AppCompatActivity() {
 
     fun logout(): Boolean {
         // viewModel.logout(this)
-        startActivityForResult(Intent(this, AuthActivity::class.java).also {
-            it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        }, 0)
-
-        setResult(Activity.RESULT_OK)
-
-        //Complete and destroy login activity once successful
-        finish()
+        findNavController(binding.fragmentContainer).navigate(R.id.action_nav_main_to_nav_auth)
         return true
     }
-
 }

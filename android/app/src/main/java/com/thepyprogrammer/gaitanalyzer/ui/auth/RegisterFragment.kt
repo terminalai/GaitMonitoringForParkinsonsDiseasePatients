@@ -19,7 +19,7 @@ import com.thepyprogrammer.gaitanalyzer.model.Util
 import com.thepyprogrammer.gaitanalyzer.model.account.base.User
 import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.model.view.modifications.afterTextChanged
-import com.thepyprogrammer.gaitanalyzer.ui.main.MainActivity
+import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import kotlinx.android.synthetic.main.fragment_register.*
 import java.util.*
 

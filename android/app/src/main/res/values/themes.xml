@@ -12,14 +12,15 @@
         <item name="android:windowContentTransitions">true</item>
         <item name="actionBarPopupTheme">@style/Theme.GaitAnalyzer.PopupOverlay</item>
         <item name="bubbleColor">@color/bubbleLight</item>
-        <item name="colorPrimaryDark">@color/backgroundLight</item>
         <item name="selectableItemBackground">@drawable/ripple</item>
         <item name="switchThumbEnabled">@color/switchThumbEnabledLight</item>
         <item name="switchThumbDisabled">@color/switchThumbDisabledLight</item>
         <item name="switchTrackEnabled">@color/switchTrackEnabledLight</item>
         <item name="switchTrackDisabled">@color/switchTrackDisabledLight</item>
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/backgroundLight</item>
+        <item name="android:colorPrimary">#2196F3</item>
+        <item name="android:colorPrimaryDark">#1976D2</item>
+        <item name="android:colorAccent">#03A9F4</item>
         <!-- Secondary brand color. -->
         <item name="android:divider">@color/separatorLight</item>
         <!-- Status bar color. -->

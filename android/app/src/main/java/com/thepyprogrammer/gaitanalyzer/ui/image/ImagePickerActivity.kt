@@ -20,7 +20,7 @@ import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.thepyprogrammer.gaitanalyzer.R
-import com.thepyprogrammer.gaitanalyzer.ui.main.MainActivity
+import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.yalantis.ucrop.UCrop
 import java.io.File
 

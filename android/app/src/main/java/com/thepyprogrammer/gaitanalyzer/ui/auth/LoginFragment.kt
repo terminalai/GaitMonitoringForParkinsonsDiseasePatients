@@ -18,7 +18,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.model.account.base.User
 import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
-import com.thepyprogrammer.gaitanalyzer.ui.main.MainActivity
+import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import java.util.*
 
 
@@ -60,10 +60,6 @@ class LoginFragment : Fragment() {
 
         viewModel.pName.observe(requireActivity(), nameObserver)
         viewModel.password.observe(requireActivity(), passwordObserver)
-//
-//        password.afterTextChanged {
-//            viewModel.password.value = it
-//        }
 
         login.setOnClickListener {
             viewModel.pName.value = name.text.toString().trim().toUpperCase(Locale.ROOT)
@@ -71,29 +67,7 @@ class LoginFragment : Fragment() {
             loading.visibility = View.VISIBLE
             viewModel.login()
 
-            // FirebaseUtil.retrieveImage(requireActivity())
-
-
         }
-
-        //esc.setOnClickListener {
-        //    FirebaseUtil.user = VaccinatedUser(
-        //        "S1234567D",
-        //        "Prannay Gupta",
-        //        Timestamp.now(),
-        //        "helloWorld"
-        //    )
-        //    loading.visibility = View.GONE
-//
-        //    startActivityForResult(Intent(activity, MainActivity::class.java).also {
-        //        it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        //    }, 0)
-//
-        //    activity?.setResult(Activity.RESULT_OK)
-//
-        //    //Complete and destroy login activity once successful
-        //    activity?.finish()
-        //}
 
         return root
     }

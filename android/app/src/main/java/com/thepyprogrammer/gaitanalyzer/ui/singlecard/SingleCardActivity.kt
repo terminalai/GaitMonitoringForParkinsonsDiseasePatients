@@ -8,7 +8,7 @@ import com.thepyprogrammer.gaitanalyzer.R
 class SingleCardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.fragment_main)
         val completeViewModel = ViewModelProvider(this).get(CompleteViewModel::class.java)
     }
 }
