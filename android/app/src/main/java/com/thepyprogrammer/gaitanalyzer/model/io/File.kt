@@ -149,6 +149,8 @@ class File @JvmOverloads constructor(filename: String?, type: Char = 'r') : java
         }
     }
 
+    fun nonExistent() = !exists()
+
     fun toGeneric(): java.io.File {
         close()
         return this
@@ -162,9 +164,9 @@ class File @JvmOverloads constructor(filename: String?, type: Char = 'r') : java
         return relativize(uri)
     }
 
-    override fun equals(obj: Any?): Boolean {
-        if (obj === this) return true
-        return if (obj == null || obj !is File) false else absolutePath == obj.absolutePath
+    override fun equals(other: Any?): Boolean {
+        if (other === this) return true
+        return if (other == null || other !is File) false else absolutePath == other.absolutePath
     }
 
     fun equals(other: File): Boolean {

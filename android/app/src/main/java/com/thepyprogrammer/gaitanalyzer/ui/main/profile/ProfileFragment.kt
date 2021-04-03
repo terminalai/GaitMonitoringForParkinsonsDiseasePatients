@@ -12,20 +12,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.transition.TransitionInflater
 import com.thepyprogrammer.gaitanalyzer.R
+import com.thepyprogrammer.gaitanalyzer.model.io.File
 import com.thepyprogrammer.gaitanalyzer.ui.image.ImageClickListener
 import com.thepyprogrammer.gaitanalyzer.ui.main.MainViewModel
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.fragment_profile.*
-import java.io.File
 import java.util.*
 
 class ProfileFragment : Fragment() {
     var circleImageView: CircleImageView? = null
     var imageInfoFile: File? = null
     lateinit var nameTextView: TextView
-    private lateinit var NRICTextView: TextView
-    lateinit var emailTextView: TextView
-    lateinit var dateTextView: TextView
     lateinit var button: Button
     private lateinit var viewModel: MainViewModel
 
@@ -52,7 +49,7 @@ class ProfileFragment : Fragment() {
         val inflater = TransitionInflater.from(requireContext())
         enterTransition = inflater.inflateTransition(R.transition.slide_right)
         exitTransition = inflater.inflateTransition(R.transition.fade)
-        imageInfoFile = File(activity?.filesDir, "profileImageURI.txt")
+        imageInfoFile = File(java.io.File(activity?.filesDir, "profileImageURI.txt"))
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -62,17 +59,8 @@ class ProfileFragment : Fragment() {
         } ?: throw Exception("Invalid Activity")
 
         //ViewModelProvider(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
 
         nameTextView = view?.findViewById(R.id.name)!!
-
-
-//        //testing code for viewmodel
-//        button = view?.findViewById(R.id.button2)!!
-//
-//        button.setOnClickListener {
-//            viewModel.pName.value = "This is a thing!"
-//        }
 
         imageView.setOnClickListener(ImageClickListener(this))
 
@@ -83,25 +71,13 @@ class ProfileFragment : Fragment() {
         viewModel.pName.observe(viewLifecycleOwner, nameObserver)
     }
 
-    private fun readData(): String {
-        if (!imageInfoFile!!.exists()) {
-            return ""
-        }
-        val scanner = Scanner(imageInfoFile)
-        val string = StringBuilder(scanner.nextLine())
-
-        while (scanner.hasNextLine())
-            string.append("\n" + scanner.nextLine())
-
-
-        scanner.close()
-        return string.toString()
-    }
+    private fun readData() =
+        if (imageInfoFile?.exists() == true) imageInfoFile!!.read() else ""
 
     private fun loadImage() {
         val string: String = readData()
         if (string.isNotEmpty()) {
-            imageView!!.setImageURI(Uri.parse(readData()))
+            imageView!!.setImageURI(Uri.parse(string))
         } else {
             imageView!!.setImageResource(R.drawable.face_trans)
         }

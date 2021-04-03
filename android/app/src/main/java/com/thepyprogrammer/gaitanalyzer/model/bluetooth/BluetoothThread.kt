@@ -140,14 +140,14 @@ class BluetoothThread(address: String, handler: Handler) :
      * Write data to the socket.
      */
     private fun write(s: String) {
-        var s = s
+        var str = s
         try {
             // Add the delimiter
-            s += DELIMITER
+            str += DELIMITER
 
             // Convert to bytes and write
-            outStream!!.write(s.toByteArray())
-            Log.i(TAG, "[SENT] $s")
+            outStream!!.write(str.toByteArray())
+            Log.i(TAG, "[SENT] $str")
         } catch (e: Exception) {
             Log.e(TAG, "Write failed!", e)
         }
