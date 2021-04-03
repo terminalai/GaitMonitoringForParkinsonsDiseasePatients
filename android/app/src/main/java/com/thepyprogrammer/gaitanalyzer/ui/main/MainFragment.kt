@@ -34,6 +34,7 @@ import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentMainBinding
 import com.thepyprogrammer.gaitanalyzer.model.view.listener.OnShakeListener
 import com.thepyprogrammer.gaitanalyzer.model.view.listener.OnSwipeTouchListener
+import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.gaitanalyzer.ui.auth.AuthAdapter
 import com.thepyprogrammer.gaitanalyzer.ui.auth.AuthFragment
 import com.thepyprogrammer.gaitanalyzer.ui.information.InformationFragment
@@ -64,10 +65,9 @@ class MainFragment: Fragment() {
     private var mSensorManager: SensorManager? = null
     private lateinit var shakeListener: OnShakeListener
 
-    private var _binding: FragmentMainBinding? = null
+    private lateinit var binding: FragmentMainBinding
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onStart() {
         super.onStart()
@@ -94,7 +94,7 @@ class MainFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        binding = FragmentMainBinding.inflate(inflater, container, false)
         val view = binding.root
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
@@ -226,7 +226,7 @@ class MainFragment: Fragment() {
         when (item.itemId) {
             R.id.action_settings -> navigateToSettings()
 
-            R.id.action_logout -> logout()
+            R.id.action_logout -> (activity as MainActivity).logout()
 
 
             R.id.information -> navigateToInformation()
@@ -311,11 +311,5 @@ class MainFragment: Fragment() {
             imageView?.setImageResource(R.drawable.face)
             imageNavMenuView?.setImageResource(R.drawable.face)
         }
-    }
-
-    fun logout(): Boolean {
-        // viewModel.logout(this)
-        findNavController(binding.fragmentContainer).navigate(R.id.action_nav_main_to_nav_auth)
-        return true
     }
 }
