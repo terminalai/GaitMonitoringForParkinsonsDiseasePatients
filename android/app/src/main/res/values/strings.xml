@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GaitAnalyzer</string>
+    <string name="app_name">Gait Analyzer</string>
     <string name="title_item_detail">Item Detail</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

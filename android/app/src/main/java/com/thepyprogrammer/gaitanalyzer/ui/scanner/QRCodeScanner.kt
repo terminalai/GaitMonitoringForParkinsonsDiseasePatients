@@ -39,8 +39,8 @@ class QRCodeScanner : AppCompatActivity() {
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
             runOnUiThread {
                 Toast.makeText(
-                    this, "Camera initialization error: ${it.message}",
-                    Toast.LENGTH_LONG
+                        this, "Camera initialization error: ${it.message}",
+                        Toast.LENGTH_LONG
                 ).show()
             }
         }

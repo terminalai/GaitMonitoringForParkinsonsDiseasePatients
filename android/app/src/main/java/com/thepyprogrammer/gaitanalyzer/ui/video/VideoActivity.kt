@@ -22,7 +22,7 @@ class VideoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_video)
         setSupportActionBar(toolbar)
         desc.text =
-            """The Olympic Games is a quadrennial international multi-sport event celebrated as a global sports festival by people all over the world. The Olympic Games are held in both the summer and winter, with the ultimate goal of cultivating people and world peace through sports. The Games of the XXIX Olympiad held in Beijing in 2008 saw athletes from 204 countries and regions participate. London hosted the 2012 Olympics, commemorating the 30th Olympic Games.
+                """The Olympic Games is a quadrennial international multi-sport event celebrated as a global sports festival by people all over the world. The Olympic Games are held in both the summer and winter, with the ultimate goal of cultivating people and world peace through sports. The Games of the XXIX Olympiad held in Beijing in 2008 saw athletes from 204 countries and regions participate. London hosted the 2012 Olympics, commemorating the 30th Olympic Games.
             
             This year, Japan will be hosting Olympics 2021 in Tokyo. The Tokyo 2020 Olympic Games will feature a record 33 competitions and 339 events held across 42 competition venues.    
         """.trimIndent()

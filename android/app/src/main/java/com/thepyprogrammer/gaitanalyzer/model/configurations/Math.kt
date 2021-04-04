@@ -1,11 +1,6 @@
 package com.thepyprogrammer.gaitanalyzer.model.configurations
 
-import android.net.Uri
-import com.thepyprogrammer.gaitanalyzer.model.io.File
-import java.io.*
 import java.lang.Math.getExponent
-import java.nio.ByteBuffer
-import java.nio.channels.FileChannel
 import java.util.*
 import kotlin.math.ln1p
 import kotlin.math.sign
@@ -369,22 +364,21 @@ fun fib(upperBound: Double): IntArray {
 }
 
 
-
 // Random
 val random = Random()
 fun randInt() = random.nextInt()
 fun randInt(upperBound: Int) = random.nextInt(upperBound)
 fun randInt(lowerBound: Int, upperBound: Int) = lowerBound + randInt(upperBound - lowerBound)
-fun randInt(lowerBound: Int, upperBound: Int, step: Int) = lowerBound + step*randInt((upperBound - lowerBound - 1) / step - 1)
+fun randInt(lowerBound: Int, upperBound: Int, step: Int) = lowerBound + step * randInt((upperBound - lowerBound - 1) / step - 1)
 
-fun randDouble() = random.nextDouble();
-fun randDouble(upperBound: Double) = Math.random()*upperBound;
-fun randDouble(lowerBound: Double, upperBound: Double) = lowerBound + randDouble(upperBound-lowerBound);
-fun randDouble(lowerBound: Double, upperBound: Double, step: Double) = lowerBound + Math.random()*((upperBound-lowerBound-1)/step - 1)
+fun randDouble() = random.nextDouble()
+fun randDouble(upperBound: Double) = Math.random() * upperBound
+fun randDouble(lowerBound: Double, upperBound: Double) = lowerBound + randDouble(upperBound - lowerBound)
+fun randDouble(lowerBound: Double, upperBound: Double, step: Double) = lowerBound + Math.random() * ((upperBound - lowerBound - 1) / step - 1)
 
-fun randFloat() = random.nextDouble();
-fun randFloat(upperBound: Float) = Math.random()*upperBound;
-fun randFloat(lowerBound: Float, upperBound: Float) = lowerBound + randFloat(upperBound-lowerBound);
-fun randFloat(lowerBound: Float, upperBound: Float, step: Float) = lowerBound + randFloat((upperBound-lowerBound-1)/step - 1)
+fun randFloat() = random.nextDouble()
+fun randFloat(upperBound: Float) = Math.random() * upperBound
+fun randFloat(lowerBound: Float, upperBound: Float) = lowerBound + randFloat(upperBound - lowerBound)
+fun randFloat(lowerBound: Float, upperBound: Float, step: Float) = lowerBound + randFloat((upperBound - lowerBound - 1) / step - 1)
 
 fun randBoolean() = random.nextBoolean()

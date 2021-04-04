@@ -3,88 +3,94 @@ package com.thepyprogrammer.gaitanalyzer.ui.auth
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.thepyprogrammer.gaitanalyzer.model.account.Result
 import com.thepyprogrammer.gaitanalyzer.model.account.base.User
+import com.thepyprogrammer.gaitanalyzer.model.crypto.AES
 import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.model.livedata.MutableErrorLiveData
+import com.thepyprogrammer.gaitanalyzer.model.livedata.MutableStringLiveData
 
 class AuthViewModel : ViewModel() {
-    var pName = MutableLiveData("")
-    var password = MutableLiveData("")
+    var pName = MutableStringLiveData("")
+    var password = MutableStringLiveData("")
     var userResult = MutableLiveData(User.empty())
+    var error = MutableErrorLiveData()
+
+    val aes = AES()
 
     fun register() {
-        val name = pName.value!!.trim()
-        val pw = password.value!!
-        val type = userResult.value!!.type
-        hashMapOf(
-            "name" to name,
-            "password" to pw,
-            "type" to type
-        )
-        Log.d("TAG", "$name $type $pw")
+        val name = pName.value
+        val pw = password.value
+        val type = FirebaseUtil.type
 
-        FirebaseUtil.userCollection().document(name).get()
-            .addOnSuccessListener {
-                val dataset = it?.data
-                if (dataset != null) {
-                    val user = User.empty()
-                    userResult.value = user
-                    Result.Error(Exception("It seems you don't exist."))
-                } else {
-                    if (pw.length >= 8) {
-                        it?.data?.let { it1 ->
+        val data = hashMapOf(
+                "name" to name,
+                "password" to pw,
+                "type" to type
+        )
+
+        error.setValue("", "$name $type $pw")
+
+        var encryptedCode = aes.encrypt("$name$type$pw", "GaitMonitoringAndAnalysisForParkinsonsDiseasePatients")
+        if(encryptedCode == null) encryptedCode = "$name$type$pw"
+
+
+        FirebaseUtil.userCollection().document(encryptedCode).get()
+                .addOnSuccessListener {
+                    val dataset = it?.data
+                    if (dataset != null) {
+                        Log.d("AUTH","Logging In Instead.")
+                        login()
+                    } else {
+                        if (pw.length >= 6) {
                             FirebaseUtil.userCollection()
-                                .document(name)
-                                .set(it1)
-                                .addOnSuccessListener {
-                                    userResult.value = User(name, pw, type)
-                                    Log.d("TAG", "Data is Nice!")
-                                }
-                                .addOnFailureListener {
-                                    Log.d("TAG", "Data is Not Nice!")
-                                    val user = User.empty()
-                                    userResult.value = user
-                                }
+                                    .document(encryptedCode)
+                                    .set(data)
+                                    .addOnSuccessListener {
+                                        Log.d("AUTH", "Data is Nice!")
+                                        userResult.value = FirebaseUtil.newUser(name, pw)
+                                    }
+                                    .addOnFailureListener {
+                                        error.setValue("Can't Process Account.")
+                                    }
+
+                        } else {
+                            error.setValue("Password is too small!")
                         }
 
-                    } else {
-                        Result.Error(Exception("Password is too small!"))
-                        val user = User.empty()
-                        userResult.value = user
-                        Log.d("TAG", "Password Set to 3")
                     }
-
+                }.addOnFailureListener {
+                    error.setValue("Couldn't Find You.")
                 }
-            }.addOnFailureListener {}
     }
 
     fun login() {
-        val name = pName.value!!.trim()
-        val password = this.password.value!!
+        val name = pName.value
+        val password = this.password.value
         var data: Map<String?, Any?>?
 
-        FirebaseUtil.userCollection().document(name).get()
-            .addOnSuccessListener {
-                data = it?.data
-                when {
-                    data == null -> {
-                        val user = User.empty()
-                        userResult.value = user
-                        Result.Error(Exception("It seems you don't exist."))
+
+        var encryptedCode = aes.encrypt("$name${FirebaseUtil.type}$password", "GaitMonitoringAndAnalysisForParkinsonsDiseasePatients")
+        if(encryptedCode == null) encryptedCode = "$name${FirebaseUtil.type}$password"
+
+        error.setValue("")
+
+        FirebaseUtil.userCollection().document(encryptedCode).get()
+                .addOnSuccessListener {
+                    data = it?.data
+                    when {
+                        data == null -> {
+                            error.setValue("It seems you don't exist.")
+                        }
+                        (data!!["password"] as String) == password -> {
+                            userResult.value = FirebaseUtil.newUser(data!!["name"] as String, password)
+                            Log.d("AUTH", "Data is Correct!")
+                        }
+                        else -> {
+                            error.setValue("It seems you don't exist.")
+                        }
                     }
-                    (data!!["password"] as String) == password -> {
-                        val user = User(data!!["name"] as String, password, "caregiver")
-                        userResult.value = user
-                        Log.d("TAG", "Data is Correct!")
-                    }
-                    else -> {
-                        val user = User.empty()
-                        userResult.value = user
-                        Log.d("TAG", "Data is Wrong!")
-                        Result.Error(Exception("It seems you don't exist."))
-                    }
+                }.addOnFailureListener {
+                    error.setValue("Couldn't Find You.")
                 }
-            }.addOnFailureListener {
-            }
     }
 }

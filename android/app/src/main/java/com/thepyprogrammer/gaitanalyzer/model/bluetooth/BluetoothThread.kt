@@ -31,7 +31,7 @@ import java.util.*
  * t.start();
  */
 class BluetoothThread(address: String, handler: Handler) :
-    Thread() {
+        Thread() {
     // MAC address of remote Bluetooth device
     private val address: String = address.toUpperCase(Locale.ROOT)
 

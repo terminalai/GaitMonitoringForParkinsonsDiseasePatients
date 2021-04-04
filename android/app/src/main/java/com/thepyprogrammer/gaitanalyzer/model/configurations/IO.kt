@@ -48,15 +48,16 @@ fun Any.print(file: java.io.File) {
 
 fun Any.print(file: com.thepyprogrammer.gaitanalyzer.model.io.File) {
     if (file.out != null) file.out?.println(file) else print(
-        com.thepyprogrammer.gaitanalyzer.model.io.File(
-            file.absolutePath
-        )
+            com.thepyprogrammer.gaitanalyzer.model.io.File(
+                    file.absolutePath
+            )
     )
 }
 
 fun Any.print(parent: com.thepyprogrammer.gaitanalyzer.model.io.File, child: String) {
     print(File(parent, child))
 }
+
 fun Any.print(parent: String, child: String) {
     print(File(parent, child))
 }

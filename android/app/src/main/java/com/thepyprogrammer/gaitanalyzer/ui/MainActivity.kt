@@ -2,10 +2,8 @@ package com.thepyprogrammer.gaitanalyzer.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.ActivityMainBinding
@@ -22,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.parent_nav_host_fragment) as NavHostFragment
+                supportFragmentManager.findFragmentById(R.id.parent_nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
     }
 
@@ -30,11 +28,10 @@ class MainActivity : AppCompatActivity() {
     private val currentFragment: Fragment
         get() = (
                 supportFragmentManager
-                    .findFragmentById(R.id.parent_nav_host_fragment)?.childFragmentManager?.fragments?.get(
-                        0
-                    )
+                        .findFragmentById(R.id.parent_nav_host_fragment)?.childFragmentManager?.fragments?.get(
+                                0
+                        )
                 )!!
-
 
 
     fun logout(): Boolean {

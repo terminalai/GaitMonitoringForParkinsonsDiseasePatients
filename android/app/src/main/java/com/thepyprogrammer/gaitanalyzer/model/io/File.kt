@@ -1,11 +1,11 @@
 package com.thepyprogrammer.gaitanalyzer.model.io
 
+import android.net.Uri
+import androidx.core.net.toUri
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.PrintWriter
 import java.net.MalformedURLException
-import android.net.Uri
-import androidx.core.net.toUri
 import java.net.URL
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
@@ -13,18 +13,18 @@ import java.nio.file.Paths
 import java.util.*
 
 class File @JvmOverloads constructor(filename: String?, type: Char = 'r') : java.io.File(filename),
-    Cloneable, AutoCloseable {
+        Cloneable, AutoCloseable {
     var out: PrintWriter? = null
     var `in`: Scanner? = null
     var outstream: FileOutputStream? = null
     private var type = 0.toChar()
 
-    constructor(file: java.io.File) : this(file.absolutePath) {}
-    constructor(file: java.io.File, type: Char) : this(file.absolutePath, type) {}
-    constructor(url: URL) : this(url.file) {}
-    constructor(url: URL, type: Char) : this(url.file, type) {}
-    constructor(uri: Uri) : this(uri.path) {}
-    constructor(uri: Uri, type: Char) : this(uri.path, type) {}
+    constructor(file: java.io.File) : this(file.absolutePath)
+    constructor(file: java.io.File, type: Char) : this(file.absolutePath, type)
+    constructor(url: URL) : this(url.file)
+    constructor(url: URL, type: Char) : this(url.file, type)
+    constructor(uri: Uri) : this(uri.path)
+    constructor(uri: Uri, type: Char) : this(uri.path, type)
 
     // Methods
     override fun getName(): String {
@@ -137,12 +137,12 @@ class File @JvmOverloads constructor(filename: String?, type: Char = 'r') : java
             if (type == 'w') {
                 out!!.close()
                 overwriters.remove(
-                    absolutePath
+                        absolutePath
                 )
             } else if (type == 'a') {
                 out!!.close()
                 appendwriters.remove(
-                    absolutePath
+                        absolutePath
                 )
             }
         } catch (ex: NullPointerException) {
@@ -306,8 +306,8 @@ class File @JvmOverloads constructor(filename: String?, type: Char = 'r') : java
         if (!isDirectory) {
             if ((type == 'r' || type == 'w' || type == 'a') && Files.isReadable(toPath())) {
                 if (scanners.containsKey(
-                        absolutePath
-                    )
+                                absolutePath
+                        )
                 ) `in` = scanners[absolutePath] else {
                     try {
                         `in` = Scanner(this)
@@ -318,10 +318,10 @@ class File @JvmOverloads constructor(filename: String?, type: Char = 'r') : java
             }
             if (type == 'w' && Files.isWritable(toPath())) {
                 if (writeoutstreams.containsKey(
-                        absolutePath
-                    ) && overwriters.containsKey(
-                        absolutePath
-                    )
+                                absolutePath
+                        ) && overwriters.containsKey(
+                                absolutePath
+                        )
                 ) {
                     outstream = writeoutstreams[absolutePath]
                     out = overwriters[absolutePath]
@@ -336,10 +336,10 @@ class File @JvmOverloads constructor(filename: String?, type: Char = 'r') : java
                 }
             } else if (type == 'a' && Files.isWritable(toPath())) {
                 if (appendoutstreams.containsKey(
-                        absolutePath
-                    ) && appendwriters.containsKey(
-                        absolutePath
-                    )
+                                absolutePath
+                        ) && appendwriters.containsKey(
+                                absolutePath
+                        )
                 ) {
                     outstream = appendoutstreams[absolutePath]
                     out = appendwriters[absolutePath]

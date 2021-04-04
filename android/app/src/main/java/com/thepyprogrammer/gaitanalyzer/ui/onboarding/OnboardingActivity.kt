@@ -20,7 +20,7 @@ class OnboardingActivity : AppCompatActivity() {
         val viewPager = findViewById<ViewPager>(R.id.viewPagerOnBoarding)
         // create ViewPager adapter
         val viewPagerAdapter = ViewPagerAdapter(
-            supportFragmentManager
+                supportFragmentManager
         )
 
         // Add All Fragments to ViewPager
@@ -39,7 +39,7 @@ class OnboardingActivity : AppCompatActivity() {
 
     // ViewPager Adapter class
     internal inner class ViewPagerAdapter(supportFragmentManager: FragmentManager?) :
-        FragmentPagerAdapter(supportFragmentManager!!, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+            FragmentPagerAdapter(supportFragmentManager!!, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
         private val mList: MutableList<Fragment> = ArrayList()
         override fun getItem(i: Int): Fragment {
             return mList[i]

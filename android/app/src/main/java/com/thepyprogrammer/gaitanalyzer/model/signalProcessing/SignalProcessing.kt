@@ -59,9 +59,9 @@ fun freeze(data: Array<Double>): Array<Double> {
 
         // Extension of Baechlin to handle low-energy situations (e.g. standing)
         freezeIndex.add(
-            if (areaFreezeBand + areaLocoBand >= powerTH)
-                areaFreezeBand / areaLocoBand
-            else 0.0
+                if (areaFreezeBand + areaLocoBand >= powerTH)
+                    areaFreezeBand / areaLocoBand
+                else 0.0
         )
     }
 

@@ -21,9 +21,9 @@ abstract class OnShakeListener(activity: Activity) : SensorEventListener {
     init {
         sensorMgr = activity.getSystemService(Context.SENSOR_SERVICE) as SensorManager?
         sensorMgr!!.registerListener(
-            this,
-            sensorMgr?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
-            SensorManager.SENSOR_DELAY_NORMAL
+                this,
+                sensorMgr?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+                SensorManager.SENSOR_DELAY_NORMAL
         )
     }
 

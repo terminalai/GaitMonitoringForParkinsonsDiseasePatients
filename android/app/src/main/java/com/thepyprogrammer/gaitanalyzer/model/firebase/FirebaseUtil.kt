@@ -9,6 +9,8 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageException
 import com.google.firebase.storage.ktx.storage
 import com.thepyprogrammer.gaitanalyzer.model.account.base.User
+import com.thepyprogrammer.gaitanalyzer.model.account.caregiver.Caregiver
+import com.thepyprogrammer.gaitanalyzer.model.account.patient.Patient
 import java.io.File
 import java.io.PrintWriter
 
@@ -70,4 +72,13 @@ object FirebaseUtil {
     }
 
     fun userCollection() = firestore.collection("users")
+
+    var type: String = ""
+
+    fun newUser(name: String, password: String) = run {
+        if (type == "caregiver") Caregiver(name, password)
+        else Patient(name, password)
+    }
+
+
 }

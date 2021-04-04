@@ -5,21 +5,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.thepyprogrammer.gaitanalyzer.R
-import com.thepyprogrammer.gaitanalyzer.ui.auth.AuthViewModel
-import java.util.*
+import com.thepyprogrammer.gaitanalyzer.databinding.FragmentIdentificationBinding
+import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
 
-class IdentificationFragment: Fragment() {
+class IdentificationFragment : Fragment() {
+
+    private lateinit var binding: FragmentIdentificationBinding
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
-        val root = inflater.inflate(R.layout.fragment_identification, container, false)
+    ): View {
+        binding = FragmentIdentificationBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        binding.caregiverButton.setOnClickListener {
+            FirebaseUtil.type = "caregiver"
+            Navigation.findNavController(view).navigate(R.id.nav_auth)
+        }
+
+        binding.patientButton.setOnClickListener {
+            FirebaseUtil.type = "patient"
+            Navigation.findNavController(view).navigate(R.id.nav_auth)
+        }
 
 
-
-        return root
+        return view
     }
 }

@@ -1,6 +1,5 @@
 package com.thepyprogrammer.gaitanalyzer.ui.main
 
-import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.hardware.Sensor
@@ -16,27 +15,21 @@ import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.tabs.TabLayoutMediator
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentMainBinding
 import com.thepyprogrammer.gaitanalyzer.model.view.listener.OnShakeListener
 import com.thepyprogrammer.gaitanalyzer.model.view.listener.OnSwipeTouchListener
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
-import com.thepyprogrammer.gaitanalyzer.ui.auth.AuthAdapter
-import com.thepyprogrammer.gaitanalyzer.ui.auth.AuthFragment
 import com.thepyprogrammer.gaitanalyzer.ui.information.InformationFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.profile.ProfileFragment
@@ -47,7 +40,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 import java.io.File
 import java.util.*
 
-class MainFragment: Fragment() {
+class MainFragment : Fragment() {
 
     private var imageView: CircleImageView? = null
     private var imageNavMenuView: CircleImageView? = null
@@ -78,9 +71,9 @@ class MainFragment: Fragment() {
         super.onResume()
         loadImage()
         mSensorManager?.registerListener(
-            shakeListener,
-            mSensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
-            SensorManager.SENSOR_DELAY_NORMAL
+                shakeListener,
+                mSensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+                SensorManager.SENSOR_DELAY_NORMAL
         )
     }
 
@@ -91,8 +84,8 @@ class MainFragment: Fragment() {
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -104,22 +97,25 @@ class MainFragment: Fragment() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_home, R.id.nav_profile, R.id.nav_list, R.id.nav_settings
-            ), drawer_layout
+                setOf(
+                        R.id.nav_home, R.id.nav_profile, R.id.nav_list, R.id.nav_settings
+                ), drawer_layout
         )
 
-        navController = (activity as AppCompatActivity).findNavController(R.id.nav_host_fragment).apply {
+
+        val navHostFragment =
+                (activity as AppCompatActivity).supportFragmentManager.findFragmentById(R.id.parent_nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController.apply {
             setupActionBarWithNavController(activity as AppCompatActivity, this, appBarConfiguration)
             nav_view.setupWithNavController(this)
         }
 
         val actionBarDrawerToggle: ActionBarDrawerToggle = object : ActionBarDrawerToggle(
-            requireActivity(),
-            binding.drawerLayout,
-            toolbar,
-            R.string.openDrawer,
-            R.string.closeDrawer
+                requireActivity(),
+                binding.drawerLayout,
+                toolbar,
+                R.string.openDrawer,
+                R.string.closeDrawer
         ) {}
 
         binding.drawerLayout.setDrawerListener(actionBarDrawerToggle)
@@ -128,8 +124,8 @@ class MainFragment: Fragment() {
         binding.drawerLayout.apply {
             setViewScale(GravityCompat.START, 0.9f) //set height scale for main view (0f to 1f)
             setViewElevation(
-                GravityCompat.START,
-                20F
+                    GravityCompat.START,
+                    20F
             ) //set main view elevation when drawer open (dimension)
             setViewScrimColor(GravityCompat.START, Color.TRANSPARENT) //set drawer overlay color
             drawerElevation = 20F //set drawer elevation (dimension)
@@ -200,10 +196,10 @@ class MainFragment: Fragment() {
         menu.findItem(R.id.action_settings).apply {
             title = SpannableStringBuilder("* Settings").also {
                 it.setSpan( // replace "*" with icon
-                    ImageSpan(requireActivity(), R.drawable.ic_settings),
-                    0,
-                    1,
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                        ImageSpan(requireActivity(), R.drawable.ic_settings),
+                        0,
+                        1,
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
                 )
             }
         }
@@ -211,10 +207,10 @@ class MainFragment: Fragment() {
         menu.findItem(R.id.information).apply {
             title = SpannableStringBuilder("* Information").also {
                 it.setSpan( // replace "*" with icon
-                    ImageSpan(requireActivity(), R.drawable.ic_info),
-                    0,
-                    1,
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                        ImageSpan(requireActivity(), R.drawable.ic_info),
+                        0,
+                        1,
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
                 )
             }
         }
@@ -223,71 +219,70 @@ class MainFragment: Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem) =
-        when (item.itemId) {
-            R.id.action_settings -> navigateToSettings()
+            when (item.itemId) {
+                R.id.action_settings -> navigateToSettings()
 
-            R.id.action_logout -> (activity as MainActivity).logout()
+                R.id.action_logout -> (activity as MainActivity).logout()
 
 
-            R.id.information -> navigateToInformation()
-            R.id.action_video -> {
-                startActivity(Intent(requireActivity(), VideoActivity::class.java))
-                true
+                R.id.information -> navigateToInformation()
+                R.id.action_video -> {
+                    startActivity(Intent(requireActivity(), VideoActivity::class.java))
+                    true
+                }
+                else -> false
             }
-            else -> false
-        }
-
 
 
     private val currentFragment: Fragment
         get() = (
                 requireActivity().supportFragmentManager
-                    .findFragmentById(R.id.nav_host_fragment)?.childFragmentManager?.fragments?.get(
-                        0
-                    )
+                        .findFragmentById(R.id.nav_host_fragment)?.childFragmentManager?.fragments?.get(
+                                0
+                        )
                 )!!
 
     private fun navigateToHome() =
-        if ((currentFragment !is ProfileFragment)) {
-            val navController = findNavController(binding.navHostFragment)
-            navController.navigate(R.id.nav_home)
-            true
-        } else false
+            if ((currentFragment !is ProfileFragment)) {
+                val navController = findNavController(binding.navHostFragment)
+                navController.navigate(R.id.nav_home)
+                true
+            } else false
 
     private fun navigateToProfile() =
-        if ((currentFragment !is ProfileFragment)) {
-            val navController = findNavController(binding.navHostFragment)
-            navController.navigate(R.id.nav_profile)
-            true
-        } else false
+            if ((currentFragment !is ProfileFragment)) {
+                val navController = findNavController(binding.navHostFragment)
+                navController.navigate(R.id.nav_profile)
+                true
+            } else false
 
     private fun navigateToSettings() =
-        if ((currentFragment !is SettingsFragment)) {
-            val navController = findNavController(binding.navHostFragment)
-            navController.navigate(R.id.nav_settings)
-            true
-        } else false
+            if ((currentFragment !is SettingsFragment)) {
+                val navController = findNavController(binding.navHostFragment)
+                navController.navigate(R.id.nav_settings)
+                true
+            } else false
 
     private fun navigateToInformation() =
-        if ((currentFragment !is InformationFragment)) {
-            val navController = findNavController(binding.navHostFragment)
-            navController.navigate(R.id.nav_information)
-            true
-        } else false
+            if ((currentFragment !is InformationFragment)) {
+                val navController = findNavController(binding.navHostFragment)
+                navController.navigate(R.id.nav_information)
+                true
+            } else false
 
     private fun navigateToNext() =
-        when (currentFragment) {
-            is SettingsFragment -> navigateToHome()
-            is HomeFragment -> navigateToProfile()
-            else -> navigateToSettings()
-        }
+            when (currentFragment) {
+                is SettingsFragment -> navigateToHome()
+                is HomeFragment -> navigateToProfile()
+                else -> navigateToSettings()
+            }
 
     private fun navigateToPrevious() =
-        when (currentFragment) {
-            is SettingsFragment -> navigateToProfile()
-            is HomeFragment -> navigateToSettings()
-            else -> navigateToHome()
-        }
+            when (currentFragment) {
+                is SettingsFragment -> navigateToProfile()
+                is HomeFragment -> navigateToSettings()
+                else -> navigateToHome()
+            }
 
     private fun readData(): String {
         if (!imageInfoFile!!.exists()) return ""

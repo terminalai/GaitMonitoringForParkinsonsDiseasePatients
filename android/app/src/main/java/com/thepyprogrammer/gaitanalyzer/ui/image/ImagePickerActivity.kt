@@ -45,9 +45,9 @@ class ImagePickerActivity : AppCompatActivity() {
         val intent = intent
         if (intent == null) {
             Toast.makeText(
-                applicationContext,
-                getString(R.string.toast_image_intent_null),
-                Toast.LENGTH_LONG
+                    applicationContext,
+                    getString(R.string.toast_image_intent_null),
+                    Toast.LENGTH_LONG
             ).show()
             return
         }
@@ -67,51 +67,51 @@ class ImagePickerActivity : AppCompatActivity() {
     }
 
     private fun takeCameraImage() = Dexter.withActivity(this)
-        .withPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        .withListener(object : MultiplePermissionsListener {
-            override fun onPermissionsChecked(report: MultiplePermissionsReport) {
-                if (report.areAllPermissionsGranted()) {
-                    fileName = System.currentTimeMillis().toString() + ".jpg"
-                    val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                    takePictureIntent.putExtra(
-                        MediaStore.EXTRA_OUTPUT,
-                        getCacheImagePath(fileName)
-                    )
-                    if (takePictureIntent.resolveActivity(packageManager) != null) {
-                        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-                    }
-                }
-            }
-
-            override fun onPermissionRationaleShouldBeShown(
-                permissions: MutableList<com.karumi.dexter.listener.PermissionRequest>?,
-                token: PermissionToken?
-            ) {
-                token?.continuePermissionRequest()
-            }
-        }).check()
-
-    private fun chooseImageFromGallery() {
-        Dexter.withActivity(this)
             .withPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
             .withListener(object : MultiplePermissionsListener {
                 override fun onPermissionsChecked(report: MultiplePermissionsReport) {
                     if (report.areAllPermissionsGranted()) {
-                        val pickPhoto = Intent(
-                            Intent.ACTION_PICK,
-                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                        fileName = System.currentTimeMillis().toString() + ".jpg"
+                        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                        takePictureIntent.putExtra(
+                                MediaStore.EXTRA_OUTPUT,
+                                getCacheImagePath(fileName)
                         )
-                        startActivityForResult(pickPhoto, REQUEST_GALLERY_IMAGE)
+                        if (takePictureIntent.resolveActivity(packageManager) != null) {
+                            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+                        }
                     }
                 }
 
                 override fun onPermissionRationaleShouldBeShown(
-                    permissions: MutableList<com.karumi.dexter.listener.PermissionRequest>?,
-                    token: PermissionToken?
+                        permissions: MutableList<com.karumi.dexter.listener.PermissionRequest>?,
+                        token: PermissionToken?
                 ) {
                     token?.continuePermissionRequest()
                 }
             }).check()
+
+    private fun chooseImageFromGallery() {
+        Dexter.withActivity(this)
+                .withPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .withListener(object : MultiplePermissionsListener {
+                    override fun onPermissionsChecked(report: MultiplePermissionsReport) {
+                        if (report.areAllPermissionsGranted()) {
+                            val pickPhoto = Intent(
+                                    Intent.ACTION_PICK,
+                                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                            )
+                            startActivityForResult(pickPhoto, REQUEST_GALLERY_IMAGE)
+                        }
+                    }
+
+                    override fun onPermissionRationaleShouldBeShown(
+                            permissions: MutableList<com.karumi.dexter.listener.PermissionRequest>?,
+                            token: PermissionToken?
+                    ) {
+                        token?.continuePermissionRequest()
+                    }
+                }).check()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -144,11 +144,11 @@ class ImagePickerActivity : AppCompatActivity() {
 
     private fun cropImage(sourceUri: Uri?) {
         val destinationUri = Uri.fromFile(
-            File(
-                cacheDir, queryName(
-                    contentResolver, sourceUri
+                File(
+                        cacheDir, queryName(
+                        contentResolver, sourceUri
                 )
-            )
+                )
         )
         val options: UCrop.Options = UCrop.Options()
         options.setCompressionQuality(IMAGE_COMPRESSION)
@@ -159,14 +159,14 @@ class ImagePickerActivity : AppCompatActivity() {
         options.setStatusBarColor(ContextCompat.getColor(this, R.color.white_10_percent))
         options.setActiveControlsWidgetColor(ContextCompat.getColor(this, R.color.white_10_percent))
         if (lockAspectRatio) options.withAspectRatio(
-            ASPECT_RATIO_X.toFloat(),
-            ASPECT_RATIO_Y.toFloat()
+                ASPECT_RATIO_X.toFloat(),
+                ASPECT_RATIO_Y.toFloat()
         )
         if (setBitmapMaxWidthHeight) options.withMaxResultSize(bitmapMaxWidth, bitmapMaxHeight)
         if (sourceUri != null) {
             UCrop.of(sourceUri, destinationUri)
-                .withOptions(options)
-                .start(this)
+                    .withOptions(options)
+                    .start(this)
         }
     }
 
@@ -221,8 +221,8 @@ class ImagePickerActivity : AppCompatActivity() {
 
             // add a list
             val animals = arrayOf(
-                context.getString(R.string.lbl_take_camera_picture),
-                context.getString(R.string.lbl_choose_from_gallery)
+                    context.getString(R.string.lbl_take_camera_picture),
+                    context.getString(R.string.lbl_choose_from_gallery)
             )
             builder.setItems(animals) { _, which ->
                 when (which) {
@@ -248,22 +248,22 @@ class ImagePickerActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem) =
-        when (item.itemId) {
-            android.R.id.home -> {
-                // This ID represents the Home or Up button. In the case of this
-                // activity, the Up button is shown. For
-                // more details, see the Navigation pattern on Android Design:
-                //
-                // http://developer.android.com/design/patterns/navigation.html#up-vs-back
-                val toast = Toast.makeText(
-                    applicationContext,
-                    "Moving back to Main Page",
-                    Toast.LENGTH_LONG
-                )
-                toast.show()
-                navigateUpTo(Intent(this, MainActivity::class.java))
-                true
+            when (item.itemId) {
+                android.R.id.home -> {
+                    // This ID represents the Home or Up button. In the case of this
+                    // activity, the Up button is shown. For
+                    // more details, see the Navigation pattern on Android Design:
+                    //
+                    // http://developer.android.com/design/patterns/navigation.html#up-vs-back
+                    val toast = Toast.makeText(
+                            applicationContext,
+                            "Moving back to Main Page",
+                            Toast.LENGTH_LONG
+                    )
+                    toast.show()
+                    navigateUpTo(Intent(this, MainActivity::class.java))
+                    true
+                }
+                else -> super.onOptionsItemSelected(item)
             }
-            else -> super.onOptionsItemSelected(item)
-        }
 }

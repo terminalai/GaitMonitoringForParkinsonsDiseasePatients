@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.thepyprogrammer.gaitanalyzer.R
 
 class RecyclerAdapter(private val context: Context) :
-    RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+        RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
     private val completeViewModel: CompleteViewModel
     private val titles = """Opening and Closing Ceremonies
 3x3 Basketball
@@ -92,6 +92,6 @@ Fencing""".split("\n").toTypedArray()
 
     init {
         completeViewModel =
-            ViewModelProvider((context as FragmentActivity)).get(CompleteViewModel::class.java)
+                ViewModelProvider((context as FragmentActivity)).get(CompleteViewModel::class.java)
     }
 }

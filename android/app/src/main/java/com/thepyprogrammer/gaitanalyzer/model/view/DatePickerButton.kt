@@ -10,12 +10,12 @@ import java.util.*
 
 
 class DatePickerButton(context: Context, attributeSet: AttributeSet) :
-    androidx.appcompat.widget.AppCompatButton(context, attributeSet) {
+        androidx.appcompat.widget.AppCompatButton(context, attributeSet) {
 
     companion object {
         val dTF: DateTimeFormatter =
-            DateTimeFormatterBuilder().parseCaseInsensitive().appendPattern("dd/MM/yyyy")
-                .toFormatter()
+                DateTimeFormatterBuilder().parseCaseInsensitive().appendPattern("dd/MM/yyyy")
+                        .toFormatter()
     }
 
     init {
@@ -23,20 +23,20 @@ class DatePickerButton(context: Context, attributeSet: AttributeSet) :
     }
 
     fun setOnClickListener(
-        originalDate: LocalDate = LocalDate.now(),
-        minDate: Long? = null,
-        maxDate: Long? = null,
-        action: LocalDate.() -> Unit
+            originalDate: LocalDate = LocalDate.now(),
+            minDate: Long? = null,
+            maxDate: Long? = null,
+            action: LocalDate.() -> Unit
     ) {
         super.setOnClickListener {
             val datePickerDialog = DatePickerDialog(
-                context,
-                { _, year, monthOfYear, dayOfMonth ->
-                    val dateSelected = LocalDate.of(year, monthOfYear + 1, dayOfMonth)
-                    dateSelected.action()
-                    this@DatePickerButton.text = dTF.format(dateSelected)
-                },
-                originalDate.year, originalDate.monthValue - 1, originalDate.dayOfMonth
+                    context,
+                    { _, year, monthOfYear, dayOfMonth ->
+                        val dateSelected = LocalDate.of(year, monthOfYear + 1, dayOfMonth)
+                        dateSelected.action()
+                        this@DatePickerButton.text = dTF.format(dateSelected)
+                    },
+                    originalDate.year, originalDate.monthValue - 1, originalDate.dayOfMonth
             )
             if (minDate != null) datePickerDialog.datePicker.minDate = minDate
             if (maxDate != null) datePickerDialog.datePicker.maxDate = maxDate
