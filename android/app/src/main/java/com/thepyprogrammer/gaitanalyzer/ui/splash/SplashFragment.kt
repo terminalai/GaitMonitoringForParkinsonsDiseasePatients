@@ -2,6 +2,7 @@ package com.thepyprogrammer.gaitanalyzer.ui.splash
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import androidx.navigation.Navigation
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentSplashBinding
 import com.thepyprogrammer.gaitanalyzer.model.account.base.User
+import com.thepyprogrammer.gaitanalyzer.model.account.caregiver.Caregiver
 import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
 import java.io.File
 import java.util.*
@@ -32,24 +34,26 @@ class SplashFragment : Fragment() {
         val slideAnimation = AnimationUtils.loadAnimation(activity, R.anim.side_slide)
         binding.splashScreenImage.startAnimation(slideAnimation)
 
-        val accountDetails = File(requireActivity().filesDir, "accountDetails.txt")
-        if (accountDetails.exists()) {
-            val sc = Scanner(accountDetails)
-            if (sc.hasNext()) {
-                val nric = sc.nextLine()
-                if (nric != "null") {
+        try {
+            val accountDetails = File(requireActivity().filesDir, "accountDetails.txt")
+            if (accountDetails.exists()) {
+                val sc = Scanner(accountDetails)
+                if (sc.hasNext()) {
                     val name = sc.nextLine()
-                    val password = sc.nextLine()
-                    val type = sc.nextLine()
-                    FirebaseUtil.user = User(
-                            name, password, type
-                    )
-                    Handler().postDelayed({
-                        Navigation.findNavController(binding.splashScreenImage).navigate(R.id.nav_main)
-                    }, SPLASH_TIME_OUT.toLong())
-                    return view
+                    if (name != null) {
+                        val password = sc.nextLine()
+                        val type = sc.nextLine()
+                        if(type == "caregiver") FirebaseUtil.user = Caregiver(name, password)
+                        else if(type == "patient") FirebaseUtil.user = Caregiver(name, password)
+                        Handler().postDelayed({
+                            Navigation.findNavController(binding.splashScreenImage).navigate(R.id.nav_main)
+                        }, SPLASH_TIME_OUT.toLong())
+                        return view
+                    }
                 }
             }
+        } catch (e: Exception) {
+            Log.d("AUTH", e.stackTrace.toString())
         }
 
         Handler().postDelayed({

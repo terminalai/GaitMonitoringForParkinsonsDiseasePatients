@@ -14,6 +14,7 @@ import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentLoginBinding
 import com.thepyprogrammer.gaitanalyzer.model.account.base.User
 import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.gaitanalyzer.ui.auth.AuthViewModel
 import java.util.*
 
@@ -47,7 +48,7 @@ class LoginFragment : Fragment() {
         viewModel.password.observe(requireActivity(), passwordObserver)
 
         binding.login.setOnClickListener {
-            viewModel.pName.value = binding.nameInput.text.toString().trim().toUpperCase(Locale.ROOT)
+            viewModel.pName.value = binding.nameInput.text.toString().trim()
             viewModel.password.value = binding.passwordInput.text.toString().trim()
             binding.loading.visibility = View.VISIBLE
             viewModel.login()
@@ -66,7 +67,7 @@ class LoginFragment : Fragment() {
                         FirebaseUtil.user = viewModel.userResult.value
                         FirebaseUtil.user?.password?.let { it1 -> Log.d("TAG", it1) }
                         binding.loading.visibility = View.GONE
-                        Navigation.findNavController(view).navigate(R.id.nav_main)
+                        (activity as MainActivity).navController.navigate(R.id.nav_main)
                     }
                 }
 

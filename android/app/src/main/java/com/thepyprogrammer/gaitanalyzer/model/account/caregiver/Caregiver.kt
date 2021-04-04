@@ -5,4 +5,8 @@ import com.thepyprogrammer.gaitanalyzer.model.account.base.User
 data class Caregiver(
         override val name: String,
         override val password: String
-) : User(name, password, "caregiver")
+) : User(name, password, "caregiver") {
+    override fun toString(): String {
+        return "$name\n$password\n$type"
+    }
+}

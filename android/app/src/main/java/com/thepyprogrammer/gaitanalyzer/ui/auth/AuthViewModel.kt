@@ -33,6 +33,8 @@ class AuthViewModel : ViewModel() {
         var encryptedCode = aes.encrypt("$name$type$pw", "GaitMonitoringAndAnalysisForParkinsonsDiseasePatients")
         if(encryptedCode == null) encryptedCode = "$name$type$pw"
 
+        encryptedCode.replace(Regex("[/\\\\]"), "")
+
 
         FirebaseUtil.userCollection().document(encryptedCode).get()
                 .addOnSuccessListener {
@@ -68,11 +70,12 @@ class AuthViewModel : ViewModel() {
         val password = this.password.value
         var data: Map<String?, Any?>?
 
+        error.setValue("", "$name ${FirebaseUtil.type} $password")
 
         var encryptedCode = aes.encrypt("$name${FirebaseUtil.type}$password", "GaitMonitoringAndAnalysisForParkinsonsDiseasePatients")
         if(encryptedCode == null) encryptedCode = "$name${FirebaseUtil.type}$password"
 
-        error.setValue("")
+        encryptedCode.replace("/\\\\", "")
 
         FirebaseUtil.userCollection().document(encryptedCode).get()
                 .addOnSuccessListener {

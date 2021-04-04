@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.model.string.SuperStringBuilder
 import java.io.File
 import java.io.IOException
 import java.io.PrintWriter
@@ -118,11 +119,10 @@ class ImageDetailsActivity : AppCompatActivity() {
             return ""
         }
         val scanner = Scanner(imageInfoFile)
-        val string = StringBuilder(scanner.nextLine())
+        val string = SuperStringBuilder()
 
         while (scanner.hasNextLine())
-            string.append("\n" + scanner.nextLine())
-
+            string.writeln(scanner.nextLine())
 
         scanner.close()
         return string.toString()

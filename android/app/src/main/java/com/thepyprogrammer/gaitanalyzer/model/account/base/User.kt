@@ -8,7 +8,7 @@ open class User(
         val type: String
 ) : Serializable {
     override fun toString(): String {
-        return "$type($name, $password)"
+        return "$name\n$password\n$type"
     }
 
     companion object {

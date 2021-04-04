@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.ImageSpan
+import android.text.style.SuperscriptSpan
 import android.util.Log
 import android.view.*
 import android.widget.TextView
@@ -27,6 +28,9 @@ import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentMainBinding
+import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.model.io.File
+import com.thepyprogrammer.gaitanalyzer.model.string.SuperStringBuilder
 import com.thepyprogrammer.gaitanalyzer.model.view.listener.OnShakeListener
 import com.thepyprogrammer.gaitanalyzer.model.view.listener.OnSwipeTouchListener
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
@@ -36,8 +40,7 @@ import com.thepyprogrammer.gaitanalyzer.ui.main.profile.ProfileFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.settings.SettingsFragment
 import com.thepyprogrammer.gaitanalyzer.ui.video.VideoActivity
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.fragment_main.*
-import java.io.File
+import java.io.PrintWriter
 import java.util.*
 
 class MainFragment : Fragment() {
@@ -92,28 +95,30 @@ class MainFragment : Fragment() {
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
 
-        imageInfoFile = File((activity as AppCompatActivity).filesDir, "profileImageURI.txt")
+        imageInfoFile = File(java.io.File((activity as AppCompatActivity).filesDir, "profileImageURI.txt"))
+
+
+
+        val accountDetails = File(java.io.File((activity as AppCompatActivity).filesDir, "accountDetails.txt"))
+        if(!accountDetails.exists()) accountDetails.createNewFile();
+
+        val pw = PrintWriter(accountDetails)
+        pw.println(FirebaseUtil.user.toString())
+        pw.close()
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
                 setOf(
                         R.id.nav_home, R.id.nav_profile, R.id.nav_list, R.id.nav_settings
-                ), drawer_layout
+                ), binding.drawerLayout
         )
 
-
-        val navHostFragment =
-                (activity as AppCompatActivity).supportFragmentManager.findFragmentById(R.id.parent_nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.navController.apply {
-            setupActionBarWithNavController(activity as AppCompatActivity, this, appBarConfiguration)
-            nav_view.setupWithNavController(this)
-        }
 
         val actionBarDrawerToggle: ActionBarDrawerToggle = object : ActionBarDrawerToggle(
                 requireActivity(),
                 binding.drawerLayout,
-                toolbar,
+                binding.toolbar,
                 R.string.openDrawer,
                 R.string.closeDrawer
         ) {}
@@ -133,7 +138,7 @@ class MainFragment : Fragment() {
             setRadius(GravityCompat.START, 25F) //set end container's corner radius (dimension)
         }
 
-        fragmentContainer.setOnTouchListener(object : OnSwipeTouchListener(activity) {
+        binding.fragmentContainer.setOnTouchListener(object : OnSwipeTouchListener(activity) {
             override fun onSwipeRight() {
                 Log.v("detectSwipe", "Right Swipe Detected")
             }
@@ -165,12 +170,7 @@ class MainFragment : Fragment() {
 
         loadImage()
 
-        bottom_navigation.apply {
-            setupWithNavController(navController)
-            background = null
-        }
-
-        nav_view.getHeaderView(0).apply {
+        binding.navView.getHeaderView(0).apply {
             nameView = findViewById(R.id.nameView)
         }
 
@@ -189,6 +189,19 @@ class MainFragment : Fragment() {
 
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val nestedNavHostFragment = childFragmentManager.findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
+        navController = nestedNavHostFragment?.navController!!.apply {
+            setupActionBarWithNavController(activity as AppCompatActivity, this, appBarConfiguration)
+            binding.navView.setupWithNavController(this)
+        }
+
+        binding.bottomNavigation.apply {
+            setupWithNavController(navController)
+            background = null
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -287,13 +300,8 @@ class MainFragment : Fragment() {
     private fun readData(): String {
         if (!imageInfoFile!!.exists()) return ""
 
-        val scanner = Scanner(imageInfoFile)
-        val string = StringBuilder(scanner.nextLine())
 
-        while (scanner.hasNextLine())
-            string.append("\n" + scanner.nextLine())
-
-        scanner.close()
+        val string = SuperStringBuilder(imageInfoFile!!.read())
         return string.toString()
     }
 
