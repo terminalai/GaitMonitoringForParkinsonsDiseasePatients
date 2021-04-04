@@ -1,4 +1,4 @@
-package org.beeware.android
+package com.thepyprogrammer.gaitanalyzer.beeware
 
 import android.content.res.AssetManager
 import android.util.Log
