@@ -207,21 +207,21 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         Log.d(TAG, "onStart() start")
         super.onStart()
-        pythonApp!!.onStart()
+        pythonApp?.onStart()
         Log.d(TAG, "onStart() complete")
     }
 
     override fun onResume() {
         Log.d(TAG, "onResume() start")
         super.onResume()
-        pythonApp!!.onResume()
+        pythonApp?.onResume()
         Log.d(TAG, "onResume() complete")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         Log.d(TAG, "onActivityResult() start")
         super.onActivityResult(requestCode, resultCode, data)
-        pythonApp!!.onActivityResult(requestCode, resultCode, data)
+        pythonApp?.onActivityResult(requestCode, resultCode, data)
         Log.d(TAG, "onActivityResult() complete")
     }
 
