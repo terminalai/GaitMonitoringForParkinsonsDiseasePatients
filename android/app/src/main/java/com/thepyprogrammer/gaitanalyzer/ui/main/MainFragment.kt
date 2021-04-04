@@ -138,36 +138,6 @@ class MainFragment : Fragment() {
             setRadius(GravityCompat.START, 25F) //set end container's corner radius (dimension)
         }
 
-        binding.fragmentContainer.setOnTouchListener(object : OnSwipeTouchListener(activity) {
-            override fun onSwipeRight() {
-                Log.v("detectSwipe", "Right Swipe Detected")
-            }
-
-            override fun onSwipeLeft() {
-                Log.v("detectSwipe", "Left Swipe Detected")
-                navigateToNext()
-            }
-
-            override fun onSwipeUp() {
-                Log.v("detectSwipe", "Swipe Up Detected")
-            }
-
-            override fun onSwipeDown() {
-                Log.v("detectSwipe", "Swipe Down Detected")
-            }
-        })
-
-        shakeListener = object : OnShakeListener(requireActivity()) {
-            override fun onShakeLeft() {
-                navigateToPrevious()
-            }
-
-            override fun onShakeRight() {
-                navigateToNext()
-            }
-
-        }
-
         loadImage()
 
         binding.navView.getHeaderView(0).apply {
@@ -186,7 +156,7 @@ class MainFragment : Fragment() {
 
         viewModel.pName.observe(activity as AppCompatActivity, nameObserver)
 
-
+        setHasOptionsMenu(true)
 
         return view
     }
@@ -231,7 +201,7 @@ class MainFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem) =
+    override fun onOptionsItemSelected(item: MenuItem): Boolean =
             when (item.itemId) {
                 R.id.action_settings -> navigateToSettings()
 
@@ -247,13 +217,13 @@ class MainFragment : Fragment() {
             }
 
 
-    private val currentFragment: Fragment
+    private val currentFragment: Fragment?
         get() = (
                 requireActivity().supportFragmentManager
                         .findFragmentById(R.id.nav_host_fragment)?.childFragmentManager?.fragments?.get(
                                 0
                         )
-                )!!
+                )
 
     private fun navigateToHome() =
             if ((currentFragment !is ProfileFragment)) {

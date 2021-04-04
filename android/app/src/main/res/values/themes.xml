@@ -18,10 +18,13 @@
         <item name="switchTrackEnabled">@color/switchTrackEnabledLight</item>
         <item name="switchTrackDisabled">@color/switchTrackDisabledLight</item>
         <!-- Primary brand color. -->
-        <item name="android:colorPrimary">#2196F3</item>
-        <item name="android:colorPrimaryDark">#1976D2</item>
-        <item name="android:colorAccent">#03A9F4</item>
+        <item name="colorPrimary">#2196F3</item>
+        <item name="colorPrimaryDark">#1976D2</item>
+        <item name="colorAccent">#03A9F4</item>
         <!-- Secondary brand color. -->
+
+
+
         <item name="android:divider">@color/separatorLight</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/black</item>
@@ -32,7 +35,7 @@
         <item name="android:textColorTertiary">@color/text_tertiary</item>
     </style>
 
-    <style name="Theme.GaitAnalyzer.NoActionBar">
+    <style name="Theme.GaitAnalyzer.NoActionBar" parent="Theme.GaitAnalyzer">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>

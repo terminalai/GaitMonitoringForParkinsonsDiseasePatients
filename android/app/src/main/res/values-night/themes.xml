@@ -2,15 +2,45 @@
     <!-- Base application theme. -->
     <style name="Theme.GaitAnalyzer" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/dark_blue_20_percent</item>
+        <item name="colorPrimaryVariant">@color/dark_blue_10_percent</item>
         <item name="colorOnPrimary">@color/black</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@android:color/holo_blue_dark</item>
+        <item name="colorSecondaryVariant">@color/blue_600</item>
+        <item name="colorOnSecondary">@color/dark_grey</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="colorOnSurface">@color/white</item>
+
+        <item name="android:actionMenuTextColor">@color/white</item>
+
+        <item name="android:windowBackground">@color/dark_grey</item>
+        <item name="android:colorBackground">@color/dark_grey</item>
+
+        <item name="android:textColor">@android:color/white</item>
     </style>
+
+    <style name="ThemeOverlay.GaitAnalyzer.FullscreenContainer" parent="">
+        <item name="colorSecondaryVariant">@color/grey_80_percent</item>
+    </style>
+
+    <style name="Theme.GaitAnalyzer.DarkActionBarSameLightDark">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorControlNormal">@color/white</item>
+
+    </style>
+
+    <style name="Theme.GaitAnalyzer.DarkActionBar.BackButton" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+
 </resources>

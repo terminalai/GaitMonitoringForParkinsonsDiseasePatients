@@ -51,14 +51,15 @@
         android:layout_height="match_parent"
         android:layout_margin="5dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <TextView
+        <WebView
             android:id="@+id/desc"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="16dp"
             android:layout_margin="2dp"
+            android:textIsSelectable="true"
             android:autoSizeTextType="uniform"
-            android:text="this is a super duper long text for testing purposes and this will only be used here" />
+            style="?android:attr/textAppearanceLarge" />
 
     </androidx.core.widget.NestedScrollView>
 

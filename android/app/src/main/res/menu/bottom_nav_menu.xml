@@ -15,7 +15,7 @@
         <item
             android:id="@+id/nav_list"
             android:icon="@drawable/ic_list"
-            android:title="List" />
+            android:title="Freeze" />
 
         <item
             android:id="@+id/nav_settings"

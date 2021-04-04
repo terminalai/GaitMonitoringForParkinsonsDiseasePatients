@@ -9,6 +9,7 @@
     <item
         android:id="@+id/information"
         android:orderInCategory="100"
+        android:icon="@drawable/ic_info"
         android:title="@string/info"
         app:showAsAction="never" />
     <item
@@ -19,6 +20,6 @@
     <item
         android:id="@+id/action_video"
         android:orderInCategory="100"
-        android:title="Video"
+        android:title="About The Application"
         app:showAsAction="never" />
 </menu>

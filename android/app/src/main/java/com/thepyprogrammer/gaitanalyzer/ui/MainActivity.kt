@@ -1,6 +1,8 @@
 package com.thepyprogrammer.gaitanalyzer.ui
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -29,8 +31,8 @@ class MainActivity : AppCompatActivity() {
         get() = (
                 supportFragmentManager
                         .findFragmentById(R.id.parent_nav_host_fragment)?.childFragmentManager?.fragments?.get(
-                                0
-                        )
+                        0
+                    )
                 )!!
 
 
