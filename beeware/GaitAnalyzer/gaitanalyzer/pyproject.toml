@@ -1,0 +1,49 @@
+[tool.briefcase]
+project_name = "Gait Analyzer"
+bundle = "com.thepyprogrammer"
+version = "0.0.1"
+url = "https://example.com/gaitanalyzer"
+license = "MIT license"
+author = 'Prannaya Gupta'
+author_email = "recursivedinosaur@gmail.com"
+
+[tool.briefcase.app.gaitanalyzer]
+formal_name = "Gait Analyzer"
+description = "Analysing Gait Patterns for Parkinsons Disease Patients"
+icon = "src/gaitanalyzer/resources/gaitanalyzer"
+sources = ['src/gaitanalyzer']
+requires = []
+
+
+[tool.briefcase.app.gaitanalyzer.macOS]
+requires = [
+    'toga-cocoa>=0.3.0.dev20',
+]
+
+[tool.briefcase.app.gaitanalyzer.linux]
+requires = [
+    'toga-gtk>=0.3.0.dev20',
+]
+system_requires = [
+    'libgirepository1.0-dev',
+    'libcairo2-dev',
+    'libpango1.0-dev',
+    'libwebkitgtk-3.0-0',
+    'gir1.2-webkit-3.0',
+]
+
+[tool.briefcase.app.gaitanalyzer.windows]
+requires = [
+    'toga-winforms>=0.3.0.dev20',
+]
+
+# Mobile deployments
+[tool.briefcase.app.gaitanalyzer.iOS]
+requires = [
+    'toga-iOS>=0.3.0.dev20',
+]
+
+[tool.briefcase.app.gaitanalyzer.android]
+requires = [
+    'toga-android>=0.3.0.dev20',
+]
