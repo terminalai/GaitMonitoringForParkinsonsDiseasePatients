@@ -73,12 +73,11 @@ Fencing""".split("\n").toTypedArray()
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var itemTitle: TextView
+        var itemTitle: TextView = itemView.findViewById(R.id.item_title)
         var itemDetails: TextView
         var context: Context
 
         init {
-            itemTitle = itemView.findViewById(R.id.item_title)
             itemDetails = itemView.findViewById(R.id.item_detail)
             context = itemView.context
             itemView.setOnClickListener {

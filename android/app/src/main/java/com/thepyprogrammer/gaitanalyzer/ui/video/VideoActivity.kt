@@ -13,8 +13,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.model.configurations.*
 import com.thepyprogrammer.gaitanalyzer.model.io.getUriFromRaw
+import com.thepyprogrammer.gaitanalyzer.model.web.WebAppInterface
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_video.*
+import android.net.Uri
+import com.thepyprogrammer.gaitanalyzer.model.string.SuperStringBuilder
+import com.thepyprogrammer.gaitanalyzer.model.web.GitHubWebViewClient
+import com.thepyprogrammer.gaitanalyzer.model.web.WebBrowserClient
 import java.util.*
 
 class VideoActivity : AppCompatActivity() {
@@ -31,23 +36,32 @@ class VideoActivity : AppCompatActivity() {
             scBuilder.append(sc.nextLine() + "\n")
         }
 
-
-
-        desc.webViewClient = object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-                view.loadUrl(url)
-                return false
-            }
+        with(desc) {
+            webViewClient = GitHubWebViewClient(this@VideoActivity)
+            settings.javaScriptEnabled = true
+            addJavascriptInterface(WebAppInterface(this@VideoActivity), "Android")
+            webChromeClient = WebBrowserClient()
+            loadUrl("file:///android_asset/gaitmonitoring.html")
         }
+//        val builder =
+//            SuperStringBuilder("<!DOCTYPE html>\n<html>\n<body>\n")
+//                .writeElement(scBuilder.toString(), tag="style")
+//                .writeln(text, "</body>\n</html>", sep="\n")
+//        val content = builder.toString()
+//        desc.loadDataWithBaseURL(null, content, "text/html", "utf-8", null)
 
 
+    }
 
-        val builder =
-            StringBuilder("<!DOCTYPE html>\n<html>\n<body>\n<style>\n").append(scBuilder.toString())
-                .append("\n</style>\n").append(text).append("</body>\n</html>")
-        val content = builder.toString()
-        desc.loadDataWithBaseURL(null, content, "text/html", "utf-8", null)
-
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        // Check if the key event was the Back button and if there's history
+        if (keyCode == KeyEvent.KEYCODE_BACK && desc.canGoBack()) {
+            desc.goBack()
+            return true
+        }
+        // If it wasn't the Back key or there's no web page history, bubble up to the default
+        // system behavior (probably exit the activity)
+        return super.onKeyDown(keyCode, event)
     }
 
     override fun onStart() {
