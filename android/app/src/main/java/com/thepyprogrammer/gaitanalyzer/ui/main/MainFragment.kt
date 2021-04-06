@@ -23,6 +23,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.transition.TransitionInflater
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentMainBinding
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
@@ -34,7 +35,7 @@ import com.thepyprogrammer.gaitanalyzer.ui.main.information.InformationFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.profile.ProfileFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.settings.SettingsFragment
-import com.thepyprogrammer.gaitanalyzer.ui.video.VideoActivity
+import com.thepyprogrammer.gaitanalyzer.ui.main.video.VideoActivity
 import de.hdodenhof.circleimageview.CircleImageView
 import java.io.PrintWriter
 
@@ -165,6 +166,13 @@ class MainFragment : Fragment() {
             setupWithNavController(navController)
             background = null
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val inflater = TransitionInflater.from(requireContext())
+        enterTransition = inflater.inflateTransition(R.transition.slide_right)
+        exitTransition = inflater.inflateTransition(R.transition.fade)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

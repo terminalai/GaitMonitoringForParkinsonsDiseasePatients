@@ -1,4 +1,4 @@
-package com.thepyprogrammer.gaitanalyzer.ui.video
+package com.thepyprogrammer.gaitanalyzer.ui.main.video
 
 import android.app.PictureInPictureParams
 import android.graphics.PixelFormat
@@ -9,6 +9,7 @@ import android.util.Rational
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.MediaController
+import androidx.transition.TransitionInflater
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentVideoBinding
 import com.thepyprogrammer.gaitanalyzer.model.configurations.getTTS
@@ -44,6 +45,13 @@ class VideoFragment : Fragment() {
         }
 
         return view
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val inflater = TransitionInflater.from(requireContext())
+        enterTransition = inflater.inflateTransition(R.transition.slide_right)
+        exitTransition = inflater.inflateTransition(R.transition.fade)
     }
 
     override fun onStart() {

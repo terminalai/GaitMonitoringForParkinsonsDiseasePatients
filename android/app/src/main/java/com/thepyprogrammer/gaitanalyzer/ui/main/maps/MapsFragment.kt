@@ -1,25 +1,26 @@
-package com.thepyprogrammer.gaitanalyzer.ui.maps
+package com.thepyprogrammer.gaitanalyzer.ui.main.maps
 
 import android.Manifest
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.content.pm.PackageManager
 import android.content.res.Resources
-import android.text.SpannableStringBuilder
-import android.text.Spanned
-import android.text.style.ImageSpan
 import android.util.Log
 import android.view.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.thepyprogrammer.gaitanalyzer.databinding.FragmentMapsBinding
+import androidx.transition.TransitionInflater
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import com.google.maps.android.clustering.ClusterManager
 import com.thepyprogrammer.gaitanalyzer.R
+import com.thepyprogrammer.gaitanalyzer.databinding.FragmentMapsBinding
+import com.thepyprogrammer.gaitanalyzer.view.maps.Place
+import com.thepyprogrammer.gaitanalyzer.view.maps.PlaceRenderer
 import java.util.*
 
 class MapsFragment : Fragment(), OnMapReadyCallback {
@@ -44,6 +45,13 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         val mapFragment = childFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val inflater = TransitionInflater.from(requireContext())
+        enterTransition = inflater.inflateTransition(R.transition.slide_right)
+        exitTransition = inflater.inflateTransition(R.transition.fade)
     }
 
     companion object {
@@ -77,12 +85,90 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 //            .image(BitmapDescriptorFactory.fromResource(R.drawable.android))
             .position(homeLatLng, overlaySize)
         map.addGroundOverlay(googleOverlay)
+        map.setOnMapLoadedCallback {
+            val bounds = LatLngBounds.builder()
+            // places.forEach { bounds.include(it.latLng) }
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds.build(), 20))
+        }
 
         setMapLongClick(map)
         setPoiClick(map)
         setMapStyle(map)
         enableMyLocation()
     }
+
+    /**
+     * Adds markers to the map with clustering support.
+     */
+    private fun addClusteredMarkers(googleMap: GoogleMap) {
+        // Create the ClusterManager class and set the custom renderer
+        val clusterManager = ClusterManager<Place>(requireContext(), googleMap)
+        clusterManager.renderer =
+            PlaceRenderer(
+                requireContext(),
+                googleMap,
+                clusterManager
+            )
+
+        // Add the places to the ClusterManager
+        // clusterManager.addItems(places)
+        clusterManager.cluster()
+
+        // Show polygon
+        clusterManager.setOnClusterItemClickListener { item ->
+            addCircle(googleMap, item)
+            return@setOnClusterItemClickListener false
+        }
+
+        // When the camera starts moving, change the alpha value of the marker to translucent
+        googleMap.setOnCameraMoveStartedListener {
+            clusterManager.markerCollection.markers.forEach { it.alpha = 0.3f }
+            clusterManager.clusterMarkerCollection.markers.forEach { it.alpha = 0.3f }
+        }
+
+        googleMap.setOnCameraIdleListener {
+            // When the camera stops moving, change the alpha value back to opaque
+            clusterManager.markerCollection.markers.forEach { it.alpha = 1.0f }
+            clusterManager.clusterMarkerCollection.markers.forEach { it.alpha = 1.0f }
+
+            // Call clusterManager.onCameraIdle() when the camera stops moving so that re-clustering
+            // can be performed when the camera stops moving
+            clusterManager.onCameraIdle()
+        }
+    }
+
+    private var circle: Circle? = null
+
+    /**
+     * Adds a [Circle] around the provided [item]
+     */
+    private fun addCircle(googleMap: GoogleMap, item: Place) {
+        circle?.remove()
+        circle = googleMap.addCircle(
+            CircleOptions()
+                .center(item.latLng)
+                .radius(1000.0)
+                .fillColor(ContextCompat.getColor(requireContext(), R.color.colorMapPrimaryTranslucent))
+                .strokeColor(ContextCompat.getColor(requireContext(), R.color.colorMapPrimary))
+        )
+    }
+
+//    /**
+//     * Adds markers to the map. These markers won't be clustered.
+//     */
+//    private fun addMarkers(googleMap: GoogleMap) {
+//        places.forEach { place ->
+//            val marker = googleMap.addMarker(
+//                MarkerOptions()
+//                    .title(place.name)
+//                    .position(place.latLng)
+//                    .icon(bicycleIcon)
+//            )
+//            // Set place as the tag on the marker object so it can be referenced within
+//            // MarkerInfoWindowAdapter
+//            marker.tag = place
+//        }
+//    }
 
     // Called when user makes a long press gesture on the map.
     private fun setMapLongClick(map: GoogleMap) {

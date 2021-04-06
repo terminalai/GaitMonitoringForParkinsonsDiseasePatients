@@ -1,4 +1,4 @@
-package com.thepyprogrammer.gaitanalyzer.ui.video
+package com.thepyprogrammer.gaitanalyzer.ui.main.video
 
 import android.app.PictureInPictureParams
 import android.content.Intent

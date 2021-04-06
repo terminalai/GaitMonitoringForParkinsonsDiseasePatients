@@ -11,7 +11,10 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.ActivityMainBinding
+import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
 import kotlinx.android.synthetic.main.activity_video.*
+import java.io.File
+import java.io.PrintWriter
 
 
 class MainActivity : AppCompatActivity() {
@@ -40,8 +43,13 @@ class MainActivity : AppCompatActivity() {
 
 
     fun logout(): Boolean {
-        // viewModel.logout(this)
-        navController.navigate(R.id.action_nav_main_to_nav_auth)
+        val accountDetails = File(filesDir, "accountDetails.txt")
+        if(accountDetails.exists())
+            PrintWriter(accountDetails).close()
+
+        FirebaseUtil.user = null
+
+        navController.navigate(R.id.action_nav_main_to_nav_identification)
         return true
     }
 
