@@ -9,8 +9,6 @@ import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.ImageSpan
-import android.text.style.SuperscriptSpan
-import android.util.Log
 import android.view.*
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -21,27 +19,24 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentMainBinding
-import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
-import com.thepyprogrammer.gaitanalyzer.model.io.File
-import com.thepyprogrammer.gaitanalyzer.model.string.SuperStringBuilder
-import com.thepyprogrammer.gaitanalyzer.model.view.listener.OnShakeListener
-import com.thepyprogrammer.gaitanalyzer.model.view.listener.OnSwipeTouchListener
+import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.model.configurations.io.File
+import com.thepyprogrammer.gaitanalyzer.model.configurations.string.SuperStringBuilder
+import com.thepyprogrammer.gaitanalyzer.view.listener.OnShakeListener
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
-import com.thepyprogrammer.gaitanalyzer.ui.information.InformationFragment
+import com.thepyprogrammer.gaitanalyzer.ui.main.information.InformationFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.profile.ProfileFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.settings.SettingsFragment
 import com.thepyprogrammer.gaitanalyzer.ui.video.VideoActivity
 import de.hdodenhof.circleimageview.CircleImageView
 import java.io.PrintWriter
-import java.util.*
 
 class MainFragment : Fragment() {
 
@@ -96,8 +91,6 @@ class MainFragment : Fragment() {
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
 
         imageInfoFile = File(java.io.File((activity as AppCompatActivity).filesDir, "profileImageURI.txt"))
-
-
 
         val accountDetails = File(java.io.File((activity as AppCompatActivity).filesDir, "accountDetails.txt"))
         if(!accountDetails.exists()) accountDetails.createNewFile();

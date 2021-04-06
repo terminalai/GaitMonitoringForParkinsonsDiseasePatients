@@ -1,14 +1,17 @@
 package com.thepyprogrammer.gaitanalyzer.ui
 
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuInflater
+import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_video.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -40,6 +43,21 @@ class MainActivity : AppCompatActivity() {
         // viewModel.logout(this)
         navController.navigate(R.id.action_nav_main_to_nav_auth)
         return true
+    }
+
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        // Check if the key event was the Back button and if there's history
+        try {
+            val hub = findViewById<WebView>(R.id.hub)
+            if (keyCode == KeyEvent.KEYCODE_BACK && hub.canGoBack()) {
+                hub.goBack()
+                return true
+            }
+        } catch(ex: Exception) {}
+        // If it wasn't the Back key or there's no web page history, bubble up to the default
+        // system behavior (probably exit the activity)
+        return super.onKeyDown(keyCode, event)
     }
 
 }

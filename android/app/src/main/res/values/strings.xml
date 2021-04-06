@@ -106,4 +106,14 @@
     <string name="action_logout">Logout</string>
     <string name="info">Information</string>
     <string name="bigTextInfo">This is an app to facilitate the verification of vaccinated users. It supports both light and dark mode, though this functionality is in beta. Finally, shaking the phone will cause the verification page to pop up. </string>
+
+
+    <string name="normal_map">Normal Map</string>
+    <string name="hybrid_map">Hybrid Map</string>
+    <string name="satellite_map">Satellite Map</string>
+    <string name="terrain_map">Terrain Map</string>
+    <string name="lat_long_snippet">Lat: %1$.5f, Long: %2$.5f</string>
+    <string name="dropped_pin">Dropped Pin</string>
+    <string name="poi">poi</string>
+    <string name="zoom">15f</string>
 </resources>

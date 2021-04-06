@@ -3,9 +3,11 @@
     package="com.thepyprogrammer.gaitanalyzer"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -41,7 +43,9 @@
         <activity
             android:name=".ui.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.GaitAnalyzer.NoActionBar">
+            android:theme="@style/Theme.GaitAnalyzer.NoActionBar"
+            android:supportsPictureInPicture="true"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -61,7 +65,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_provider" />
         </provider>
-<activity
+        <activity
             android:name="com.thepyprogrammer.gaitanalyzer.ui.onboarding.OnboardingActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.GaitAnalyzer.NoActionBar">
@@ -71,12 +75,6 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.GaitAnalyzer">
         </activity>
-    <activity
-        android:name="com.thepyprogrammer.gaitanalyzer.ui.video.VideoActivity"
-        android:label="@string/app_name"
-        android:theme="@style/Theme.GaitAnalyzer.NoActionBar"
-        android:supportsPictureInPicture="true"
-        android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"/>
     </application>
 
 </manifest>

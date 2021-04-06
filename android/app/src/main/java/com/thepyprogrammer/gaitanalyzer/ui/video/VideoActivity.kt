@@ -5,22 +5,21 @@ import android.content.Intent
 import android.graphics.PixelFormat
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
+import android.util.Log
 import android.util.Rational
 import android.view.*
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.widget.MediaController
 import androidx.appcompat.app.AppCompatActivity
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.model.configurations.*
-import com.thepyprogrammer.gaitanalyzer.model.io.getUriFromRaw
-import com.thepyprogrammer.gaitanalyzer.model.web.WebAppInterface
+import com.thepyprogrammer.gaitanalyzer.model.configurations.io.getUriFromRaw
+import com.thepyprogrammer.gaitanalyzer.view.web.GitHubWebViewClient
+import com.thepyprogrammer.gaitanalyzer.view.web.WebAppInterface
+import com.thepyprogrammer.gaitanalyzer.view.web.WebBrowserClient
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_video.*
-import android.net.Uri
-import com.thepyprogrammer.gaitanalyzer.model.string.SuperStringBuilder
-import com.thepyprogrammer.gaitanalyzer.model.web.GitHubWebViewClient
-import com.thepyprogrammer.gaitanalyzer.model.web.WebBrowserClient
 import java.util.*
+
 
 class VideoActivity : AppCompatActivity() {
 
@@ -41,7 +40,7 @@ class VideoActivity : AppCompatActivity() {
             settings.javaScriptEnabled = true
             addJavascriptInterface(WebAppInterface(this@VideoActivity), "Android")
             webChromeClient = WebBrowserClient()
-            loadUrl("file:///android_asset/gaitmonitoring.html")
+            loadUrl("file:///android_asset/www/index.html")
         }
 //        val builder =
 //            SuperStringBuilder("<!DOCTYPE html>\n<html>\n<body>\n")
@@ -67,8 +66,6 @@ class VideoActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-
-
         conFigVideo()
     }
 
@@ -76,6 +73,20 @@ class VideoActivity : AppCompatActivity() {
         window.setFormat(PixelFormat.TRANSLUCENT)
         itemVideo.setVideoURI(getUriFromRaw(this, R.raw.gaitmonitoring)) // placeholder
         itemVideo.start()
+
+        val mediaController = MediaController(this)
+        mediaController.setAnchorView(itemVideo);
+        itemVideo.setMediaController(mediaController);
+
+        itemVideo.setOnPreparedListener {
+            Log.i(
+                "VIDEO",
+                "Duration = " + it.duration
+            )
+
+
+        }
+
 
         ttsButton.setOnClickListener {
             TextToSpeech(this, null).getTTS(this, text.toString())
@@ -125,11 +136,7 @@ class VideoActivity : AppCompatActivity() {
     }
 
     companion object {
-        val text =
-            """Parkinson’s disease (PD) is a neurodegenerative disorder that affects the dopamine producing neurons in the substantia nigra, an area of the brain, leading to shaking, stiffness and difficulty walking. Parkinson’s patients frequently exhibit the debilitating condition freezing of gait (FOG), which is when patients cannot move their feet forward despite the intention to walk. While the feet remain in place, the torso still has forward momentum, making falls very common. At the start, FOG can be triggered by stress, tight spaces or a sudden change in direction. As the disease progresses, this happens more frequently, a fact extremely detrimental to the patient’s health and mental well-being.
-                    
-                    
-                    This study aims to compare all the ways of classifying FOG in PD patients and determine the best parameter to utilise while creating an algorithm for data analysis. It also aims to compare multiple machine learning models based on acceleration data from accelerometers placed on the thigh. Public datasets of PD patients will be analysed to extract the motion pattern of PD patients. A Freeze Index value is postulated and used to predict FOG based on these parameters. The comfort of the patient and the ease and accuracy in which the parameter can predict FOG will be taken into account in this study. Ultimately, a prototype that fulfils all these requirements will be made.
-                """.trimIndent()
+        const val text =
+            "Parkinson’s disease, or PD is a neurodegenerative disorder that affects the dopamine-producing neurons in the substantia nigra, an area of the brain, leading to shaking, stiffness and difficulty walking. Parkinson’s patients frequently exhibit the debilitating condition freezing of gait, or FOG, which is when patients cannot move their feet forward despite the intention to walk. While the feet remain in place, the torso still has forward momentum, making falls very common. At the start, FOG can be triggered by stress, tight spaces or a sudden change in direction. As the disease progresses, this happens more frequently, a fact extremely detrimental to the patient’s health and mental well-being. This study aims to compare all the ways of classifying FOG in PD patients and determine the best parameter to utilise while creating an algorithm for data analysis. It also aims to compare multiple machine learning models based on acceleration data from accelerometers placed on the thigh. Public datasets of PD patients will be analysed to extract the motion pattern of PD patients. A Freeze Index value is postulated and used to predict FOG based on these parameters. An algorithm was then developed to identify the most suitable parameter for the classification of FOG in PD patients. Multiple machine learning models were then compared based on acceleration data from accelerometers placed on the thigh. After analyzing, the most suitable parameters for classification are freezeY and freezeZ based on the acceleration data in the public datasets and the best model is the Linear Kernel model in terms of sensitivity. Furthermore, a prototype has been created using an Arduino Nano 33 BLE board. It can be implemented to test the performance of the identified most suitable parameters. This system has now been connected to this Android Application such that notifications can be sent to the caregiver’s phone to alert them to a fall."
     }
 }

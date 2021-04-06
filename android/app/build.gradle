@@ -19,6 +19,11 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++14"
+            }
+        }
     }
 
     buildTypes {
@@ -27,6 +32,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.6.0+"
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    aaptOptions {
+        // Use default ignore rule *except* allow directories starting with _,
+        // so that pyc files in __pycache__ directories flow through into apps.
+        // https://android.googlesource.com/platform/frameworks/base/+/b41af58f49d371cedf041443d20a1893f7f6c840/tools/aapt/AaptAssets.cpp#60
+        ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -48,6 +71,10 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
+    // Beeware
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation files('libs/rubicon.jar')
+
     implementation 'androidx.core:core-ktx:1.3.2'
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -55,6 +82,7 @@ dependencies {
 
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
     // Jetpack
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.4'
@@ -108,10 +136,6 @@ dependencies {
     implementation 'com.github.imangazalievm:circlemenu:3.0.0'
 
 
-    // volley for HTTPS
-    implementation 'com.android.volley:volley:1.2.0'
-
-
     implementation 'com.tasomaniac:emailautocompletetextview:0.2'
     //implementation 'com.tasomaniac:emailautocompletetextview-design:0.2'
 
@@ -120,7 +144,19 @@ dependencies {
     //QR Code Scanner
     implementation 'com.budiyev.android:code-scanner:2.1.0'
 
+    // volley for HTTPS
+    implementation 'com.android.volley:volley:1.2.0'
+
+    // Dependency to include Maps SDK for Android
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.maps.android:android-maps-utils:2.2.0'
+
+
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
+repositories {
+    mavenCentral()
 }
