@@ -22,6 +22,7 @@ import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.transition.TransitionInflater
 import com.thepyprogrammer.gaitanalyzer.R
@@ -36,6 +37,7 @@ import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.profile.ProfileFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.settings.SettingsFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.video.VideoActivity
+import com.thepyprogrammer.gaitanalyzer.ui.main.video.VideoFragment
 import de.hdodenhof.circleimageview.CircleImageView
 import java.io.PrintWriter
 
@@ -208,12 +210,10 @@ class MainFragment : Fragment() {
 
                 R.id.action_logout -> (activity as MainActivity).logout()
 
-
                 R.id.information -> navigateToInformation()
-                R.id.action_video -> {
-                    startActivity(Intent(requireActivity(), VideoActivity::class.java))
-                    true
-                }
+
+                R.id.action_video -> navigateToVideo()
+
                 else -> false
             }
 
@@ -253,6 +253,13 @@ class MainFragment : Fragment() {
                 navController.navigate(R.id.nav_information)
                 true
             } else false
+
+    private fun navigateToVideo() =
+        if ((currentFragment !is VideoFragment)) {
+            val navController = findNavController(binding.navHostFragment)
+            navController.navigate(R.id.nav_video)
+            true
+        } else false
 
     private fun navigateToNext() =
             when (currentFragment) {

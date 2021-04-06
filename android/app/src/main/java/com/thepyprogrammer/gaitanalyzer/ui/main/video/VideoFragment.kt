@@ -63,7 +63,6 @@ class VideoFragment : Fragment() {
     private fun conFigVideo() {
         requireActivity().window.setFormat(PixelFormat.TRANSLUCENT)
         binding.videoView.setVideoURI(getUriFromRaw(requireContext(), R.raw.gaitmonitoring)) // placeholder
-        binding.videoView.start()
 
         val mediaController = MediaController(requireContext())
         mediaController.setAnchorView(binding.videoView)
@@ -84,6 +83,8 @@ class VideoFragment : Fragment() {
         binding.playPauseBtn.setOnClickListener {
             Log.d("VIDEO", if(binding.videoView.toggle()) "Play!" else "Pause!")
         }
+
+        binding.videoView.start()
 
 
         binding.ttsButton.setOnClickListener {
