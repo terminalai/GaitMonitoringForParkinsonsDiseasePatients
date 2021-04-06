@@ -17,6 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="50dp"
-        android:src="@drawable/ic_coding" />
+        android:src="@drawable/banner"
+        android:contentDescription="Splash Image" />
 </FrameLayout>
