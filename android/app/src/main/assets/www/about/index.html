@@ -4,9 +4,9 @@
   <title>Gait Monitoring and Analysis for Parkinson&#39;s Disease Patients</title>
   <link rel="stylesheet" href="../css/github_markdown.css">
   <script type="text/javascript" src="../js/functions.js"></script>
-  
-  </head>
-  <body>
+
+</head>
+<body>
 <h1 id="gait-monitoring-and-analysis-for-parkinson-s-disease-patients">Gait Monitoring and Analysis for Parkinson&#39;s Disease Patients</h1>
 <p>By: Nallapuraju Ananya, Ye Chen Rui and Prannaya Gupta</p>
 <p align="center">
@@ -20,34 +20,34 @@
 <h2 id="table-of-contents">Table of Contents</h2>
 <p><a href="#gait-monitoring-and-analysis-for-parkinsons-disease-patients">Gait Monitoring for Parkinson&#39;s Disease Patients</a></p>
 <ul>
-<li><a href="#project-description">Project Description</a><ul>
-<li><a href="#final-product">Final Product</a></li>
-<li><a href="#methodology">Methodology</a></li>
-</ul>
-</li>
-<li><a href="#abstract">Abstract</a></li>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#aims-and-objectives">Aims and Objectives</a></li>
-<li><a href="#literature-review">Literature Review</a><ul>
-<li><a href="#utilisation-of-imus-in-analysis">Utilisation of IMUs in analysis</a></li>
-<li><a href="#machine-learning-approaches-to-detecting-pd">Machine learning approaches to detecting PD</a></li>
-<li><a href="#gait-parameters-to-be-analysed">Gait parameters to be analysed</a></li>
-</ul>
-</li>
-<li><a href="#materials-and-methods">Materials and Methods</a><ul>
-<li><a href="#daphnet-dataset">DAPHNet Dataset</a></li>
-<li><a href="#signal-processing">Signal Processing</a></li>
-<li><a href="#svm-analysis">SVM Analysis</a></li>
-<li><a href="#arduino-program">Arduino Program</a></li>
-</ul>
-</li>
-<li><a href="#results">Results</a><ul>
-<li><a href="#prototype">Prototype</a></li>
-</ul>
-</li>
-<li><a href="#conclusions-and-discussions">Conclusions and Discussions</a></li>
-<li><a href="#acknowledgements">Acknowledgements</a></li>
-<li><a href="#references">References</a></li>
+  <li><a href="#project-description">Project Description</a><ul>
+    <li><a href="#final-product">Final Product</a></li>
+    <li><a href="#methodology">Methodology</a></li>
+  </ul>
+  </li>
+  <li><a href="#abstract">Abstract</a></li>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#aims-and-objectives">Aims and Objectives</a></li>
+  <li><a href="#literature-review">Literature Review</a><ul>
+    <li><a href="#utilisation-of-imus-in-analysis">Utilisation of IMUs in analysis</a></li>
+    <li><a href="#machine-learning-approaches-to-detecting-pd">Machine learning approaches to detecting PD</a></li>
+    <li><a href="#gait-parameters-to-be-analysed">Gait parameters to be analysed</a></li>
+  </ul>
+  </li>
+  <li><a href="#materials-and-methods">Materials and Methods</a><ul>
+    <li><a href="#daphnet-dataset">DAPHNet Dataset</a></li>
+    <li><a href="#signal-processing">Signal Processing</a></li>
+    <li><a href="#svm-analysis">SVM Analysis</a></li>
+    <li><a href="#arduino-program">Arduino Program</a></li>
+  </ul>
+  </li>
+  <li><a href="#results">Results</a><ul>
+    <li><a href="#prototype">Prototype</a></li>
+  </ul>
+  </li>
+  <li><a href="#conclusions-and-discussions">Conclusions and Discussions</a></li>
+  <li><a href="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#references">References</a></li>
 </ul>
 <h2 id="project-description">Project Description</h2>
 <p>The objective of this project is to monitor the gait patterns for people with Parkinson Disease. We will analyse the gait for PD patients during freezing and non-freezing (normal) events. Various parameters (e.g. cadence, step lengths, stride lengths, etc) related to gait will be derived from motion sensors (accelerometers, gyroscopes, magnetometers) using public datasets of PD patients. We will then investigate which of these parameters is most suitable for classification for freezing of gait in PD patients.</p>
@@ -61,11 +61,11 @@
 <p>Parkinson’s Disease (PD) is a progressive nervous system disorder that affects the basal ganglia, resulting in the progressive loss of dopamine neurotransmitters and poorer connection between the central nervous system and muscles<sup>[1]</sup>. This leads to many gait abnormalities, mainly tremors, bradykinesia, rigidity, and a loss of postural reflexes. Secondary motor symptoms that are evoked include stride length reduction, shuffling gait, step festination and freezing<sup>[2,3]</sup>. Freezing of Gait (FOG) is one of the most debilitating effects of PD and is defined as a brief, episodic absence or marked reduction of forward progression of the feet despite the intention to walk<sup>[3]</sup>. It has serious social and clinical consequences for patients as it leads to falls<sup>[4]</sup>, interferes with daily activities and significantly impacts quality of life<sup>[5]</sup>. While FOG can happen anytime, it happens most often during turns, before gait initiation, in tight quarters such as doorways and in stressful situations<sup>[6]</sup>. It is triggered by visual stimulation.</p>
 <p>Currently, FOG characterization is done using two main methods. In the first method, FOG is quantified by gait tests such as the timed up and go (TUG) test and the Hoehn and Yahr (H&amp;Y) scale. The TUG test measures in seconds how long a patient takes to stand up from their chair, walk 3m past a line, turn around, walk back and sit down<sup>[7]</sup>. On the other hand, the H&amp;Y scale has 5 stages to indicate levels of disability<sup>[8]</sup>: </p>
 <ul>
-<li>Stage 1: Symptoms on one side of the body only. </li>
-<li>Stage 2: Symptoms on both sides of the body; no impairment of balance. </li>
-<li>Stage 3: Balance impairment; mild to moderate disease; physically independent. </li>
-<li>Stage 4: Severe disability, but still able to walk or stand unassisted. </li>
-<li>Stage 5: Wheelchair-bound or bedridden unless assisted.</li>
+  <li>Stage 1: Symptoms on one side of the body only. </li>
+  <li>Stage 2: Symptoms on both sides of the body; no impairment of balance. </li>
+  <li>Stage 3: Balance impairment; mild to moderate disease; physically independent. </li>
+  <li>Stage 4: Severe disability, but still able to walk or stand unassisted. </li>
+  <li>Stage 5: Wheelchair-bound or bedridden unless assisted.</li>
 </ul>
 <p>In the second method, individual questionnaires are used. The Freezing Of Gait Questionnaire (FOG-Q) is a notable one, comprising 6 questions and utilising a 5-point scale to rank symptom severity<sup>[9]</sup>. </p>
 <p>However, both methods are highly inefficient in measuring FOG as it is highly sensitive to environmental triggers, medication and the patient’s mental state. Therefore, there has been research into using wearable inertial measurement units (IMUs) to display exactly the gait types of PD patients. </p>
@@ -85,50 +85,50 @@
 <p align="center"><b>Table 1: Table of IMUs found in our literature review</b></p>
 
 <table>
-<thead>
-<tr>
-<th>IMU</th>
-<th>Purpose</th>
-<th>Measured Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Accelerometer</td>
-<td>Measuring acceleration</td>
-<td>Stride Length, Stride Duration</td>
-</tr>
-<tr>
-<td>Gyroscope</td>
-<td>Measuring angular velocity</td>
-<td>Step Festination, Gait Asymmetry</td>
-</tr>
-<tr>
-<td>Flexible Goniometer</td>
-<td>Measuring body joint angles</td>
-<td>Flat Foot Strike</td>
-</tr>
-<tr>
-<td>Force- sensitive Insole</td>
-<td>Measuring the tension and compression forces that act on the sensor</td>
-<td>Gait Cycle (not accurate for PD patients who suffer from flat footedness)</td>
-</tr>
-</tbody>
+  <thead>
+  <tr>
+    <th>IMU</th>
+    <th>Purpose</th>
+    <th>Measured Parameter</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Accelerometer</td>
+    <td>Measuring acceleration</td>
+    <td>Stride Length, Stride Duration</td>
+  </tr>
+  <tr>
+    <td>Gyroscope</td>
+    <td>Measuring angular velocity</td>
+    <td>Step Festination, Gait Asymmetry</td>
+  </tr>
+  <tr>
+    <td>Flexible Goniometer</td>
+    <td>Measuring body joint angles</td>
+    <td>Flat Foot Strike</td>
+  </tr>
+  <tr>
+    <td>Force- sensitive Insole</td>
+    <td>Measuring the tension and compression forces that act on the sensor</td>
+    <td>Gait Cycle (not accurate for PD patients who suffer from flat footedness)</td>
+  </tr>
+  </tbody>
 </table>
 <p>Many works have also tried utilising motion capture systems to annotate FOG events, synchronising sensor data and computer analysis to make way for machine learning algorithms. Kuhner et al.<sup>[13]</sup> performed this experiment, setting up 12 cameras as well as utilising an inertial measurement suit to create a ‘live’ system that reduces the latency of data processing.</p>
 <p>The above literature confirms the success of utilising accelerometers, gyroscopes and force insoles to effectively differentiate FOG from normal gait and has greatly helped in designing the proposed approach for this study.</p>
 <h3 id="_machine-learning-approaches-to-detecting-pd_"><em>Machine learning approaches to detecting PD</em></h3>
 <p>Aich et al.<sup>[14]</sup> have done a comprehensive review of the following four different types of machine learning algorithms in classifying patients with FOG or no FOG: </p>
 <ul>
-<li>Support Vector Machine (SVM)<ul>
-<li>Considered the most accurate by Aich et al<sup>[14]</sup>.</li>
-</ul>
-</li>
-<li>k-Nearest Neighbour (kNN)</li>
-<li>Decision Tree (DT)</li>
-<li>Naïve Bayes (NB)</li>
-<li>Threshold/ Logistic Regression</li>
-<li>Time Series Analysis</li>
+  <li>Support Vector Machine (SVM)<ul>
+    <li>Considered the most accurate by Aich et al<sup>[14]</sup>.</li>
+  </ul>
+  </li>
+  <li>k-Nearest Neighbour (kNN)</li>
+  <li>Decision Tree (DT)</li>
+  <li>Naïve Bayes (NB)</li>
+  <li>Threshold/ Logistic Regression</li>
+  <li>Time Series Analysis</li>
 </ul>
 <p>They found that the SVM classifier with radial basis function provides the highest accuracy of 91.42% as well as the highest sensitivity and specificity of 90.89% and 91.21% respectively. </p>
 <p>Eom et al.<sup>[15]</sup> used thresholds to classify FOG and non-FOG states. The number of thresholds varied, increasing by two for every dimension added. The range between two thresholds was used to determine FOG states for 1D data while six thresholds were required for 3D data. Additionally, three FOG states (FOG: 1, non-FOG: 0) were “AND” operated to determine final FOG.</p>
@@ -136,53 +136,53 @@
 <p>The frequency-based features discussed by Baechlin et. al<sup>[10]</sup> are reliable, but they have one major drawback. The large amount of calculations required to perform the Fast Fourier Transform (FFT) algorithm needed to analyse frequency-based data means that a digital signal processing chip is required, making it impossible to fit in a small, lightweight unobtrusive system. This would make it impractical for real life detection. For the patients with gait problems, a bulky and obtrusive system may worsen the gait disturbances. Additionally, most experiments utilised a relatively long window length (4 seconds<sup>[10]</sup>, 6 seconds<sup>[16]</sup>, and 10 seconds<sup>[17]</sup>) for detection, leading to a long delay in FOG detection. Eom et al.<sup>[15]</sup> suggested a simple and fast time-domain method for FOG detection that was comparable to the traditional frequency-domain method with a calculation load of 1,154 times less. This has practical clinical applications.</p>
 <p>Previous researchers also have reported the importance of five parameters for the detection of PD. Most notably, Hollman et al.<sup>[18]</sup> have proposed five major domains of gait based on factor analysis:</p>
 <ol>
-<li>Rhythm - step and stride time</li>
-<li>Phase - gait cycle</li>
-<li>Variability - step-to-step variability</li>
-<li>Pace - gait speed, stride and step length</li>
-<li>Base of support - step width.</li>
+  <li>Rhythm - step and stride time</li>
+  <li>Phase - gait cycle</li>
+  <li>Variability - step-to-step variability</li>
+  <li>Pace - gait speed, stride and step length</li>
+  <li>Base of support - step width.</li>
 </ol>
 <p>Others have confirmed the importance of determining the spatiotemporal parameters. Alcock et al.<sup>[19]</sup>, Coste et al.<sup>[20]</sup> and Schlachetzki et al.<sup>[21]</sup> have all discussed the importance of stride length, stride time and gait velocity in distinguishing PD patients from healthy older adults.</p>
 <p>Overall, the following is a summary of gait parameters found in our research.</p>
 <p align="center"><b>Table 2: Summary of Gait parameters found in our research</b></p>
 
 <table>
-<thead>
-<tr>
-<th>Gait abnormalities</th>
-<th>Definition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Step Festination</td>
-<td>Shortening of steps</td>
-</tr>
-<tr>
-<td>Decrease in Stride Duration</td>
-<td>Decrease in the time difference between two consecutive detected acceleration peaks of the same leg</td>
-</tr>
-<tr>
-<td>Postural Instability</td>
-<td>Loss of balance</td>
-</tr>
-<tr>
-<td>Increase in step-to-step time variability</td>
-<td>Difference in time taken between each stride</td>
-</tr>
-<tr>
-<td>Stride Length Reduction</td>
-<td>Reduction in distance between each stride/step</td>
-</tr>
-<tr>
-<td>Decreased Cadence</td>
-<td>Decrease in number of steps taken per unit time</td>
-</tr>
-<tr>
-<td>Gait Asymmetry</td>
-<td>Difference in gait between the two legs of patient</td>
-</tr>
-</tbody>
+  <thead>
+  <tr>
+    <th>Gait abnormalities</th>
+    <th>Definition</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Step Festination</td>
+    <td>Shortening of steps</td>
+  </tr>
+  <tr>
+    <td>Decrease in Stride Duration</td>
+    <td>Decrease in the time difference between two consecutive detected acceleration peaks of the same leg</td>
+  </tr>
+  <tr>
+    <td>Postural Instability</td>
+    <td>Loss of balance</td>
+  </tr>
+  <tr>
+    <td>Increase in step-to-step time variability</td>
+    <td>Difference in time taken between each stride</td>
+  </tr>
+  <tr>
+    <td>Stride Length Reduction</td>
+    <td>Reduction in distance between each stride/step</td>
+  </tr>
+  <tr>
+    <td>Decreased Cadence</td>
+    <td>Decrease in number of steps taken per unit time</td>
+  </tr>
+  <tr>
+    <td>Gait Asymmetry</td>
+    <td>Difference in gait between the two legs of patient</td>
+  </tr>
+  </tbody>
 </table>
 <p>Hence, in this study, the focus will be on gait velocity, stride time and gait cycle. </p>
 <h2 id="materials-and-methods">Materials and Methods</h2>
@@ -208,26 +208,26 @@
 <p>This study uses signal processing algorithms to compute a postulated freeze index. Moore et al.<sup>[23]</sup> defined the freeze index (FI) as the power ratio of freeze band (0.5–3.0 Hz) to locomotor band (3–8 Hz) derived from the frequency spectrum and identified FOG episodes at the time periods when FI exceeds a certain threshold. The code uses an updated form of Moore’s algorithm, where it calculates the Freeze Index from data from a specific axis (horizontal forward, horizontal lateral and vertical) from the sensors on the thigh by performing windowing of data with a length of 256 data points and steps up 32 data points. After performing a mean normalisation, the code finds the Fast Fourier Transform of the normalised window and uses that to compute the Freeze Index and supposed Power Spectral Density (PSD). After this, it accounts for a standing case where the <i>PSD<sub>threshold</sub> = 2<sup>11.5</sup></i>, and in cases where it is below this threshold, the freeze index becomes zero. From this, we had the final postulated freeze index.</p>
 <p>In this experiment, we decided to define a final function <code>freeze(N)</code>, where <code>freeze(N) = Freeze Index postulated from N-axis acceleration</code>. For the investigation, we defined the axes as follows:</p>
 <table>
-<thead>
-<tr>
-<th>Axis</th>
-<th>Axis with respect to the user</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>X</td>
-<td>Horizontal Forward</td>
-</tr>
-<tr>
-<td>Y</td>
-<td>Vertical</td>
-</tr>
-<tr>
-<td>Z</td>
-<td>Horizontal Vertical</td>
-</tr>
-</tbody>
+  <thead>
+  <tr>
+    <th>Axis</th>
+    <th>Axis with respect to the user</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>X</td>
+    <td>Horizontal Forward</td>
+  </tr>
+  <tr>
+    <td>Y</td>
+    <td>Vertical</td>
+  </tr>
+  <tr>
+    <td>Z</td>
+    <td>Horizontal Vertical</td>
+  </tr>
+  </tbody>
 </table>
 <h3 id="_svm-analysis_"><em>SVM Analysis</em></h3>
 <p>Unlike Baechlin et al.<sup>[10]</sup>, where the Freeze Index with a threshold of 1.5 is used such that a freeze index greater than the threshold is considered FOG, we decided to follow the results found by Aich et al<sup>[14]</sup>, and hence decided to test SVM models against the data we had derived. </p>
@@ -264,10 +264,10 @@
 
 <p>We tested the SVMs using Linear and Gaussian Kernels against the following combinations as parameters:</p>
 <ul>
-<li>freeze(X) and freeze(Y)</li>
-<li>freeze(X) and freeze(Z)</li>
-<li>freeze(Y) and freeze(Z)</li>
-<li>freeze(X), freeze(Y) and freeze(Z)</li>
+  <li>freeze(X) and freeze(Y)</li>
+  <li>freeze(X) and freeze(Z)</li>
+  <li>freeze(Y) and freeze(Z)</li>
+  <li>freeze(X), freeze(Y) and freeze(Z)</li>
 </ul>
 <p>Performing an SVM analysis using the ThunderSVM tool, we got the following results.</p>
 <p align="center"><b>Table 3: Table of Algorithm Evaluation Functions with regards to kernels and parameters</b></p>
