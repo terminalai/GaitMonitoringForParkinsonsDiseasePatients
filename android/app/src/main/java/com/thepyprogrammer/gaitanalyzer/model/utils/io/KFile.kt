@@ -12,7 +12,7 @@ import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.*
 
-class File @JvmOverloads constructor(filename: String?, type: Char = 'r') : java.io.File(filename),
+class KFile @JvmOverloads constructor(filename: String?, type: Char = 'r') : java.io.File(filename),
         Cloneable, AutoCloseable {
     var out: PrintWriter? = null
     var `in`: Scanner? = null
@@ -31,38 +31,38 @@ class File @JvmOverloads constructor(filename: String?, type: Char = 'r') : java
         return absolutePath
     }
 
-    override fun getAbsoluteFile(): File {
-        return File(super.getAbsoluteFile())
+    override fun getAbsoluteFile(): KFile {
+        return KFile(super.getAbsoluteFile())
     }
 
-    override fun getParentFile(): File {
-        return File(super.getParentFile())
+    override fun getParentFile(): KFile {
+        return KFile(super.getParentFile())
     }
 
-    override fun getCanonicalFile(): File? {
+    override fun getCanonicalFile(): KFile? {
         return try {
-            File(super.getCanonicalFile())
+            KFile(super.getCanonicalFile())
         } catch (e: IOException) {
             null
         }
     }
 
-    fun rename(dest: File?): Boolean {
+    fun rename(dest: KFile?): Boolean {
         return renameTo(dest)
     }
 
-    override fun listFiles(): Array<File?> {
+    override fun listFiles(): Array<KFile?> {
         return convert(*listFiles())
     }
 
     val relativePath: String
-        get() = File(System.getProperty("user.dir")).relativize(this)
+        get() = KFile(System.getProperty("user.dir")).relativize(this)
 
     fun getRelativePath(directory: String?): String {
-        return File(directory).relativize(this)
+        return KFile(directory).relativize(this)
     }
 
-    fun getRelativePath(directory: File): String {
+    fun getRelativePath(directory: KFile): String {
         return directory.relativize(this)
     }
 
@@ -156,7 +156,7 @@ class File @JvmOverloads constructor(filename: String?, type: Char = 'r') : java
         return this
     }
 
-    fun relativize(file: File): String {
+    fun relativize(file: KFile): String {
         return relativize(file.toUri())
     }
 
@@ -166,18 +166,18 @@ class File @JvmOverloads constructor(filename: String?, type: Char = 'r') : java
 
     override fun equals(other: Any?): Boolean {
         if (other === this) return true
-        return if (other == null || other !is File) false else absolutePath == other.absolutePath
+        return if (other == null || other !is KFile) false else absolutePath == other.absolutePath
     }
 
-    fun equals(other: File): Boolean {
+    fun equals(other: KFile): Boolean {
         return absolutePath == other.absolutePath
     }
 
-    public override fun clone(): File {
-        return File(absolutePath)
+    public override fun clone(): KFile {
+        return KFile(absolutePath)
     }
 
-    operator fun compareTo(o: File?): Int {
+    operator fun compareTo(o: KFile?): Int {
         return super.compareTo(o)
     }
 
@@ -188,70 +188,70 @@ class File @JvmOverloads constructor(filename: String?, type: Char = 'r') : java
         private val overwriters = HashMap<String, PrintWriter>()
         private val writeoutstreams = HashMap<String, FileOutputStream>()
         private val appendoutstreams = HashMap<String, FileOutputStream>()
-        fun read(filename: String?): File {
-            return File(filename)
+        fun read(filename: String?): KFile {
+            return KFile(filename)
         }
 
-        fun read(file: File): File {
-            return File(file)
+        fun read(file: KFile): KFile {
+            return KFile(file)
         }
 
-        fun read(file: java.io.File): File {
-            return File(file)
-        }
-
-        @Throws(MalformedURLException::class)
-        fun read(uri: Uri): File {
-            return File(uri)
-        }
-
-        fun read(url: URL): File {
-            return File(url)
-        }
-
-        fun write(filename: String?): File {
-            return File(filename, 'w')
-        }
-
-        fun write(file: File): File {
-            return File(file, 'w')
-        }
-
-        fun write(file: java.io.File): File {
-            return File(file, 'w')
+        fun read(file: java.io.File): KFile {
+            return KFile(file)
         }
 
         @Throws(MalformedURLException::class)
-        fun write(uri: Uri): File {
-            return File(uri, 'w')
+        fun read(uri: Uri): KFile {
+            return KFile(uri)
         }
 
-        fun write(url: URL): File {
-            return File(url, 'w')
+        fun read(url: URL): KFile {
+            return KFile(url)
         }
 
-        fun append(filename: String?): File {
-            return File(filename, 'a')
+        fun write(filename: String?): KFile {
+            return KFile(filename, 'w')
         }
 
-        fun append(file: File): File {
-            return File(file, 'a')
+        fun write(file: KFile): KFile {
+            return KFile(file, 'w')
         }
 
-        fun append(file: java.io.File): File {
-            return File(file, 'a')
+        fun write(file: java.io.File): KFile {
+            return KFile(file, 'w')
         }
 
         @Throws(MalformedURLException::class)
-        fun append(uri: Uri): File {
-            return File(uri, 'a')
+        fun write(uri: Uri): KFile {
+            return KFile(uri, 'w')
         }
 
-        fun append(url: URL): File {
-            return File(url, 'a')
+        fun write(url: URL): KFile {
+            return KFile(url, 'w')
         }
 
-        fun relative(absParent: File, vararg relativePaths: String?): String {
+        fun append(filename: String?): KFile {
+            return KFile(filename, 'a')
+        }
+
+        fun append(file: KFile): KFile {
+            return KFile(file, 'a')
+        }
+
+        fun append(file: java.io.File): KFile {
+            return KFile(file, 'a')
+        }
+
+        @Throws(MalformedURLException::class)
+        fun append(uri: Uri): KFile {
+            return KFile(uri, 'a')
+        }
+
+        fun append(url: URL): KFile {
+            return KFile(url, 'a')
+        }
+
+        fun relative(absParent: KFile, vararg relativePaths: String?): String {
             var file = java.io.File(absParent.path)
             for (relativePath in relativePaths) {
                 file = java.io.File(file, relativePath)
@@ -260,15 +260,15 @@ class File @JvmOverloads constructor(filename: String?, type: Char = 'r') : java
         }
 
 
-        fun convert(vararg files: java.io.File?): Array<File?> {
+        fun convert(vararg files: java.io.File?): Array<KFile?> {
             return convert(listOf(*files))
         }
 
-        fun convert(files: List<java.io.File?>): Array<File?> {
-            val rearr = arrayOfNulls<File>(files.size)
+        fun convert(files: List<java.io.File?>): Array<KFile?> {
+            val rearr = arrayOfNulls<KFile>(files.size)
             var i = 0
             for (file in files) {
-                rearr[i] = file?.let { File(it) }
+                rearr[i] = file?.let { KFile(it) }
                 i++
             }
             return rearr
