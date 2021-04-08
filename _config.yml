@@ -1,0 +1,18 @@
+layout: sidebar
+style: light
+
+plugins:
+  - jekyll-octicons
+  - jekyll-github-metadata
+  - jemoji
+
+permalink: /:year/:month/:day/:title/
+
+defaults:
+  -
+    scope:
+      path: "docs/" # an empty string here means all files in the project
+      type: "posts"
+    values:
+      layout: "post"
+
