@@ -12,7 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.transition.TransitionInflater
 import com.thepyprogrammer.gaitanalyzer.R
-import com.thepyprogrammer.gaitanalyzer.model.utils.io.File
+import com.thepyprogrammer.gaitanalyzer.model.utils.io.KFile
 import com.thepyprogrammer.gaitanalyzer.ui.image.ImageClickListener
 import com.thepyprogrammer.gaitanalyzer.ui.main.MainViewModel
 import de.hdodenhof.circleimageview.CircleImageView
@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment() {
     var circleImageView: CircleImageView? = null
-    var imageInfoFile: File? = null
+    var imageInfoFile: KFile? = null
     lateinit var nameTextView: TextView
     lateinit var button: Button
     private lateinit var viewModel: MainViewModel
@@ -48,7 +48,7 @@ class ProfileFragment : Fragment() {
         val inflater = TransitionInflater.from(requireContext())
         enterTransition = inflater.inflateTransition(R.transition.slide_right)
         exitTransition = inflater.inflateTransition(R.transition.fade)
-        imageInfoFile = File(java.io.File(activity?.filesDir, "profileImageURI.txt"))
+        imageInfoFile = KFile(java.io.File(activity?.filesDir, "profileImageURI.txt"))
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
