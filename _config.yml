@@ -1,4 +1,3 @@
-layout: sidebar
 style: dark
 
 plugins:
@@ -11,19 +10,8 @@ permalink: /:year/:month/:day/:title/
 defaults:
   -
     scope:
-      path: "" # an empty string here means all files in the project
+      path: "docs/" # an empty string here means all files in the project
       type: "posts"
     values:
       layout: "post"
 
-projects:
-  sort_by: pushed
-  # sort_by options:
-  #   - pushed
-  #   - stars
-  limit: 9
-  exclude:
-    archived: false
-    forks: true
-    projects:
-    # - repo-name
