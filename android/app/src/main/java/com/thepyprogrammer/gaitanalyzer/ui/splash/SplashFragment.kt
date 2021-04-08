@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentSplashBinding
-import com.thepyprogrammer.gaitanalyzer.model.account.caregiver.Caregiver
+import com.thepyprogrammer.gaitanalyzer.model.account.data.Caregiver
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
 import java.io.File
 import java.util.*
@@ -42,8 +42,8 @@ class SplashFragment : Fragment() {
                     if (name != null) {
                         val password = sc.nextLine()
                         val type = sc.nextLine()
-                        if(type == "caregiver") FirebaseUtil.user = Caregiver(name, password)
-                        else if(type == "patient") FirebaseUtil.user = Caregiver(name, password)
+                        if (type == "caregiver") FirebaseUtil.user = Caregiver(name, password)
+                        else if (type == "patient") FirebaseUtil.user = Caregiver(name, password)
                         Handler().postDelayed({
                             Navigation.findNavController(binding.splashScreenImage).navigate(R.id.nav_main)
                         }, SPLASH_TIME_OUT.toLong())

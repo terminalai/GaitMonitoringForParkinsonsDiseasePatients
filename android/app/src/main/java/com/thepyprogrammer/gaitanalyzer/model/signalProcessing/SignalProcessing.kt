@@ -10,9 +10,9 @@ import transpose
 import kotlin.math.pow
 import kotlin.math.roundToInt
 
-val SR = 64.0
-val stepSize = 1
-val windowLength = 256
+const val SR = 64.0
+const val stepSize = 1
+const val windowLength = 256
 
 private val f_nr_LBs: Int = (0.5 * windowLength / SR).roundToInt()
 private val f_nr_LBe: Int = (3 * windowLength / SR).roundToInt()
@@ -36,26 +36,29 @@ fun numIntegration(x: Array<Double>): Double {
  */
 fun freeze(data: Array<Double>): Array<Double> {
     var jPos: Int
-    val i_max: Int = (data.size / stepSize)
+    val iMax: Int = (data.size / stepSize)
 
     val freezeIndex = mutableListOf<Double>()
-    for (i in 0..i_max) {
+    for (i in 0..iMax) {
         // Time (sample nr) of this window
         val jStart = i * stepSize
         jPos = jStart + windowLength
 
-        // get the signal in the window
-        val y = data.slice(jStart, jPos).normalise().toComplex()
-        // make signal zero-mean (mean normalization)
 
         // compute com.thepyprogrammer.gaitanalyzer.model.signalProcessing.FFT (Fast Fourier Transform)
-        val Y = FFT.fft(y)
-        val Pyy: Array<Double> = Y.timesConj() / windowLength
+        val y = FFT.fft(
+                // get the signal in the window
+                data.slice(jStart, jPos)
+                        // make signal zero-mean (mean normalization)
+                        .normalise()
+                        .toComplex()
+        )
+        val pyy: Array<Double> = y.timesConj() / windowLength
 
 
         //--- calculate sumLocoFreeze and com.thepyprogrammer.gaitanalyzer.model.signalProcessing.freezeIndex ---
-        val areaLocoBand = numIntegration(Pyy.slice(f_nr_LBs, f_nr_LBe, 1))
-        val areaFreezeBand = numIntegration(Pyy.slice(f_nr_FBs, f_nr_FBe, 1))
+        val areaLocoBand = numIntegration(pyy.slice(f_nr_LBs, f_nr_LBe, 1))
+        val areaFreezeBand = numIntegration(pyy.slice(f_nr_FBs, f_nr_FBe, 1))
 
         // Extension of Baechlin to handle low-energy situations (e.g. standing)
         freezeIndex.add(

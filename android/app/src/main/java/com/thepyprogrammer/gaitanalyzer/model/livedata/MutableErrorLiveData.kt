@@ -3,7 +3,7 @@ package com.thepyprogrammer.gaitanalyzer.model.livedata
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 
-class MutableErrorLiveData: MutableLiveData<String>("DON'T LOGIN") {
+class MutableErrorLiveData : MutableLiveData<String>("DON'T LOGIN") {
     override fun setValue(value: String) {
         super.setValue(value)
         Log.d("AUTH", value)

@@ -3,9 +3,9 @@ package com.thepyprogrammer.gaitanalyzer.ui.auth
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.thepyprogrammer.gaitanalyzer.model.account.base.User
-import com.thepyprogrammer.gaitanalyzer.model.crypto.AES
+import com.thepyprogrammer.gaitanalyzer.model.account.data.User
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.model.crypto.AES
 import com.thepyprogrammer.gaitanalyzer.model.livedata.MutableErrorLiveData
 import com.thepyprogrammer.gaitanalyzer.model.livedata.MutableStringLiveData
 
@@ -31,7 +31,7 @@ class AuthViewModel : ViewModel() {
         error.setValue("", "$name $type $pw")
 
         var encryptedCode = aes.encrypt("$name$type$pw", "GaitMonitoringAndAnalysisForParkinsonsDiseasePatients")
-        if(encryptedCode == null) encryptedCode = "$name$type$pw"
+        if (encryptedCode == null) encryptedCode = "$name$type$pw"
 
         encryptedCode.replace(Regex("[/\\\\]"), "")
 
@@ -40,7 +40,7 @@ class AuthViewModel : ViewModel() {
                 .addOnSuccessListener {
                     val dataset = it?.data
                     if (dataset != null) {
-                        Log.d("AUTH","Logging In Instead.")
+                        Log.d("AUTH", "Logging In Instead.")
                         login()
                     } else {
                         if (pw.length >= 6) {
@@ -73,7 +73,7 @@ class AuthViewModel : ViewModel() {
         error.setValue("", "$name ${FirebaseUtil.type} $password")
 
         var encryptedCode = aes.encrypt("$name${FirebaseUtil.type}$password", "GaitMonitoringAndAnalysisForParkinsonsDiseasePatients")
-        if(encryptedCode == null) encryptedCode = "$name${FirebaseUtil.type}$password"
+        if (encryptedCode == null) encryptedCode = "$name${FirebaseUtil.type}$password"
 
         encryptedCode.replace("/\\\\", "")
 

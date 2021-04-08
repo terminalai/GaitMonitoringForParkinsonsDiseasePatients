@@ -1,7 +1,5 @@
 package com.thepyprogrammer.gaitanalyzer.ui.main
 
-import android.content.Intent
-import android.graphics.Color
 import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.net.Uri
@@ -13,7 +11,6 @@ import android.view.*
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -22,22 +19,20 @@ import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
-import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.transition.TransitionInflater
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentMainBinding
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
-import com.thepyprogrammer.gaitanalyzer.model.configurations.io.File
-import com.thepyprogrammer.gaitanalyzer.model.configurations.string.SuperStringBuilder
-import com.thepyprogrammer.gaitanalyzer.view.listener.OnShakeListener
+import com.thepyprogrammer.gaitanalyzer.model.utils.io.File
+import com.thepyprogrammer.gaitanalyzer.model.utils.string.SuperStringBuilder
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
-import com.thepyprogrammer.gaitanalyzer.ui.main.information.InformationFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeFragment
+import com.thepyprogrammer.gaitanalyzer.ui.main.information.InformationFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.profile.ProfileFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.settings.SettingsFragment
-import com.thepyprogrammer.gaitanalyzer.ui.main.video.VideoActivity
 import com.thepyprogrammer.gaitanalyzer.ui.main.video.VideoFragment
+import com.thepyprogrammer.gaitanalyzer.model.view.listener.OnShakeListener
 import de.hdodenhof.circleimageview.CircleImageView
 import java.io.PrintWriter
 
@@ -96,7 +91,7 @@ class MainFragment : Fragment() {
         imageInfoFile = File(java.io.File((activity as AppCompatActivity).filesDir, "profileImageURI.txt"))
 
         val accountDetails = File(java.io.File((activity as AppCompatActivity).filesDir, "accountDetails.txt"))
-        if(!accountDetails.exists()) accountDetails.createNewFile();
+        if (!accountDetails.exists()) accountDetails.createNewFile()
 
         val pw = PrintWriter(accountDetails)
         pw.println(FirebaseUtil.user.toString())
@@ -119,19 +114,10 @@ class MainFragment : Fragment() {
                 R.string.closeDrawer
         ) {}
 
-        binding.drawerLayout.setDrawerListener(actionBarDrawerToggle)
-        actionBarDrawerToggle.syncState()
-
         binding.drawerLayout.apply {
-            setViewScale(GravityCompat.START, 0.9f) //set height scale for main view (0f to 1f)
-            setViewElevation(
-                    GravityCompat.START,
-                    20F
-            ) //set main view elevation when drawer open (dimension)
-            setViewScrimColor(GravityCompat.START, Color.TRANSPARENT) //set drawer overlay color
+            setDrawerListener(actionBarDrawerToggle)
+            actionBarDrawerToggle.syncState()
             drawerElevation = 20F //set drawer elevation (dimension)
-            setContrastThreshold(3F) //set maximum of contrast ratio between white text and background color.
-            setRadius(GravityCompat.START, 25F) //set end container's corner radius (dimension)
         }
 
         loadImage()
@@ -255,11 +241,11 @@ class MainFragment : Fragment() {
             } else false
 
     private fun navigateToVideo() =
-        if ((currentFragment !is VideoFragment)) {
-            val navController = findNavController(binding.navHostFragment)
-            navController.navigate(R.id.nav_video)
-            true
-        } else false
+            if ((currentFragment !is VideoFragment)) {
+                val navController = findNavController(binding.navHostFragment)
+                navController.navigate(R.id.nav_video)
+                true
+            } else false
 
     private fun navigateToNext() =
             when (currentFragment) {

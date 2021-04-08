@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentLoginBinding
-import com.thepyprogrammer.gaitanalyzer.model.account.base.User
+import com.thepyprogrammer.gaitanalyzer.model.account.data.User
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.gaitanalyzer.ui.auth.AuthViewModel
@@ -61,7 +61,7 @@ class LoginFragment : Fragment() {
                                 Snackbar.LENGTH_LONG
                         )
                         sb.show()
-                    } else if(viewModel.error.value != "DON'T LOGIN") {
+                    } else if (viewModel.error.value != "DON'T LOGIN") {
                         FirebaseUtil.user = viewModel.userResult.value
                         FirebaseUtil.user?.password?.let { it1 -> Log.d("TAG", it1) }
                         binding.loading.visibility = View.GONE

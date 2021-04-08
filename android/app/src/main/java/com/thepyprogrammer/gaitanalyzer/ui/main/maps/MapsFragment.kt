@@ -1,16 +1,15 @@
 package com.thepyprogrammer.gaitanalyzer.ui.main.maps
 
 import android.Manifest
-import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.content.pm.PackageManager
 import android.content.res.Resources
+import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.transition.TransitionInflater
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -19,8 +18,8 @@ import com.google.android.gms.maps.model.*
 import com.google.maps.android.clustering.ClusterManager
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentMapsBinding
-import com.thepyprogrammer.gaitanalyzer.view.maps.Place
-import com.thepyprogrammer.gaitanalyzer.view.maps.PlaceRenderer
+import com.thepyprogrammer.gaitanalyzer.model.view.maps.Place
+import com.thepyprogrammer.gaitanalyzer.model.view.maps.PlaceRenderer
 import java.util.*
 
 class MapsFragment : Fragment(), OnMapReadyCallback {
@@ -31,8 +30,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
         binding = FragmentMapsBinding.inflate(inflater, container, false)
 
@@ -43,7 +42,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val mapFragment = childFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
+                .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
 
@@ -83,7 +82,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
         val googleOverlay = GroundOverlayOptions()
 //            .image(BitmapDescriptorFactory.fromResource(R.drawable.android))
-            .position(homeLatLng, overlaySize)
+                .position(homeLatLng, overlaySize)
         map.addGroundOverlay(googleOverlay)
         map.setOnMapLoadedCallback {
             val bounds = LatLngBounds.builder()
@@ -104,11 +103,11 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         // Create the ClusterManager class and set the custom renderer
         val clusterManager = ClusterManager<Place>(requireContext(), googleMap)
         clusterManager.renderer =
-            PlaceRenderer(
-                requireContext(),
-                googleMap,
-                clusterManager
-            )
+                PlaceRenderer(
+                        requireContext(),
+                        googleMap,
+                        clusterManager
+                )
 
         // Add the places to the ClusterManager
         // clusterManager.addItems(places)
@@ -145,11 +144,11 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     private fun addCircle(googleMap: GoogleMap, item: Place) {
         circle?.remove()
         circle = googleMap.addCircle(
-            CircleOptions()
-                .center(item.latLng)
-                .radius(1000.0)
-                .fillColor(ContextCompat.getColor(requireContext(), R.color.colorMapPrimaryTranslucent))
-                .strokeColor(ContextCompat.getColor(requireContext(), R.color.colorMapPrimary))
+                CircleOptions()
+                        .center(item.latLng)
+                        .radius(1000.0)
+                        .fillColor(ContextCompat.getColor(requireContext(), R.color.colorMapPrimaryTranslucent))
+                        .strokeColor(ContextCompat.getColor(requireContext(), R.color.colorMapPrimary))
         )
     }
 
@@ -175,17 +174,17 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         map.setOnMapLongClickListener { latLng ->
             // A Snippet is Additional text that's displayed below the title.
             val snippet = String.format(
-                Locale.getDefault(),
-                "Lat: %1$.5f, Long: %2$.5f",
-                latLng.latitude,
-                latLng.longitude
+                    Locale.getDefault(),
+                    "Lat: %1$.5f, Long: %2$.5f",
+                    latLng.latitude,
+                    latLng.longitude
             )
             map.addMarker(
-                MarkerOptions()
-                    .position(latLng)
-                    .title(getString(R.string.dropped_pin))
-                    .snippet(snippet)
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                    MarkerOptions()
+                            .position(latLng)
+                            .title(getString(R.string.dropped_pin))
+                            .snippet(snippet)
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
             )
         }
     }
@@ -194,9 +193,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     private fun setPoiClick(map: GoogleMap) {
         map.setOnPoiClickListener { poi ->
             val poiMarker = map.addMarker(
-                MarkerOptions()
-                    .position(poi.latLng)
-                    .title(poi.name)
+                    MarkerOptions()
+                            .position(poi.latLng)
+                            .title(poi.name)
             )
             poiMarker.showInfoWindow()
         }
@@ -208,10 +207,10 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             // Customize the styling of the base map using a JSON object defined
             // in a raw resource file.
             val success = map.setMapStyle(
-                MapStyleOptions.loadRawResourceStyle(
-                    requireContext(),
-                    R.raw.map_style
-                )
+                    MapStyleOptions.loadRawResourceStyle(
+                            requireContext(),
+                            R.raw.map_style
+                    )
             )
 
             if (!success) {
@@ -223,22 +222,22 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     }
 
     // Checks that users have given permission
-    private fun isPermissionGranted() : Boolean {
+    private fun isPermissionGranted(): Boolean {
         return ContextCompat.checkSelfPermission(
-            requireContext(),
-            Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
     }
 
     // Checks if users have given their location and sets location enabled if so.
     private fun enableMyLocation() {
         if (isPermissionGranted()) {
             if (ActivityCompat.checkSelfPermission(
-                    requireContext(),
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                    requireContext(),
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED
+                            requireContext(),
+                            Manifest.permission.ACCESS_FINE_LOCATION
+                    ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                            requireContext(),
+                            Manifest.permission.ACCESS_COARSE_LOCATION
+                    ) != PackageManager.PERMISSION_GRANTED
             ) {
                 // TODO: Consider calling
                 //    ActivityCompat#requestPermissions
@@ -250,12 +249,11 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                 return
             }
             map.isMyLocationEnabled = true
-        }
-        else {
+        } else {
             ActivityCompat.requestPermissions(
-                requireActivity(),
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                REQUEST_LOCATION_PERMISSION
+                    requireActivity(),
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                    REQUEST_LOCATION_PERMISSION
             )
         }
     }
@@ -264,9 +262,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     // This method is invoked for every call on requestPermissions(android.app.Activity, String[],
     // int).
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray) {
+            requestCode: Int,
+            permissions: Array<String>,
+            grantResults: IntArray) {
         // Check if location permissions are granted and if so enable the
         // location data layer.
         if (requestCode == REQUEST_LOCATION_PERMISSION) {

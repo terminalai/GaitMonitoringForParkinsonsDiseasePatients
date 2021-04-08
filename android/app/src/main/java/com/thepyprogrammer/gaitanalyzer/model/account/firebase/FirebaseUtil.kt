@@ -8,9 +8,9 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageException
 import com.google.firebase.storage.ktx.storage
-import com.thepyprogrammer.gaitanalyzer.model.account.base.User
-import com.thepyprogrammer.gaitanalyzer.model.account.caregiver.Caregiver
-import com.thepyprogrammer.gaitanalyzer.model.account.patient.Patient
+import com.thepyprogrammer.gaitanalyzer.model.account.data.Caregiver
+import com.thepyprogrammer.gaitanalyzer.model.account.data.Patient
+import com.thepyprogrammer.gaitanalyzer.model.account.data.User
 import java.io.File
 import java.io.PrintWriter
 

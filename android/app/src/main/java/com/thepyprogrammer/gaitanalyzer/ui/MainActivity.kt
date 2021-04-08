@@ -2,8 +2,6 @@ package com.thepyprogrammer.gaitanalyzer.ui
 
 import android.os.Bundle
 import android.view.KeyEvent
-import android.view.Menu
-import android.view.MenuInflater
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -12,7 +10,6 @@ import androidx.navigation.fragment.NavHostFragment
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.ActivityMainBinding
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
-import kotlinx.android.synthetic.main.activity_video.*
 import java.io.File
 import java.io.PrintWriter
 
@@ -37,14 +34,14 @@ class MainActivity : AppCompatActivity() {
         get() = (
                 supportFragmentManager
                         .findFragmentById(R.id.parent_nav_host_fragment)?.childFragmentManager?.fragments?.get(
-                        0
-                    )
+                                0
+                        )
                 )!!
 
 
     fun logout(): Boolean {
         val accountDetails = File(filesDir, "accountDetails.txt")
-        if(accountDetails.exists())
+        if (accountDetails.exists())
             PrintWriter(accountDetails).close()
 
         FirebaseUtil.user = null
@@ -62,7 +59,8 @@ class MainActivity : AppCompatActivity() {
                 hub.goBack()
                 return true
             }
-        } catch(ex: Exception) {}
+        } catch (ex: Exception) {
+        }
         // If it wasn't the Back key or there's no web page history, bubble up to the default
         // system behavior (probably exit the activity)
         return super.onKeyDown(keyCode, event)
