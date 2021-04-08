@@ -24,7 +24,7 @@ import androidx.transition.TransitionInflater
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentMainBinding
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
-import com.thepyprogrammer.gaitanalyzer.model.utils.io.File
+import com.thepyprogrammer.gaitanalyzer.model.utils.io.KFile
 import com.thepyprogrammer.gaitanalyzer.model.utils.string.SuperStringBuilder
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeFragment
@@ -41,7 +41,7 @@ class MainFragment : Fragment() {
     private var imageView: CircleImageView? = null
     private var imageNavMenuView: CircleImageView? = null
 
-    private var imageInfoFile: File? = null
+    private var imageInfoFile: KFile? = null
 
     private lateinit var viewModel: MainViewModel
 
@@ -88,9 +88,9 @@ class MainFragment : Fragment() {
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
 
-        imageInfoFile = File(java.io.File((activity as AppCompatActivity).filesDir, "profileImageURI.txt"))
+        imageInfoFile = KFile(java.io.File((activity as AppCompatActivity).filesDir, "profileImageURI.txt"))
 
-        val accountDetails = File(java.io.File((activity as AppCompatActivity).filesDir, "accountDetails.txt"))
+        val accountDetails = KFile(java.io.File((activity as AppCompatActivity).filesDir, "accountDetails.txt"))
         if (!accountDetails.exists()) accountDetails.createNewFile()
 
         val pw = PrintWriter(accountDetails)
