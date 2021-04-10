@@ -390,3 +390,8 @@ We would like to thank Professor Arthur Tay, Mr Lim Yeow Heng and Mr Lim Teck Ch
 [24] [Wen, Z., Shi, J., Li, Q., He, B., & Chen, J. (2018). ThunderSVM: A Fast SVM Library on GPUs and CPUs, <i>Journal of Machine Learning Research, 19</i>, 797–801.](https://github.com/Xtra-Computing/thundersvm/blob/master/thundersvm-full.pdf)
 
 [25] [Morawiec, D. (n.d.). sklearn-porter - Transpile trained scikit-learn estimators to C, Java, JavaScript and others. https://github.com/nok/sklearn-porter](https://github.com/nok/sklearn-porter)
+
+
+## Remarks
+
+This project was awarded [2nd Place at the International Science Youth Forum](http://isyf.hci.edu.sg/) and the [Gold Award at the Singapore Science and Engineering Fair](https://www.science.edu.sg/docs/default-source/scs-documents/for-schools/competitions/ssef/ssef2021_results.pdf).
