@@ -42,8 +42,8 @@ class LoginFragment : Fragment() {
             binding.passwordInput.setText(newPassword)
         }
 
-        viewModel.pName.observe(requireActivity(), nameObserver)
-        viewModel.password.observe(requireActivity(), passwordObserver)
+        viewModel.pName.observe(viewLifecycleOwner, nameObserver)
+        viewModel.password.observe(viewLifecycleOwner, passwordObserver)
 
         binding.login.setOnClickListener {
             viewModel.pName.value = binding.nameInput.text.toString().trim()
