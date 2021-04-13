@@ -20,7 +20,7 @@ class HomeAdapter(
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         val item = items[position]
         
-        holder.set(item.title, item.desc, getDrawable(parentFragment.requireContext(), R.drawable.face_trans))
+        holder.set(item.desc, getDrawable(parentFragment.requireContext(), R.drawable.face_trans))
 
 
     }

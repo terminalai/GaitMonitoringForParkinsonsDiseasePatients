@@ -9,17 +9,12 @@ class HomeViewHolder(val layout: HomeCardLayout) : RecyclerView.ViewHolder(layou
         layout.avatar.setImageDrawable(drawable)
     }
 
-    fun setTitle(title: String) {
-        layout.title.text = title
-    }
-
     fun setDescription(desc: String) {
         layout.content.text = desc
     }
 
-    fun set(title: String, desc: String, drawable: Drawable?) {
+    fun set(desc: String, drawable: Drawable?) {
         setImage(drawable)
-        setTitle(title)
         setDescription(desc)
     }
 
