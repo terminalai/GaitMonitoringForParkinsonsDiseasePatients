@@ -19,50 +19,31 @@ class HomeCardLayout(
     context: Context
 ) : ContourLayout(context) {
 
-    val avatar = ImageView(context).apply {
+    private val avatar = ImageView(context).apply {
         scaleType = ImageView.ScaleType.CENTER_CROP
-        setBackgroundColor(Color.GRAY)
     }
 
-    val title = TextView(context).apply {
-        textSize = 16f
-        text = "Title"
-        setTextColor(Color.WHITE)
-        setTypeface(typeface, BOLD)
-    }
-
-    val content = TextView(context).apply {
+    private val bio = TextView(context).apply {
         textSize = 16f
         text = "..."
-        setLineSpacing(0f, 1.33f)
     }
 
     init {
-        background = PaintDrawable(DKGRAY)
-        clipToOutline = true
-        elevation = 20f.dip
-        stateListAnimator = PushOnPressAnimator(this)
-        registerBackPressListener()
-        toggleCornerRadius(show = true)
-
-        contourHeightOf { available ->
-            if (isSelected) available else title.bottom() + 20.ydip
-        }
-
-        title.layoutBy(
-            x = matchParentX(marginLeft = 20.dip, marginRight = 20.dip),
-            y = topTo { avatar.bottom() + 20.ydip }
-        )
-
-        content.layoutBy(
-            x = matchParentX(marginLeft = 20.dip, marginRight = 20.dip),
-            y = topTo { title.bottom() + 20.ydip }
-        )
-
         avatar.layoutBy(
-            x = matchParentX(),
-            y = topTo { parent.top() }.heightOf { 200.ydip }
+                x = leftTo { parent.left() }.widthOf { 60.xdip },
+                y = topTo { parent.top() }.heightOf { 60.ydip }
         )
+        bio.layoutBy(
+                x = leftTo { avatar.right() + 16.xdip }.rightTo { parent.right() },
+                y = topTo {
+                    if (isSelected) parent.top() + 16.ydip
+                    else avatar.centerY() - bio.height() / 2
+                }.heightOf {
+                    if (isSelected) bio.preferredHeight()
+                    else 48.ydip
+                }
+        )
+        contourHeightOf { bio.bottom() }
 
         setOnClickListener {
             TransitionManager.beginDelayedTransition(this)
@@ -71,38 +52,7 @@ class HomeCardLayout(
         }
     }
 
-    override fun getBackground() = super.getBackground() as PaintDrawable
 
-    override fun setSelected(selected: Boolean) {
-        if (isLaidOut && selected == this.isSelected) return
-        super.setSelected(selected)
-        toggleCornerRadius(show = !selected)
-    }
 
-    private fun toggleCornerRadius(show: Boolean) {
-        // No idea why, but 0.0f causes the view to hide on animation end. Using 0.01 instead.
-        val fromRadius = if (show) 0.01f else 12f.dip
-        val toRadius = if (show) 12f.dip else 0.01f
 
-        if (isLaidOut) {
-            ObjectAnimator.ofFloat(fromRadius, toRadius)
-                .apply { addUpdateListener { background.setCornerRadius(it.animatedValue as Float) } }
-                .setDuration(200)
-                .start()
-        } else {
-            background.setCornerRadius(toRadius)
-        }
-    }
-
-    private fun registerBackPressListener() {
-        isFocusableInTouchMode = true
-        requestFocus()
-        setOnKeyListener { _, keyCode, event ->
-            if (isSelected && keyCode == KEYCODE_BACK && event.action == KeyEvent.ACTION_UP) {
-                performClick()
-            } else {
-                false
-            }
-        }
-    }
 }

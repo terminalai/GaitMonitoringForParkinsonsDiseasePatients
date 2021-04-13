@@ -18,17 +18,15 @@ class InformationFragment : Fragment() {
 
     private var viewModel: MainViewModel? = null
 
-    private var _binding: FragmentInformationBinding? = null
-
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentInformationBinding
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentInformationBinding.inflate(inflater, container, false)
+        binding = FragmentInformationBinding.inflate(inflater, container, false)
         val view = binding.root
 
         viewModel = activity?.run {
