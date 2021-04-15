@@ -8,7 +8,7 @@ import com.squareup.contour.ContourLayout
 import com.thepyprogrammer.gaitanalyzer.model.view.anim.PushOnPressAnimator
 
 class HomeCardLayout(
-    context: Context
+        context: Context
 ) : ContourLayout(context) {
 
     val avatar = ImageView(context).apply {
@@ -44,8 +44,6 @@ class HomeCardLayout(
             requestLayout()
         }
     }
-
-
 
 
 }

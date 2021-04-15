@@ -6,12 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentHomeBinding
-import com.thepyprogrammer.gaitanalyzer.databinding.FragmentInformationBinding
 import com.thepyprogrammer.gaitanalyzer.model.data.HomeCardInfo
 import com.thepyprogrammer.gaitanalyzer.ui.main.MainViewModel
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.adapter.HomeAdapter
@@ -25,21 +21,21 @@ class HomeFragment : Fragment() {
     private lateinit var mainViewModel: MainViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root = binding.root
 
         val homeAdapter = HomeAdapter(this,
-            mutableListOf(
-                HomeCardInfo("HELLO", "krvjrovirvrinfeidvgrtiefgtrhfrhehiuehrifdehourfgwheufhreofrhfirhfirerfhtihoreghrihtrvhorugherfhrhfreogerifohtrghiore")
-            )
+                mutableListOf(
+                        HomeCardInfo("HELLO", "krvjrovirvrinfeidvgrtiefgtrhfrhehiuehrifdehourfgwheufhreofrhfirhfirerfhtihoreghrihtrvhorugherfhrhfreogerifohtrghiore")
+                )
         )
         homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+                ViewModelProvider(this).get(HomeViewModel::class.java)
 
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 

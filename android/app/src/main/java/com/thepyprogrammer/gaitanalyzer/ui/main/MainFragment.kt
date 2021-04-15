@@ -26,13 +26,13 @@ import com.thepyprogrammer.gaitanalyzer.databinding.FragmentMainBinding
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.model.utils.io.KFile
 import com.thepyprogrammer.gaitanalyzer.model.utils.string.SuperStringBuilder
+import com.thepyprogrammer.gaitanalyzer.model.view.listener.OnShakeListener
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.information.InformationFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.profile.ProfileFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.settings.SettingsFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.video.VideoFragment
-import com.thepyprogrammer.gaitanalyzer.model.view.listener.OnShakeListener
 import de.hdodenhof.circleimageview.CircleImageView
 import java.io.PrintWriter
 

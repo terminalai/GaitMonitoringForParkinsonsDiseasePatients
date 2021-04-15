@@ -10,17 +10,17 @@ import com.squareup.contour.ContourLayout
 
 @SuppressLint("ViewConstructor")
 internal class PaddingAdjusterWidget(
-    context: Context,
-    private val onPaddingAdjusted: (Rect) -> Unit
-): ContourLayout(context) {
+        context: Context,
+        private val onPaddingAdjusted: (Rect) -> Unit
+) : ContourLayout(context) {
 
     private val onChangeListener = object : SeekBar.OnSeekBarChangeListener {
         override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
             onPaddingAdjusted(Rect(
-                leftSeek.progress,
-                topSeek.progress,
-                rightSeek.progress,
-                bottomSeek.progress
+                    leftSeek.progress,
+                    topSeek.progress,
+                    rightSeek.progress,
+                    bottomSeek.progress
             ))
         }
 
@@ -44,66 +44,66 @@ internal class PaddingAdjusterWidget(
     private val leftSeek: AppCompatSeekBar = AppCompatSeekBar(context).apply {
         setOnSeekBarChangeListener(onChangeListener)
     }
-    private val topSeek: AppCompatSeekBar  = AppCompatSeekBar(context).apply {
+    private val topSeek: AppCompatSeekBar = AppCompatSeekBar(context).apply {
         setOnSeekBarChangeListener(onChangeListener)
     }
-    private val rightSeek: AppCompatSeekBar  = AppCompatSeekBar(context).apply {
+    private val rightSeek: AppCompatSeekBar = AppCompatSeekBar(context).apply {
         setOnSeekBarChangeListener(onChangeListener)
     }
-    private val bottomSeek: AppCompatSeekBar  = AppCompatSeekBar(context).apply {
+    private val bottomSeek: AppCompatSeekBar = AppCompatSeekBar(context).apply {
         setOnSeekBarChangeListener(onChangeListener)
     }
 
     init {
         setPadding(
-            15.dip,
-            10.dip,
-            15.dip,
-            10.dip
+                15.dip,
+                10.dip,
+                15.dip,
+                10.dip
         )
 
         leftLabel.layoutBy(
-            x = leftTo { parent.left() },
-            y = topTo { parent.top() }
+                x = leftTo { parent.left() },
+                y = topTo { parent.top() }
         )
 
         topLabel.layoutBy(
-            x = leftTo { parent.left() },
-            y = topTo { leftLabel.bottom() + 10.dip }
+                x = leftTo { parent.left() },
+                y = topTo { leftLabel.bottom() + 10.dip }
         )
 
         rightLabel.layoutBy(
-            x = leftTo { parent.left() },
-            y = topTo { topLabel.bottom() + 10.dip }
+                x = leftTo { parent.left() },
+                y = topTo { topLabel.bottom() + 10.dip }
         )
 
         bottomLabel.layoutBy(
-            x = leftTo { parent.left() },
-            y = topTo { rightLabel.bottom() + 10.dip }
+                x = leftTo { parent.left() },
+                y = topTo { rightLabel.bottom() + 10.dip }
         )
 
         leftSeek.layoutBy(
-            x = leftTo { leftLabel.right() + 20.dip }
-                .rightTo { parent.right() },
-            y = centerVerticallyTo { leftLabel.centerY() }
+                x = leftTo { leftLabel.right() + 20.dip }
+                        .rightTo { parent.right() },
+                y = centerVerticallyTo { leftLabel.centerY() }
         )
 
         topSeek.layoutBy(
-            x = leftTo { topLabel.right() + 20.dip }
-                .rightTo { parent.right() },
-            y = centerVerticallyTo { topLabel.centerY() }
+                x = leftTo { topLabel.right() + 20.dip }
+                        .rightTo { parent.right() },
+                y = centerVerticallyTo { topLabel.centerY() }
         )
 
         rightSeek.layoutBy(
-            x = leftTo { rightLabel.right() + 20.dip }
-                .rightTo { parent.right() },
-            y = centerVerticallyTo { rightLabel.centerY() }
+                x = leftTo { rightLabel.right() + 20.dip }
+                        .rightTo { parent.right() },
+                y = centerVerticallyTo { rightLabel.centerY() }
         )
 
         bottomSeek.layoutBy(
-            x = leftTo { bottomLabel.right() + 20.dip }
-                .rightTo { parent.right() },
-            y = centerVerticallyTo { bottomLabel.centerY() }
+                x = leftTo { bottomLabel.right() + 20.dip }
+                        .rightTo { parent.right() },
+                y = centerVerticallyTo { bottomLabel.centerY() }
         )
 
         contourHeightOf { maxOf(bottomSeek.bottom(), bottomLabel.bottom()) + paddingBottom }

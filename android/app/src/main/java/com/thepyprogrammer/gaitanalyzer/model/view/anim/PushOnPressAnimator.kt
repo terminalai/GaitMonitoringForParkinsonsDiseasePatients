@@ -13,12 +13,12 @@ import android.view.animation.AccelerateDecelerateInterpolator
 class PushOnPressAnimator(private val view: View) : StateListAnimator() {
     init {
         addState(
-            intArrayOf(android.R.attr.state_pressed),
-            createAnimator(toScale = 0.95f)
+                intArrayOf(android.R.attr.state_pressed),
+                createAnimator(toScale = 0.95f)
         )
         addState(
-            intArrayOf(-android.R.attr.state_pressed),
-            createAnimator(toScale = 1f)
+                intArrayOf(-android.R.attr.state_pressed),
+                createAnimator(toScale = 1f)
         )
     }
 

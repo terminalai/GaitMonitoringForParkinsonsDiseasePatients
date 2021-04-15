@@ -1,18 +1,17 @@
 package com.thepyprogrammer.gaitanalyzer.model.utils.io
 
+import android.app.Application
+import android.content.Context
 import android.net.Uri
+import android.util.Log
+import androidx.core.content.FileProvider
+import java.io.*
+import java.io.File
 import java.nio.ByteBuffer
 import java.nio.channels.FileChannel
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
 import java.nio.file.Paths
-import java.util.*
-import android.app.Application
-import android.content.Context
-import android.util.Log
-import androidx.core.content.FileProvider
-import java.io.*
-import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 

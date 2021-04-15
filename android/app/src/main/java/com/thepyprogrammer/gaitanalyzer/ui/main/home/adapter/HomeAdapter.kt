@@ -14,12 +14,12 @@ class HomeAdapter(
 ) : RecyclerView.Adapter<HomeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = HomeViewHolder(
-        HomeCardLayout(parentFragment.requireContext())
+            HomeCardLayout(parentFragment.requireContext())
     )
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         val item = items[position]
-        
+
         holder.set(item.desc, getDrawable(parentFragment.requireContext(), R.drawable.face_trans))
 
 
