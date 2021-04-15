@@ -17,7 +17,7 @@
     <script defer src="/__/firebase/8.4.1/firebase-analytics.js"></script>
     <script defer src="/__/firebase/8.4.1/firebase-remote-config.js"></script>
     <script defer src="/__/firebase/8.4.1/firebase-performance.js"></script>
-    <!-- 
+    <!--
       initialize the SDK after all desired features are loaded, set useEmulator to false
       to avoid connecting the SDK to running emulators.
     -->
@@ -68,13 +68,13 @@
         try {
           let app = firebase.app();
           let features = [
-            'auth', 
-            'database', 
+            'auth',
+            'database',
             'firestore',
             'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
+            'messaging',
+            'storage',
+            'analytics',
             'remoteConfig',
             'performance',
           ].filter(feature => typeof app[feature] === 'function');
