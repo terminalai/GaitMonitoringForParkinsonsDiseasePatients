@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D8D8D8"
-    tools:context=".ui.singlecard.SelectedFragment">
+    tools:context=".ui.main.freeze.freezeData.SelectedFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

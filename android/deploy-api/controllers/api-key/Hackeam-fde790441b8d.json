@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "hackeam-68143",
+  "private_key_id": "fde790441b8dad86cad1540779d2489187f5e84c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDaPQRDD6ceoLdE\nsAKUatpBEk5Ie/eiMrqF5fiE3K6PYyry/3+/0Bb+8Jz+Ub1CurOIbLOVYOlvVibE\nk+Oj0ftEB47dYkDARcL1LRIJmqkVU5UPxArl5r+mgb28cHfKtK4ixZSWRkyJS2gl\nufE07C0N6Y/akmOAuKfJewHI7RX1vpHaagiHFdyuj51p3nDv/hAOj5HB9hCQOkc4\ny3wOgnzWti68h9FqZlx4KOzzVXsjcoqeL1c5DwJjSCTsU8N8YLPrR0oTRDKudWWT\n4oJLVcMu7ojSrOR2TEc9lVO3+IYM0NogioAFRyC0+hZExuUWZqAYJfePbsrOhJQW\nT71XdgvlAgMBAAECggEACJQeIx7npRWdg23x+Z12QFlE0GazfhtfFFNzcJEpktnY\niGfgmlMTjSIH4QH1PfA18/G/7Z1UxItfDg2fkZY37Nccnf+v4QItAgzrcosZkX/9\n8hPbXZxzlQsKQNctiLKPzZUCL8kKI6beH6BR4FBwJSXOWygzdwEeZiL3cXHX+Ep0\nZUUr6967kj3G6yMY3e2ZNOMVaj1td7tbM/DWm0GVj5fnQIbZR6Gfu+jNl9tZc1Ss\nCIaz34x9vD6A85oOk4esEtJF1Xo9sVaUpqzclFSRCb1bPq7ALbfNR9NhRxTfNtxH\nm5PdjBnVb72M6l4giMJS2KWj/K7Fsaj0GvNQ8cibMQKBgQDuT/LWz0sdF4MApbY3\nrKT/nj0Yt2vxGLy1KmTffYAnlm2SuK1Go8cZRsjdyjerSyHLm4B5EVO//OF+HqRd\n9T9eguqkaKVz79sU/2D3OuSy9KPR2ad1R5oO6Tio9Y4CxoLnETbM7A99OCPvEwD5\nCByrq9Af8AwewI5o5jKpRSFnEQKBgQDqb6ctZqiOEzOC0ETnASYkWX9D2XCl2l/R\n2qSqVxDKQ+EoU64U+JYnRUu8tvjnbFgkn+cUB7oZKWCGkPejVtcKvUbN7W5eRnQT\nunhisdgFo42osaRYfmFj3fuURSlKKB7ZikYlydCt7eobTDO/wbTLlCua9oPM6LeA\npLiHOuoflQKBgAttzCCfKmQHx6GVUOrUnckghp+T1FporEwn71SEiUvcu/6IWs8D\ndb3xlhqE4yyU2tcP6xZjTVfswcexooJbC6H1t1kRJ7Yqr6APK1BQA73NW7nprU1D\nlNDYQH5h4GCjso1wVud2/rsroRWLHMXUrMNS5xVRBtPGuk2vlIhnp1VxAoGBAJ2G\n+vnJ4nbdNh6vXa0vm3aPYLGxuTzouLwlQ8JmEJUo+XGEkRPsWdD3gkXDWQsARVYO\n0FIoQwdHQ2IIpS3vWz4PIzWaVjAo/TSIdv4ybGqVlMmG3FzORxi4/6SIuI7o2Jnq\njOo1avCETmubT6aJPbgRzx8oiDW3Jh7eEFRl5Q3lAoGBAJJSnUT8G2cxyj/KwvOs\n4q6HGaECta91LoXr9ajSB16fU8ag7ONT5/t/8KcGAahlCPFLb1JEWcZ3hPTbE2K2\n8t4TOUbkmOG4o5uoc6xALOEmFrwiC7NttsemAXKeNIF6MgGzsX8FGN2m6JBej1NY\nNGqThTkDMITXc6Zk094lJoA+\n-----END PRIVATE KEY-----\n",
+  "client_email": "hackeam@hackeam-68143.iam.gserviceaccount.com",
+  "client_id": "101567548695834239430",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/hackeam%40hackeam-68143.iam.gserviceaccount.com"
+}

@@ -71,7 +71,7 @@
             android:theme="@style/Theme.GaitAnalyzer.NoActionBar">
         </activity>
         <activity
-            android:name="com.thepyprogrammer.gaitanalyzer.ui.singlecard.SingleCardActivity"
+            android:name="com.thepyprogrammer.gaitanalyzer.ui.main.freeze.freezeData.SingleCardActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.GaitAnalyzer">
         </activity>

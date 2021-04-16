@@ -1,4 +1,4 @@
-package com.thepyprogrammer.gaitanalyzer.ui.singlecard
+package com.thepyprogrammer.gaitanalyzer.ui.main.freeze.freezeData
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

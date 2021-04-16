@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D8D8D8"
-    tools:context=".ui.singlecard.CardViewFragment">
+    tools:context=".ui.main.freeze.freezeData.CardViewFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"

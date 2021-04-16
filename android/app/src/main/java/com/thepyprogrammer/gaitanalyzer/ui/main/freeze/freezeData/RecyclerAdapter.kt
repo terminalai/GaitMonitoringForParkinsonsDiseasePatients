@@ -1,4 +1,4 @@
-package com.thepyprogrammer.gaitanalyzer.ui.singlecard
+package com.thepyprogrammer.gaitanalyzer.ui.main.freeze.freezeData
 
 import android.content.Context
 import android.view.LayoutInflater
