@@ -26,6 +26,8 @@
   "bugs": {
     "url": "https://github.com/ThePyProgrammer/GaitMonitoringForParkinsonsDiseasePatients/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "googleapis": "^71.0.0"
+  },
   "homepage": "https://github.com/ThePyProgrammer/GaitMonitoringForParkinsonsDiseasePatients#readme"
 }

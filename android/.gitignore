@@ -33,3 +33,6 @@ app/libs/*/libssl.so
 app/libs/*/libcrypto.so
 app/libs/*/liblzma.so
 app/src/main/assets/stdlib/pythonhome.*.zip
+
+
+/node_modules
