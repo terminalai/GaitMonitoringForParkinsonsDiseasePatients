@@ -1,19 +1,7 @@
-const functions = require("firebase-functions");
-const express = require("express");
+const functions = require("firebase-functions")
+const app = require("./app.js")
+const call = require("./call.js")
 
+exports.freeze = functions.https.onRequest(app)
 
-const app = express();
-app.get("/timestamp", (request, response) => {
-    functions.logger.info("My first actual function yay!", { structuredData: true });
-    response.send(`${Date.now()}`);
-})
-
-app.get("/timestamp-cached", (request, response) => {
-    functions.logger.info("My first actual function yay!", { structuredData: true });
-    response.set("Cache-Control", "public, max-age=300, s-maxage=600");
-    response.send(`${Date.now()}`);
-})
-
-app.post("/freeze")
-
-exports.app = functions.https.onRequest(app)
+exports.call = functions.https.onCall(call)

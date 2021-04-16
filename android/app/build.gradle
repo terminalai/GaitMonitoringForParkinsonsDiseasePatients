@@ -114,8 +114,8 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 
-    // Import the Firebase BoM
-    implementation platform('com.google.firebase:firebase-bom:26.8.0')
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:27.0.0')
 
     // Firestore
     implementation 'com.google.firebase:firebase-firestore-ktx:22.1.2'
@@ -131,9 +131,12 @@ dependencies {
     // Firebase Storage
     implementation 'com.google.firebase:firebase-storage-ktx'
 
+    // Declare the dependency for the Cloud Functions library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-functions-ktx'
+
 
     implementation 'com.tasomaniac:emailautocompletetextview:0.2'
-    //implementation 'com.tasomaniac:emailautocompletetextview-design:0.2'
 
     implementation 'com.github.dmytrodanylyk.android-process-button:library:1.0.4'
     

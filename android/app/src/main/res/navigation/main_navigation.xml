@@ -80,9 +80,9 @@
         android:name="com.thepyprogrammer.gaitanalyzer.ui.main.freeze.freezeData.SelectedFragment"
         android:label="SelectedFragment"
         tools:layout="@layout/fragment_selected" >
-        <action
-            android:id="@+id/action_selectedFragment_to_cardViewFragment"
-            app:destination="@id/cardViewFragment"
+         <action
+            android:id="@+id/action_selectedFragment_to_freezeFragment"
+            app:destination="@id/nav_freeze"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_right"
             app:popEnterAnim="@anim/slide_in_right"

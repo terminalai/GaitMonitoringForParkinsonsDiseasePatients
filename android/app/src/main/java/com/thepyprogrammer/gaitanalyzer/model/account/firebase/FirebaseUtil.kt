@@ -4,6 +4,8 @@ import android.app.Activity
 import android.net.Uri
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.functions.FirebaseFunctions
+import com.google.firebase.functions.ktx.functions
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageException
@@ -17,6 +19,8 @@ import java.io.PrintWriter
 object FirebaseUtil {
     private var FIRESTORE: FirebaseFirestore? = null
     private var STORAGE: FirebaseStorage? = null
+    private var FUNCTIONS: FirebaseFunctions? = null
+
 
     var user: User? = null
 
@@ -32,6 +36,13 @@ object FirebaseUtil {
             if (STORAGE == null) STORAGE = Firebase.storage
             return STORAGE!!
         }
+
+    val functions: FirebaseFunctions
+        get() {
+            if (FUNCTIONS == null) FUNCTIONS = Firebase.functions
+            return FUNCTIONS!!
+        }
+
 
     fun uploadImage(photoUri: Uri) {
         val storageRef = storage.reference
@@ -78,6 +89,10 @@ object FirebaseUtil {
     fun newUser(name: String, password: String) = run {
         if (type == "caregiver") Caregiver(name, password)
         else Patient(name, password)
+    }
+
+    fun predict() {
+        functions.getHttpsCallable()
     }
 
 

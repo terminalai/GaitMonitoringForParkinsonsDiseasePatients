@@ -13,18 +13,14 @@ import com.thepyprogrammer.gaitanalyzer.ui.auth.AuthAdapter
 
 class FreezeFragment : Fragment() {
 
-    private var _binding: FragmentFreezeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentFreezeBinding
 
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentFreezeBinding.inflate(inflater, container, false)
+        binding = FragmentFreezeBinding.inflate(inflater, container, false)
         val view = binding.root
 
         binding.viewPager.adapter = AuthAdapter(requireActivity())

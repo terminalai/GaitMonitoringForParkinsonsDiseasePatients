@@ -84,7 +84,7 @@ Fencing""".split("\n").toTypedArray()
                 val navController = Navigation.findNavController(itemView)
                 val position = adapterPosition
                 completeViewModel.adapterPosition.value = position
-                navController.navigate(R.id.action_cardViewFragment_to_selectedFragment)
+                navController.navigate(R.id.action_freezeFragment_to_selectedFragment)
             }
         }
     }

@@ -86,7 +86,7 @@ def predict(y, z):
 if __name__ == "__main__":
     import sys
     # python bot.py "I am an engineer"
-    freezeY = sys.argv[1]
-    freezeZ = sys.argv[2]
+    freezeY = float(sys.argv[1])
+    freezeZ = float(sys.argv[2])
     print(predict(freezeY, freezeZ))
     sys.stdout.flush()
