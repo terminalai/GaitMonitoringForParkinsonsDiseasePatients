@@ -22,7 +22,9 @@
         <item name="colorPrimaryDark">#1976D2</item>
         <item name="colorAccent">#03A9F4</item>
         <!-- Secondary brand color. -->
-
+        <item name="colorSecondary">@color/orange</item>
+        <item name="colorSecondaryVariant">@color/orange_500</item>
+        <item name="colorOnSecondary">?attr/colorPrimaryVariant</item>
 
 
         <item name="android:divider">@color/separatorLight</item>

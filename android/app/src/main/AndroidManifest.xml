@@ -46,6 +46,11 @@
             android:theme="@style/Theme.GaitAnalyzer.NoActionBar"
             android:supportsPictureInPicture="true"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
@@ -69,11 +74,6 @@
             android:name="com.thepyprogrammer.gaitanalyzer.model.view.timer.TimerActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.GaitAnalyzer.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
 
