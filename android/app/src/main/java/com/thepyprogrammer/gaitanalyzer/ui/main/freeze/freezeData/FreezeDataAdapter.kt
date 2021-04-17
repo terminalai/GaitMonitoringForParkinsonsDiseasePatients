@@ -14,9 +14,9 @@ import com.thepyprogrammer.gaitanalyzer.R
 class FreezeDataAdapter(private val context: Context) :
         RecyclerView.Adapter<FreezeDataAdapter.ViewHolder>() {
     private val completeViewModel: CompleteViewModel = ViewModelProvider((context as FragmentActivity)).get(CompleteViewModel::class.java)
-    private val titles = """""".split("\n").toTypedArray()
+    private val titles = arrayOf<String>()
 
-    private val details = """""".split("\n").toTypedArray()
+    private val details = arrayOf<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.card_layout, parent, false)
