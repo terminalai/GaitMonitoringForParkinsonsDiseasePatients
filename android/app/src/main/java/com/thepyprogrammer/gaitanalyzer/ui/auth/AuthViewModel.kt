@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import com.thepyprogrammer.gaitanalyzer.model.account.data.User
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.model.crypto.AES
-import com.thepyprogrammer.androidLib.livedata.MutableErrorLiveData
-import com.thepyprogrammer.androidLib.livedata.MutableStringLiveData
+import com.thepyprogrammer.androidlib.livedata.MutableErrorLiveData
+import com.thepyprogrammer.androidlib.livedata.MutableStringLiveData
 
 class AuthViewModel : ViewModel() {
     var pName = MutableStringLiveData("")

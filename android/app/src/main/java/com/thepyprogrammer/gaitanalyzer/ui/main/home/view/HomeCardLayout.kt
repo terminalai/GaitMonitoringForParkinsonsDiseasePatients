@@ -6,7 +6,7 @@ import android.transition.TransitionManager
 import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.contour.ContourLayout
-import com.thepyprogrammer.androidLib.anim.PushOnPressAnimator
+import com.thepyprogrammer.androidlib.anim.PushOnPressAnimator
 
 class HomeCardLayout(
     context: Context

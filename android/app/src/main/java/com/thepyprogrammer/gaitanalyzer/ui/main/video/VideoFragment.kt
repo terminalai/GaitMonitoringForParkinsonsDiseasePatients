@@ -15,10 +15,10 @@ import androidx.transition.TransitionInflater
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentVideoBinding
 import com.thepyprogrammer.gaitanalyzer.model.utils.getTTS
-import com.thepyprogrammer.androidLib.io.getUriFromRaw
-import com.thepyprogrammer.androidLib.web.GitHubWebViewClient
-import com.thepyprogrammer.androidLib.web.WebAppInterface
-import com.thepyprogrammer.androidLib.web.WebBrowserClient
+import com.thepyprogrammer.androidlib.io.getUriFromRaw
+import com.thepyprogrammer.androidlib.web.GitHubWebViewClient
+import com.thepyprogrammer.androidlib.web.WebAppInterface
+import com.thepyprogrammer.androidlib.web.WebBrowserClient
 import java.util.*
 
 

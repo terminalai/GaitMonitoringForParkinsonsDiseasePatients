@@ -26,7 +26,7 @@ import com.thepyprogrammer.gaitanalyzer.databinding.FragmentMainBinding
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.model.utils.io.KFile
 import com.thepyprogrammer.gaitanalyzer.model.utils.string.SuperStringBuilder
-import com.thepyprogrammer.androidLib.listener.OnShakeListener
+import com.thepyprogrammer.androidlib.listener.OnShakeListener
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.information.InformationFragment

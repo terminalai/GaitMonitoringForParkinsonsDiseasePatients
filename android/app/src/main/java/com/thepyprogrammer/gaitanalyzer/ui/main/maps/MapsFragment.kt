@@ -18,8 +18,8 @@ import com.google.android.gms.maps.model.*
 import com.google.maps.android.clustering.ClusterManager
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentMapsBinding
-import com.thepyprogrammer.androidLib.maps.Place
-import com.thepyprogrammer.androidLib.maps.PlaceRenderer
+import com.thepyprogrammer.androidlib.maps.Place
+import com.thepyprogrammer.androidlib.maps.PlaceRenderer
 import java.util.*
 
 class MapsFragment : Fragment(), OnMapReadyCallback {

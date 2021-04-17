@@ -7,7 +7,7 @@ import android.widget.TextView
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 import com.thepyprogrammer.gaitanalyzer.R
-import com.thepyprogrammer.androidLib.maps.Place
+import com.thepyprogrammer.androidlib.maps.Place
 
 class MarkerInfoWindowAdapter(private val context: Context) : GoogleMap.InfoWindowAdapter {
     override fun getInfoContents(marker: Marker?): View? {

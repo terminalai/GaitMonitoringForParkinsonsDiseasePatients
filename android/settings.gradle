@@ -1,2 +1,4 @@
+include ':ktlib'
+include ':androidlib'
 include ':app'
 rootProject.name = "GaitAnalyzer"

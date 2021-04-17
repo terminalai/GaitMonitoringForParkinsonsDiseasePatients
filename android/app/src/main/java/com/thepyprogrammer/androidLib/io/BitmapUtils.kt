@@ -1,4 +1,4 @@
-package com.thepyprogrammer.androidLib.io
+package com.thepyprogrammer.androidlib.io
 
 import android.graphics.Bitmap
 import android.graphics.Matrix
