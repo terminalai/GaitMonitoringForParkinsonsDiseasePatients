@@ -26,7 +26,7 @@ import com.thepyprogrammer.gaitanalyzer.databinding.FragmentMainBinding
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.model.utils.io.KFile
 import com.thepyprogrammer.gaitanalyzer.model.utils.string.SuperStringBuilder
-import com.thepyprogrammer.gaitanalyzer.model.view.listener.OnShakeListener
+import com.thepyprogrammer.androidLib.listener.OnShakeListener
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.information.InformationFragment
@@ -67,9 +67,9 @@ class MainFragment : Fragment() {
         super.onResume()
         loadImage()
         mSensorManager?.registerListener(
-                shakeListener,
-                mSensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
-                SensorManager.SENSOR_DELAY_NORMAL
+            shakeListener,
+            mSensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+            SensorManager.SENSOR_DELAY_NORMAL
         )
     }
 
@@ -80,17 +80,19 @@ class MainFragment : Fragment() {
 
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         val view = binding.root
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
 
-        imageInfoFile = KFile(java.io.File((activity as AppCompatActivity).filesDir, "profileImageURI.txt"))
+        imageInfoFile =
+            KFile(java.io.File((activity as AppCompatActivity).filesDir, "profileImageURI.txt"))
 
-        val accountDetails = KFile(java.io.File((activity as AppCompatActivity).filesDir, "accountDetails.txt"))
+        val accountDetails =
+            KFile(java.io.File((activity as AppCompatActivity).filesDir, "accountDetails.txt"))
         if (!accountDetails.exists()) accountDetails.createNewFile()
 
         val pw = PrintWriter(accountDetails)
@@ -100,18 +102,18 @@ class MainFragment : Fragment() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
-                setOf(
-                        R.id.nav_home, R.id.nav_profile, R.id.nav_freeze, R.id.nav_settings
-                ), binding.drawerLayout
+            setOf(
+                R.id.nav_home, R.id.nav_profile, R.id.nav_freeze, R.id.nav_settings
+            ), binding.drawerLayout
         )
 
 
         val actionBarDrawerToggle: ActionBarDrawerToggle = object : ActionBarDrawerToggle(
-                requireActivity(),
-                binding.drawerLayout,
-                binding.toolbar,
-                R.string.openDrawer,
-                R.string.closeDrawer
+            requireActivity(),
+            binding.drawerLayout,
+            binding.toolbar,
+            R.string.openDrawer,
+            R.string.closeDrawer
         ) {}
 
         binding.drawerLayout.apply {
@@ -144,9 +146,14 @@ class MainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val nestedNavHostFragment = childFragmentManager.findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
+        val nestedNavHostFragment =
+            childFragmentManager.findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
         navController = nestedNavHostFragment?.navController!!.apply {
-            setupActionBarWithNavController(activity as AppCompatActivity, this, appBarConfiguration)
+            setupActionBarWithNavController(
+                activity as AppCompatActivity,
+                this,
+                appBarConfiguration
+            )
             binding.navView.setupWithNavController(this)
         }
 
@@ -168,10 +175,10 @@ class MainFragment : Fragment() {
         menu.findItem(R.id.action_settings).apply {
             title = SpannableStringBuilder("* Settings").also {
                 it.setSpan( // replace "*" with icon
-                        ImageSpan(requireActivity(), R.drawable.ic_settings),
-                        0,
-                        1,
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                    ImageSpan(requireActivity(), R.drawable.ic_settings),
+                    0,
+                    1,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
                 )
             }
         }
@@ -179,10 +186,10 @@ class MainFragment : Fragment() {
         menu.findItem(R.id.information).apply {
             title = SpannableStringBuilder("* Information").also {
                 it.setSpan( // replace "*" with icon
-                        ImageSpan(requireActivity(), R.drawable.ic_info),
-                        0,
-                        1,
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                    ImageSpan(requireActivity(), R.drawable.ic_info),
+                    0,
+                    1,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
                 )
             }
         }
@@ -191,75 +198,75 @@ class MainFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
-            when (item.itemId) {
-                R.id.action_settings -> navigateToSettings()
+        when (item.itemId) {
+            R.id.action_settings -> navigateToSettings()
 
-                R.id.action_logout -> (activity as MainActivity).logout()
+            R.id.action_logout -> (activity as MainActivity).logout()
 
-                R.id.information -> navigateToInformation()
+            R.id.information -> navigateToInformation()
 
-                R.id.action_video -> navigateToVideo()
+            R.id.action_video -> navigateToVideo()
 
-                else -> false
-            }
+            else -> false
+        }
 
 
     private val currentFragment: Fragment?
         get() = (
                 requireActivity().supportFragmentManager
-                        .findFragmentById(R.id.nav_host_fragment)?.childFragmentManager?.fragments?.get(
-                                0
-                        )
+                    .findFragmentById(R.id.nav_host_fragment)?.childFragmentManager?.fragments?.get(
+                        0
+                    )
                 )
 
     private fun navigateToHome() =
-            if ((currentFragment !is ProfileFragment)) {
-                val navController = findNavController(binding.navHostFragment)
-                navController.navigate(R.id.nav_home)
-                true
-            } else false
+        if ((currentFragment !is ProfileFragment)) {
+            val navController = findNavController(binding.navHostFragment)
+            navController.navigate(R.id.nav_home)
+            true
+        } else false
 
     private fun navigateToProfile() =
-            if ((currentFragment !is ProfileFragment)) {
-                val navController = findNavController(binding.navHostFragment)
-                navController.navigate(R.id.nav_profile)
-                true
-            } else false
+        if ((currentFragment !is ProfileFragment)) {
+            val navController = findNavController(binding.navHostFragment)
+            navController.navigate(R.id.nav_profile)
+            true
+        } else false
 
     private fun navigateToSettings() =
-            if ((currentFragment !is SettingsFragment)) {
-                val navController = findNavController(binding.navHostFragment)
-                navController.navigate(R.id.nav_settings)
-                true
-            } else false
+        if ((currentFragment !is SettingsFragment)) {
+            val navController = findNavController(binding.navHostFragment)
+            navController.navigate(R.id.nav_settings)
+            true
+        } else false
 
     private fun navigateToInformation() =
-            if ((currentFragment !is InformationFragment)) {
-                val navController = findNavController(binding.navHostFragment)
-                navController.navigate(R.id.nav_information)
-                true
-            } else false
+        if ((currentFragment !is InformationFragment)) {
+            val navController = findNavController(binding.navHostFragment)
+            navController.navigate(R.id.nav_information)
+            true
+        } else false
 
     private fun navigateToVideo() =
-            if ((currentFragment !is VideoFragment)) {
-                val navController = findNavController(binding.navHostFragment)
-                navController.navigate(R.id.nav_video)
-                true
-            } else false
+        if ((currentFragment !is VideoFragment)) {
+            val navController = findNavController(binding.navHostFragment)
+            navController.navigate(R.id.nav_video)
+            true
+        } else false
 
     private fun navigateToNext() =
-            when (currentFragment) {
-                is SettingsFragment -> navigateToHome()
-                is HomeFragment -> navigateToProfile()
-                else -> navigateToSettings()
-            }
+        when (currentFragment) {
+            is SettingsFragment -> navigateToHome()
+            is HomeFragment -> navigateToProfile()
+            else -> navigateToSettings()
+        }
 
     private fun navigateToPrevious() =
-            when (currentFragment) {
-                is SettingsFragment -> navigateToProfile()
-                is HomeFragment -> navigateToSettings()
-                else -> navigateToHome()
-            }
+        when (currentFragment) {
+            is SettingsFragment -> navigateToProfile()
+            is HomeFragment -> navigateToSettings()
+            else -> navigateToHome()
+        }
 
     private fun readData(): String {
         if (!imageInfoFile!!.exists()) return ""

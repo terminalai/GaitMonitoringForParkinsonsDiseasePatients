@@ -1,14 +1,15 @@
 package com.thepyprogrammer.gaitanalyzer.ui.main.home.view
 
 import android.content.Context
+import android.graphics.Color
 import android.transition.TransitionManager
 import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.contour.ContourLayout
-import com.thepyprogrammer.gaitanalyzer.model.view.anim.PushOnPressAnimator
+import com.thepyprogrammer.androidLib.anim.PushOnPressAnimator
 
 class HomeCardLayout(
-        context: Context
+    context: Context
 ) : ContourLayout(context) {
 
     val avatar = ImageView(context).apply {
@@ -21,20 +22,21 @@ class HomeCardLayout(
     }
 
     init {
+        setBackgroundColor(Color.WHITE)
         stateListAnimator = PushOnPressAnimator(this)
         avatar.layoutBy(
-                x = leftTo { parent.left() }.widthOf { 60.xdip },
-                y = topTo { parent.top() }.heightOf { 60.ydip }
+            x = leftTo { parent.left() }.widthOf { 60.xdip },
+            y = topTo { parent.top() }.heightOf { 60.ydip }
         )
         content.layoutBy(
-                x = leftTo { avatar.right() + 16.xdip }.rightTo { parent.right() },
-                y = topTo {
-                    if (isSelected) parent.top() + 16.ydip
-                    else avatar.centerY() - content.height() / 2
-                }.heightOf {
-                    if (isSelected) content.preferredHeight()
-                    else 48.ydip
-                }
+            x = leftTo { avatar.right() + 16.xdip }.rightTo { parent.right() },
+            y = topTo {
+                if (isSelected) parent.top() + 16.ydip
+                else avatar.centerY() - content.height() / 2
+            }.heightOf {
+                if (isSelected) content.preferredHeight()
+                else 48.ydip
+            }
         )
         contourHeightOf { content.bottom() }
 

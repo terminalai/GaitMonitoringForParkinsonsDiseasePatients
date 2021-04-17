@@ -13,9 +13,9 @@
             android:title="@string/menu_profile" />
 
         <item
-            android:id="@+id/nav_list"
+            android:id="@+id/nav_freeze"
             android:icon="@drawable/ic_list"
-            android:title="Freeze" />
+            android:title="@string/menu_freeze" />
 
         <item
             android:id="@+id/nav_settings"

@@ -24,8 +24,8 @@ class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         binding = FragmentRegisterBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -53,21 +53,21 @@ class RegisterFragment : Fragment() {
         }
 
         val resultObserver =
-                Observer<User> {
-                    if (viewModel.error.value != "" && viewModel.error.value != "DON'T LOGIN") {
-                        val sb = Snackbar.make(
-                                view,
-                                viewModel.error.value!!,
-                                Snackbar.LENGTH_LONG
-                        )
-                        sb.show()
-                    } else if (viewModel.error.value != "DON'T LOGIN") {
-                        FirebaseUtil.user = viewModel.userResult.value
-                        FirebaseUtil.user?.password?.let { it1 -> Log.d("TAG", it1) }
-                        binding.loading.visibility = View.GONE
-                        (activity as MainActivity).navController.navigate(R.id.nav_main)
-                    }
+            Observer<User> {
+                if (viewModel.error.value != "" && viewModel.error.value != "DON'T LOGIN") {
+                    val sb = Snackbar.make(
+                        view,
+                        viewModel.error.value!!,
+                        Snackbar.LENGTH_LONG
+                    )
+                    sb.show()
+                } else if (viewModel.error.value != "DON'T LOGIN") {
+                    FirebaseUtil.user = viewModel.userResult.value
+                    FirebaseUtil.user?.password?.let { it1 -> Log.d("TAG", it1) }
+                    binding.loading.visibility = View.GONE
+                    (activity as MainActivity).navController.navigate(R.id.nav_main)
                 }
+            }
         viewModel.userResult.observe(viewLifecycleOwner, resultObserver)
 
         return view

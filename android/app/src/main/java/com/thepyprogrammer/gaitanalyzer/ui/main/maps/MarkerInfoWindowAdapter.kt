@@ -7,7 +7,7 @@ import android.widget.TextView
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 import com.thepyprogrammer.gaitanalyzer.R
-import com.thepyprogrammer.gaitanalyzer.model.view.maps.Place
+import com.thepyprogrammer.androidLib.maps.Place
 
 class MarkerInfoWindowAdapter(private val context: Context) : GoogleMap.InfoWindowAdapter {
     override fun getInfoContents(marker: Marker?): View? {
@@ -18,7 +18,8 @@ class MarkerInfoWindowAdapter(private val context: Context) : GoogleMap.InfoWind
         val view = LayoutInflater.from(context).inflate(R.layout.marker_info_contents, null)
         view.findViewById<TextView>(R.id.text_view_title).text = place.name
         view.findViewById<TextView>(R.id.text_view_address).text = place.address
-        view.findViewById<TextView>(R.id.text_view_rating).text = "Rating: %.2f".format(place.rating)
+        view.findViewById<TextView>(R.id.text_view_rating).text =
+            "Rating: %.2f".format(place.rating)
 
         return view
     }

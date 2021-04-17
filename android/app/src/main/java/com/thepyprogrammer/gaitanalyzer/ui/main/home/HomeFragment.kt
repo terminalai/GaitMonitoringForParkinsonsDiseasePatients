@@ -21,21 +21,25 @@ class HomeFragment : Fragment() {
     private lateinit var mainViewModel: MainViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        val homeAdapter = HomeAdapter(this,
-                mutableListOf(
-                        HomeCardInfo("HELLO", "krvjrovirvrinfeidvgrtiefgtrhfrhehiuehrifdehourfgwheufhreofrhfirhfirerfhtihoreghrihtrvhorugherfhrhfreogerifohtrghiore")
+        val homeAdapter = HomeAdapter(
+            this,
+            mutableListOf(
+                HomeCardInfo(
+                    "HELLO",
+                    "krvjrovirvrinfeidvgrtiefgtrhfrhehiuehrifdehourfgwheufhreofrhfirhfirerfhtihoreghrihtrvhorugherfhrhfreogerifohtrghiore"
                 )
+            )
         )
         homeViewModel =
-                ViewModelProvider(this).get(HomeViewModel::class.java)
+            ViewModelProvider(this).get(HomeViewModel::class.java)
 
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 

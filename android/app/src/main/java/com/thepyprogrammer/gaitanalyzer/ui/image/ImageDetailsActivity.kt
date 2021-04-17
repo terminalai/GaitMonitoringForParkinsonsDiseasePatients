@@ -55,28 +55,28 @@ class ImageDetailsActivity : AppCompatActivity() {
 
 
     override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<String?>,
-            grantResults: IntArray
+        requestCode: Int,
+        permissions: Array<String?>,
+        grantResults: IntArray
     ) {
         super
-                .onRequestPermissionsResult(
-                        requestCode,
-                        permissions,
-                        grantResults
-                )
+            .onRequestPermissionsResult(
+                requestCode,
+                permissions,
+                grantResults
+            )
         // Checking whether user granted the permission or not.
         if (grantResults.isNotEmpty()
-                && grantResults[0] == PackageManager.PERMISSION_GRANTED
+            && grantResults[0] == PackageManager.PERMISSION_GRANTED
         ) {
             return
         } else {
             Toast.makeText(
-                    this,
-                    "To select an icon, these permissions are required.",
-                    Toast.LENGTH_SHORT
+                this,
+                "To select an icon, these permissions are required.",
+                Toast.LENGTH_SHORT
             )
-                    .show()
+                .show()
         }
     }
 

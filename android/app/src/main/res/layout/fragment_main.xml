@@ -47,27 +47,7 @@
                 app:layout_constraintBottom_toTopOf="parent"
                 app:navGraph="@navigation/main_navigation" />
 
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <com.imangazaliev.circlemenu.CircleMenu
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_marginBottom="76dp"
-            android:layout_marginEnd="16dp"
-            app:buttonColors="@array/fab_menu_colors"
-            app:buttonIcons="@array/fab_menu_icons"
-            app:distance="120dp"
-            app:iconsColor="?colorAccent"
-            app:centerButtonColor="?colorAccent"
-            app:centerButtonIconColor="#ffffff"
-            app:maxAngle="140"
-            app:menuIcon="plus"
-            app:showSelectAnimation="false"
-            app:startAngle="-180" />
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"

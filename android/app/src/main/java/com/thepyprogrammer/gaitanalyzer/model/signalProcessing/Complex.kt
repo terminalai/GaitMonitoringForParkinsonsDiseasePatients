@@ -20,7 +20,7 @@ data class Complex(val re: Double, val im: Double = 0.0, val isUnit: Boolean = f
 
     val exp: Complex by lazy {
         Complex(cos(im), sin(im)) * (cosh(re) + sinh(
-                re
+            re
         ))
     }
 
@@ -32,7 +32,7 @@ data class Complex(val re: Double, val im: Double = 0.0, val isUnit: Boolean = f
 
     init {
         if (!isUnit) unit =
-                if (mag != 0.0) Complex(re / mag, im / mag, true) else Complex(0.0, 0.0, true)
+            if (mag != 0.0) Complex(re / mag, im / mag, true) else Complex(0.0, 0.0, true)
         else unit = this
         alpha = abs(asin(unit.im))
         arg = when {

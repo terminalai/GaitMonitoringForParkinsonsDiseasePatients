@@ -47,11 +47,11 @@ fun freeze(data: Array<Double>): Array<Double> {
 
         // compute com.thepyprogrammer.gaitanalyzer.model.signalProcessing.FFT (Fast Fourier Transform)
         val y = FFT.fft(
-                // get the signal in the window
-                data.slice(jStart, jPos)
-                        // make signal zero-mean (mean normalization)
-                        .normalise()
-                        .toComplex()
+            // get the signal in the window
+            data.slice(jStart, jPos)
+                // make signal zero-mean (mean normalization)
+                .normalise()
+                .toComplex()
         )
         val pyy: Array<Double> = y.timesConj() / windowLength
 
@@ -62,9 +62,9 @@ fun freeze(data: Array<Double>): Array<Double> {
 
         // Extension of Baechlin to handle low-energy situations (e.g. standing)
         freezeIndex.add(
-                if (areaFreezeBand + areaLocoBand >= powerTH)
-                    areaFreezeBand / areaLocoBand
-                else 0.0
+            if (areaFreezeBand + areaLocoBand >= powerTH)
+                areaFreezeBand / areaLocoBand
+            else 0.0
         )
     }
 

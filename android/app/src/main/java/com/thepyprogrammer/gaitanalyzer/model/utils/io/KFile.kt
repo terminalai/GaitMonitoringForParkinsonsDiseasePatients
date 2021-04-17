@@ -13,7 +13,7 @@ import java.nio.file.Paths
 import java.util.*
 
 class KFile @JvmOverloads constructor(filename: String?, type: Char = 'r') : java.io.File(filename),
-        Cloneable, AutoCloseable {
+    Cloneable, AutoCloseable {
     var out: PrintWriter? = null
     var `in`: Scanner? = null
     var outstream: FileOutputStream? = null
@@ -137,12 +137,12 @@ class KFile @JvmOverloads constructor(filename: String?, type: Char = 'r') : jav
             if (type == 'w') {
                 out!!.close()
                 overwriters.remove(
-                        absolutePath
+                    absolutePath
                 )
             } else if (type == 'a') {
                 out!!.close()
                 appendwriters.remove(
-                        absolutePath
+                    absolutePath
                 )
             }
         } catch (ex: NullPointerException) {
@@ -306,8 +306,8 @@ class KFile @JvmOverloads constructor(filename: String?, type: Char = 'r') : jav
         if (!isDirectory) {
             if ((type == 'r' || type == 'w' || type == 'a') && Files.isReadable(toPath())) {
                 if (scanners.containsKey(
-                                absolutePath
-                        )
+                        absolutePath
+                    )
                 ) `in` = scanners[absolutePath] else {
                     try {
                         `in` = Scanner(this)
@@ -318,10 +318,10 @@ class KFile @JvmOverloads constructor(filename: String?, type: Char = 'r') : jav
             }
             if (type == 'w' && Files.isWritable(toPath())) {
                 if (writeoutstreams.containsKey(
-                                absolutePath
-                        ) && overwriters.containsKey(
-                                absolutePath
-                        )
+                        absolutePath
+                    ) && overwriters.containsKey(
+                        absolutePath
+                    )
                 ) {
                     outstream = writeoutstreams[absolutePath]
                     out = overwriters[absolutePath]
@@ -336,10 +336,10 @@ class KFile @JvmOverloads constructor(filename: String?, type: Char = 'r') : jav
                 }
             } else if (type == 'a' && Files.isWritable(toPath())) {
                 if (appendoutstreams.containsKey(
-                                absolutePath
-                        ) && appendwriters.containsKey(
-                                absolutePath
-                        )
+                        absolutePath
+                    ) && appendwriters.containsKey(
+                        absolutePath
+                    )
                 ) {
                     outstream = appendoutstreams[absolutePath]
                     out = appendwriters[absolutePath]

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.thepyprogrammer.gaitanalyzer.model.view.video.FunctionalVideoView
+        <com.thepyprogrammer.androidLib.video.FunctionalVideoView
             android:id="@+id/videoView"
             android:layout_width="match_parent"
             android:layout_height="250dp"

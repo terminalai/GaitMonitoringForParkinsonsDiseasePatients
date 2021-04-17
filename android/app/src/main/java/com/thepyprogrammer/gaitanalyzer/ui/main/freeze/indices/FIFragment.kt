@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
-import com.github.mikephil.charting.formatter.IAxisValueFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentFiBinding
@@ -48,7 +47,7 @@ class FIFragment : Fragment() {
 
             legend.isEnabled = false
 
-            
+
             xAxis.apply {
                 position = XAxis.XAxisPosition.TOP_INSIDE
                 textSize = 10f
@@ -57,7 +56,7 @@ class FIFragment : Fragment() {
                 setDrawGridLines(true)
                 textColor = Color.rgb(255, 192, 56)
                 setCenterAxisLabels(true)
-                granularity = 1f; // one hour
+                granularity = 1f // one hour
                 valueFormatter = object : ValueFormatter() {
                     private val mFormat: SimpleDateFormat =
                         SimpleDateFormat("dd MMM HH:mm", Locale.ENGLISH)

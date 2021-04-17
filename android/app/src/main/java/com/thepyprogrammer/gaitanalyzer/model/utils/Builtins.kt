@@ -20,4 +20,4 @@ fun Double.round(dp: Int = 0) = run {
     }
 }
 
-fun Int.pad(zeros : Int) = "%0${zeros}d".format(this)
+fun Int.pad(zeros: Int) = "%0${zeros}d".format(this)

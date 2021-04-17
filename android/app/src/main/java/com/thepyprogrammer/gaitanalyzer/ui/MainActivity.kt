@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         val navHostFragment =
-                supportFragmentManager.findFragmentById(R.id.parent_nav_host_fragment) as NavHostFragment
+            supportFragmentManager.findFragmentById(R.id.parent_nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
     }
 
@@ -33,9 +33,9 @@ class MainActivity : AppCompatActivity() {
     private val currentFragment: Fragment
         get() = (
                 supportFragmentManager
-                        .findFragmentById(R.id.parent_nav_host_fragment)?.childFragmentManager?.fragments?.get(
-                                0
-                        )
+                    .findFragmentById(R.id.parent_nav_host_fragment)?.childFragmentManager?.fragments?.get(
+                        0
+                    )
                 )!!
 
 

@@ -14,8 +14,8 @@
             android:id="@+id/action_nav_home_to_nav_profile"
             app:destination="@id/nav_profile" />
         <action
-            android:id="@+id/action_nav_home_to_nav_list"
-            app:destination="@id/nav_list" />
+            android:id="@+id/action_nav_home_to_nav_freeze"
+            app:destination="@id/nav_freeze" />
         <action
             android:id="@+id/action_nav_home_to_nav_settings"
             app:destination="@id/nav_settings" />
@@ -27,8 +27,8 @@
         android:label="Profile"
         tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_nav_profile_to_nav_list"
-            app:destination="@id/nav_list" />
+            android:id="@+id/action_nav_profile_to_nav_freeze"
+            app:destination="@id/nav_freeze" />
         <action
             android:id="@+id/action_nav_profile_to_nav_home"
             app:destination="@id/nav_home" />
@@ -48,8 +48,8 @@
             android:id="@+id/action_nav_settings_to_nav_profile"
             app:destination="@id/nav_profile" />
         <action
-            android:id="@+id/action_nav_settings_to_nav_list"
-            app:destination="@id/nav_list" />
+            android:id="@+id/action_nav_settings_to_nav_freeze"
+            app:destination="@id/nav_freeze" />
     </fragment>
 
     <fragment

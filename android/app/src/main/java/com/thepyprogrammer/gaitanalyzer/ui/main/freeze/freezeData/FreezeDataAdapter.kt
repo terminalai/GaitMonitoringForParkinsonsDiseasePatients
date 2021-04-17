@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.thepyprogrammer.gaitanalyzer.R
 
 class FreezeDataAdapter(private val context: Context) :
-        RecyclerView.Adapter<FreezeDataAdapter.ViewHolder>() {
-    private val completeViewModel: CompleteViewModel = ViewModelProvider((context as FragmentActivity)).get(CompleteViewModel::class.java)
+    RecyclerView.Adapter<FreezeDataAdapter.ViewHolder>() {
+    private val completeViewModel: CompleteViewModel =
+        ViewModelProvider((context as FragmentActivity)).get(CompleteViewModel::class.java)
     private val titles = arrayOf<String>()
 
     private val details = arrayOf<String>()

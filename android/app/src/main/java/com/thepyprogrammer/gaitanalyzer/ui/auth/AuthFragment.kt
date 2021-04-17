@@ -12,18 +12,14 @@ import com.thepyprogrammer.gaitanalyzer.databinding.FragmentAuthBinding
 
 class AuthFragment : Fragment() {
 
-    private var _binding: FragmentAuthBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentAuthBinding
 
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAuthBinding.inflate(inflater, container, false)
+        binding = FragmentAuthBinding.inflate(inflater, container, false)
         val view = binding.root
 
         binding.viewPager.adapter = AuthAdapter(requireActivity())

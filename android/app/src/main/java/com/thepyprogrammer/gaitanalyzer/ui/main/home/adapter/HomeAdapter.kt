@@ -9,12 +9,12 @@ import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.view.HomeCardLayout
 
 class HomeAdapter(
-        private val parentFragment: HomeFragment,
-        private val items: MutableList<HomeCardInfo>
+    private val parentFragment: HomeFragment,
+    private val items: MutableList<HomeCardInfo>
 ) : RecyclerView.Adapter<HomeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = HomeViewHolder(
-            HomeCardLayout(parentFragment.requireContext())
+        HomeCardLayout(parentFragment.requireContext())
     )
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {

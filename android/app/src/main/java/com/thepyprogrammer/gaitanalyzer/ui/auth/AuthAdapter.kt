@@ -9,8 +9,8 @@ class AuthAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
     override fun getItemCount(): Int = 2
 
     override fun createFragment(position: Int) =
-            when (position % 2) {
-                0 -> LoginFragment()
-                else -> RegisterFragment()
-            }
+        when (position % itemCount) {
+            0 -> LoginFragment()
+            else -> RegisterFragment()
+        }
 }

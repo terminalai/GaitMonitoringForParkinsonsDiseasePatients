@@ -16,8 +16,8 @@ class IdentificationFragment : Fragment() {
     private lateinit var binding: FragmentIdentificationBinding
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         binding = FragmentIdentificationBinding.inflate(inflater, container, false)
         val view = binding.root

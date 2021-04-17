@@ -26,8 +26,8 @@ class ProfileFragment : Fragment() {
     private lateinit var viewModel: MainViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_profile, container, false)
         return root
@@ -71,7 +71,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun readData() =
-            if (imageInfoFile?.exists() == true) imageInfoFile!!.read() else ""
+        if (imageInfoFile?.exists() == true) imageInfoFile!!.read() else ""
 
     private fun loadImage() {
         val string: String = readData()

@@ -14,7 +14,7 @@ fun unpackAssetPrefix(assets: AssetManager, assetPrefix: String, outputDir: File
     Log.d(TAG, "Clearing out path ${outputDir.absolutePath}")
     outputDir.deleteRecursively()
     val list: Array<out String> = assets.list(assetPrefix)
-            ?: throw IOException("Unable to unpack assets")
+        ?: throw IOException("Unable to unpack assets")
     if (list.isEmpty()) {
         throw IOException("No assets at prefix $assetPrefix")
     }
@@ -45,9 +45,14 @@ private fun copy(source: InputStream, targetPath: File) {
     Log.d(TAG, "Created ${targetPath.absolutePath}")
 }
 
-private fun unpackAssetPath(assets: AssetManager, assetPath: String, assetPrefixLength: Int, outputDir: File) {
+private fun unpackAssetPath(
+    assets: AssetManager,
+    assetPath: String,
+    assetPrefixLength: Int,
+    outputDir: File
+) {
     val subPaths = assets.list(assetPath)
-            ?: throw IOException("Unable to list assets at path $assetPath/")
+        ?: throw IOException("Unable to list assets at path $assetPath/")
     if (subPaths.isEmpty()) {
         // It's a file. Copy it.
         val outputFile = File("${outputDir.absolutePath}/${assetPath.substring(assetPrefixLength)}")

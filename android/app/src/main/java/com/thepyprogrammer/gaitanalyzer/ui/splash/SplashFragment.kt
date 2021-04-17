@@ -23,8 +23,8 @@ class SplashFragment : Fragment() {
     private lateinit var binding: FragmentSplashBinding
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentSplashBinding.inflate(inflater, container, false)
@@ -45,7 +45,8 @@ class SplashFragment : Fragment() {
                         if (type == "caregiver") FirebaseUtil.user = Caregiver(name, password)
                         else if (type == "patient") FirebaseUtil.user = Caregiver(name, password)
                         Handler().postDelayed({
-                            Navigation.findNavController(binding.splashScreenImage).navigate(R.id.nav_main)
+                            Navigation.findNavController(binding.splashScreenImage)
+                                .navigate(R.id.nav_main)
                         }, SPLASH_TIME_OUT.toLong())
                         return view
                     }
@@ -56,7 +57,8 @@ class SplashFragment : Fragment() {
         }
 
         Handler().postDelayed({
-            Navigation.findNavController(binding.splashScreenImage).navigate(R.id.nav_identification)
+            Navigation.findNavController(binding.splashScreenImage)
+                .navigate(R.id.nav_identification)
         }, SPLASH_TIME_OUT.toLong())
 
         return view

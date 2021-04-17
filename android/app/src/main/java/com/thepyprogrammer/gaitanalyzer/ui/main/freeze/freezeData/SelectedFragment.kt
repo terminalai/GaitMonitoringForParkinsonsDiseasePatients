@@ -12,8 +12,8 @@ class SelectedFragment : Fragment() {
     private lateinit var binding: FragmentSelectedBinding
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentSelectedBinding.inflate(inflater, container, false)
@@ -22,7 +22,8 @@ class SelectedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val completeViewModel = ViewModelProvider(requireActivity()).get(CompleteViewModel::class.java)
+        val completeViewModel =
+            ViewModelProvider(requireActivity()).get(CompleteViewModel::class.java)
         binding.textView.text = "You selected Card ${completeViewModel.adapterPosition.value}"
     }
 }

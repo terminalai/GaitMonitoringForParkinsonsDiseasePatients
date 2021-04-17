@@ -15,8 +15,8 @@ class FreezeDataFragment : Fragment() {
     var adapter: RecyclerView.Adapter<*>? = null
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentFreezeDataBinding.inflate(inflater, container, false)

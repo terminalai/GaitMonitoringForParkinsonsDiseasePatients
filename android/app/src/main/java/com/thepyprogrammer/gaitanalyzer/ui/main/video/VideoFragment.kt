@@ -15,10 +15,10 @@ import androidx.transition.TransitionInflater
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentVideoBinding
 import com.thepyprogrammer.gaitanalyzer.model.utils.getTTS
-import com.thepyprogrammer.gaitanalyzer.model.utils.io.getUriFromRaw
-import com.thepyprogrammer.gaitanalyzer.model.view.web.GitHubWebViewClient
-import com.thepyprogrammer.gaitanalyzer.model.view.web.WebAppInterface
-import com.thepyprogrammer.gaitanalyzer.model.view.web.WebBrowserClient
+import com.thepyprogrammer.androidLib.io.getUriFromRaw
+import com.thepyprogrammer.androidLib.web.GitHubWebViewClient
+import com.thepyprogrammer.androidLib.web.WebAppInterface
+import com.thepyprogrammer.androidLib.web.WebBrowserClient
 import java.util.*
 
 
@@ -27,8 +27,8 @@ class VideoFragment : Fragment() {
     private lateinit var binding: FragmentVideoBinding
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentVideoBinding.inflate(inflater, container, false)
@@ -66,7 +66,12 @@ class VideoFragment : Fragment() {
 
     private fun conFigVideo() {
         requireActivity().window.setFormat(PixelFormat.TRANSLUCENT)
-        binding.videoView.setVideoURI(getUriFromRaw(requireContext(), R.raw.gaitmonitoring)) // placeholder
+        binding.videoView.setVideoURI(
+            getUriFromRaw(
+                requireContext(),
+                R.raw.gaitmonitoring
+            )
+        ) // placeholder
 
         val mediaController = MediaController(requireContext())
         mediaController.setAnchorView(binding.videoView)
@@ -74,8 +79,8 @@ class VideoFragment : Fragment() {
 
         binding.videoView.setOnPreparedListener {
             Log.i(
-                    "VIDEO",
-                    "Duration = " + it.duration
+                "VIDEO",
+                "Duration = " + it.duration
             )
         }
 
@@ -117,19 +122,19 @@ class VideoFragment : Fragment() {
 
     companion object {
         const val text =
-                "Parkinson’s disease, or PD is a neurodegenerative disorder that affects the dopamine-producing neurons in the substantia nigra, an area of the brain, leading to shaking, stiffness and difficulty walking. Parkinson’s patients frequently exhibit the debilitating condition freezing of gait, or FOG, which is when patients cannot move their feet forward despite the intention to walk. " +
-                        "While the feet remain in place, the torso still has forward momentum, making falls very common. " +
-                        "At the start, FOG can be triggered by stress, tight spaces or a sudden change in direction. " +
-                        "As the disease progresses, this happens more frequently, a fact extremely detrimental to the patient’s health and mental well-being. " +
-                        "This study aims to compare all the ways of classifying FOG in PD patients and determine the best parameter to utilise while creating an algorithm for data analysis. " +
-                        "It also aims to compare multiple machine learning models based on acceleration data from accelerometers placed on the thigh. " +
-                        "Public datasets of PD patients will be analysed to extract the motion pattern of PD patients. " +
-                        "A Freeze Index value is postulated and used to predict FOG based on these parameters. " +
-                        "An algorithm was then developed to identify the most suitable parameter for the classification of FOG in PD patients. " +
-                        "Multiple machine learning models were then compared based on acceleration data from accelerometers placed on the thigh. " +
-                        "After analyzing, the most suitable parameters for classification are freezeY and freezeZ based on the acceleration data in the public datasets and the best model is the Linear Kernel model in terms of sensitivity. " +
-                        "Furthermore, a prototype has been created using an Arduino Nano 33 BLE board. " +
-                        "It can be implemented to test the performance of the identified most suitable parameters. " +
-                        "This system has now been connected to this Android Application such that notifications can be sent to the caregiver’s phone to alert them to a fall."
+            "Parkinson’s disease, or PD is a neurodegenerative disorder that affects the dopamine-producing neurons in the substantia nigra, an area of the brain, leading to shaking, stiffness and difficulty walking. Parkinson’s patients frequently exhibit the debilitating condition freezing of gait, or FOG, which is when patients cannot move their feet forward despite the intention to walk. " +
+                    "While the feet remain in place, the torso still has forward momentum, making falls very common. " +
+                    "At the start, FOG can be triggered by stress, tight spaces or a sudden change in direction. " +
+                    "As the disease progresses, this happens more frequently, a fact extremely detrimental to the patient’s health and mental well-being. " +
+                    "This study aims to compare all the ways of classifying FOG in PD patients and determine the best parameter to utilise while creating an algorithm for data analysis. " +
+                    "It also aims to compare multiple machine learning models based on acceleration data from accelerometers placed on the thigh. " +
+                    "Public datasets of PD patients will be analysed to extract the motion pattern of PD patients. " +
+                    "A Freeze Index value is postulated and used to predict FOG based on these parameters. " +
+                    "An algorithm was then developed to identify the most suitable parameter for the classification of FOG in PD patients. " +
+                    "Multiple machine learning models were then compared based on acceleration data from accelerometers placed on the thigh. " +
+                    "After analyzing, the most suitable parameters for classification are freezeY and freezeZ based on the acceleration data in the public datasets and the best model is the Linear Kernel model in terms of sensitivity. " +
+                    "Furthermore, a prototype has been created using an Arduino Nano 33 BLE board. " +
+                    "It can be implemented to test the performance of the identified most suitable parameters. " +
+                    "This system has now been connected to this Android Application such that notifications can be sent to the caregiver’s phone to alert them to a fall."
     }
 }

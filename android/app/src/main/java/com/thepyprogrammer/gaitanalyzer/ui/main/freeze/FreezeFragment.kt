@@ -9,7 +9,6 @@ import androidx.transition.TransitionInflater
 import com.google.android.material.tabs.TabLayoutMediator
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentFreezeBinding
-import com.thepyprogrammer.gaitanalyzer.ui.auth.AuthAdapter
 
 class FreezeFragment : Fragment() {
 
@@ -17,8 +16,8 @@ class FreezeFragment : Fragment() {
 
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         binding = FragmentFreezeBinding.inflate(inflater, container, false)
         val view = binding.root

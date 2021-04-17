@@ -71,18 +71,18 @@
             android:theme="@style/Theme.GaitAnalyzer.NoActionBar">
         </activity>
         <activity
-            android:name="com.thepyprogrammer.gaitanalyzer.model.view.timer.TimerActivity"
+            android:name="com.thepyprogrammer.gaitanalyzer.ui.timer.TimerActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.GaitAnalyzer.NoActionBar">
         </activity>
 
 
         <receiver
-            android:name=".model.view.timer.TimerExpiredReceiver"
+            android:name="com.thepyprogrammer.gaitanalyzer.ui.timer.TimerExpiredReceiver"
             android:enabled="true"
             android:exported="false" />
         <receiver
-            android:name=".model.view.timer.TimerNotificationActionReceiver"
+            android:name="com.thepyprogrammer.gaitanalyzer.ui.timer.TimerNotificationActionReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
