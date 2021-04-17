@@ -28,7 +28,7 @@ class FreezeDataFragment : Fragment() {
         binding.recyclerView.setHasFixedSize(true)
         layoutManager = LinearLayoutManager(view.context)
         binding.recyclerView.layoutManager = layoutManager
-        adapter = context?.let { RecyclerAdapter(it) }
+        adapter = context?.let { FreezeDataAdapter(it) }
         binding.recyclerView.adapter = adapter
     }
 }

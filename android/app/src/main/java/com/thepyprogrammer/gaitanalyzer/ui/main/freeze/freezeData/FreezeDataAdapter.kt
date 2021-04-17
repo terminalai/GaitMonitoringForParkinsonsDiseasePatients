@@ -11,8 +11,8 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.thepyprogrammer.gaitanalyzer.R
 
-class RecyclerAdapter(private val context: Context) :
-        RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class FreezeDataAdapter(private val context: Context) :
+        RecyclerView.Adapter<FreezeDataAdapter.ViewHolder>() {
     private val completeViewModel: CompleteViewModel = ViewModelProvider((context as FragmentActivity)).get(CompleteViewModel::class.java)
     private val titles = """""".split("\n").toTypedArray()
 
