@@ -15,4 +15,4 @@ print(x) # <Response [200]>
 print(x.status_code) # 200
 
 with open("text.txt", "w+") as file:
-    print(x.text, file=file) #
+    print(x.text, file=file)

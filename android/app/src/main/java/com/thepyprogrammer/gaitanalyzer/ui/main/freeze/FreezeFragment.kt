@@ -23,7 +23,7 @@ class FreezeFragment : Fragment() {
         binding = FragmentFreezeBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        binding.viewPager.adapter = AuthAdapter(requireActivity())
+        binding.viewPager.adapter = FreezeAdapter(requireActivity())
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = when (position % 3) {
                 0 -> "Freeze"

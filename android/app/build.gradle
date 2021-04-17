@@ -151,6 +151,9 @@ dependencies {
     // volley for HTTPS for API
     implementation 'com.android.volley:volley:1.2.0'
 
+    
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
 
     // Dependency to include Maps SDK for Android
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
