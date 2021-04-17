@@ -13,50 +13,10 @@ import com.thepyprogrammer.gaitanalyzer.R
 
 class RecyclerAdapter(private val context: Context) :
         RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
-    private val completeViewModel: CompleteViewModel
-    private val titles = """Opening and Closing Ceremonies
-3x3 Basketball
-Archery
-Artistic Gymnastics
-Artistic Swimming
-Athletics
-Badminton
-Baseball/Softball
-Basketball
-Beach Volleyball
-Boxing
-Canoe Slalom
-Canoe Sprint
-Cycling BMX Freestyle
-Cycling BMX Racing
-Cycling Mountain Bike
-Cycling Road
-Cycling Track
-Diving
-Equestrian
-Fencing""".split("\n").toTypedArray()
+    private val completeViewModel: CompleteViewModel = ViewModelProvider((context as FragmentActivity)).get(CompleteViewModel::class.java)
+    private val titles = """""".split("\n").toTypedArray()
 
-    private val details = """23 July, 8 August
-24 - 28 July
-23 - 31 July
-Artistic Gymnastics
-Artistic Swimming
-Athletics
-Badminton
-Baseball/Softball
-Basketball
-Beach Volleyball
-Boxing
-Canoe Slalom
-Canoe Sprint
-Cycling BMX Freestyle
-Cycling BMX Racing
-Cycling Mountain Bike
-Cycling Road
-Cycling Track
-Diving
-Equestrian
-Fencing""".split("\n").toTypedArray()
+    private val details = """""".split("\n").toTypedArray()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.card_layout, parent, false)
@@ -74,14 +34,12 @@ Fencing""".split("\n").toTypedArray()
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var itemTitle: TextView = itemView.findViewById(R.id.item_title)
-        var itemDetails: TextView
-        var context: Context
+        var itemDetails: TextView = itemView.findViewById(R.id.item_detail)
+        var context: Context = itemView.context
 
         init {
-            itemDetails = itemView.findViewById(R.id.item_detail)
-            context = itemView.context
             itemView.setOnClickListener {
-                val navController = Navigation.findNavController(itemView)
+                val navController = Navigation.findNavController(it)
                 val position = adapterPosition
                 completeViewModel.adapterPosition.value = position
                 navController.navigate(R.id.action_freezeFragment_to_selectedFragment)
@@ -89,8 +47,4 @@ Fencing""".split("\n").toTypedArray()
         }
     }
 
-    init {
-        completeViewModel =
-                ViewModelProvider((context as FragmentActivity)).get(CompleteViewModel::class.java)
-    }
 }

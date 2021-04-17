@@ -1,2 +1,0 @@
-thundersvm-cpu-0.2.0-py3-none-win_amd64.whl==0.2.0
-numpy==1.20.2

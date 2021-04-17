@@ -151,7 +151,7 @@ dependencies {
     // volley for HTTPS for API
     implementation 'com.android.volley:volley:1.2.0'
 
-    
+
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
 
