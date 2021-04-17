@@ -92,7 +92,7 @@ object FirebaseUtil {
     }
 
     fun predict() {
-        functions.getHttpsCallable()
+        functions.getHttpsCallable("call")
     }
 
 

@@ -1,6 +1,5 @@
 from thundersvm import SVC
 
-
 def predict(y, z):
     clf = SVC(kernel="linear")
     clf.load_from_file("./model")
