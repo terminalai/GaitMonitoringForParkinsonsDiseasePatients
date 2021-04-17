@@ -119,12 +119,9 @@ dependencies {
 
 
 
-
-
     // =========================== FIREBASE ========================== //
     // Import the BoM for the Firebase platform                        //
     implementation platform('com.google.firebase:firebase-bom:27.0.0') //
-    implementation 'com.google.firebase:firebase-core-ktx:18.0.3'      //
     //                                                                 //
     // Cloud Firestore                                                 //
     implementation 'com.google.firebase:firebase-firestore-ktx:22.1.2' //
