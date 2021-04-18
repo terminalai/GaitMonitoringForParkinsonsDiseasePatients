@@ -131,7 +131,7 @@ class MainFragment : Fragment() {
         /**View Model**/
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        viewModel.pName.value = "yournameishere"
+        viewModel.pName.value = FirebaseUtil.user?.name
 
 
         val nameObserver = Observer<String> { newName ->
