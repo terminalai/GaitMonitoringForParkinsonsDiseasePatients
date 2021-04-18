@@ -1,11 +1,10 @@
 package com.thepyprogrammer.gaitanalyzer.model.walk.fall
 
-import com.thepyprogrammer.gaitanalyzer.model.walk.type.Vector
+import com.thepyprogrammer.ktlib.array.Vector
 import kotlin.math.abs
 import kotlin.math.atan
 import kotlin.math.atan2
 import kotlin.math.sqrt
-import kotlin.properties.Delegates
 
 /**
  * Class for Detecting Falls
@@ -63,7 +62,7 @@ class FallDetection(private var acc: Vector, private var gyro: Vector = Vector()
 
 
     // Calculated angle using a Kalman filter
-    private var kalAngle: Vector  = Vector(0.0, 0.0)
+    private var kalAngle: Vector = Vector(0.0, 0.0)
         get() = run {
             compAngle = Vector(roll, pitch)
             compAngle
@@ -83,7 +82,7 @@ class FallDetection(private var acc: Vector, private var gyro: Vector = Vector()
 
 
 
-    fun feed(acc: Vector, gyro: Vector, newTime: Long): String {
+    fun feed(acc: Vector, gyro: Vector, newTime: Long = System.currentTimeMillis()): String {
         this.acc = acc
         this.gyro = gyro
 

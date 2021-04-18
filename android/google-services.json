@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "887402649317",
+    "project_id": "gait-analyzer-1ac2c",
+    "storage_bucket": "gait-analyzer-1ac2c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887402649317:android:9e82ae77f7861855c0660c",
+        "android_client_info": {
+          "package_name": "com.thepyprogrammer.gaitanalyzer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "887402649317-2eqkit0094ff9bilj52hvmogf5ohr3c6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBigHLj9TaYfs01t8qPzGdKNoR9cOKSGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "887402649317-2eqkit0094ff9bilj52hvmogf5ohr3c6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

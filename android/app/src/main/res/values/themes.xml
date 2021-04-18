@@ -8,23 +8,16 @@
 
     <!-- Base application theme. -->
     <style name="Theme.GaitAnalyzer" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <item name="android:windowBackground">@color/backgroundLight</item>
-        <item name="android:windowContentTransitions">true</item>
-        <item name="actionBarPopupTheme">@style/Theme.GaitAnalyzer.PopupOverlay</item>
-        <item name="bubbleColor">@color/bubbleLight</item>
-        <item name="selectableItemBackground">@drawable/ripple</item>
-        <item name="switchThumbEnabled">@color/switchThumbEnabledLight</item>
-        <item name="switchThumbDisabled">@color/switchThumbDisabledLight</item>
-        <item name="switchTrackEnabled">@color/switchTrackEnabledLight</item>
-        <item name="switchTrackDisabled">@color/switchTrackDisabledLight</item>
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#2196F3</item>
-        <item name="colorPrimaryDark">#1976D2</item>
-        <item name="colorAccent">#03A9F4</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/orange</item>
         <item name="colorSecondaryVariant">@color/orange_500</item>
         <item name="colorOnSecondary">?attr/colorPrimaryVariant</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
 
 
         <item name="android:divider">@color/separatorLight</item>

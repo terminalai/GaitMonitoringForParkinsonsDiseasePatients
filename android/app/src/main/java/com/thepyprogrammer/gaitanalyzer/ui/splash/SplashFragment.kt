@@ -1,5 +1,6 @@
 package com.thepyprogrammer.gaitanalyzer.ui.splash
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -56,9 +57,17 @@ class SplashFragment : Fragment() {
             Log.d("AUTH", e.stackTrace.toString())
         }
 
+        val preferences = activity?.getSharedPreferences("preferences", Context.MODE_PRIVATE)
+
+
         Handler().postDelayed({
             Navigation.findNavController(binding.splashScreenImage)
-                .navigate(R.id.nav_identification)
+                .navigate(
+                    if(preferences?.getBoolean("onboardingDone", true) == true)
+                        R.id.nav_onboarding
+                    else
+                        R.id.nav_identification
+                )
         }, SPLASH_TIME_OUT.toLong())
 
         return view

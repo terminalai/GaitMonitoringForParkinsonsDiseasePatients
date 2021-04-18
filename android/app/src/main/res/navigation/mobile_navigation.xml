@@ -15,6 +15,12 @@
         <action
             android:id="@+id/action_nav_auth_to_mainFragment"
             app:destination="@id/nav_main" />
+        <action
+            android:id="@+id/action_nav_auth_to_setupFragment"
+            app:destination="@id/setupFragment" />
+        <action
+            android:id="@+id/action_nav_auth_to_nav_main"
+            app:destination="@id/nav_main" />
     </fragment>
 
     <fragment
@@ -39,7 +45,22 @@
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
-            android:id="@+id/action_splashFragment_to_nav_identification"
+            android:id="@+id/action_nav_splash_to_onboardingFragment"
+            app:destination="@id/nav_onboarding" />
+        <action
+            android:id="@+id/action_nav_splash_to_nav_identification"
             app:destination="@id/nav_identification" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_onboarding"
+        android:name="com.thepyprogrammer.gaitanalyzer.ui.onboarding.OnboardingFragment"
+        android:label="OnboardingFragment" >
+        <action
+            android:id="@+id/action_onboardingFragment_to_nav_identification"
+            app:destination="@id/nav_identification" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_setup"
+        android:name="com.thepyprogrammer.gaitanalyzer.ui.auth.setup.SetupFragment"
+        android:label="SetupFragment" />
 </navigation>

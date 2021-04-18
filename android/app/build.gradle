@@ -163,6 +163,8 @@ dependencies {
 
 
 
+    implementation "androidx.work:work-runtime-ktx:2.5.0"
+
 
     // Dependency to include Maps SDK for Android
     implementation 'com.google.android.gms:play-services-maps:17.0.0'

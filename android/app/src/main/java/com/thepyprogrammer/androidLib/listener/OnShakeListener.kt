@@ -7,7 +7,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.util.Log
-import com.thepyprogrammer.gaitanalyzer.model.utils.round
+import com.thepyprogrammer.ktlib.round
 
 
 abstract class OnShakeListener(activity: Activity) : SensorEventListener {

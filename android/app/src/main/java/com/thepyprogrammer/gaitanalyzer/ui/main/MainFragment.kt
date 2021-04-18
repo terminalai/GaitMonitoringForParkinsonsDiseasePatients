@@ -1,7 +1,5 @@
 package com.thepyprogrammer.gaitanalyzer.ui.main
 
-import android.hardware.Sensor
-import android.hardware.SensorManager
 import android.net.Uri
 import android.os.Bundle
 import android.text.SpannableStringBuilder
@@ -24,9 +22,8 @@ import androidx.transition.TransitionInflater
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentMainBinding
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
-import com.thepyprogrammer.gaitanalyzer.model.utils.io.KFile
-import com.thepyprogrammer.gaitanalyzer.model.utils.string.SuperStringBuilder
-import com.thepyprogrammer.androidlib.listener.OnShakeListener
+import com.thepyprogrammer.ktlib.io.KFile
+import com.thepyprogrammer.ktlib.string.SuperStringBuilder
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.information.InformationFragment
@@ -34,6 +31,7 @@ import com.thepyprogrammer.gaitanalyzer.ui.main.profile.ProfileFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.settings.SettingsFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.video.VideoFragment
 import de.hdodenhof.circleimageview.CircleImageView
+import java.io.File
 import java.io.PrintWriter
 
 class MainFragment : Fragment() {
@@ -50,10 +48,6 @@ class MainFragment : Fragment() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
 
-    /* put this into your activity class */
-    private var mSensorManager: SensorManager? = null
-    private lateinit var shakeListener: OnShakeListener
-
     private lateinit var binding: FragmentMainBinding
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -66,16 +60,6 @@ class MainFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         loadImage()
-        mSensorManager?.registerListener(
-            shakeListener,
-            mSensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
-            SensorManager.SENSOR_DELAY_NORMAL
-        )
-    }
-
-    override fun onPause() {
-        mSensorManager?.unregisterListener(shakeListener)
-        super.onPause()
     }
 
 
@@ -89,15 +73,17 @@ class MainFragment : Fragment() {
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
 
         imageInfoFile =
-            KFile(java.io.File((activity as AppCompatActivity).filesDir, "profileImageURI.txt"))
+            KFile(File((activity as AppCompatActivity).filesDir, "profileImageURI.txt"))
 
         val accountDetails =
-            KFile(java.io.File((activity as AppCompatActivity).filesDir, "accountDetails.txt"))
+            KFile(File((activity as AppCompatActivity).filesDir, "accountDetails.txt"))
         if (!accountDetails.exists()) accountDetails.createNewFile()
 
         val pw = PrintWriter(accountDetails)
         pw.println(FirebaseUtil.user.toString())
         pw.close()
+
+
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -131,14 +117,14 @@ class MainFragment : Fragment() {
         /**View Model**/
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        viewModel.pName.value = FirebaseUtil.user?.name
-
 
         val nameObserver = Observer<String> { newName ->
             nameView.text = newName
         }
 
         viewModel.pName.observe(activity as AppCompatActivity, nameObserver)
+
+        viewModel.pName.value = FirebaseUtil.user?.name
 
         setHasOptionsMenu(true)
 

@@ -1,7 +1,16 @@
 package com.thepyprogrammer.gaitanalyzer.ui
 
+import android.content.Context
+import android.content.Intent
+import android.hardware.Sensor
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
+import android.net.Uri
 import android.os.Bundle
+import android.os.PowerManager
+import android.provider.Settings
 import android.view.KeyEvent
+import android.view.WindowManager
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -10,6 +19,8 @@ import androidx.navigation.fragment.NavHostFragment
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.ActivityMainBinding
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.ui.onboarding.OnboardingFragment
+import com.thepyprogrammer.ktlib.array.Vector
 import java.io.File
 import java.io.PrintWriter
 
@@ -17,6 +28,22 @@ import java.io.PrintWriter
 class MainActivity : AppCompatActivity() {
     lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
+
+    lateinit var wakeLock: PowerManager.WakeLock
+
+    lateinit var sensorManager: SensorManager
+
+    lateinit var accelerometer: Sensor
+    lateinit var gyroscope: Sensor
+
+    lateinit var accListener: SensorEventListener
+    lateinit var gyroListener: SensorEventListener
+
+    val accs = hashMapOf<Long, Vector>()
+    val gyros = hashMapOf<Long, Vector>()
+
+    val freezes = mutableListOf<Long>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +54,10 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.parent_nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
+
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        gyroscope = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
     }
 
 
@@ -54,6 +85,14 @@ class MainActivity : AppCompatActivity() {
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         // Check if the key event was the Back button and if there's history
         try {
+            val fragments = supportFragmentManager.fragments
+            for (fragment in fragments) {
+                if (!fragment.isVisible) continue
+                if (fragment is OnboardingFragment && (fragment as OnboardingFragment).onBackPressed()) {
+                    return true
+                }
+            }
+
             val hub = findViewById<WebView>(R.id.hub)
             if (keyCode == KeyEvent.KEYCODE_BACK && hub.canGoBack()) {
                 hub.goBack()
@@ -64,6 +103,31 @@ class MainActivity : AppCompatActivity() {
         // If it wasn't the Back key or there's no web page history, bubble up to the default
         // system behavior (probably exit the activity)
         return super.onKeyDown(keyCode, event)
+    }
+    
+    fun setScreenOn() {
+        val pm = getSystemService(POWER_SERVICE) as PowerManager
+        if (!pm.isIgnoringBatteryOptimizations(packageName)) {
+            val intent = Intent().apply {
+                action = Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
+                data = Uri.parse("package: $packageName")
+            }
+            startActivity(intent);
+        }
+
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        wakeLock =
+            (getSystemService(Context.POWER_SERVICE) as PowerManager).run {
+                newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MyApp::MyWakelockTag").apply {
+                    acquire()
+                }
+            }
+    }
+
+    fun setScreenOff() {
+        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+
+        wakeLock.release()
     }
 
 }

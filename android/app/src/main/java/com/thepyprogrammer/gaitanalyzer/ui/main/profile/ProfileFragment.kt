@@ -9,18 +9,20 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.transition.TransitionInflater
 import com.thepyprogrammer.gaitanalyzer.R
-import com.thepyprogrammer.gaitanalyzer.model.utils.io.KFile
+import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
+import com.thepyprogrammer.ktlib.io.KFile
 import com.thepyprogrammer.gaitanalyzer.ui.image.ImageClickListener
 import com.thepyprogrammer.gaitanalyzer.ui.main.MainViewModel
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.fragment_profile.*
+import java.io.File
 
 class ProfileFragment : Fragment() {
-    var circleImageView: CircleImageView? = null
-    var imageInfoFile: KFile? = null
+    private lateinit var imageInfoFile: KFile
     lateinit var nameTextView: TextView
     lateinit var button: Button
     private lateinit var viewModel: MainViewModel
@@ -48,18 +50,18 @@ class ProfileFragment : Fragment() {
         val inflater = TransitionInflater.from(requireContext())
         enterTransition = inflater.inflateTransition(R.transition.slide_right)
         exitTransition = inflater.inflateTransition(R.transition.fade)
-        imageInfoFile = KFile(java.io.File(activity?.filesDir, "profileImageURI.txt"))
+        imageInfoFile = KFile(File(activity?.filesDir, "profileImageURI.txt"))
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = activity?.run {
-            ViewModelProviders.of(this)[MainViewModel::class.java]
-        } ?: throw Exception("Invalid Activity")
+
+        viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
         //ViewModelProvider(this).get(MainViewModel::class.java)
 
         nameTextView = view?.findViewById(R.id.name)!!
+
 
         imageView.setOnClickListener(ImageClickListener(this))
 
@@ -68,6 +70,7 @@ class ProfileFragment : Fragment() {
             nameTextView.text = newName
         }
         viewModel.pName.observe(viewLifecycleOwner, nameObserver)
+        viewModel.pName.value = FirebaseUtil.user?.name
     }
 
     private fun readData() =
