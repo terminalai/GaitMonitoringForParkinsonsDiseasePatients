@@ -116,7 +116,7 @@ fun Array<Array<Double>>.transpose() = run {
 
 /**
  * Convert FloatArray to Vector
-*/
+ */
 fun FloatArray.toVector() = run {
     Vector(get(0).toDouble(), get(1).toDouble(), get(2).toDouble())
 }

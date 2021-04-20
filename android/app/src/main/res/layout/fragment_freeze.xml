@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="bottom"
-            android:background="@color/blue_800"
+            android:background="?attr/colorPrimary"
             app:tabSelectedTextColor="@color/white"
             app:tabTextColor="@color/white_30_percent"
             app:tabGravity="fill"

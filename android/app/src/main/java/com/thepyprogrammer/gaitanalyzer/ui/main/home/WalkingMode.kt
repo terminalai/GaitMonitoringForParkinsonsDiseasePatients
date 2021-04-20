@@ -4,18 +4,18 @@ import android.hardware.SensorManager
 import android.os.AsyncTask
 import androidx.lifecycle.ViewModelProvider
 import com.thepyprogrammer.androidlib.listener.SensorChangeListener
-import com.thepyprogrammer.ktlib.gait.FallDetection
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.ktlib.array.Vector
+import com.thepyprogrammer.ktlib.gait.FallDetection
 import com.thepyprogrammer.ktlib.io.KFile
 import toVector
 import java.io.File
 
-class WalkingMode(val activity: MainActivity, val fall: () -> (Unit)) : AsyncTask<Double, Void, DoubleArray>() {
+class WalkingMode(val activity: MainActivity, val fall: () -> (Unit)) :
+    AsyncTask<Double, Void, DoubleArray>() {
     var acc: Vector = Vector()
     private var gyro: Vector = Vector()
     lateinit var homeViewModel: HomeViewModel
-
 
 
     private lateinit var detector: FallDetection
@@ -33,15 +33,23 @@ class WalkingMode(val activity: MainActivity, val fall: () -> (Unit)) : AsyncTas
             gyro = event.values.toVector()
         }
 
-        activity.sensorManager.registerListener(activity.accListener, activity.accelerometer, SensorManager.SENSOR_DELAY_FASTEST)
-        activity.sensorManager.registerListener(activity.gyroListener,activity.gyroscope, SensorManager.SENSOR_DELAY_FASTEST)
+        activity.sensorManager.registerListener(
+            activity.accListener,
+            activity.accelerometer,
+            SensorManager.SENSOR_DELAY_FASTEST
+        )
+        activity.sensorManager.registerListener(
+            activity.gyroListener,
+            activity.gyroscope,
+            SensorManager.SENSOR_DELAY_FASTEST
+        )
 
         detector = FallDetection(acc, gyro)
 
     }
 
     override fun doInBackground(vararg params: Double?): DoubleArray {
-        while(true) {
+        while (true) {
             try {
                 val time = System.currentTimeMillis()
                 homeViewModel.accs.value?.set(time, acc)
@@ -57,7 +65,8 @@ class WalkingMode(val activity: MainActivity, val fall: () -> (Unit)) : AsyncTas
                 }
 
                 Thread.sleep(10)
-            } catch (e: InterruptedException) {}
+            } catch (e: InterruptedException) {
+            }
         }
     }
 
@@ -73,7 +82,7 @@ class WalkingMode(val activity: MainActivity, val fall: () -> (Unit)) : AsyncTas
 
         // save accs
         val accsFile = File(activity.filesDir, "accs.txt")
-        if(!accsFile.exists()) accsFile.createNewFile()
+        if (!accsFile.exists()) accsFile.createNewFile()
         val accsWriter = KFile.append(accsFile)
         homeViewModel.accs.value?.forEach { (time, acc) ->
             accsWriter.out?.println("$time\t$acc")
@@ -81,7 +90,7 @@ class WalkingMode(val activity: MainActivity, val fall: () -> (Unit)) : AsyncTas
 
         // save gyros
         val gyrosFile = File(activity.filesDir, "gyros.txt")
-        if(!gyrosFile.exists()) gyrosFile.createNewFile()
+        if (!gyrosFile.exists()) gyrosFile.createNewFile()
         val gyrosWriter = KFile.append(gyrosFile)
         homeViewModel.gyros.value?.forEach { (time, gyro) ->
             gyrosWriter.out?.println("$time\t$gyro")
@@ -89,7 +98,7 @@ class WalkingMode(val activity: MainActivity, val fall: () -> (Unit)) : AsyncTas
 
         // save freezes
         val freezesFile = File(activity.filesDir, "freezes.txt")
-        if(!freezesFile.exists()) freezesFile.createNewFile()
+        if (!freezesFile.exists()) freezesFile.createNewFile()
         val freezesWriter = KFile.append(freezesFile)
         homeViewModel.freezes.value?.forEach { time ->
             freezesWriter.out?.println(time)

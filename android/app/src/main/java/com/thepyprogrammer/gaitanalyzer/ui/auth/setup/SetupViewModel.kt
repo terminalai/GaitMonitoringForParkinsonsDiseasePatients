@@ -1,6 +1,5 @@
 package com.thepyprogrammer.gaitanalyzer.ui.auth.setup
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.thepyprogrammer.androidlib.livedata.MutableErrorLiveData
@@ -25,10 +24,16 @@ class SetupViewModel : ViewModel() {
         val phone = phoneNumber.value
         val type = FirebaseUtil.type
 
-        error.setValue("", "${FirebaseUtil.user?.name} ${FirebaseUtil.user?.type} ${FirebaseUtil.user?.password}")
+        error.setValue(
+            "",
+            "${FirebaseUtil.user?.name} ${FirebaseUtil.user?.type} ${FirebaseUtil.user?.password}"
+        )
 
         var encryptedCode =
-            aes.encrypt("${FirebaseUtil.user?.name} ${FirebaseUtil.user?.type} ${FirebaseUtil.user?.password}", "GaitMonitoringAndAnalysisForParkinsonsDiseasePatients")
+            aes.encrypt(
+                "${FirebaseUtil.user?.name} ${FirebaseUtil.user?.type} ${FirebaseUtil.user?.password}",
+                "GaitMonitoringAndAnalysisForParkinsonsDiseasePatients"
+            )
         if (encryptedCode == null) encryptedCode = "$name$type$pw"
 
         encryptedCode.replace(Regex("[/\\\\]"), "")

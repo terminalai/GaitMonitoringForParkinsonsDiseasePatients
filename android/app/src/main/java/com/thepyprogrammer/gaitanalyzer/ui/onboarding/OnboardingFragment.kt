@@ -1,7 +1,6 @@
 package com.thepyprogrammer.gaitanalyzer.ui.onboarding
 
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -38,11 +37,11 @@ class OnboardingFragment : Fragment() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
 
-                if(position == 0) {
+                if (position == 0) {
                     binding.back.visibility = View.INVISIBLE
                 } else binding.back.visibility = View.VISIBLE
 
-                if(position == binding.viewPager.adapter?.itemCount?.minus(1)) {
+                if (position == binding.viewPager.adapter?.itemCount?.minus(1)) {
                     binding.next.visibility = View.INVISIBLE
                 } else binding.next.visibility = View.VISIBLE
 
@@ -69,7 +68,6 @@ class OnboardingFragment : Fragment() {
         }
         return true
     }
-
 
 
 }

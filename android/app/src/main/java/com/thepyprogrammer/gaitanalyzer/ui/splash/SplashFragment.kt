@@ -67,7 +67,7 @@ class SplashFragment : Fragment() {
         Handler().postDelayed({
             Navigation.findNavController(binding.splashScreenImage)
                 .navigate(
-                    if(preferences?.getBoolean("onboardingDone", true) == true)
+                    if (preferences?.getBoolean("onboardingDone", true) == true)
                         R.id.nav_onboarding
                     else
                         R.id.nav_identification

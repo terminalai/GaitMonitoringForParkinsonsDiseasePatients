@@ -10,14 +10,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.transition.TransitionInflater
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
-import com.thepyprogrammer.ktlib.io.KFile
 import com.thepyprogrammer.gaitanalyzer.ui.image.ImageClickListener
 import com.thepyprogrammer.gaitanalyzer.ui.main.MainViewModel
-import de.hdodenhof.circleimageview.CircleImageView
+import com.thepyprogrammer.ktlib.io.KFile
 import kotlinx.android.synthetic.main.fragment_profile.*
 import java.io.File
 

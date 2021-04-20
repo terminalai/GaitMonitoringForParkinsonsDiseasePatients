@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import com.thepyprogrammer.androidlib.viewpager.ViewPagerAdapter
 import com.thepyprogrammer.gaitanalyzer.R
 
-class OnboardingAdapter(fa: FragmentActivity):
+class OnboardingAdapter(fa: FragmentActivity) :
     ViewPagerAdapter(
         fa,
         mutableListOf(

@@ -1,7 +1,6 @@
 package com.thepyprogrammer.gaitanalyzer.ui.auth.setup
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +9,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.thepyprogrammer.gaitanalyzer.R
-import com.thepyprogrammer.gaitanalyzer.databinding.FragmentRegisterBinding
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentSetupBinding
 import com.thepyprogrammer.gaitanalyzer.model.account.data.Patient
 import com.thepyprogrammer.gaitanalyzer.model.account.data.User
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
-import com.thepyprogrammer.gaitanalyzer.ui.auth.AuthViewModel
 
 class SetupFragment : Fragment() {
 
@@ -74,7 +71,7 @@ class SetupFragment : Fragment() {
                     (activity as MainActivity)
                         .navController
                         .navigate(
-                            if(FirebaseUtil.user is Patient)
+                            if (FirebaseUtil.user is Patient)
                                 R.id.nav_setup
                             else
                                 R.id.nav_main

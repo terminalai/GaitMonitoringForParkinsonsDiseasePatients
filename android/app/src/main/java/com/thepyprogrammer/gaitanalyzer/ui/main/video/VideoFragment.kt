@@ -12,13 +12,13 @@ import android.view.ViewGroup
 import android.widget.MediaController
 import androidx.fragment.app.Fragment
 import androidx.transition.TransitionInflater
-import com.thepyprogrammer.gaitanalyzer.R
-import com.thepyprogrammer.gaitanalyzer.databinding.FragmentVideoBinding
-import com.thepyprogrammer.gaitanalyzer.model.utils.getTTS
 import com.thepyprogrammer.androidlib.io.getUriFromRaw
 import com.thepyprogrammer.androidlib.web.GitHubWebViewClient
 import com.thepyprogrammer.androidlib.web.WebAppInterface
 import com.thepyprogrammer.androidlib.web.WebBrowserClient
+import com.thepyprogrammer.gaitanalyzer.R
+import com.thepyprogrammer.gaitanalyzer.databinding.FragmentVideoBinding
+import com.thepyprogrammer.gaitanalyzer.model.utils.getTTS
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.gaitanalyzer.ui.main.MainFragment
 import java.util.*
@@ -105,15 +105,19 @@ class VideoFragment : Fragment() {
 
         if (isPictureinPictureMode) {
             requireActivity().actionBar?.hide()
-            ((activity as MainActivity).currentFragment as MainFragment).binding.toolbar.visibility = View.GONE
-            ((activity as MainActivity).currentFragment as MainFragment).binding.bottomAppBar.visibility = View.GONE
+            ((activity as MainActivity).currentFragment as MainFragment).binding.toolbar.visibility =
+                View.GONE
+            ((activity as MainActivity).currentFragment as MainFragment).binding.bottomAppBar.visibility =
+                View.GONE
             binding.buttonLayout.visibility = View.GONE
             binding.scrollingView.visibility = View.GONE
             binding.bottom.visibility = View.GONE
         } else {
             requireActivity().actionBar?.show()
-            ((activity as MainActivity).currentFragment as MainFragment).binding.toolbar.visibility = View.VISIBLE
-            ((activity as MainActivity).currentFragment as MainFragment).binding.bottomAppBar.visibility = View.VISIBLE
+            ((activity as MainActivity).currentFragment as MainFragment).binding.toolbar.visibility =
+                View.VISIBLE
+            ((activity as MainActivity).currentFragment as MainFragment).binding.bottomAppBar.visibility =
+                View.VISIBLE
             binding.buttonLayout.visibility = View.VISIBLE
             binding.scrollingView.visibility = View.VISIBLE
             binding.bottom.visibility = View.VISIBLE

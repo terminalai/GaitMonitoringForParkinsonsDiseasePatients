@@ -22,8 +22,6 @@ import androidx.transition.TransitionInflater
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentMainBinding
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
-import com.thepyprogrammer.ktlib.io.KFile
-import com.thepyprogrammer.ktlib.string.SuperStringBuilder
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.gaitanalyzer.ui.image.ImageClickListener
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeFragment
@@ -31,6 +29,8 @@ import com.thepyprogrammer.gaitanalyzer.ui.main.information.InformationFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.profile.ProfileFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.settings.SettingsFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.video.VideoFragment
+import com.thepyprogrammer.ktlib.io.KFile
+import com.thepyprogrammer.ktlib.string.SuperStringBuilder
 import de.hdodenhof.circleimageview.CircleImageView
 import java.io.File
 import java.io.PrintWriter
@@ -85,7 +85,6 @@ class MainFragment : Fragment() {
         pw.close()
 
 
-
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
@@ -113,9 +112,9 @@ class MainFragment : Fragment() {
 
         binding.navView.getHeaderView(0).apply {
             nameView = findViewById(R.id.nameView)
-                imageNavMenuView = findViewById<CircleImageView>(R.id.imageView).also {
-                    it.setOnClickListener(ImageClickListener(requireActivity()))
-                }
+            imageNavMenuView = findViewById<CircleImageView>(R.id.imageView).also {
+                it.setOnClickListener(ImageClickListener(requireActivity()))
+            }
         }
 
         /**View Model**/

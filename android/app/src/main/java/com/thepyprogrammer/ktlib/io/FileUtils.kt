@@ -2,7 +2,6 @@ package com.thepyprogrammer.ktlib.io
 
 import android.net.Uri
 import java.io.*
-import java.io.File
 import java.nio.ByteBuffer
 import java.nio.channels.FileChannel
 import java.nio.charset.StandardCharsets

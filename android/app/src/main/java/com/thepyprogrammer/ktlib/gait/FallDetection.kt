@@ -46,7 +46,6 @@ class FallDetection(private var acc: Vector, private var gyro: Vector = Vector()
         }
 
 
-
     // Angle calculate using the gyro only
     private var gyroAngle: Vector = Vector(roll, pitch)
 
@@ -72,7 +71,6 @@ class FallDetection(private var acc: Vector, private var gyro: Vector = Vector()
     private val kalmanY = Kalman(pitch)
 
 
-
     fun feed(acc: Vector, gyro: Vector, newTime: Long = System.currentTimeMillis()): String {
         this.acc = acc
         this.gyro = gyro
@@ -82,18 +80,21 @@ class FallDetection(private var acc: Vector, private var gyro: Vector = Vector()
 
 
         // This fixes the transition problem when the accelerometer angle jumps between -180 and 180 degrees
-        if((pitch < -90 && kalAngle.y > 90) || (pitch > 90 && kalAngle.y < -90)) {
+        if ((pitch < -90 && kalAngle.y > 90) || (pitch > 90 && kalAngle.y < -90)) {
             kalmanY.angle = pitch
             compAngle.y = pitch
             kalAngle.y = pitch
             gyroAngle.y = pitch
         } else
-            kalAngle.y = kalmanY.getAngle(pitch, gyroRate.y, dt)  // Calculate the angle using a Kalman filter
-
+            kalAngle.y = kalmanY.getAngle(
+                pitch,
+                gyroRate.y,
+                dt
+            )  // Calculate the angle using a Kalman filter
 
 
         // Invert rate, so it fits the restriced accelerometer reading
-        if(abs(kalAngle.y) > 90) gyroRate.x = -gyroRate.x
+        if (abs(kalAngle.y) > 90) gyroRate.x = -gyroRate.x
 
 
         // Calculate the angle using a Kalman filter
@@ -111,11 +112,11 @@ class FallDetection(private var acc: Vector, private var gyro: Vector = Vector()
 
 
         // Reset the gyro angle when it has drifted too much
-        if(gyroAngle.x < -180 || gyroAngle.x > 180) gyroAngle.x = kalAngle.x
-        if(gyroAngle.y < -180 || gyroAngle.y > 180) gyroAngle.y = kalAngle.y
+        if (gyroAngle.x < -180 || gyroAngle.x > 180) gyroAngle.x = kalAngle.x
+        if (gyroAngle.y < -180 || gyroAngle.y > 180) gyroAngle.y = kalAngle.y
 
         // Predict Fall
-        if(kalAngle.x > 135 || kalAngle.x < 35 || kalAngle.y < -50 || kalAngle.y > 50)
+        if (kalAngle.x > 135 || kalAngle.x < 35 || kalAngle.y < -50 || kalAngle.y > 50)
             fallCount++
         else fallCount = 0
 
@@ -124,11 +125,10 @@ class FallDetection(private var acc: Vector, private var gyro: Vector = Vector()
             fogCount++
         else fogCount = 0
 
-        if(fallCount == 50) return "FALL"
-        if(fogCount == 50) return "FOG"
+        if (fallCount == 50) return "FALL"
+        if (fogCount == 50) return "FOG"
         return ""
     }
-
 
 
 }

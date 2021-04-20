@@ -7,7 +7,8 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.thepyprogrammer.gaitanalyzer.R
 
-open class FreezeViewHolder(itemView: View, completeViewModel: CompleteViewModel) : RecyclerView.ViewHolder(itemView) {
+open class FreezeViewHolder(itemView: View, completeViewModel: CompleteViewModel) :
+    RecyclerView.ViewHolder(itemView) {
     var itemDate: TextView = itemView.findViewById(R.id.dateView)
     var itemFreeze: TextView = itemView.findViewById(R.id.freezeView)
     var context: Context = itemView.context

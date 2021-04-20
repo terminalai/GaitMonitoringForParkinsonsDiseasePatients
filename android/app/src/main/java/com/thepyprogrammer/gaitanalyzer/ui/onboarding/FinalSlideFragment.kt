@@ -7,13 +7,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentFinalSlideBinding
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 
 
-class FinalSlideFragment: SlideFragment() {
+class FinalSlideFragment : SlideFragment() {
     private lateinit var binding: FragmentFinalSlideBinding
 
     override fun onCreateView(

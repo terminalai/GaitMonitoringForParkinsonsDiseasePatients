@@ -12,15 +12,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.transition.TransitionInflater
-import com.github.mikephil.charting.components.AxisBase
-import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.components.YAxis.AxisDependency
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.github.mikephil.charting.utils.ColorTemplate
@@ -31,9 +27,6 @@ import com.thepyprogrammer.gaitanalyzer.model.account.data.Patient
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.gaitanalyzer.ui.main.MainViewModel
-import java.text.SimpleDateFormat
-import java.util.*
-import java.util.concurrent.TimeUnit
 
 
 class HomeFragment : Fragment(), OnChartValueSelectedListener {
@@ -60,18 +53,18 @@ class HomeFragment : Fragment(), OnChartValueSelectedListener {
         mainViewModel =
             ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
-        if(homeViewModel.isWalkMode.value == true) {
+        if (homeViewModel.isWalkMode.value == true) {
             binding.toggleWalk.text = getString(R.string.end_walk)
             setUpChart()
             feedMultiple()
         } else binding.accChart.visibility = View.INVISIBLE
 
-        if(FirebaseUtil.user is Caregiver) binding.patientContainer.visibility = View.GONE
+        if (FirebaseUtil.user is Caregiver) binding.patientContainer.visibility = View.GONE
 
         binding.toggleWalk.setOnClickListener {
-            if(homeViewModel.isWalkMode.value == false) {
+            if (homeViewModel.isWalkMode.value == false) {
                 homeViewModel.task.value = WalkingMode(activity as MainActivity) {
-                    if(activity != null) FallAlert(activity as Activity).show()
+                    if (activity != null) FallAlert(activity as Activity).show()
                     val intent = Intent(Intent.ACTION_CALL)
                     intent.data = Uri.parse("tel:${(FirebaseUtil.user as Patient).phone}")
                     context?.startActivity(intent)
@@ -90,9 +83,6 @@ class HomeFragment : Fragment(), OnChartValueSelectedListener {
                 thread?.interrupt()
                 homeViewModel.isWalkMode.value = false
             }
-
-
-
 
 
         }
@@ -140,16 +130,22 @@ class HomeFragment : Fragment(), OnChartValueSelectedListener {
 
 
         data.addEntry(homeViewModel.task.value?.acc?.x?.toFloat()?.let {
-            Entry(set1.entryCount.toFloat(),
-                it, 0)
+            Entry(
+                set1.entryCount.toFloat(),
+                it, 0
+            )
         }, 0)
         data.addEntry(homeViewModel.task.value?.acc?.y?.toFloat()?.let {
-            Entry(set2.entryCount.toFloat(),
-                it, 0)
+            Entry(
+                set2.entryCount.toFloat(),
+                it, 0
+            )
         }, 1)
         data.addEntry(homeViewModel.task.value?.acc?.z?.toFloat()?.let {
-            Entry(set3.entryCount.toFloat(),
-                it, 0)
+            Entry(
+                set3.entryCount.toFloat(),
+                it, 0
+            )
         }, 2)
         data.notifyDataChanged()
 
@@ -213,55 +209,55 @@ class HomeFragment : Fragment(), OnChartValueSelectedListener {
 
     private fun setUpChart() {
         with(binding.accChart) {
-        visibility = View.VISIBLE
-        description.isEnabled = true
-        setTouchEnabled(true)
-        dragDecelerationFrictionCoef = 0.9f
+            visibility = View.VISIBLE
+            description.isEnabled = true
+            setTouchEnabled(true)
+            dragDecelerationFrictionCoef = 0.9f
 
 
-        isDragEnabled = true
-        setScaleEnabled(true)
-        setDrawGridBackground(false)
-        isHighlightPerDragEnabled = true
+            isDragEnabled = true
+            setScaleEnabled(true)
+            setDrawGridBackground(false)
+            isHighlightPerDragEnabled = true
 
-        data = LineData()
-        data.setValueTextColor(Color.WHITE)
-
-
-        setBackgroundColor(android.graphics.Color.WHITE)
-
-        setViewPortOffsets(0f, 0f, 0f, 0f)
-
-        legend.isEnabled = false
+            data = LineData()
+            data.setValueTextColor(Color.WHITE)
 
 
-        xAxis.apply {
-            position = XAxis.XAxisPosition.TOP_INSIDE
-            textSize = 10f
-            textColor = Color.WHITE
-            setDrawAxisLine(false)
-            setDrawGridLines(true)
-            textColor = Color.rgb(255, 192, 56)
-            setCenterAxisLabels(true)
-            granularity = 1f // one hour
+            setBackgroundColor(android.graphics.Color.WHITE)
+
+            setViewPortOffsets(0f, 0f, 0f, 0f)
+
+            legend.isEnabled = false
+
+
+            xAxis.apply {
+                position = XAxis.XAxisPosition.TOP_INSIDE
+                textSize = 10f
+                textColor = Color.WHITE
+                setDrawAxisLine(false)
+                setDrawGridLines(true)
+                textColor = Color.rgb(255, 192, 56)
+                setCenterAxisLabels(true)
+                granularity = 1f // one hour
+            }
+
+            axisLeft.apply {
+                setPosition(com.github.mikephil.charting.components.YAxis.YAxisLabelPosition.INSIDE_CHART)
+                textColor = com.github.mikephil.charting.utils.ColorTemplate.getHoloBlue()
+                setDrawGridLines(true)
+                isGranularityEnabled = true
+                axisMinimum = -170f
+                axisMaximum = 170f
+                yOffset = -9f
+                textColor = android.graphics.Color.rgb(255, 192, 56)
+
+
+            }
+
+            axisRight.isEnabled = false
+
         }
-
-        axisLeft.apply {
-            setPosition(com.github.mikephil.charting.components.YAxis.YAxisLabelPosition.INSIDE_CHART)
-            textColor = com.github.mikephil.charting.utils.ColorTemplate.getHoloBlue()
-            setDrawGridLines(true)
-            isGranularityEnabled = true
-            axisMinimum = -170f
-            axisMaximum = 170f
-            yOffset = -9f
-            textColor = android.graphics.Color.rgb(255, 192, 56)
-
-
-        }
-
-        axisRight.isEnabled = false
-
-    }
 
     }
 

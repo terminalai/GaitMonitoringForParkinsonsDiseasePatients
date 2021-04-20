@@ -9,7 +9,7 @@ class Kalman(var angle: Double = 0.0) {
     var Q_bias = 0.003
     var R_measure = 0.03
 
-    var bias =  0.0 // Reset bias
+    var bias = 0.0 // Reset bias
 
     // Since we assume that the bias is 0 and we know the starting angle (use setAngle), the error covariance matrix is set like so - see: http://en.wikipedia.org/wiki/Kalman_filter#Example_application.2C_technical
     val P = zeros(2, 2)
@@ -29,10 +29,10 @@ class Kalman(var angle: Double = 0.0) {
 
         // Update estimation error covariance - Project the error covariance ahead
         /* Step 2 */
-        P[0][0] += dt * (dt*P[1][1] - P[0][1] - P[1][0] + Q_angle);
-        P[0][1] -= dt * P[1][1];
-        P[1][0] -= dt * P[1][1];
-        P[1][1] += Q_bias * dt;
+        P[0][0] += dt * (dt * P[1][1] - P[0][1] - P[1][0] + Q_angle)
+        P[0][1] -= dt * P[1][1]
+        P[1][0] -= dt * P[1][1]
+        P[1][1] += Q_bias * dt
 
         // Discrete Kalman filter measurement update equations - Measurement Update ("Correct")
         // Calculate Kalman gain - Compute the Kalman gain
@@ -40,29 +40,28 @@ class Kalman(var angle: Double = 0.0) {
         val S = P[0][0] + R_measure // Estimate error
         /* Step 5 */
         val K = DoubleArray(2) // Kalman gain - This is a 2x1 vector
-        K[0] = P[0][0] / S;
-        K[1] = P[1][0] / S;
+        K[0] = P[0][0] / S
+        K[1] = P[1][0] / S
 
         // Calculate angle and bias - Update estimate with measurement zk (newAngle)
         /* Step 3 */
         val y = newAngle - angle // Angle difference
         /* Step 6 */
-        angle += K[0] * y;
-        bias += K[1] * y;
+        angle += K[0] * y
+        bias += K[1] * y
 
         // Calculate estimation error covariance - Update the error covariance
         /* Step 7 */
         val P00_temp = P[0][0]
         val P01_temp = P[0][1]
 
-        P[0][0] -= K[0] * P00_temp;
-        P[0][1] -= K[0] * P01_temp;
-        P[1][0] -= K[1] * P00_temp;
-        P[1][1] -= K[1] * P01_temp;
+        P[0][0] -= K[0] * P00_temp
+        P[0][1] -= K[0] * P01_temp
+        P[1][0] -= K[1] * P00_temp
+        P[1][1] -= K[1] * P01_temp
 
-        angle;
+        angle
     }
-
 
 
 }
