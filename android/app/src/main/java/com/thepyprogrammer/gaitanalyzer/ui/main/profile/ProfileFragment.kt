@@ -74,7 +74,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun readData() =
-        if (imageInfoFile?.exists() == true) imageInfoFile!!.read() else ""
+        if (imageInfoFile.exists()) imageInfoFile.read() else ""
 
     private fun loadImage() {
         val string: String = readData()

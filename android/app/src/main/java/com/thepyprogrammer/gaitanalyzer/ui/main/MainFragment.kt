@@ -25,6 +25,7 @@ import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
 import com.thepyprogrammer.ktlib.io.KFile
 import com.thepyprogrammer.ktlib.string.SuperStringBuilder
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
+import com.thepyprogrammer.gaitanalyzer.ui.image.ImageClickListener
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.information.InformationFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.profile.ProfileFragment
@@ -48,7 +49,7 @@ class MainFragment : Fragment() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
 
-    private lateinit var binding: FragmentMainBinding
+    lateinit var binding: FragmentMainBinding
     // This property is only valid between onCreateView and
     // onDestroyView.
 
@@ -112,6 +113,9 @@ class MainFragment : Fragment() {
 
         binding.navView.getHeaderView(0).apply {
             nameView = findViewById(R.id.nameView)
+                imageNavMenuView = findViewById<CircleImageView>(R.id.imageView).also {
+                    it.setOnClickListener(ImageClickListener(requireActivity()))
+                }
         }
 
         /**View Model**/

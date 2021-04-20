@@ -1,4 +1,4 @@
-package com.thepyprogrammer.gaitanalyzer.model.walk.fall
+package com.thepyprogrammer.ktlib.gait
 
 import zeros
 

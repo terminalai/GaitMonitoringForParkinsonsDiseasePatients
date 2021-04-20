@@ -4,15 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentFreezeDataBinding
+import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeViewModel
 
 class FreezeDataFragment : Fragment() {
     private lateinit var binding: FragmentFreezeDataBinding
     private lateinit var layoutManager: RecyclerView.LayoutManager
     var adapter: RecyclerView.Adapter<*>? = null
+    lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,6 +24,8 @@ class FreezeDataFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentFreezeDataBinding.inflate(inflater, container, false)
+        homeViewModel =
+            ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
         return binding.root
     }
 
@@ -28,7 +34,7 @@ class FreezeDataFragment : Fragment() {
         binding.recyclerView.setHasFixedSize(true)
         layoutManager = LinearLayoutManager(view.context)
         binding.recyclerView.layoutManager = layoutManager
-        adapter = context?.let { FreezeDataAdapter(it) }
+        adapter = FreezeDataAdapter((activity as AppCompatActivity), homeViewModel)
         binding.recyclerView.adapter = adapter
     }
 }

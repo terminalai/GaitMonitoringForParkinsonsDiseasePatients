@@ -17,7 +17,7 @@
             app:destination="@id/nav_main" />
         <action
             android:id="@+id/action_nav_auth_to_setupFragment"
-            app:destination="@id/setupFragment" />
+            app:destination="@id/nav_setup" />
         <action
             android:id="@+id/action_nav_auth_to_nav_main"
             app:destination="@id/nav_main" />

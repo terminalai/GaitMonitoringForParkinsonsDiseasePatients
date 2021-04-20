@@ -7,12 +7,14 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.ktlib.string.SuperStringBuilder
 import java.io.File
 import java.io.IOException
@@ -44,7 +46,7 @@ class ImageDetailsActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
-        inflater.inflate(R.menu.overflow_menu, menu)
+        inflater.inflate(R.menu.image_bar_menu, menu)
         return true
     }
 
@@ -137,5 +139,30 @@ class ImageDetailsActivity : AppCompatActivity() {
         }
 
     }
+
+    override fun onOptionsItemSelected(item: MenuItem) =
+        when (item.itemId) {
+            android.R.id.home -> {
+                // This ID represents the Home or Up button. In the case of this
+                // activity, the Up button is shown. For
+                // more details, see the Navigation pattern on Android Design:
+                //
+                // http://developer.android.com/design/patterns/navigation.html#up-vs-back
+                val toast = Toast.makeText(
+                    applicationContext,
+                    "Moving back to Main Page",
+                    Toast.LENGTH_LONG
+                )
+                toast.show()
+                navigateUpTo(Intent(this, MainActivity::class.java))
+                true
+            }
+            R.id.action_edit -> {
+                EditImage(this, this)
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
 
 }

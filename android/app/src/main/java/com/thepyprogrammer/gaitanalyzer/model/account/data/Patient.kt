@@ -6,6 +6,6 @@ data class Patient(
     var phone: String = ""
 ) : User(name, password, "patient") {
     override fun toString(): String {
-        return "$name\n$password\n$type"
+        return "$name\n$password\n$type\n$phone"
     }
 }

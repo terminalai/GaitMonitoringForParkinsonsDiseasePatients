@@ -1,51 +1,78 @@
 package com.thepyprogrammer.gaitanalyzer.ui.main.freeze.freezeData
 
+import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.thepyprogrammer.gaitanalyzer.R
+import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
+import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeViewModel
+import com.thepyprogrammer.ktlib.Util
+import java.time.*
 
-class FreezeDataAdapter(private val context: Context) :
-    RecyclerView.Adapter<FreezeDataAdapter.ViewHolder>() {
+class FreezeDataAdapter(private val activity: AppCompatActivity, private val homeViewModel: HomeViewModel) :
+    RecyclerView.Adapter<FreezeDataAdapter.FreezeDataViewHolder>() {
     private val completeViewModel: CompleteViewModel =
-        ViewModelProvider((context as FragmentActivity)).get(CompleteViewModel::class.java)
-    private val titles = arrayOf<String>()
+        ViewModelProvider((activity as FragmentActivity)).get(CompleteViewModel::class.java)
 
-    private val details = arrayOf<String>()
+    val dates = mutableListOf<String>()
+    val freezes = mutableListOf<String>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.card_layout, parent, false)
-        return ViewHolder(v)
+    private fun setData(freezesData: MutableList<Long>?) {
+        val map = hashMapOf<String, Int?>()
+        freezesData?.forEach {
+            val date = LocalDateTime.ofInstant(Instant.ofEpochSecond((it / (1000 * 3600 * 24)) * (1000 * 3600 * 24)), ZoneId.systemDefault()).toLocalDate()
+            val dateString = Util.format.format(date)
+            map[dateString] =
+                if(map.containsKey(dateString))
+                    map[dateString]?.plus(1)
+                else 1
+        }
+        map.toSortedMap()
+
+        map.forEach { (date, freeze) ->
+            dates.add(date)
+            freezes.add(freeze.toString())
+        }
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemTitle.text = titles[position]
-        holder.itemDetails.text = details[position]
+    init {
+        setData(homeViewModel.freezes.value)
+
+        val freezeObserver = Observer<MutableList<Long>> { freezes ->
+            setData(freezes)
+            notifyDataSetChanged()
+        }
+
+        homeViewModel.freezes.observe(
+            activity, freezeObserver
+        )
+
+
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FreezeDataViewHolder {
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_freeze, parent, false)
+        return FreezeDataViewHolder(v)
+    }
+
+    override fun onBindViewHolder(holder: FreezeDataViewHolder, position: Int) {
+        holder.itemDate.text = dates[position]
+        holder.itemFreeze.text = freezes[position]
     }
 
     override fun getItemCount(): Int {
-        return titles.size
+        return dates.size
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var itemTitle: TextView = itemView.findViewById(R.id.item_title)
-        var itemDetails: TextView = itemView.findViewById(R.id.item_detail)
-        var context: Context = itemView.context
-
-        init {
-            itemView.setOnClickListener {
-                val navController = Navigation.findNavController(it)
-                val position = adapterPosition
-                completeViewModel.adapterPosition.value = position
-                navController.navigate(R.id.action_freezeFragment_to_selectedFragment)
-            }
-        }
-    }
+    inner class FreezeDataViewHolder(itemView: View) : FreezeViewHolder(itemView, completeViewModel)
 
 }

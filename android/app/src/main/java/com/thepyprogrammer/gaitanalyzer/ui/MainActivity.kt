@@ -19,6 +19,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.ActivityMainBinding
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.ui.main.home.WalkingMode
 import com.thepyprogrammer.gaitanalyzer.ui.onboarding.OnboardingFragment
 import com.thepyprogrammer.ktlib.array.Vector
 import java.io.File
@@ -39,11 +40,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var accListener: SensorEventListener
     lateinit var gyroListener: SensorEventListener
 
-    val accs = hashMapOf<Long, Vector>()
-    val gyros = hashMapOf<Long, Vector>()
-
-    val freezes = mutableListOf<Long>()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private val currentFragment: Fragment
+    val currentFragment: Fragment
         get() = (
                 supportFragmentManager
                     .findFragmentById(R.id.parent_nav_host_fragment)?.childFragmentManager?.fragments?.get(
@@ -126,7 +122,6 @@ class MainActivity : AppCompatActivity() {
 
     fun setScreenOff() {
         window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-
         wakeLock.release()
     }
 

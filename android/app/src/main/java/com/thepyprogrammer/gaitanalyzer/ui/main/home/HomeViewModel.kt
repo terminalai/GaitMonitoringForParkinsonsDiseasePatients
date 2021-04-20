@@ -1,15 +1,22 @@
 package com.thepyprogrammer.gaitanalyzer.ui.main.home
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.thepyprogrammer.ktlib.array.Vector
 
 class HomeViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
+    val isWalkMode = MutableLiveData(false)
 
     val name = MutableLiveData("User")
+
+    val accs = MutableLiveData(hashMapOf<Long, Vector>())
+    val gyros = MutableLiveData(hashMapOf<Long, Vector>())
+    val freezes = MutableLiveData(mutableListOf<Long>())
+    val task = MutableLiveData<WalkingMode>(null)
+
+
+    override fun onCleared() {
+        super.onCleared()
+
+    }
 }

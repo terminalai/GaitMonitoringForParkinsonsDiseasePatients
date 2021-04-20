@@ -206,4 +206,7 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="menu_freeze">Freeze</string>
+
+    <string name="start_walk">Start Walk Mode</string>
+    <string name="end_walk">End Walk Mode</string>
 </resources>

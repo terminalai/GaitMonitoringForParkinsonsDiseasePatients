@@ -19,6 +19,8 @@ import com.thepyprogrammer.androidlib.io.getUriFromRaw
 import com.thepyprogrammer.androidlib.web.GitHubWebViewClient
 import com.thepyprogrammer.androidlib.web.WebAppInterface
 import com.thepyprogrammer.androidlib.web.WebBrowserClient
+import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
+import com.thepyprogrammer.gaitanalyzer.ui.main.MainFragment
 import java.util.*
 
 
@@ -103,10 +105,14 @@ class VideoFragment : Fragment() {
 
         if (isPictureinPictureMode) {
             requireActivity().actionBar?.hide()
+            ((activity as MainActivity).currentFragment as MainFragment).binding.toolbar.visibility = View.GONE
+            ((activity as MainActivity).currentFragment as MainFragment).binding.bottomAppBar.visibility = View.GONE
             binding.buttonLayout.visibility = View.GONE
             binding.scrollingView.visibility = View.GONE
         } else {
             requireActivity().actionBar?.show()
+            ((activity as MainActivity).currentFragment as MainFragment).binding.toolbar.visibility = View.VISIBLE
+            ((activity as MainActivity).currentFragment as MainFragment).binding.bottomAppBar.visibility = View.VISIBLE
             binding.buttonLayout.visibility = View.VISIBLE
             binding.scrollingView.visibility = View.VISIBLE
         }
@@ -133,8 +139,6 @@ class VideoFragment : Fragment() {
                     "An algorithm was then developed to identify the most suitable parameter for the classification of FOG in PD patients. " +
                     "Multiple machine learning models were then compared based on acceleration data from accelerometers placed on the thigh. " +
                     "After analyzing, the most suitable parameters for classification are freezeY and freezeZ based on the acceleration data in the public datasets and the best model is the Linear Kernel model in terms of sensitivity. " +
-                    "Furthermore, a prototype has been created using an Arduino Nano 33 BLE board. " +
-                    "It can be implemented to test the performance of the identified most suitable parameters. " +
                     "This system has now been connected to this Android Application such that notifications can be sent to the caregiver’s phone to alert them to a fall."
     }
 }

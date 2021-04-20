@@ -1,4 +1,4 @@
-package com.thepyprogrammer.gaitanalyzer.model.walk.fall
+package com.thepyprogrammer.ktlib.gait
 
 import com.thepyprogrammer.ktlib.array.Vector
 import kotlin.math.abs
@@ -22,57 +22,48 @@ class FallDetection(private var acc: Vector, private var gyro: Vector = Vector()
     // atan2 outputs the value of -π to π (radians) - see http://en.wikipedia.org/wiki/Atan2
     // It is then converted from radians to degrees
 
-    private var roll = Math.toDegrees(
+    private var roll: Double = Math.toDegrees(
         atan(
             acc.y / sqrt(acc.x * acc.x + acc.z * acc.z)
         )
     )
         get() = run {
-            roll = Math.toDegrees(
+            val newRoll = Math.toDegrees(
                 atan(
                     acc.y / sqrt(acc.x * acc.x + acc.z * acc.z)
                 )
             )
-            roll
+            roll = newRoll
+            newRoll
         }
 
 
     private var pitch = Math.toDegrees(atan2(-acc.x, acc.z))
         get() = run {
-            pitch = Math.toDegrees(atan2(-acc.x, acc.z))
-            pitch
+            val newPitch = Math.toDegrees(atan2(-acc.x, acc.z))
+            pitch = newPitch
+            newPitch
         }
 
 
 
     // Angle calculate using the gyro only
     private var gyroAngle: Vector = Vector(roll, pitch)
-        get() = run {
-            gyroAngle = Vector(roll, pitch)
-            gyroAngle
-        }
 
 
     // Calculated angle using a complementary filter
     private var compAngle: Vector = Vector(roll, pitch)
-        get() = run {
-            compAngle = Vector(roll, pitch)
-            compAngle
-        }
 
 
     // Calculated angle using a Kalman filter
     private var kalAngle: Vector = Vector(0.0, 0.0)
-        get() = run {
-            compAngle = Vector(roll, pitch)
-            compAngle
-        }
 
 
     private var gyroRate = Vector(gyro.x / 131.0, gyro.y / 131.0)
         get() = run {
-            gyroRate = Vector(gyro.x / 131.0, gyro.y / 131.0)  // Convert to deg/s
-            gyroRate
+            val newGyroRate = Vector(gyro.x / 131.0, gyro.y / 131.0)  // Convert to deg/s
+            gyroRate = newGyroRate
+            newGyroRate
         }
 
 
