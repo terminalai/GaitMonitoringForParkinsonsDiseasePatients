@@ -13,7 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.thepyprogrammer.gaitanalyzer.R
-import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.ktlib.string.SuperStringBuilder
 import java.io.File

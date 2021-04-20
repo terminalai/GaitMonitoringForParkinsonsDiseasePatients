@@ -1,7 +1,7 @@
 package com.thepyprogrammer.gaitanalyzer
 
-import com.thepyprogrammer.gaitanalyzer.model.signalProcessing.Complex
-import com.thepyprogrammer.gaitanalyzer.model.signalProcessing.FFT
+import com.thepyprogrammer.ktlib.signalProcessing.Complex
+import com.thepyprogrammer.ktlib.signalProcessing.FFT
 import org.junit.Assert
 import org.junit.Test
 import kotlin.math.sqrt

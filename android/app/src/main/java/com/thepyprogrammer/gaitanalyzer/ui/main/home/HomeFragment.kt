@@ -22,9 +22,9 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentHomeBinding
-import com.thepyprogrammer.gaitanalyzer.model.account.data.Caregiver
-import com.thepyprogrammer.gaitanalyzer.model.account.data.Patient
-import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.model.account.Caregiver
+import com.thepyprogrammer.gaitanalyzer.model.account.Patient
+import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.gaitanalyzer.ui.main.MainViewModel
 

@@ -2,7 +2,6 @@ package com.thepyprogrammer.gaitanalyzer.ui.main.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.thepyprogrammer.ktlib.Util
 import com.thepyprogrammer.ktlib.array.Vector
 import com.thepyprogrammer.ktlib.io.KFile
 import java.io.File
@@ -53,6 +52,7 @@ class HomeViewModel : ViewModel() {
         super.onCleared()
 
         save()
+
 
     }
 }

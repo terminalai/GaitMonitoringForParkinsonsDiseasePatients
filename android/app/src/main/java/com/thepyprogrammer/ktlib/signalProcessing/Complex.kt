@@ -1,4 +1,4 @@
-package com.thepyprogrammer.gaitanalyzer.model.signalProcessing
+package com.thepyprogrammer.ktlib.signalProcessing
 
 import kotlin.math.*
 

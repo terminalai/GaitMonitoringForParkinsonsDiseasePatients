@@ -1,7 +1,7 @@
 package com.thepyprogrammer.gaitanalyzer
 
-import com.thepyprogrammer.gaitanalyzer.model.signalProcessing.Complex
-import com.thepyprogrammer.gaitanalyzer.model.signalProcessing.FFT
+import com.thepyprogrammer.ktlib.signalProcessing.Complex
+import com.thepyprogrammer.ktlib.signalProcessing.FFT
 import kotlin.math.sqrt
 
 val arr = arrayOf(Complex(0.0), Complex(0.5), Complex(sqrt(3.0)/2), Complex(1.0), Complex(sqrt(3.0)/2), Complex(0.5), Complex(.0), Complex(-0.5)) // y = sin(pi*t/3)

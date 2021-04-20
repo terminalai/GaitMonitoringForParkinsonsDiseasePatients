@@ -1,4 +1,4 @@
-package com.thepyprogrammer.gaitanalyzer.model.bluetooth
+package com.thepyprogrammer.androidlib.bluetooth
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothSocket

@@ -1,4 +1,4 @@
-package com.thepyprogrammer.gaitanalyzer.model.account.data
+package com.thepyprogrammer.gaitanalyzer.model.account
 
 data class Caregiver(
     override val name: String,

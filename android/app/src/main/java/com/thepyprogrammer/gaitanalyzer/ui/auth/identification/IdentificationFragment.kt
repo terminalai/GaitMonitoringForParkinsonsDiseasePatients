@@ -9,7 +9,7 @@ import androidx.navigation.Navigation
 import androidx.transition.TransitionInflater
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentIdentificationBinding
-import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
 
 class IdentificationFragment : Fragment() {
 

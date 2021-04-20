@@ -1,4 +1,4 @@
-package com.thepyprogrammer.gaitanalyzer.model.bluetooth
+package com.thepyprogrammer.androidlib.bluetooth
 
 class RemoteControl(private val bleController: BLEController) {
     private fun createControlWord(type: Byte, vararg args: Byte): ByteArray {

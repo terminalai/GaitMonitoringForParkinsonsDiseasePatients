@@ -54,38 +54,8 @@ class FreezesFragment : Fragment() {
         temp.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val dateNow = LocalDate.of(year, month + 1, dayOfMonth)
             // For some reason month ranges from 0 to 11
+            dateChange(dateNow)
 
-            temp.barChart.apply {
-                resetChart(this)
-                val data = BarData()
-                val points = mutableListOf<BarEntry>()
-
-                val filteredDateData = dateData.filter {
-                    it.onDate(dateNow)
-                }
-
-                for (hour in 0..24) {
-                    val freezesNow = filteredDateData.filter {
-                        it.atHour(hour)
-                    }.size.toFloat()
-                    points.add(
-                        BarEntry(
-                            hour.toFloat(),
-                            freezesNow
-                        )
-                    )
-                }
-
-                data.addDataSet(
-                    BarDataSet(points, "Freeze Events").also {
-                        it.color = R.color.primary
-                    }
-                )
-                animateY(500)
-
-                visibility = View.VISIBLE
-                this.data = data
-            }
         }
 
         with(temp.barChart) {
@@ -114,9 +84,44 @@ class FreezesFragment : Fragment() {
             description.text = ""
 
             visibility = View.GONE
+            dateChange(LocalDate.now())
         }
 
         return temp.root
+    }
+
+    private fun dateChange(dateNow: LocalDate) {
+        temp.barChart.apply {
+            resetChart(this)
+            val data = BarData()
+            val points = mutableListOf<BarEntry>()
+
+            val filteredDateData = dateData.filter {
+                it.onDate(dateNow)
+            }
+
+            for (hour in 0..24) {
+                val freezesNow = filteredDateData.filter {
+                    it.atHour(hour)
+                }.size.toFloat()
+                points.add(
+                    BarEntry(
+                        hour.toFloat(),
+                        freezesNow
+                    )
+                )
+            }
+
+            data.addDataSet(
+                BarDataSet(points, "Freeze Events").also {
+                    it.color = R.color.primary
+                }
+            )
+            animateY(500)
+
+            visibility = View.VISIBLE
+            this.data = data
+        }
     }
 
     private fun resetChart(barChart: BarChart) {

@@ -1,4 +1,4 @@
-package com.thepyprogrammer.gaitanalyzer.model.crypto
+package com.thepyprogrammer.ktlib.crypto
 
 import java.io.UnsupportedEncodingException
 import java.security.MessageDigest

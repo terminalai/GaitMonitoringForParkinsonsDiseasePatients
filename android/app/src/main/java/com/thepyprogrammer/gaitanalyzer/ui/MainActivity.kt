@@ -19,7 +19,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.ActivityMainBinding
-import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeViewModel
 import com.thepyprogrammer.gaitanalyzer.ui.onboarding.OnboardingFragment
 import com.thepyprogrammer.ktlib.io.KFile
@@ -51,21 +51,23 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        
+        FirebaseUtil.retrieveFreeze(this)
 
 
-//        val time = mutableListOf(
-//            LocalDateTime.of(2021, 4, 20, 2, 22, 30).toEpoch(),
-//            LocalDateTime.of(2021, 4, 20, 2, 26, 30).toEpoch(),
-//            LocalDateTime.of(2021, 4, 20, 3, 22, 30).toEpoch(),
-//            LocalDateTime.of(2021, 4, 20, 3, 27, 30).toEpoch(),
-//            LocalDateTime.of(2021, 4, 20, 4, 10, 0).toEpoch()
-//        )
-//
-//        val freezesFile = File(filesDir, "freezes.txt")
-//        if (!freezesFile.exists()) freezesFile.createNewFile()
-//        val freezesWriter = KFile.append(freezesFile)
-//        time.forEach { freezesWriter.out?.println(it) }
-//        freezesWriter.close()
+        val time = mutableListOf(
+            LocalDateTime.of(2021, 4, 19, 2, 22, 30).toEpoch(),
+            LocalDateTime.of(2021, 4, 19, 2, 26, 30).toEpoch(),
+            LocalDateTime.of(2021, 4, 20, 3, 22, 30).toEpoch(),
+            LocalDateTime.of(2021, 4, 20, 3, 27, 30).toEpoch(),
+            LocalDateTime.of(2021, 4, 4, 10, 0).toEpoch()
+        )
+
+        val freezesFile = File(filesDir, "freezes.txt")
+        if (!freezesFile.exists()) freezesFile.createNewFile()
+        val freezesWriter = KFile.append(freezesFile)
+        time.forEach { freezesWriter.out?.println(it) }
+        freezesWriter.close()
 
 
         val navHostFragment =
@@ -125,6 +127,12 @@ class MainActivity : AppCompatActivity() {
         // If it wasn't the Back key or there's no web page history, bubble up to the default
         // system behavior (probably exit the activity)
         return super.onKeyDown(keyCode, event)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val freezesFile = File(filesDir, "freezes.txt")
+        FirebaseUtil.uploadFreeze(freezesFile, this)
     }
 
     fun setScreenOn() {

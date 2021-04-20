@@ -21,14 +21,14 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.transition.TransitionInflater
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentMainBinding
-import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.gaitanalyzer.ui.image.ImageClickListener
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.information.InformationFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.profile.ProfileFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.settings.SettingsFragment
-import com.thepyprogrammer.gaitanalyzer.ui.main.video.VideoFragment
+import com.thepyprogrammer.gaitanalyzer.ui.main.video.AboutAppFragment
 import com.thepyprogrammer.ktlib.io.KFile
 import com.thepyprogrammer.ktlib.string.SuperStringBuilder
 import de.hdodenhof.circleimageview.CircleImageView
@@ -237,7 +237,7 @@ class MainFragment : Fragment() {
         } else false
 
     private fun navigateToVideo() =
-        if ((currentFragment !is VideoFragment)) {
+        if ((currentFragment !is AboutAppFragment)) {
             val navController = findNavController(binding.navHostFragment)
             navController.navigate(R.id.nav_video)
             true

@@ -6,6 +6,8 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.thepyprogrammer.gaitanalyzer.R
+import com.thepyprogrammer.ktlib.Util
+import java.time.LocalDate
 
 open class FreezeViewHolder(itemView: View, completeViewModel: CompleteViewModel) :
     RecyclerView.ViewHolder(itemView) {
@@ -16,8 +18,7 @@ open class FreezeViewHolder(itemView: View, completeViewModel: CompleteViewModel
     init {
         itemView.setOnClickListener {
             val navController = Navigation.findNavController(it)
-            val position = adapterPosition
-            completeViewModel.adapterPosition.value = position
+            completeViewModel.dateSelected.value = LocalDate.parse(itemDate.text.trim(), Util.dTF)
             navController.navigate(R.id.action_freezeFragment_to_selectedFragment)
         }
     }

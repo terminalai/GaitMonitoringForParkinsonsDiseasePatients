@@ -1,4 +1,4 @@
-import com.thepyprogrammer.gaitanalyzer.model.signalProcessing.Complex
+import com.thepyprogrammer.ktlib.signalProcessing.Complex
 import com.thepyprogrammer.ktlib.array.Vector
 
 /**

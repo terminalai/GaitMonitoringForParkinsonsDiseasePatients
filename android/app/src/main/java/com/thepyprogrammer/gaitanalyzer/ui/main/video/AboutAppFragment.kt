@@ -17,23 +17,23 @@ import com.thepyprogrammer.androidlib.web.GitHubWebViewClient
 import com.thepyprogrammer.androidlib.web.WebAppInterface
 import com.thepyprogrammer.androidlib.web.WebBrowserClient
 import com.thepyprogrammer.gaitanalyzer.R
-import com.thepyprogrammer.gaitanalyzer.databinding.FragmentVideoBinding
+import com.thepyprogrammer.gaitanalyzer.databinding.FragmentAboutAppBinding
 import com.thepyprogrammer.gaitanalyzer.model.utils.getTTS
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.gaitanalyzer.ui.main.MainFragment
 import java.util.*
 
 
-class VideoFragment : Fragment() {
+class AboutAppFragment : Fragment() {
 
-    private lateinit var binding: FragmentVideoBinding
+    private lateinit var binding: FragmentAboutAppBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentVideoBinding.inflate(inflater, container, false)
+        binding = FragmentAboutAppBinding.inflate(inflater, container, false)
         val view = binding.root
 
         val sc = Scanner(resources.openRawResource(R.raw.github_markdown))

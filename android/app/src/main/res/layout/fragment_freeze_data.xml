@@ -11,6 +11,7 @@
     tools:context=".ui.main.freeze.freezeData.FreezeDataFragment">
 
     <FrameLayout
+        android:id="@+id/recycler_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -22,6 +23,7 @@
     </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/image_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -39,7 +41,7 @@
             android:text="You have no Freeze Events so far! Congratulations!"
             android:textAlignment="center"
             android:textColor="@color/primary_dark"
-            android:textSize="40sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:layout_margin="54dp"
             android:layout_width="match_parent"

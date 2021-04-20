@@ -13,9 +13,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentSplashBinding
-import com.thepyprogrammer.gaitanalyzer.model.account.data.Caregiver
-import com.thepyprogrammer.gaitanalyzer.model.account.data.Patient
-import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.model.account.Caregiver
+import com.thepyprogrammer.gaitanalyzer.model.account.Patient
+import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
 import java.io.File
 import java.util.*
 

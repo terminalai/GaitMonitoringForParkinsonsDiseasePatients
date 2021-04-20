@@ -10,9 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentSetupBinding
-import com.thepyprogrammer.gaitanalyzer.model.account.data.Patient
-import com.thepyprogrammer.gaitanalyzer.model.account.data.User
-import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.model.account.Patient
+import com.thepyprogrammer.gaitanalyzer.model.account.User
+import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 
 class SetupFragment : Fragment() {
