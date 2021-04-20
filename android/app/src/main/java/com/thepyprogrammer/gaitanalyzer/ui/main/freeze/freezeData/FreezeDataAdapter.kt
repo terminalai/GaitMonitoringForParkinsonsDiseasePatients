@@ -1,19 +1,14 @@
 package com.thepyprogrammer.gaitanalyzer.ui.main.freeze.freezeData
 
-import android.app.Activity
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.thepyprogrammer.gaitanalyzer.R
-import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeViewModel
 import com.thepyprogrammer.ktlib.Util
 import java.time.*
@@ -30,7 +25,7 @@ class FreezeDataAdapter(private val activity: AppCompatActivity, private val hom
         val map = hashMapOf<String, Int?>()
         freezesData?.forEach {
             val date = LocalDateTime.ofInstant(Instant.ofEpochSecond((it / (1000 * 3600 * 24)) * (1000 * 3600 * 24)), ZoneId.systemDefault()).toLocalDate()
-            val dateString = Util.format.format(date)
+            val dateString = Util.dateFormat.format(date)
             map[dateString] =
                 if(map.containsKey(dateString))
                     map[dateString]?.plus(1)

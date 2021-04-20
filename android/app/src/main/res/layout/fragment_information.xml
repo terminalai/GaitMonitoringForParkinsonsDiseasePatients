@@ -16,38 +16,34 @@
             android:layout_height="74dp"
             android:text='@{"Hello " + myViewModel.PName.toString() + "!"}'
             android:textSize="25sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="?attr/colorPrimary"
+            app:layout_constraintBottom_toTopOf="@id/textView2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.073" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="316dp"
-            android:layout_height="447dp"
+            android:layout_height="400dp"
             android:text='@string/bigTextInfo'
             android:textSize="25sp"
+            android:textColor="?attr/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"  />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Return"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.811"
-            android:textColor="?attr/colorOnSecondary"
+            app:layout_constraintTop_toBottomOf="@id/textView2"
+            android:textColor="@color/blue_800"
             android:backgroundTint="?attr/colorSecondary"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

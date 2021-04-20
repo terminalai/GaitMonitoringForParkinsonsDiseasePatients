@@ -7,7 +7,9 @@ import com.thepyprogrammer.androidlib.listener.SensorChangeListener
 import com.thepyprogrammer.ktlib.gait.FallDetection
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.ktlib.array.Vector
+import com.thepyprogrammer.ktlib.io.KFile
 import toVector
+import java.io.File
 
 class WalkingMode(val activity: MainActivity, val fall: () -> (Unit)) : AsyncTask<Double, Void, DoubleArray>() {
     var acc: Vector = Vector()
@@ -67,5 +69,31 @@ class WalkingMode(val activity: MainActivity, val fall: () -> (Unit)) : AsyncTas
         activity.setScreenOff()
         activity.sensorManager.unregisterListener(activity.accListener)
         activity.sensorManager.unregisterListener(activity.gyroListener)
+
+
+        // save accs
+        val accsFile = File(activity.filesDir, "accs.txt")
+        if(!accsFile.exists()) accsFile.createNewFile()
+        val accsWriter = KFile.append(accsFile)
+        homeViewModel.accs.value?.forEach { (time, acc) ->
+            accsWriter.out?.println("$time\t$acc")
+        }
+
+        // save gyros
+        val gyrosFile = File(activity.filesDir, "gyros.txt")
+        if(!gyrosFile.exists()) gyrosFile.createNewFile()
+        val gyrosWriter = KFile.append(gyrosFile)
+        homeViewModel.gyros.value?.forEach { (time, gyro) ->
+            gyrosWriter.out?.println("$time\t$gyro")
+        }
+
+        // save freezes
+        val freezesFile = File(activity.filesDir, "freezes.txt")
+        if(!freezesFile.exists()) freezesFile.createNewFile()
+        val freezesWriter = KFile.append(freezesFile)
+        homeViewModel.freezes.value?.forEach { time ->
+            freezesWriter.out?.println(time)
+        }
+
     }
 }

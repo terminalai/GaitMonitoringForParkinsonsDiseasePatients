@@ -14,14 +14,17 @@ import android.view.WindowManager
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.ActivityMainBinding
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeViewModel
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.WalkingMode
 import com.thepyprogrammer.gaitanalyzer.ui.onboarding.OnboardingFragment
 import com.thepyprogrammer.ktlib.array.Vector
+import com.thepyprogrammer.ktlib.io.KFile
 import java.io.File
 import java.io.PrintWriter
 
@@ -29,6 +32,8 @@ import java.io.PrintWriter
 class MainActivity : AppCompatActivity() {
     lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
+
+    private lateinit var homeViewModel: HomeViewModel
 
     lateinit var wakeLock: PowerManager.WakeLock
 
@@ -50,6 +55,11 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.parent_nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
+
+        homeViewModel =
+            ViewModelProvider(this).get(HomeViewModel::class.java)
+
+        homeViewModel.filesDir.value = filesDir
 
         sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)

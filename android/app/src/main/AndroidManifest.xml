@@ -69,11 +69,6 @@
                 android:resource="@xml/file_provider" />
         </provider>
         <activity
-            android:name="com.thepyprogrammer.gaitanalyzer.ui.onboarding.OnboardingActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.GaitAnalyzer.NoActionBar">
-        </activity>
-        <activity
             android:name="com.thepyprogrammer.gaitanalyzer.ui.timer.TimerActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.GaitAnalyzer.NoActionBar">

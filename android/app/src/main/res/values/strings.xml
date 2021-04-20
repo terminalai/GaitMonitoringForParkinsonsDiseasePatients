@@ -105,7 +105,7 @@
     <string name="action_register">Register</string>
     <string name="action_logout">Logout</string>
     <string name="info">Information</string>
-    <string name="bigTextInfo">This is an app to facilitate the verification of vaccinated users. It supports both light and dark mode, though this functionality is in beta. Finally, shaking the phone will cause the verification page to pop up. </string>
+    <string name="bigTextInfo">The Gait Analyzer is an Android Application made to monitor and analyse gait patterns in Parkinson’s Disease Patients. This was made in conjunction to SMP 2020, wherein an Arduino prototype was created. This application uses phone sensors to monitor these gait patterns and performs simplistic signal processing.</string>
 
 
     <string name="normal_map">Normal Map</string>

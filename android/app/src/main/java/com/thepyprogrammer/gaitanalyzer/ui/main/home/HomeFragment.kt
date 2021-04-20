@@ -12,11 +12,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.transition.TransitionInflater
+import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.components.YAxis.AxisDependency
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.github.mikephil.charting.utils.ColorTemplate
@@ -27,6 +31,9 @@ import com.thepyprogrammer.gaitanalyzer.model.account.data.Patient
 import com.thepyprogrammer.gaitanalyzer.model.account.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.gaitanalyzer.ui.main.MainViewModel
+import java.text.SimpleDateFormat
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 
 class HomeFragment : Fragment(), OnChartValueSelectedListener {
@@ -36,8 +43,6 @@ class HomeFragment : Fragment(), OnChartValueSelectedListener {
 
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var mainViewModel: MainViewModel
-
-
 
 
     override fun onCreateView(
@@ -57,37 +62,9 @@ class HomeFragment : Fragment(), OnChartValueSelectedListener {
 
         if(homeViewModel.isWalkMode.value == true) {
             binding.toggleWalk.text = getString(R.string.end_walk)
-            binding.chart.apply {
-                visibility = View.VISIBLE
-
-                description.isEnabled = true
-                setTouchEnabled(true)
-                isDragEnabled = true
-                setScaleEnabled(true)
-                setDrawGridBackground(false)
-                setPinchZoom(true)
-                setBackgroundColor(Color.LTGRAY)
-                data = LineData()
-                data.setValueTextColor(Color.WHITE)
-
-                legend.apply {
-                    form = Legend.LegendForm.LINE
-                    textColor = Color.WHITE
-                }
-
-                axisLeft.apply {
-                    textColor = Color.WHITE
-                    axisMaximum = 100f
-                    axisMinimum = -100f
-                    setDrawGridLines(true)
-                }
-
-                axisRight.isEnabled = false
-
-            }
-
+            setUpChart()
             feedMultiple()
-        } else binding.chart.visibility = View.INVISIBLE
+        } else binding.accChart.visibility = View.INVISIBLE
 
         if(FirebaseUtil.user is Caregiver) binding.patientContainer.visibility = View.GONE
 
@@ -102,41 +79,14 @@ class HomeFragment : Fragment(), OnChartValueSelectedListener {
                 binding.toggleWalk.text = getString(R.string.end_walk)
                 homeViewModel.task.value?.execute()
 
-                binding.chart.apply {
-                    visibility = View.VISIBLE
-
-                    description.isEnabled = true
-                    setTouchEnabled(true)
-                    isDragEnabled = true
-                    setScaleEnabled(true)
-                    setDrawGridBackground(false)
-                    setPinchZoom(true)
-                    setBackgroundColor(Color.LTGRAY)
-                    data = LineData()
-                    data.setValueTextColor(Color.WHITE)
-
-                    legend.apply {
-                        form = Legend.LegendForm.LINE
-                        textColor = Color.WHITE
-                    }
-
-                    axisLeft.apply {
-                        textColor = Color.WHITE
-                        axisMaximum = 100f
-                        axisMinimum = -100f
-                        setDrawGridLines(true)
-                    }
-
-                    axisRight.isEnabled = false
-
-                }
+                setUpChart()
 
                 feedMultiple()
                 homeViewModel.isWalkMode.value = true
             } else {
                 binding.toggleWalk.text = getString(R.string.start_walk)
                 homeViewModel.task.value?.cancel(true)
-                binding.chart.visibility = View.INVISIBLE
+                binding.accChart.visibility = View.INVISIBLE
                 thread?.interrupt()
                 homeViewModel.isWalkMode.value = false
             }
@@ -166,7 +116,7 @@ class HomeFragment : Fragment(), OnChartValueSelectedListener {
 
 
     private fun addEntry() {
-        val data: LineData = binding.chart.data
+        val data: LineData = binding.accChart.data
         var set1 = data.getDataSetByIndex(0)
         // set.addEntry(...); // can be called as well
         if (set1 == null) {
@@ -204,14 +154,14 @@ class HomeFragment : Fragment(), OnChartValueSelectedListener {
         data.notifyDataChanged()
 
         // let the chart know it's data has changed
-        binding.chart.notifyDataSetChanged()
+        binding.accChart.notifyDataSetChanged()
 
         // limit the number of visible entries
-        binding.chart.setVisibleXRangeMaximum(120f)
+        binding.accChart.setVisibleXRangeMaximum(120f)
         // chart.setVisibleYRange(30, AxisDependency.LEFT);
 
         // move to the latest entry
-        binding.chart.moveViewToX(data.entryCount.toFloat())
+        binding.accChart.moveViewToX(data.entryCount.toFloat())
 
         // this automatically refreshes the chart (calls invalidate())
         // chart.moveViewTo(data.getXValCount()-7, 55f,
@@ -242,7 +192,7 @@ class HomeFragment : Fragment(), OnChartValueSelectedListener {
             for (i in 0..999) {
 
                 // Don't generate garbage runnables inside the loop.
-                requireActivity().runOnUiThread(this::addEntry)
+                activity?.runOnUiThread(this::addEntry)
                 try {
                     Thread.sleep(100)
                 } catch (e: InterruptedException) {
@@ -259,6 +209,60 @@ class HomeFragment : Fragment(), OnChartValueSelectedListener {
 
     override fun onNothingSelected() {
         Log.i("Nothing selected", "Nothing selected.")
+    }
+
+    private fun setUpChart() {
+        with(binding.accChart) {
+        visibility = View.VISIBLE
+        description.isEnabled = true
+        setTouchEnabled(true)
+        dragDecelerationFrictionCoef = 0.9f
+
+
+        isDragEnabled = true
+        setScaleEnabled(true)
+        setDrawGridBackground(false)
+        isHighlightPerDragEnabled = true
+
+        data = LineData()
+        data.setValueTextColor(Color.WHITE)
+
+
+        setBackgroundColor(android.graphics.Color.WHITE)
+
+        setViewPortOffsets(0f, 0f, 0f, 0f)
+
+        legend.isEnabled = false
+
+
+        xAxis.apply {
+            position = XAxis.XAxisPosition.TOP_INSIDE
+            textSize = 10f
+            textColor = Color.WHITE
+            setDrawAxisLine(false)
+            setDrawGridLines(true)
+            textColor = Color.rgb(255, 192, 56)
+            setCenterAxisLabels(true)
+            granularity = 1f // one hour
+        }
+
+        axisLeft.apply {
+            setPosition(com.github.mikephil.charting.components.YAxis.YAxisLabelPosition.INSIDE_CHART)
+            textColor = com.github.mikephil.charting.utils.ColorTemplate.getHoloBlue()
+            setDrawGridLines(true)
+            isGranularityEnabled = true
+            axisMinimum = -170f
+            axisMaximum = 170f
+            yOffset = -9f
+            textColor = android.graphics.Color.rgb(255, 192, 56)
+
+
+        }
+
+        axisRight.isEnabled = false
+
+    }
+
     }
 
     override fun onDestroy() {

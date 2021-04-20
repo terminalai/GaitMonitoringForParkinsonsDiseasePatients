@@ -109,12 +109,14 @@ class VideoFragment : Fragment() {
             ((activity as MainActivity).currentFragment as MainFragment).binding.bottomAppBar.visibility = View.GONE
             binding.buttonLayout.visibility = View.GONE
             binding.scrollingView.visibility = View.GONE
+            binding.bottom.visibility = View.GONE
         } else {
             requireActivity().actionBar?.show()
             ((activity as MainActivity).currentFragment as MainFragment).binding.toolbar.visibility = View.VISIBLE
             ((activity as MainActivity).currentFragment as MainFragment).binding.bottomAppBar.visibility = View.VISIBLE
             binding.buttonLayout.visibility = View.VISIBLE
             binding.scrollingView.visibility = View.VISIBLE
+            binding.bottom.visibility = View.VISIBLE
         }
 
     }
@@ -128,7 +130,8 @@ class VideoFragment : Fragment() {
 
     companion object {
         const val text =
-            "Parkinson’s disease, or PD is a neurodegenerative disorder that affects the dopamine-producing neurons in the substantia nigra, an area of the brain, leading to shaking, stiffness and difficulty walking. Parkinson’s patients frequently exhibit the debilitating condition freezing of gait, or FOG, which is when patients cannot move their feet forward despite the intention to walk. " +
+            "Parkinson’s disease, or PD is a neurodegenerative disorder that affects the dopamine-producing neurons in the substantia nigra, an area of the brain, leading to shaking, stiffness and difficulty walking. " +
+                    "Parkinson’s patients frequently exhibit the debilitating condition freezing of gait, or FOG, which is when patients cannot move their feet forward despite the intention to walk. " +
                     "While the feet remain in place, the torso still has forward momentum, making falls very common. " +
                     "At the start, FOG can be triggered by stress, tight spaces or a sudden change in direction. " +
                     "As the disease progresses, this happens more frequently, a fact extremely detrimental to the patient’s health and mental well-being. " +
