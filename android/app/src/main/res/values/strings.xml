@@ -209,4 +209,11 @@
 
     <string name="start_walk">Start Walk Mode</string>
     <string name="end_walk">End Walk Mode</string>
+
+    <string name="self">My name is Prannaya Gupta. And I am from M21404.</string>
+    <string name="contact">You can contact me at h1810124@nushigh.edu.sg.</string>
+    <string name="enjoy">I enjoy all of the following:</string>
+    <string name="myInterests">Machine Learning\nPhysics\nPython\nCalculus\nLinear Algebra\nQuantum Physics\nSitcoms\nJupyter Notebook\nWeb Development\nApp Development</string>
+    <string name="profileHead">My Profile</string>
+    <string name="profilePic">My Profile Picture</string>
 </resources>

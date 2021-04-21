@@ -1,4 +1,4 @@
-package com.thepyprogrammer.gaitanalyzer.ui.main.video
+package com.thepyprogrammer.gaitanalyzer.ui.main.aboutapp
 
 import android.app.PictureInPictureParams
 import android.graphics.PixelFormat
@@ -18,7 +18,7 @@ import com.thepyprogrammer.androidlib.web.WebAppInterface
 import com.thepyprogrammer.androidlib.web.WebBrowserClient
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentAboutAppBinding
-import com.thepyprogrammer.gaitanalyzer.model.utils.getTTS
+import com.thepyprogrammer.androidlib.tts.getTTS
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.gaitanalyzer.ui.main.MainFragment
 import java.util.*

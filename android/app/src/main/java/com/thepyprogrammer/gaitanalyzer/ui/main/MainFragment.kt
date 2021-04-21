@@ -28,11 +28,12 @@ import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.information.InformationFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.profile.ProfileFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.settings.SettingsFragment
-import com.thepyprogrammer.gaitanalyzer.ui.main.video.AboutAppFragment
+import com.thepyprogrammer.gaitanalyzer.ui.main.aboutapp.AboutAppFragment
 import com.thepyprogrammer.ktlib.io.KFile
 import com.thepyprogrammer.ktlib.string.SuperStringBuilder
 import de.hdodenhof.circleimageview.CircleImageView
 import java.io.File
+import java.io.FileNotFoundException
 import java.io.PrintWriter
 
 class MainFragment : Fragment() {
@@ -117,7 +118,6 @@ class MainFragment : Fragment() {
             }
         }
 
-        /**View Model**/
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
 
@@ -196,6 +196,8 @@ class MainFragment : Fragment() {
 
             R.id.action_video -> navigateToVideo()
 
+            R.id.action_me -> navigateToAboutMe()
+
             else -> false
         }
 
@@ -243,6 +245,13 @@ class MainFragment : Fragment() {
             true
         } else false
 
+    private fun navigateToAboutMe() =
+        if ((currentFragment !is AboutAppFragment)) {
+            val navController = findNavController(binding.navHostFragment)
+            navController.navigate(R.id.nav_aboutme)
+            true
+        } else false
+
     private fun navigateToNext() =
         when (currentFragment) {
             is SettingsFragment -> navigateToHome()
@@ -267,10 +276,15 @@ class MainFragment : Fragment() {
 
     private fun loadImage() {
         val string: String = readData()
-        if (string.isNotEmpty()) {
-            imageView?.setImageURI(Uri.parse(readData()))
-            imageNavMenuView?.setImageURI(Uri.parse(readData()))
-        } else {
+        try {
+            if (string.isNotEmpty()) {
+                imageView?.setImageURI(Uri.parse(string))
+                imageNavMenuView?.setImageURI(Uri.parse(string))
+            } else {
+                imageView?.setImageResource(R.drawable.face)
+                imageNavMenuView?.setImageResource(R.drawable.face)
+            }
+        } catch(e: FileNotFoundException) {
             imageView?.setImageResource(R.drawable.face)
             imageNavMenuView?.setImageResource(R.drawable.face)
         }

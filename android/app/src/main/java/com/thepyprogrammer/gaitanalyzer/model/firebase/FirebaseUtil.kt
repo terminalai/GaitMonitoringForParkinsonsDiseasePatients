@@ -74,10 +74,11 @@ object FirebaseUtil {
         var encryptedCode =
             aes.encrypt("${user?.name}${user?.type}${user?.password}", "GaitMonitoringAndAnalysisForParkinsonsDiseasePatients")
         if (encryptedCode == null) encryptedCode = "${user?.name}${user?.type}${user?.password}"
+        encryptedCode.replace(Regex("[/\\\\]+"), "")
 
         val freezeRef = storageRef.child("freezes/${encryptedCode}.txt")
 
-        val uri = FileProvider.getUriForFile(context, "com.thepyprogrammer.fileprovider", file)
+        val uri = Uri.fromFile(file)
         val uploadTask = freezeRef.putFile(uri)
         // Register observers to listen for when the download is done or if it fails
         uploadTask.addOnFailureListener {
@@ -137,10 +138,6 @@ object FirebaseUtil {
     fun newUser(name: String, password: String) = run {
         if (type == "caregiver") Caregiver(name, password)
         else Patient(name, password)
-    }
-
-    fun predict() {
-        functions.getHttpsCallable("call")
     }
 
 

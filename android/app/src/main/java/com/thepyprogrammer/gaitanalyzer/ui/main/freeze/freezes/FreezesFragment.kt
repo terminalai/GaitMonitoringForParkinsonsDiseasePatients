@@ -2,10 +2,12 @@ package com.thepyprogrammer.gaitanalyzer.ui.main.freeze.freezes
 
 
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.XAxis
@@ -13,6 +15,7 @@ import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.thepyprogrammer.androidlib.chart.formatBarChart
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentFreezesBinding
 import com.thepyprogrammer.ktlib.atHour
@@ -50,7 +53,6 @@ class FreezesFragment : Fragment() {
         dateData.sort()
 
         temp.calendarView.maxDate = System.currentTimeMillis()
-
         temp.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val dateNow = LocalDate.of(year, month + 1, dayOfMonth)
             // For some reason month ranges from 0 to 11
@@ -58,34 +60,9 @@ class FreezesFragment : Fragment() {
 
         }
 
-        with(temp.barChart) {
-            xAxis.apply {
-                position = XAxis.XAxisPosition.BOTTOM
-                setDrawLabels(true)
-                setDrawAxisLine(true)
-                setDrawGridLines(false)
-                axisMinimum = 0f
-                axisMaximum = 24f
-            }
+        formatBarChart(temp.barChart, requireActivity() as AppCompatActivity)
 
-            axisLeft.apply {
-                setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART)
-                setLabelCount(6, false)
-                setDrawLabels(true)
-                setDrawAxisLine(true)
-                setDrawGridLines(false)
-                axisMinimum = 0f
-                axisMaximum = 60f
-            }
-
-            legend.textColor = Color.WHITE
-
-            axisRight.isEnabled = false
-            description.text = ""
-
-            visibility = View.GONE
-            dateChange(LocalDate.now())
-        }
+        dateChange(LocalDate.now())
 
         return temp.root
     }
@@ -99,11 +76,12 @@ class FreezesFragment : Fragment() {
             val filteredDateData = dateData.filter {
                 it.onDate(dateNow)
             }
-
+            var maxFreeze = 0f
             for (hour in 0..24) {
                 val freezesNow = filteredDateData.filter {
                     it.atHour(hour)
                 }.size.toFloat()
+                if(freezesNow > maxFreeze) maxFreeze = freezesNow
                 points.add(
                     BarEntry(
                         hour.toFloat(),
@@ -117,10 +95,15 @@ class FreezesFragment : Fragment() {
                     it.color = R.color.primary
                 }
             )
-            animateY(500)
+
+
+            axisLeft.axisMaximum = maxFreeze
+
+
+            this.data = data
+            animateXY(500, 500)
 
             visibility = View.VISIBLE
-            this.data = data
         }
     }
 

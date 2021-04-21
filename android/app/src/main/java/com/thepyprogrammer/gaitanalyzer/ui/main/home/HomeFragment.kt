@@ -53,6 +53,8 @@ class HomeFragment : Fragment(), OnChartValueSelectedListener {
         mainViewModel =
             ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
+        mainViewModel.pName.value = FirebaseUtil.user?.name
+
         if (homeViewModel.isWalkMode.value == true) {
             binding.toggleWalk.text = getString(R.string.end_walk)
             setUpChart()

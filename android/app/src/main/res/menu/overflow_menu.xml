@@ -22,4 +22,10 @@
         android:orderInCategory="100"
         android:title="About The Application"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_me"
+        android:orderInCategory="100"
+        android:title="About Me"
+        app:showAsAction="never">
+    </item>
 </menu>

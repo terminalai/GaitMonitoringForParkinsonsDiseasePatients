@@ -36,11 +36,11 @@ class FreezeDataAdapter(
                     activity,
                     when {
                         freeze >= 30 ->
-                                R.color.fire_brick
+                            R.color.fire_brick
                         freeze >= 10 ->
-                                R.color.green
+                            R.color.SchoolBusYellow
                         else ->
-                                R.color.SchoolBusYellow
+                            R.color.green
                     }
                 )
             )

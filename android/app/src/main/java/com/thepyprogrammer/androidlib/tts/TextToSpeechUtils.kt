@@ -1,4 +1,4 @@
-package com.thepyprogrammer.gaitanalyzer.model.utils
+package com.thepyprogrammer.androidlib.tts
 
 import android.content.Context
 import android.speech.tts.TextToSpeech

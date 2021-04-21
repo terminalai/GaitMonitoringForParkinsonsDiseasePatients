@@ -76,6 +76,8 @@ class FreezeDataFragment : Fragment() {
             freezes.add(Pair(date, freeze))
         }
 
+        freezes.sortBy { it.first }
+
 
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerView.setHasFixedSize(true)

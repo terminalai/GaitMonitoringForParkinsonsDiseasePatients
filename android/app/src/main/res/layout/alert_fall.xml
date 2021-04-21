@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/tv_headline"
         app:layout_constraintBottom_toTopOf="@+id/lav_main"
-        android:layout_margin="30dp"
+        android:layout_margin="40dp"
         android:text="You seem to have fallen down! Hold on, please. I will call your caregiver and notify him/ her."
         android:textSize="40sp"
         android:textStyle="bold"

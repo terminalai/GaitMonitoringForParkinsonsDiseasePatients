@@ -25,7 +25,8 @@ class AuthViewModel : ViewModel() {
         val data = hashMapOf(
             "name" to name,
             "password" to pw,
-            "type" to type
+            "type" to type,
+            "phone" to ""
         )
 
         error.setValue("", "$name $type $pw")

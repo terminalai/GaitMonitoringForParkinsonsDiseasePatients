@@ -65,7 +65,7 @@ class RegisterFragment : Fragment() {
                     FirebaseUtil.user = viewModel.userResult.value
                     FirebaseUtil.user?.password?.let { it1 -> Log.d("TAG", it1) }
                     binding.loading.visibility = View.GONE
-                    (activity as MainActivity).navController.navigate(R.id.nav_main)
+                    (activity as MainActivity).navController.navigate(if(FirebaseUtil.user?.type == "caregiver") R.id.nav_main else R.id.nav_setup)
                 }
             }
         viewModel.userResult.observe(viewLifecycleOwner, resultObserver)

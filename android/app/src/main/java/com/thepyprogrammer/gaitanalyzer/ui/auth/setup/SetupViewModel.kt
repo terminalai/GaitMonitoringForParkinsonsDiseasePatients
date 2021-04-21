@@ -36,8 +36,7 @@ class SetupViewModel : ViewModel() {
             )
         if (encryptedCode == null) encryptedCode = "$name$type$pw"
 
-        encryptedCode.replace(Regex("[/\\\\]"), "")
-
+        encryptedCode.replace(Regex("[/\\\\]+"), "")
 
         FirebaseUtil
             .userCollection()

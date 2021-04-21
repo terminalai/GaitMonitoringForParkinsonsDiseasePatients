@@ -78,7 +78,7 @@
     <fragment
         android:id="@+id/selectedFragment"
         android:name="com.thepyprogrammer.gaitanalyzer.ui.main.freeze.freezeData.SelectedFragment"
-        android:label="SelectedFragment"
+        android:label="Freeze Data By Hour"
         tools:layout="@layout/fragment_selected" >
          <action
             android:id="@+id/action_selectedFragment_to_freezeFragment"
@@ -94,7 +94,11 @@
         android:label="Information" />
     <fragment
         android:id="@+id/nav_video"
-        android:name="com.thepyprogrammer.gaitanalyzer.ui.main.video.AboutAppFragment"
-        android:label="About"
+        android:name="com.thepyprogrammer.gaitanalyzer.ui.main.aboutapp.AboutAppFragment"
+        android:label="About the Application"
         tools:layout="@layout/fragment_about_app" />
+    <fragment
+        android:id="@+id/nav_aboutme"
+        android:name="com.thepyprogrammer.gaitanalyzer.ui.main.aboutme.AboutMeFragment"
+        android:label="About The Programmer" />
 </navigation>

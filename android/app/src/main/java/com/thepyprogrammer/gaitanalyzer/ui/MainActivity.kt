@@ -20,9 +20,11 @@ import androidx.navigation.fragment.NavHostFragment
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.ActivityMainBinding
 import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
+import com.thepyprogrammer.gaitanalyzer.ui.auth.AuthViewModel
 import com.thepyprogrammer.gaitanalyzer.ui.main.home.HomeViewModel
 import com.thepyprogrammer.gaitanalyzer.ui.onboarding.OnboardingFragment
 import com.thepyprogrammer.ktlib.io.KFile
+import com.thepyprogrammer.ktlib.randInt
 import com.thepyprogrammer.ktlib.toEpoch
 import java.io.File
 import java.io.PrintWriter
@@ -54,18 +56,19 @@ class MainActivity : AppCompatActivity() {
         
         FirebaseUtil.retrieveFreeze(this)
 
-
-        val time = mutableListOf(
-            LocalDateTime.of(2021, 4, 19, 2, 22, 30).toEpoch(),
-            LocalDateTime.of(2021, 4, 19, 2, 26, 30).toEpoch(),
-            LocalDateTime.of(2021, 4, 20, 3, 22, 30).toEpoch(),
-            LocalDateTime.of(2021, 4, 20, 3, 27, 30).toEpoch(),
-            LocalDateTime.of(2021, 4, 4, 10, 0).toEpoch()
-        )
+//        // TESTING CODE
+        val time = mutableListOf<Long>()
+        for(day in 15..20) {
+            for(hour in 9..22) {
+                for (i in 1..randInt(1, 5)) {
+                    time.add(LocalDateTime.of(2021, 4, day, hour, 0, 0).toEpoch())
+                }
+            }
+        }
 
         val freezesFile = File(filesDir, "freezes.txt")
         if (!freezesFile.exists()) freezesFile.createNewFile()
-        val freezesWriter = KFile.append(freezesFile)
+        val freezesWriter = KFile.write(freezesFile)
         time.forEach { freezesWriter.out?.println(it) }
         freezesWriter.close()
 
@@ -95,11 +98,19 @@ class MainActivity : AppCompatActivity() {
 
 
     fun logout(): Boolean {
-        val accountDetails = File(filesDir, "accountDetails.txt")
-        if (accountDetails.exists())
-            PrintWriter(accountDetails).close()
+        for(i in arrayOf("freezes", "accs", "gyros", "accountDetails", "profileImageUri")) {
+            val file = File(filesDir, "$i.txt")
+            if(!file.exists()) file.createNewFile()
+            val fileWriter = KFile.write(file)
+            fileWriter.close()
+        }
 
         FirebaseUtil.user = null
+
+        val authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+        authViewModel.pName.value = ""
+        authViewModel.password.value = ""
+        authViewModel.userResult.value = null
 
         navController.navigate(R.id.action_nav_main_to_nav_identification)
         return true
