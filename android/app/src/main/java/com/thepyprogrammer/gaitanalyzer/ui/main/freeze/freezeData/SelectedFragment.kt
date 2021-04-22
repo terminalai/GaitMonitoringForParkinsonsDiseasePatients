@@ -1,6 +1,7 @@
 package com.thepyprogrammer.gaitanalyzer.ui.main.freeze.freezeData
 
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,11 +9,14 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.thepyprogrammer.androidlib.chart.IntAxisFormatter
+import com.thepyprogrammer.androidlib.chart.NonZeroIntAxisFormatter
 import com.thepyprogrammer.androidlib.chart.formatBarChart
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentSelectedBinding
@@ -56,15 +60,18 @@ class SelectedFragment : Fragment() {
             points.add(
                 BarEntry(
                     hour.toFloat(),
-                    freezesNow ?: 0.0f
+                        freezesNow
                 )
             )
-
         }
 
         data.addDataSet(
-            BarDataSet(points, "Freeze Events").also {
-                it.color = R.color.primary
+            BarDataSet(points, "Freeze Events").apply {
+                color = R.color.primary
+                valueFormatter = NonZeroIntAxisFormatter()
+                valueTypeface = Typeface.createFromAsset((activity as AppCompatActivity).assets, "fonts/OpenSans-Light.ttf")
+                valueTextSize = 12f
+
             }
         )
 
@@ -74,7 +81,7 @@ class SelectedFragment : Fragment() {
         binding.barChart.apply {
             axisLeft.axisMaximum = maxFreeze + 2
             this.data = data
-            animateY(500)
+            animateY(1000)
         }
 
     }

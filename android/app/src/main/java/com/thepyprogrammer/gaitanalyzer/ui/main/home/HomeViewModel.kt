@@ -17,42 +17,49 @@ class HomeViewModel : ViewModel() {
     val filesDir = MutableLiveData<File>(null)
 
     private fun save() {
-        // save accs
-        val accsFile = File(filesDir.value, "accs.txt")
-        if (!accsFile.exists()) accsFile.createNewFile()
-        val accsWriter = KFile.append(accsFile)
-        accs.value?.forEach { (time, acc) ->
-            accsWriter.out?.println("$time\t$acc")
+        if(task.value != null && !task.value!!.isCancelled) task.value!!.cancel(true)
+
+        for((file, iterable) in hashMapOf(
+                "accs" to accs.value,
+                "gyros" to gyros.value
+        )) {
+            if (iterable != null) {
+                individualSave(file, iterable)
+            }
         }
-        accsWriter.close()
 
-        // save gyros
-        val gyrosFile = File(filesDir.value, "gyros.txt")
-        if (!gyrosFile.exists()) gyrosFile.createNewFile()
-        val gyrosWriter = KFile.append(gyrosFile)
-        gyros.value?.forEach { (time, gyro) ->
-            gyrosWriter.out?.println("$time\t$gyro")
+        freezes.value?.let { individualSave("freezes", it) }
+
+    }
+
+    private fun individualSave(filename: String, map: HashMap<Long, Vector>) {
+        val file = File(filesDir.value, "$filename.txt")
+        if (!file.exists()) file.createNewFile()
+        val fileWriter = KFile.append(file)
+        for((time, acc) in map) {
+            fileWriter.out?.println("$time\t$acc")
         }
-        gyrosWriter.close()
 
-        // save freezes
-        val freezesFile = File(filesDir.value, "freezes.txt")
-        if (!freezesFile.exists()) freezesFile.createNewFile()
-        val freezesWriter = KFile.append(freezesFile)
-        freezes.value?.forEach { time ->
-            freezesWriter.out?.println(time)
+        fileWriter.close()
+
+    }
+
+    private fun individualSave(filename: String, list: MutableList<Long>) {
+        val file = File(filesDir.value, "$filename.txt")
+        if (!file.exists()) file.createNewFile()
+        val fileWriter = KFile.append(file)
+        list.forEach { time ->
+            fileWriter.out?.println(time)
         }
-        freezesWriter.close()
-
-
+        fileWriter.close()
     }
 
 
     override fun onCleared() {
         super.onCleared()
 
+        if(task.value != null && !task.value!!.isCancelled) task.value!!.cancel(true)
+
         save()
-
-
     }
 }

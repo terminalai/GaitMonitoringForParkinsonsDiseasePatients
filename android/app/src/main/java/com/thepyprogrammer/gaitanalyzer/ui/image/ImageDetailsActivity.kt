@@ -1,5 +1,4 @@
 package com.thepyprogrammer.gaitanalyzer.ui.image
-
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
@@ -15,11 +14,11 @@ import androidx.appcompat.widget.Toolbar
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
-import com.thepyprogrammer.ktlib.string.SuperStringBuilder
 import java.io.File
 import java.io.IOException
 import java.io.PrintWriter
 import java.util.*
+import kotlin.NoSuchElementException
 
 
 class ImageDetailsActivity : AppCompatActivity() {
@@ -35,6 +34,7 @@ class ImageDetailsActivity : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         toolbar.title = title
+        toolbar.inflateMenu(R.menu.image_bar_menu)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolbar.setTitleTextColor(Color.WHITE)
 
@@ -57,28 +57,28 @@ class ImageDetailsActivity : AppCompatActivity() {
 
 
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String?>,
-        grantResults: IntArray
+            requestCode: Int,
+            permissions: Array<String?>,
+            grantResults: IntArray
     ) {
         super
-            .onRequestPermissionsResult(
-                requestCode,
-                permissions,
-                grantResults
-            )
+                .onRequestPermissionsResult(
+                        requestCode,
+                        permissions,
+                        grantResults
+                )
         // Checking whether user granted the permission or not.
         if (grantResults.isNotEmpty()
-            && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED
         ) {
             return
         } else {
             Toast.makeText(
-                this,
-                "To select an icon, these permissions are required.",
-                Toast.LENGTH_SHORT
+                    this,
+                    "To select an icon, these permissions are required.",
+                    Toast.LENGTH_SHORT
             )
-                .show()
+                    .show()
         }
     }
 
@@ -120,14 +120,19 @@ class ImageDetailsActivity : AppCompatActivity() {
         if (!imageInfoFile!!.exists()) {
             return ""
         }
-        val scanner = Scanner(imageInfoFile)
-        val string = SuperStringBuilder()
+        try {
+            val scanner = Scanner(imageInfoFile)
+            val string = StringBuilder(scanner.nextLine())
 
-        while (scanner.hasNextLine())
-            string.writeln(scanner.nextLine())
+            while (scanner.hasNextLine())
+                string.append("\n" + scanner.nextLine())
 
-        scanner.close()
-        return string.toString()
+
+            scanner.close()
+            return string.toString()
+        } catch (e: NoSuchElementException) {
+            return ""
+        }
     }
 
     private fun loadImage() {
@@ -141,28 +146,28 @@ class ImageDetailsActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem) =
-        when (item.itemId) {
-            android.R.id.home -> {
-                // This ID represents the Home or Up button. In the case of this
-                // activity, the Up button is shown. For
-                // more details, see the Navigation pattern on Android Design:
-                //
-                // http://developer.android.com/design/patterns/navigation.html#up-vs-back
-                val toast = Toast.makeText(
-                    applicationContext,
-                    "Moving back to Main Page",
-                    Toast.LENGTH_LONG
-                )
-                toast.show()
-                navigateUpTo(Intent(this, MainActivity::class.java))
-                true
-            }
-            R.id.action_edit -> {
-                EditImage(this, this)
-                true
-            }
+            when (item.itemId) {
+                android.R.id.home -> {
+                    // This ID represents the Home or Up button. In the case of this
+                    // activity, the Up button is shown. For
+                    // more details, see the Navigation pattern on Android Design:
+                    //
+                    // http://developer.android.com/design/patterns/navigation.html#up-vs-back
+                    val toast = Toast.makeText(
+                            applicationContext,
+                            "Moving back to Main Page",
+                            Toast.LENGTH_LONG
+                    )
+                    toast.show()
+                    navigateUpTo(Intent(this, MainActivity::class.java))
+                    true
+                }
+                R.id.action_edit -> {
+                    EditImage(this, this)
+                    true
+                }
 
-            else -> super.onOptionsItemSelected(item)
-        }
+                else -> super.onOptionsItemSelected(item)
+            }
 
 }

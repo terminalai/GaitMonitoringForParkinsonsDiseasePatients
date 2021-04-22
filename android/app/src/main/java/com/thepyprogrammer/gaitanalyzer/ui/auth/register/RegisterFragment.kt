@@ -15,6 +15,7 @@ import com.thepyprogrammer.gaitanalyzer.model.account.User
 import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
 import com.thepyprogrammer.gaitanalyzer.ui.MainActivity
 import com.thepyprogrammer.gaitanalyzer.ui.auth.AuthViewModel
+import com.thepyprogrammer.gaitanalyzer.ui.auth.setup.SetupViewModel
 
 
 class RegisterFragment : Fragment() {
@@ -32,7 +33,7 @@ class RegisterFragment : Fragment() {
 
 
         /**View Model**/
-        viewModel = activity?.let { ViewModelProvider(it).get(AuthViewModel::class.java) }!!
+        viewModel = ViewModelProvider(requireActivity()).get(AuthViewModel::class.java)
 
         val nameObserver = Observer<String> { newName ->
             binding.nameInput.setText(newName)
@@ -63,9 +64,12 @@ class RegisterFragment : Fragment() {
                     sb.show()
                 } else if (viewModel.error.value != "DON'T LOGIN") {
                     FirebaseUtil.user = viewModel.userResult.value
-                    FirebaseUtil.user?.password?.let { it1 -> Log.d("TAG", it1) }
                     binding.loading.visibility = View.GONE
-                    (activity as MainActivity).navController.navigate(if(FirebaseUtil.user?.type == "caregiver") R.id.nav_main else R.id.nav_setup)
+                    (activity as MainActivity)
+                            .navController
+                            .navigate(
+                                    if(FirebaseUtil.user?.type == "patient" && viewModel.isLogin.value == false) R.id.nav_setup else R.id.nav_main
+                            )
                 }
             }
         viewModel.userResult.observe(viewLifecycleOwner, resultObserver)

@@ -25,8 +25,8 @@ class FreezeFragment : Fragment() {
         binding.viewPager.adapter = FreezeAdapter(requireActivity())
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = when (position % 2) {
-                0 -> "Freeze"
-                else -> "Freezes"
+                0 -> "Data"
+                else -> "Calendar"
             }
         }.attach()
 

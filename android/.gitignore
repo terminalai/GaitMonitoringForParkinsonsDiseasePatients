@@ -36,3 +36,6 @@ app/src/main/assets/stdlib/pythonhome.*.zip
 
 
 /node_modules
+/apk
+/app-debug.apk
+app-debug.apk

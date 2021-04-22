@@ -30,18 +30,20 @@ import com.thepyprogrammer.gaitanalyzer.ui.main.profile.ProfileFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.settings.SettingsFragment
 import com.thepyprogrammer.gaitanalyzer.ui.main.aboutapp.AboutAppFragment
 import com.thepyprogrammer.ktlib.io.KFile
-import com.thepyprogrammer.ktlib.string.SuperStringBuilder
+import com.thepyprogrammer.ktlib.randInt
+import com.thepyprogrammer.ktlib.toEpoch
 import de.hdodenhof.circleimageview.CircleImageView
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.PrintWriter
+import java.time.LocalDateTime
+import java.util.*
 
 class MainFragment : Fragment() {
 
-    private var imageView: CircleImageView? = null
     private var imageNavMenuView: CircleImageView? = null
 
-    private var imageInfoFile: KFile? = null
+    private var imageInfoFile: File? = null
 
     private lateinit var viewModel: MainViewModel
 
@@ -74,11 +76,29 @@ class MainFragment : Fragment() {
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
 
+//        // TESTING CODE - PLEASE REMOVE ON ACTUAL USAGE
+//        val time = mutableListOf<Long>()
+//        for(day in 15..20) {
+//            for(hour in 9..22) {
+//                for (i in 1..randInt(1, 5)) {
+//                    time.add(LocalDateTime.of(2021, 4, day, hour, 0, 0).toEpoch())
+//                }
+//            }
+//        }
+//
+//        val freezesFile = File(activity?.filesDir, "freezes.txt")
+//        if (!freezesFile.exists()) freezesFile.createNewFile()
+//        val freezesWriter = KFile.write(freezesFile)
+//        time.forEach { freezesWriter.out?.println(it) }
+//        freezesWriter.close()
+
+        FirebaseUtil.retrieveFreeze(activity as AppCompatActivity) {}
+
         imageInfoFile =
-            KFile(File((activity as AppCompatActivity).filesDir, "profileImageURI.txt"))
+            File((activity as AppCompatActivity).filesDir, "profileImageURI.txt")
 
         val accountDetails =
-            KFile(File((activity as AppCompatActivity).filesDir, "accountDetails.txt"))
+            File((activity as AppCompatActivity).filesDir, "accountDetails.txt")
         if (!accountDetails.exists()) accountDetails.createNewFile()
 
         val pw = PrintWriter(accountDetails)
@@ -192,9 +212,9 @@ class MainFragment : Fragment() {
 
             R.id.action_logout -> (activity as MainActivity).logout()
 
-            R.id.information -> navigateToInformation()
+            R.id.information -> navigateToVideo()
 
-            R.id.action_video -> navigateToVideo()
+            R.id.action_video -> navigateToInformation()
 
             R.id.action_me -> navigateToAboutMe()
 
@@ -266,27 +286,49 @@ class MainFragment : Fragment() {
             else -> navigateToHome()
         }
 
+
     private fun readData(): String {
-        if (!imageInfoFile!!.exists()) return ""
+        if (imageInfoFile?.exists() == false) {
+            return ""
+        }
+        return try {
+            val scanner = Scanner(imageInfoFile)
+            val string = StringBuilder(scanner.nextLine())
+
+            while (scanner.hasNextLine())
+                string.append("\n" + scanner.nextLine())
 
 
-        val string = SuperStringBuilder(imageInfoFile!!.read())
-        return string.toString()
+            scanner.close()
+            string.toString()
+        } catch (e: NoSuchElementException) {
+            ""
+        }
     }
 
     private fun loadImage() {
         val string: String = readData()
         try {
             if (string.isNotEmpty()) {
-                imageView?.setImageURI(Uri.parse(string))
                 imageNavMenuView?.setImageURI(Uri.parse(string))
             } else {
-                imageView?.setImageResource(R.drawable.face)
                 imageNavMenuView?.setImageResource(R.drawable.face)
             }
         } catch(e: FileNotFoundException) {
-            imageView?.setImageResource(R.drawable.face)
             imageNavMenuView?.setImageResource(R.drawable.face)
         }
     }
+
+    override fun onDetach() {
+        val freezesFile = File(requireActivity().filesDir, "freezes.txt")
+        FirebaseUtil.uploadFreeze(freezesFile)
+        super.onDetach()
+    }
+
+    override fun onDestroy() {
+        val freezesFile = File(requireActivity().filesDir, "freezes.txt")
+        FirebaseUtil.uploadFreeze(freezesFile)
+        super.onDestroy()
+    }
+
 }

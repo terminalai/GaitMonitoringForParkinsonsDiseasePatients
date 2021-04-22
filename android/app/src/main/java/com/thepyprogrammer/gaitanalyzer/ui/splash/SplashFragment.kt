@@ -16,6 +16,7 @@ import com.thepyprogrammer.gaitanalyzer.databinding.FragmentSplashBinding
 import com.thepyprogrammer.gaitanalyzer.model.account.Caregiver
 import com.thepyprogrammer.gaitanalyzer.model.account.Patient
 import com.thepyprogrammer.gaitanalyzer.model.firebase.FirebaseUtil
+import com.thepyprogrammer.ktlib.crypto.AES
 import java.io.File
 import java.util.*
 
@@ -23,6 +24,8 @@ import java.util.*
 class SplashFragment : Fragment() {
 
     private lateinit var binding: FragmentSplashBinding
+
+    private val aes = AES()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,10 +47,10 @@ class SplashFragment : Fragment() {
                     if (name != null) {
                         val password = sc.nextLine()
                         val type = sc.nextLine()
-                        if (type == "caregiver") FirebaseUtil.user = Caregiver(name, password)
+                        if (type == "caregiver") FirebaseUtil.user = Caregiver(name, password, encrypt("$name$type$password"))
                         else if (type == "patient") {
                             val phone = sc.nextLine()
-                            FirebaseUtil.user = Patient(name, password, phone)
+                            FirebaseUtil.user = Patient(name, password, encrypt("$name$type$password"), phone)
                         }
                         Handler().postDelayed({
                             Navigation.findNavController(binding.splashScreenImage)
@@ -89,5 +92,15 @@ class SplashFragment : Fragment() {
 
     companion object {
         private const val SPLASH_TIME_OUT = 3000
+    }
+
+    private fun encrypt(string: String): String {
+        var encryptedCode = aes.encrypt(
+                string,
+                "GaitMonitoringAndAnalysisForParkinsonsDiseasePatients"
+        )
+        if (encryptedCode == null) encryptedCode = string
+        encryptedCode.replace(Regex("[/\\\\]+"), "")
+        return encryptedCode
     }
 }

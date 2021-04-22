@@ -25,7 +25,7 @@ class AuthFragment : Fragment() {
         binding.viewPager.adapter = AuthAdapter(requireActivity())
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (position % 2) {
-                0 -> tab.text = "Login"
+                1 -> tab.text = "Login"
                 else -> tab.text = "Register"
             }
         }.attach()

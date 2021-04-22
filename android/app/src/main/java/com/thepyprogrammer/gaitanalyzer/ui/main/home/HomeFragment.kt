@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.transition.TransitionInflater
@@ -20,6 +21,7 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.thepyprogrammer.androidlib.chart.formatLineChart
 import com.thepyprogrammer.gaitanalyzer.R
 import com.thepyprogrammer.gaitanalyzer.databinding.FragmentHomeBinding
 import com.thepyprogrammer.gaitanalyzer.model.account.Caregiver
@@ -116,14 +118,14 @@ class HomeFragment : Fragment(), OnChartValueSelectedListener {
             data.addDataSet(set1)
         }
 
-        var set2 = data.getDataSetByIndex(0)
+        var set2 = data.getDataSetByIndex(1)
         // set.addEntry(...); // can be called as well
         if (set2 == null) {
             set2 = createSet("AccY")
             data.addDataSet(set1)
         }
 
-        var set3 = data.getDataSetByIndex(0)
+        var set3 = data.getDataSetByIndex(2)
         // set.addEntry(...); // can be called as well
         if (set3 == null) {
             set3 = createSet("AccZ")
@@ -154,9 +156,6 @@ class HomeFragment : Fragment(), OnChartValueSelectedListener {
         // let the chart know it's data has changed
         binding.accChart.notifyDataSetChanged()
 
-        // limit the number of visible entries
-        binding.accChart.setVisibleXRangeMaximum(120f)
-        // chart.setVisibleYRange(30, AxisDependency.LEFT);
 
         // move to the latest entry
         binding.accChart.moveViewToX(data.entryCount.toFloat())
@@ -170,13 +169,10 @@ class HomeFragment : Fragment(), OnChartValueSelectedListener {
         val set = LineDataSet(null, name)
         set.axisDependency = AxisDependency.LEFT
         set.color = ColorTemplate.getHoloBlue()
-        set.setCircleColor(Color.WHITE)
-        set.lineWidth = 2f
-        set.circleRadius = 4f
+        set.lineWidth = 4f
+        set.circleRadius = 0f
         set.fillAlpha = 65
         set.fillColor = ColorTemplate.getHoloBlue()
-        set.highLightColor = Color.rgb(244, 117, 117)
-        set.valueTextColor = Color.WHITE
         set.valueTextSize = 9f
         set.setDrawValues(false)
         return set
@@ -212,52 +208,7 @@ class HomeFragment : Fragment(), OnChartValueSelectedListener {
     private fun setUpChart() {
         with(binding.accChart) {
             visibility = View.VISIBLE
-            description.isEnabled = true
-            setTouchEnabled(true)
-            dragDecelerationFrictionCoef = 0.9f
-
-
-            isDragEnabled = true
-            setScaleEnabled(true)
-            setDrawGridBackground(false)
-            isHighlightPerDragEnabled = true
-
-            data = LineData()
-            data.setValueTextColor(Color.WHITE)
-
-
-            setBackgroundColor(android.graphics.Color.WHITE)
-
-            setViewPortOffsets(0f, 0f, 0f, 0f)
-
-            legend.isEnabled = false
-
-
-            xAxis.apply {
-                position = XAxis.XAxisPosition.TOP_INSIDE
-                textSize = 10f
-                textColor = Color.WHITE
-                setDrawAxisLine(false)
-                setDrawGridLines(true)
-                textColor = Color.rgb(255, 192, 56)
-                setCenterAxisLabels(true)
-                granularity = 1f // one hour
-            }
-
-            axisLeft.apply {
-                setPosition(com.github.mikephil.charting.components.YAxis.YAxisLabelPosition.INSIDE_CHART)
-                textColor = com.github.mikephil.charting.utils.ColorTemplate.getHoloBlue()
-                setDrawGridLines(true)
-                isGranularityEnabled = true
-                axisMinimum = -170f
-                axisMaximum = 170f
-                yOffset = -9f
-                textColor = android.graphics.Color.rgb(255, 192, 56)
-
-
-            }
-
-            axisRight.isEnabled = false
+            formatLineChart(this, activity as AppCompatActivity)
 
         }
 

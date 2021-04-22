@@ -91,19 +91,20 @@ class FreezesFragment : Fragment() {
             }
 
             data.addDataSet(
-                BarDataSet(points, "Freeze Events").also {
-                    it.color = R.color.primary
+                BarDataSet(points, "Freeze Events").apply {
+                    color = R.color.primary
+                    setDrawValues(false)
                 }
             )
 
+            visibility = View.VISIBLE
 
             axisLeft.axisMaximum = maxFreeze
 
 
             this.data = data
-            animateXY(500, 500)
+            animateY(1000)
 
-            visibility = View.VISIBLE
         }
     }
 

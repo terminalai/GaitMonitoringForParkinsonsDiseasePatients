@@ -13,6 +13,9 @@ fun formatBarChart(chart: BarChart, activity: AppCompatActivity) {
     val formatter = IntAxisFormatter()
 
     chart.apply {
+        setDrawBarShadow(false)
+        setDrawValueAboveBar(true)
+
         xAxis.apply {
             position = XAxis.XAxisPosition.BOTTOM
             typeface = tfLight
@@ -24,6 +27,8 @@ fun formatBarChart(chart: BarChart, activity: AppCompatActivity) {
             granularity = 1f
             isGranularityEnabled = true
             valueFormatter = formatter
+            textSize = 12f
+
         }
 
         axisLeft.apply {
@@ -38,11 +43,16 @@ fun formatBarChart(chart: BarChart, activity: AppCompatActivity) {
             granularity = 1f
             isGranularityEnabled = true
             valueFormatter = formatter
+            textSize = 12f
+        }
+
+        legend.apply {
+            typeface = tfLight
+            textSize = 12f
         }
 
         setVisibleXRangeMaximum(12f)
         isScaleXEnabled = true
-        isScaleYEnabled = true
 
 //        marker = XYMarkerView(activity, formatter).also {
 //            it.chartView = chart

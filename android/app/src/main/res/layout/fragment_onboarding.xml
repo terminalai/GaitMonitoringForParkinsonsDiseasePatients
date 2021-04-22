@@ -39,5 +39,6 @@
         android:layout_alignParentEnd="true"
         android:layout_margin="56dp"
         android:src="@drawable/ic_arrow_next"
+        android:tint="@color/blue_800"
         />
 </RelativeLayout>

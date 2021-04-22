@@ -71,9 +71,6 @@ class SetupFragment : Fragment() {
                     (activity as MainActivity)
                         .navController
                         .navigate(
-                            if (FirebaseUtil.user is Patient)
-                                R.id.nav_setup
-                            else
                                 R.id.nav_main
                         )
                 }
