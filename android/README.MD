@@ -13,13 +13,13 @@ Powered by Kotlin, this application is designed for portability. There are two d
 
 Parkinson’s Disease (PD) is a progressive nervous system disorder that affects the basal ganglia, resulting in the progressive loss of dopamine neurotransmitters and poorer connection between the central nervous system and muscles. This leads to many gait abnormalities, mainly tremors, bradykinesia, rigidity, and a loss of postural reflexes. Secondary motor symptoms that are evoked include stride length reduction, shuffling gait, step festination and freezing. Freezing of Gait (FOG) is one of the most debilitating effects of PD and is defined as a brief, episodic absence or marked reduction of forward progression of the feet despite the intention to walk. It has serious social and clinical consequences for patients as it leads to falls, interferes with daily activities, and significantly impacts quality of life. While FOG can happen anytime, it happens most often during turns, before gait initiation, in tight quarters such as doorways and in stressful situations. It is triggered by visual stimulation.
 
-![Parkinson's Disease](img\parkinson.png)
+![Parkinson's Disease](img/parkinson.png)
 
 ## Class Design
 
 This application was developed using Gradle and mostly uses Kotlin, with some sections coded with HTML and displayed using an Android WebView. There have also been multiple UI components created in a separate directory called androidlib and functions created in another separate directory called ktlib. Due to the complexity of this project, I will be going over only a few of these classes and directories. You can also see a macroscopic example of the entire directory structure below.
 
-![Directory Structure](img\dir.png)
+![Directory Structure](img/dir.png)
 
 ### `model` subpackage
 
@@ -111,21 +111,21 @@ In the ktlib.gait subpackage, there is also the algorithm used to detect falls a
 
 This ui.splash subpackage deals with the simple splash screen I have implemented. 
 
-![image-20210422221002568](img\splash.png)
+![image-20210422221002568](img/splash.png)
 
 #### onboarding subpackage
 
 This ui.onboarding subpackage deals with onboarding. I have introduced what the functionalities are, advertising for Parkinson’s Patients, with diagrams related to the root cause of this code.
 
-![image-20210422221228413](img\onboarding1.png)
+![image-20210422221228413](img/onboarding1.png)
 
-![image-20210422221317138](img\onboarding2.png)
+![image-20210422221317138](img/onboarding2.png)
 
-![image-20210422221346727](img\onboarding3.png)
+![image-20210422221346727](img/onboarding3.png)
 
-![image-20210422221432261](img\onboarding4.png)
+![image-20210422221432261](img/onboarding4.png)
 
-![image-20210422221501769](img\onboarding5.png)
+![image-20210422221501769](img/onboarding5.png)
 
 #### auth subpackage
 
@@ -135,49 +135,49 @@ The ui.auth subpackage deals with all the actual authentication process.
 
 Firstly, the fragment identification.IdentificationFragment is opened to streamline the two types of people. Although there is no difference in the next page, this was introduced so that the login process would be bigger. Based on previously done research, the elderly prefer bigger buttons and more attractive set-ups. Since most users of this application, at least in the case of the patients, are elderly, this is a crucial feature for usability.
 
-![image-20210422222622869](img\identification.png)
+![image-20210422222622869](img/identification.png)
 
 ##### login and register subpackages
 
 Upon selection, the AuthFragment fragment is opened. Here, a TabLayout is generated wherein you can Register or Login, entering a name and password. If you are to enter an existing account into register, the tab will automatically login for you.
 
-![image-20210422222601349](img\auth.png)
+![image-20210422222601349](img/auth.png)
 
 ##### setup subpackage
 
 If you are registering as a patient, you also have to input an emergency contact, who is the caregiver, using the setup.SetupFragment fragment. (see right) Not only would this update the caregiver fields in the patient’s data itself, but it also creates a new caregiver account if it doesn’t exist or update fields if the caregiver account exists.
 
-![image-20210422222536078](img\setup.png)
+![image-20210422222536078](img/setup.png)
 
 ##### Firebase Cloud Storage
 
 This details the entire login/register process. Firebase Cloud Firestore is accessed during the login, register and setup processes. Below shows the Firebase Document generated for Marty McFly. A few fields have been omitted for privacy reasons.
 
-![image-20210422222709257](C:\Users\Prannaya\Documents\GitHub\GaitMonitoringForParkinsonsDiseasePatients\android\img\firebase.png)
+![image-20210422222709257](img/firebase.png)
 
 #### image and main subpackages
 
 These subpackages deal with all the main functionality. Here, the MainFragment is opened in the MainActivity, which is the overall activity in this application. In the MainFragment, there is a bottom navigation menu + navigation bar menu set up to ease navigation at any point in time. The 4 main options that are hosted in the NavHostFragment that this navigation system handles are the **Home** page, **Profile** page, **Freeze** page and **Settings** page. Other than this, you can also handle an **Information** Page, About Application Page and About Programmer Page. While the first 5 have complex functionalities, the latter 2 have a more static design meant just to supply information using textual and visual data.
 
-![image-20210422223147263](img\main.png)
+![image-20210422223147263](img/main.png)
 
 ##### home subpackage
 
 In the Home Page, the user is greeted by a friendly greeting, and given the user is a patient, also has the option to use a walk mode. The Walk Mode is meant for users to simply put their phones in their projects or somewhere around their thighs, and walk such that every 10 or so milliseconds, the accelerometer and gyroscopic data is detected and monitored to find freeze or fall events. In the caregiver’s screen however, this section will not exist since the caregiver is only interested in monitoring the freeze data, rather than the actual usage. The freeze is detected via the usage of raw acceleration data, a complementary filter and a Kalman filter to analyse and therefore interpret abnormalities.
 
-![image-20210422223311697](img\home.png)
+![image-20210422223311697](img/home.png)
 
 ##### profile subpackage
 
 The Profile Page is a similar page, where the user can see their profile. Since only a username and password is generated and this is not a social media application, there is not much data to be showcased. However, tapping the image open the ImageDetailsActivity, which is one of 2 activities in this application aside from the MainActivity. Here, a larger image is shown and the user can also go ahead and edit the image such that it opens from gallery or can be taken from the camera. Users then have the option to crop and customize the photo as they please. This is how the ui.image is utilized.
 
-![image-20210422223450414](img\profile.png)
+![image-20210422223450414](img/profile.png)
 
 ##### settings subpackage
 
 The Settings Page is very simplistic, and users are allowed to set their profile picture, logout or turn on/off Dark Theme. Due to some strange bugs caused by the Android Ecosystem, the Dark Theme is currently kept at a Beta stage, and we suggest that users not use dark theme unless it proves absolutely necessary.
 
-![image-20210422223553311](img\settings.png)
+![image-20210422223553311](img/settings.png)
 
 ##### freeze subpackage
 
@@ -187,17 +187,17 @@ This is the page where most of the functionality is housed. A TabLayout is gener
 
 In Data, a master-detail flow page system is generated wherein the user is greeted with a RecyclerView, where each card shows the date it is representing as well the total number of freeze events on that day.
 
-![image-20210422223755478](img\freezeData.png)
+![image-20210422223755478](img/freezeData.png)
 
 Upon tapping one of the cards in the RecyclerView, the user enters the SelectedFragment, identified as Freeze Data By Hour. Here, a bar chart is generated, showing the data for how many times a freeze event was detected per hour on that day.
 
-![image-20210422224042352](img\freezeGraph.png)
+![image-20210422224042352](img/freezeGraph.png)
 
 ###### freezes subpackage
 
 You can also go to the calendar tab (right), where the user can view Freeze Events based on the date. This is helpful for those users who have been using the app for a long time, since the list data would be very difficult to navigate through. However the constraints of the phone meant that the exact number of freeze events per hour are not showcase on top of each bar, which may hinder some view of progress.
 
-![image-20210422224233891](img\freezes.png)
+![image-20210422224233891](img/freezes.png)
 
 For both Bar Charts, scaling has been done and a legend has also been implemented so that users can easily interpret the data.
 
@@ -205,11 +205,11 @@ For both Bar Charts, scaling has been done and a legend has also been implemente
 
 The Information Page is designed mainly as a way to explain the context behind the project, like why we did it and what we did. The video showcased is simply a submission video by the SMP team to the HCI International Science Youth Forum (ISYF). You can pause and play the video as you please. The video can also be placed under Picture-In-Picture (PiP) mode so that users can still use the app while listening to the team talk about the application. 
 
-![image-20210422224539481](img\video.png)
+![image-20210422224539481](img/video.png)
 
 A WebView is also generated which shows the README of the original project, which can be found on the GitHub page of the application. This is an HTML page loading the GitHub CSS and is very intuitively shown. There is also a Text-To-Speech software, but my suggestion would be to not use it since it is still in Beta Mode.
 
-![image-20210422224635928](img\webview.png)
+![image-20210422224635928](img/webview.png)
 
 
 
