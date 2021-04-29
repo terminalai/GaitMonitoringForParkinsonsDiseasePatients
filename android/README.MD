@@ -233,25 +233,24 @@ Similar to the point I raised last year, the task was very helpful for me, but I
 
 
 
-## Response
-
-### Response 1
-
+## Reviews
+<blockquote>
 The application has a pretty niche application, which makes it convenient for such patients (such an application probably does not exist now). However, some of the screens look a bit lacklustre and empty; and not to mention the fact that the whole app relies primarily on 2 colours, making it more suited for light theme. However, if the recording of data is accurate, the whole application, together with the many visualisations, make it very impressive.
+</blockquote>
 
-### Response 2
-
+<blockquote>
 4/5 intuitive interface with simplistic design that successfully keeps in mind the physical difficulties that target users may encounter using the app and designing around that (i.e. 1 button to start/stop). Navigation is easy to remember after a few times. I am not the target audience. but assuming I was for example a Parkinson’s patient, I would find the UI very friendly and would help achieve my goal in analysing "my gait pattern".
+</blockquote>
 
-### Response 3
-
+<blockquote>
 The main functionality of gait analysis is there, so I am going to give you those sick complexity points for porting your SMP over to android. The plaintext password is not a good thing, and features like profile picture seem semi-counter intuitive if the doctor attached isn't going to see it. Might need a bit more information on the RecyclerViews, various pages, perhaps more information for users? (like additional patient data, maybe like where the doctor is practising, etc.) Overall, from a purely functional standpoint it is a 4 but like the UI being a bit lacklustre might drop the score a bit.
+</blockquote>
 
-### Response 4
-
+<blockquote>
 I like the simple to use UI and design of the application. It is very feature rich and easy to understand. The app is good for both doctor's and patient. I wouldn’t see myself using the application very often because I don’t have Parkinson’s Disease, but I could see myself recommending it to others who have the disease. I feel like there should be data or a graph to show the patient's progress with coping with the disease over time, I.e. a graph of average freezes per day against days, that way the doctor could easily track their progress. Navigation is good but I feel like both a navigation drawer and bottom navigation bar are unnecessary. The application helps the users achieve their goals as doctors and patients can easily use this app. I feel like the UI could be better, but on a scale of 1 to 5, I rate my experience using the mobile app as a 5.
+</blockquote>
 
-### Response 5
-
+<blockquote>
 5/5, nice graph, a lot of functionalities that will help your target audience. The colour of the data graph could have been selected better. Very beautiful pictures on login and smooth transitions.
+</blockquote>
 
