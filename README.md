@@ -194,16 +194,22 @@ For the investigation, we employed the Linear and Gaussian Kernels and tested th
 Our Program was developed using Arduino's `.ino` programming language based off the C++ programming language. To get the best SVM model, we used a program called sklearn-porter<sup>[25]</sup> developed by Darius Morawies, which converted the trained SVM model to C code which was saved as a `model.h` file. This model was accessed by the Arduino Program, which also computed the freeze values.
 
 <p align="center">
-  <img src="./arduino/arduinoPinoutLandscape.png" width="220" alt="Arduino Pinout Diagram"><br/>
+  <img src="./arduino/configs/arduinoPinoutLandscape.png" width="220" alt="Arduino Pinout Diagram"><br/>
   <b>Figure 3.1: The Arduino Nano 33 BLE Pinout Diagram</b>
 </p>
+
+
+
 
 This study utilises an Arduino Nano 33 BLE board that is attached to an elastic strap. It contains a 9-axial IMU, comprising a 3D accelerometer, 3D gyroscope and 3D magnetometer. In our program, upon a certain freeze event predicted by the SVM, the built-in light-emitting diode (LED).
 
 <p align="center">
-  <img src="./arduino/built-inLEDLandscape.png" width="300" alt="Arduino Pinout Diagram with Built-In LED Information"><br/>
+  <img src="./arduino/configs/built-inLEDLandscape.png" width="300" alt="Arduino Pinout Diagram with Built-In LED Information"><br/>
   <b>Figure 3.2: Location of the built-in LED in the Arduino Nano 33 BLE Pinout Diagram</b>
 </p>
+
+
+
 
 
 ## Results
@@ -318,7 +324,7 @@ Based on the results, it is believed that the Linear kernel with parameters free
 In the end, a prototype has been developed to verify the effectiveness of parameters based on public dataset analysis.  It consists of an Arduino Nano 33 BLE board with a built-in 9-axial IMU consisting of a 3D accelerometer and 3D gyroscope attached to an elastic band.
 
 <p align="center">
-  <img src="./arduino/prototype.png" alt="Prototype"><br/>
+  <img src="./arduino/configs/prototype.png" alt="Prototype"><br/>
   <b>Figure 7: Our Prototype</b>
 </p>
 
