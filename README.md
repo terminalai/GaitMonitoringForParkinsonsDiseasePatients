@@ -328,6 +328,7 @@ In the end, a prototype has been developed to verify the effectiveness of parame
   <b>Figure 7: Our Prototype</b>
 </p>
 
+
 It is small, light, very comfortable and is meant to be wrapped around the thigh. As of now, it is not completely secured but upon walking, the Nano 33 BLE board did not fall off.
 
 ## Conclusions and Discussions
