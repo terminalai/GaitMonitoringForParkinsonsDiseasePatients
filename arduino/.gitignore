@@ -349,3 +349,4 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 .vs/GaitAIduino/v16/Browse.VC.db
+*.db
