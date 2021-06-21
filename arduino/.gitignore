@@ -350,3 +350,4 @@ MigrationBackup/
 .ionide/
 .vs/GaitAIduino/v16/Browse.VC.db
 *.db
+*.db
