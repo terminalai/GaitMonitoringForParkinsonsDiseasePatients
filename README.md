@@ -401,4 +401,4 @@ We would like to thank Professor Arthur Tay, Mr Lim Yeow Heng and Mr Lim Teck Ch
 
 ## Remarks
 
-This project was awarded [2nd Place at the International Science Youth Forum](http://isyf.hci.edu.sg/) and the [Gold Award at the Singapore Science and Engineering Fair](https://www.science.edu.sg/docs/default-source/scs-documents/for-schools/competitions/ssef/ssef2021_results.pdf).
+This project was awarded [2nd Place at the International Science Youth Forum](http://isyf.hci.edu.sg/) and the [Gold Award at the Singapore Science and Engineering Fair](https://www.science.edu.sg/docs/default-source/scs-documents/for-schools/competitions/ssef/ssef2021_results.pdf). This project was also one of 5 projects from Singapore selected for the [Global Youth Science and Technology Bowl (GYSTB) and won the Third Prize](https://ce.hkfyg.org.hk/gystb/).
