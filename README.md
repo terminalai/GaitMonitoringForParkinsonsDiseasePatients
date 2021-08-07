@@ -1,5 +1,7 @@
-# Gait Monitoring and Analysis for Parkinson's Disease Patients
+# Analysing Gait Patterns of Parkinsons' Disease patients to predict Freezing of Gait (FoG) using Machine Learning Algorithms
 By: Nallapuraju Ananya, Ye Chen Rui and Prannaya Gupta
+
+This research project was designed to monitor gait patterns to detect Freezing of Gait, a condition amongst Parkinson's Disease Patients, to maintain the safety of those who contract this condition.
 
 <p align="center">
   <img src="./logos/Gait%20Monitoring%20and%20Analysis%20for%20Parkinson's%20Patients%20Logo.png" width="438" height="439" alt="Gait Monitoring and Analysis for Parkinson's Disease Patients">
@@ -49,7 +51,7 @@ Students will first need to review and understands how to extract gait parameter
 
 ## Abstract
 
-Parkinson’s disease (PD) is a neurodegenerative disorder that affects the dopamine producing neurons in the substantia nigra, an area of the brain, leading to shaking, stiffness and difficulty walking. Parkinson’s patients frequently exhibit the debilitating condition freezing of gait (FOG), which is when patients cannot move their feet forward despite the intention to walk. While the feet remain in place, the torso still has forward momentum, making falls very common. At the start, FOG can be triggered by stress, tight spaces or a sudden change in direction. As the disease progresses, this happens more frequently, a fact extremely detrimental to the patient’s health and mental well-being.
+Parkinson’s disease (PD) is a neurodegenerative disorder that affects the dopamine producing neurons in the substantia nigra, an area of the brain, leading to shaking, stiffness and difficulty walking. Parkinson’s patients frequently exhibit the debilitating condition, freezing of gait (FOG), which is when patients cannot move their feet forward despite the intention to walk. While the feet remain in place, the torso still has forward momentum, making falls very common. Several studies have reported methodologies to identify the PD patients at an early stage, such as PD scales and using Inertial Measurement Units (IMU). However, these methods are ineffective as scales are not personalised and the IMUs are generally big and bulky. In this study, acceleration data from the thigh of PD patients has been put through signal processing algorithms to postulate a generic Freeze Index, which is then run through multiple Support Vector Machine models to analyse and therefore predict FOG events. The analysis found that vertical and horizontal lateral acceleration was the most accurate at predicting FOG. Ultimately, a small and lightweight prototype was created based on acceleration data from accelerometers placed on the thigh.
 
 ## Introduction
 
@@ -402,3 +404,11 @@ We would like to thank Professor Arthur Tay, Mr Lim Yeow Heng and Mr Lim Teck Ch
 ## Remarks
 
 This project was awarded [2nd Place at the International Science Youth Forum](http://isyf.hci.edu.sg/) and the [Gold Award at the Singapore Science and Engineering Fair](https://www.science.edu.sg/docs/default-source/scs-documents/for-schools/competitions/ssef/ssef2021_results.pdf). This project was also one of 5 projects from Singapore selected for the [Global Youth Science and Technology Bowl (GYSTB) and won the Third Prize](https://ce.hkfyg.org.hk/gystb/).
+
+## Meet the Team
+<p align="center">
+  <img src="./gallery/gystb.png" />
+</p>
+<p align="center">
+  <img src="./gallery/isyf+rc.png" />
+</p>
