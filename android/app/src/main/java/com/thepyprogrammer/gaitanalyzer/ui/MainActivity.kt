@@ -57,9 +57,6 @@ class MainActivity : AppCompatActivity() {
         
         FirebaseUtil.retrieveFreeze(this) {}
 
-
-
-
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.parent_nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
