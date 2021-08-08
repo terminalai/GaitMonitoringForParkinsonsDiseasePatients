@@ -403,7 +403,10 @@ We would like to thank Professor Arthur Tay, Mr Lim Yeow Heng and Mr Lim Teck Ch
 
 ## Remarks
 
-This project was awarded [2nd Place at the International Science Youth Forum](http://isyf.hci.edu.sg/) and the [Gold Award at the Singapore Science and Engineering Fair](https://www.science.edu.sg/docs/default-source/scs-documents/for-schools/competitions/ssef/ssef2021_results.pdf). This project was also one of 5 projects from Singapore selected for the [Global Youth Science and Technology Bowl (GYSTB) and won the Third Prize](https://ce.hkfyg.org.hk/gystb/).
+This project was awarded [2nd Place at the International Science Youth Forum](http://isyf.hci.edu.sg/) and the [Gold Award at the Singapore Science and Engineering Fair](https://www.science.edu.sg/docs/default-source/scs-documents/for-schools/competitions/ssef/ssef2021_results.pdf). This project was also one of 5 projects from Singapore selected for the [Global Youth Science and Technology Bowl (GYSTB) and won the Third Prize](https://ce.hkfyg.org.hk/gystb/). We were also awarded [Best Presenters' Award at the International Researchers' Club Conference on Science, Engineering and Technology](https://ircset.org/") for this project.
+
+## Extension
+We are planning to extend this project by using Genetic Algorithms and we will try and proceed with Laboratory testing on this project. Chen Rui will be leaving us, however, so we hope to find another NUS High School student or two to collaborate with.
 
 ## Meet the Team
 <p align="center">
