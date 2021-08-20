@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Nallapuraju"
+  given-names: "Ananya"
+- family-names: "Gupta"
+  given-names: "Prannaya"
+- family-names: "Ye"
+  given-names: "Chen Rui"
+title: "Analysing Gait Patterns of Parkinsons' Disease patients to predict Freezing of Gait (FoG) using Machine Learning Algorithms"
+version: 1.2.0
+date-released: 2021-08-07
+url: "https://github.com/gait-analyzer/GaitMonitoringForParkinsonsDiseasePatients"
